@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>pgo create :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Tablespaces :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/pgo-client/reference/pgo_create/">
+  <body data-url="/architecture/tablespaces/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -105,10 +105,11 @@
 
       </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/">Architecture</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/">Architecture</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -175,7 +176,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/">
             Tablespaces
@@ -323,11 +324,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/">Using the pgo Client</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/">Using the pgo Client</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -338,11 +338,10 @@
           </a>
         </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/">pgo Client Reference</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/">pgo Client Reference</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -381,7 +380,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item active">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">
             pgo create
@@ -932,78 +931,24 @@
     <option value="/quickstart/" >
    Quickstart</option>
     <option value="/architecture/" >
-   Architecture</option>
+   Architecture</option> 
+      <option value="/architecture/overview/" >- Overview</option>
+      <option value="/architecture/provisioning/" >- Provisioning</option>
+      <option value="/architecture/disaster-recovery/" >- Disaster Recovery</option>
+      <option value="/architecture/high-availability/" >- High-Availability</option>
+      <option value="/architecture/namespace/" >- Namespace Management</option>
+      <option value="/architecture/eventing/" >- Lifecycle Events</option>
+      <option value="/architecture/postgres-operator-containers-overview/" >- PostgreSQL Containers</option>
+      <option value="/architecture/storage-overview/" >- Storage</option>
+      <option value="/architecture/users-role-overview/" >- User &amp; Roles</option>
+      <option value="/architecture/tablespaces/"  selected>- Tablespaces</option>
+  
     <option value="/configuration/" >
    Configuration</option>
     <option value="/installation/" >
    Installation</option>
     <option value="/pgo-client/" >
-   Using the pgo Client</option> 
-      <option value="/pgo-client/common-tasks/" >- Common pgo Client Tasks</option>
-    <option value="/pgo-client/reference/" >
-  - 
-   pgo Client Reference</option> 
-      <option value="/pgo-client/reference/pgo_apply/" >-- pgo apply</option>
-      <option value="/pgo-client/reference/pgo_backup/" >-- pgo backup</option>
-      <option value="/pgo-client/reference/pgo_benchmark/" >-- pgo benchmark</option>
-      <option value="/pgo-client/reference/pgo_cat/" >-- pgo cat</option>
-      <option value="/pgo-client/reference/pgo_clone/" >-- pgo clone</option>
-      <option value="/pgo-client/reference/pgo_create/"  selected>-- pgo create</option>
-      <option value="/pgo-client/reference/pgo_create_cluster/" >-- pgo create cluster</option>
-      <option value="/pgo-client/reference/pgo_create_namespace/" >-- pgo create namespace</option>
-      <option value="/pgo-client/reference/pgo_create_pgbouncer/" >-- pgo create pgbouncer</option>
-      <option value="/pgo-client/reference/pgo_create_pgorole/" >-- pgo create pgorole</option>
-      <option value="/pgo-client/reference/pgo_create_pgouser/" >-- pgo create pgouser</option>
-      <option value="/pgo-client/reference/pgo_create_policy/" >-- pgo create policy</option>
-      <option value="/pgo-client/reference/pgo_create_schedule/" >-- pgo create schedule</option>
-      <option value="/pgo-client/reference/pgo_create_user/" >-- pgo create user</option>
-      <option value="/pgo-client/reference/pgo_delete/" >-- pgo delete</option>
-      <option value="/pgo-client/reference/pgo_delete_backup/" >-- pgo delete backup</option>
-      <option value="/pgo-client/reference/pgo_delete_benchmark/" >-- pgo delete benchmark</option>
-      <option value="/pgo-client/reference/pgo_delete_cluster/" >-- pgo delete cluster</option>
-      <option value="/pgo-client/reference/pgo_delete_label/" >-- pgo delete label</option>
-      <option value="/pgo-client/reference/pgo_delete_namespace/" >-- pgo delete namespace</option>
-      <option value="/pgo-client/reference/pgo_delete_pgbouncer/" >-- pgo delete pgbouncer</option>
-      <option value="/pgo-client/reference/pgo_delete_pgorole/" >-- pgo delete pgorole</option>
-      <option value="/pgo-client/reference/pgo_delete_pgouser/" >-- pgo delete pgouser</option>
-      <option value="/pgo-client/reference/pgo_delete_policy/" >-- pgo delete policy</option>
-      <option value="/pgo-client/reference/pgo_delete_schedule/" >-- pgo delete schedule</option>
-      <option value="/pgo-client/reference/pgo_delete_user/" >-- pgo delete user</option>
-      <option value="/pgo-client/reference/pgo_df/" >-- pgo df</option>
-      <option value="/pgo-client/reference/pgo_failover/" >-- pgo failover</option>
-      <option value="/pgo-client/reference/pgo_label/" >-- pgo label</option>
-      <option value="/pgo-client/reference/pgo_load/" >-- pgo load</option>
-      <option value="/pgo-client/reference/pgo_ls/" >-- pgo ls</option>
-      <option value="/pgo-client/reference/pgo_reload/" >-- pgo reload</option>
-      <option value="/pgo-client/reference/pgo_restore/" >-- pgo restore</option>
-      <option value="/pgo-client/reference/pgo_scale/" >-- pgo scale</option>
-      <option value="/pgo-client/reference/pgo_scaledown/" >-- pgo scaledown</option>
-      <option value="/pgo-client/reference/pgo_show/" >-- pgo show</option>
-      <option value="/pgo-client/reference/pgo_show_backup/" >-- pgo show backup</option>
-      <option value="/pgo-client/reference/pgo_show_benchmark/" >-- pgo show benchmark</option>
-      <option value="/pgo-client/reference/pgo_show_cluster/" >-- pgo show cluster</option>
-      <option value="/pgo-client/reference/pgo_show_config/" >-- pgo show config</option>
-      <option value="/pgo-client/reference/pgo_show_namespace/" >-- pgo show namespace</option>
-      <option value="/pgo-client/reference/pgo_show_pgorole/" >-- pgo show pgorole</option>
-      <option value="/pgo-client/reference/pgo_show_pgouser/" >-- pgo show pgouser</option>
-      <option value="/pgo-client/reference/pgo_show_policy/" >-- pgo show policy</option>
-      <option value="/pgo-client/reference/pgo_show_pvc/" >-- pgo show pvc</option>
-      <option value="/pgo-client/reference/pgo_show_schedule/" >-- pgo show schedule</option>
-      <option value="/pgo-client/reference/pgo_show_user/" >-- pgo show user</option>
-      <option value="/pgo-client/reference/pgo_show_workflow/" >-- pgo show workflow</option>
-      <option value="/pgo-client/reference/pgo_status/" >-- pgo status</option>
-      <option value="/pgo-client/reference/pgo_test/" >-- pgo test</option>
-      <option value="/pgo-client/reference/pgo_update/" >-- pgo update</option>
-      <option value="/pgo-client/reference/pgo_update_cluster/" >-- pgo update cluster</option>
-      <option value="/pgo-client/reference/pgo_update_namespace/" >-- pgo update namespace</option>
-      <option value="/pgo-client/reference/pgo_update_pgorole/" >-- pgo update pgorole</option>
-      <option value="/pgo-client/reference/pgo_update_pgouser/" >-- pgo update pgouser</option>
-      <option value="/pgo-client/reference/pgo_update_user/" >-- pgo update user</option>
-      <option value="/pgo-client/reference/pgo_upgrade/" >-- pgo upgrade</option>
-      <option value="/pgo-client/reference/pgo_version/" >-- pgo version</option>
-      <option value="/pgo-client/reference/pgo_watch/" >-- pgo watch</option>
-  
-  
+   Using the pgo Client</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1030,7 +975,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/pgo-client/reference/pgo_create.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/architecture/tablespaces.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1050,12 +995,7 @@
 
 
 
-
-
-
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/pgo-client/'>Using the pgo Client</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/'>pgo Client Reference</a> > pgo create
-
- 
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/architecture/'>Architecture</a> > Tablespaces
 
  
 
@@ -1071,71 +1011,115 @@
     
     <div id="body-inner">
 
-    <h1>pgo create</h1>
+    <h1>Tablespaces</h1>
 
     
 
     
     
 
-<h2 id="pgo-create">pgo create</h2>
-
-<p>Create a Postgres Operator resource</p>
-
-<h3 id="synopsis">Synopsis</h3>
-
-<p>CREATE allows you to create a new Operator resource. For example:
-    pgo create cluster
-    pgo create pgbouncer
-    pgo create pgouser
-    pgo create pgorole
-    pgo create policy
-    pgo create namespace
-    pgo create user</p>
-
-<pre><code>pgo create [flags]
-</code></pre>
-
-<h3 id="options">Options</h3>
-
-<pre><code>  -h, --help   help for create
-</code></pre>
-
-<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
-
-<pre><code>      --apiserver-url string     The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.
-      --debug                    Enable additional output for debugging.
-      --disable-tls              Disable TLS authentication to the Postgres Operator.
-      --exclude-os-trust         Exclude CA certs from OS default trust store
-  -n, --namespace string         The namespace to use for pgo requests.
-      --pgo-ca-cert string       The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.
-      --pgo-client-cert string   The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.
-      --pgo-client-key string    The Client Key file path for authenticating to the PostgreSQL Operator apiserver.
-</code></pre>
-
-<h3 id="see-also">SEE ALSO</h3>
+<p>A <a href="https://www.postgresql.org/docs/current/manage-ag-tablespaces.html">Tablespace</a>
+is a PostgreSQL feature that is used to store data on a volume that is different
+from the primary data directory. While most workloads do not require them,
+tablespaces can be particularly helpful for larger data sets or utilizing
+particular hardware to optimize performance on a particular PostgreSQL object
+(a table, index, etc.). Some examples of use cases for tablespaces include:</p>
 
 <ul>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo/">pgo</a>  - The pgo command line interface.</li>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/">pgo create cluster</a>    - Create a PostgreSQL cluster</li>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_namespace/">pgo create namespace</a>    - Create a namespace</li>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgbouncer/">pgo create pgbouncer</a>    - Create a pgbouncer</li>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgorole/">pgo create pgorole</a>    - Create a pgorole</li>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgouser/">pgo create pgouser</a>    - Create a pgouser</li>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_policy/">pgo create policy</a>  - Create a SQL policy</li>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_schedule/">pgo create schedule</a>  - Create a cron-like scheduled task</li>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_user/">pgo create user</a>  - Create a PostgreSQL user</li>
+<li>Partitioning larger data sets across different volumes</li>
+<li>Putting data onto archival systems</li>
+<li>Utilizing hardware (or a storage class) for a particular database</li>
+<li>Storing sensitive data on a volume that supports transparent data-encryption
+(TDE)</li>
 </ul>
 
-<h6 id="auto-generated-by-spf13-cobra-on-31-dec-2019">Auto generated by spf13/cobra on 31-Dec-2019</h6>
+<p>and others.</p>
+
+<p>In order to use PostgreSQL tablespaces properly in a highly-available,
+distributed system, there are several considerations that need to be accounted
+for to ensure proper operations:</p>
+
+<ul>
+<li>Each tablespace must have its own volume; this means that every tablespace for
+every replica in a system must have its own volume.</li>
+<li>The filesystem map must be consistent across the cluster</li>
+<li>The backup &amp; disaster recovery management system must be able to safely backup
+and restore data to tablespaces</li>
+</ul>
+
+<p>Additionally, a tablespace is a critical piece of a PostgreSQL instance: if
+PostgreSQL expects a tablespace to exist and it is unavailable, this could
+trigger a downtime scenario.</p>
+
+<p>While there are certain challenges with creating a PostgreSQL cluster with
+high-availability along with tablespaces in a Kubernetes-based environment, the
+PostgreSQL Operator adds many conveniences to make it easier to use
+tablespaces in applications.</p>
+
+<h2 id="how-tablespaces-work-in-the-postgresql-operator">How Tablespaces Work in the PostgreSQL Operator</h2>
+
+<p>As stated above, it is important to ensure that every tablespace created has its
+own volume (i.e. its own <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">persistent volume claim</a>).
+This is especially true for any replicas in a cluster: you don&rsquo;t want multiple
+PostgreSQL instances writing to the same volume, as this is a recipe for
+disaster!</p>
+
+<p>One of the keys to working with tablespaces in a high-availability cluster is to
+ensure the filesystem that the tablespaces map to is consistent. Specifically,
+it is imperative to have the <code>LOCATION</code> parameter that is used by PostgreSQL to
+indicate where a tablespace resides to match in each instance in a cluster.</p>
+
+<p>The PostgreSQL Operator achieves this by mounting all of its tablespaces to a
+directory called <code>/tablespaces</code> in the container. While each tablespace will
+exist in a unique PVC across all PostgreSQL instances in a cluster, each
+instance&rsquo;s tablespaces will mount in a predictable way in <code>/tablespaces</code>.</p>
+
+<p>The PostgreSQL Operator takes this one step further and abstracts this away from
+you. When your PostgreSQL cluster initialized, the tablespace definition is
+automatically created in PostgreSQL; you can start using it immediately! An
+example of this is demonstrated in the next section.</p>
+
+<p>The PostgreSQL Operator ensures the availability of the tablespaces across the
+different lifecycle events that occur on a PostgreSQL cluster, including:</p>
+
+<ul>
+<li>High-Availability: Data in the tablespaces is replicated across the cluster,
+and is available after a downtime event</li>
+<li>Disaster Recovery: Tablespaces are backed up and are properly restored during
+a recovery</li>
+<li>Clone: Tablespaces are created in any cloned cluster</li>
+<li>Deprovisioining: Tablespaces are deleted when a PostgreSQL instance or cluster
+is deleted</li>
+</ul>
+
+<h2 id="creating-tablespaces">Creating Tablespaces</h2>
+
+<p>Tablespaces can be used in a cluster with the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
+command. The command follows this general format:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster --tablespaces<span style="color:#f92672">=</span><span style="color:#111">tablespace1</span><span style="color:#f92672">=</span>storageclass,tablespace2<span style="color:#f92672">=</span>storageclass</code></pre></div>
+<p>For example, to create tablespaces name <code>faststorage1</code> and <code>faststorage2</code> on
+PVCs that use the <code>nfsstorage</code> storage type, you would execute the following
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster --tablespaces<span style="color:#f92672">=</span><span style="color:#111">faststorage1</span><span style="color:#f92672">=</span>nfsstorage,faststorage2<span style="color:#f92672">=</span>nfsstorage</code></pre></div>
+<p>Once the cluster is initialized, you can immediately interface with the
+tablespaces! For example, if you wanted to create a table called <code>sensor_data</code>
+on the <code>faststorage1</code> tablespace, you could execute the following SQL:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#111">sensor_data</span> <span style="color:#111">(</span>
+  <span style="color:#111">sensor_id</span> <span style="color:#111">int</span><span style="color:#111">,</span>
+  <span style="color:#111">sensor_value</span> <span style="color:#111">numeric</span><span style="color:#111">,</span>
+  <span style="color:#111">created_at</span> <span style="color:#111">timestamptz</span> <span style="color:#00a8c8">DEFAULT</span> <span style="color:#00a8c8">CURRENT_TIMESTAMP</span>
+<span style="color:#111">)</span>
+<span style="color:#111">TABLESPACE</span> <span style="color:#111">faststorage1</span><span style="color:#111">;</span></code></pre></div>
+<p>For more information on how tablespaces work in PostgreSQL please refer to the
+<a href="https://www.postgresql.org/docs/current/manage-ag-tablespaces.html">PostgreSQL manual</a>.</p>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/" title="pgo clone"> <i class="fa fa-chevron-left"></i><label>pgo clone</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/" title="pgo create cluster" style="margin-right: 0px;"><label>pgo create cluster</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/architecture/users-role-overview/" title="User &amp; Roles"> <i class="fa fa-chevron-left"></i><label>User &amp; Roles</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/configuration/" title="Configuration" style="margin-right: 0px;"><label>Configuration</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

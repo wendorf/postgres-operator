@@ -175,6 +175,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/">
+            Tablespaces
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/" class="dd-item haschildren
@@ -1266,6 +1273,23 @@ workflow id ae714d12-f5d0-4fa9-910f-21944b41dec8
 <p>To create a PostgreSQL cluster that uses the geospatial extension PostGIS, you
 can execute the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hagiscluster --ccp-image<span style="color:#f92672">=</span>crunchy-postgres-gis-ha</code></pre></div>
+<h4 id="create-a-postgresql-cluster-with-a-tablespace">Create a PostgreSQL Cluster with a Tablespace</h4>
+
+<p>Tablespaces are a PostgreSQL feature that allows a user to select specific
+volumes to store data to, which is helpful in <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/">several types of scenarios</a>.
+Often your workload does not require a tablespace, but the PostgreSQL Operator
+provides support for tablespaces throughout the lifecycle of a PostgreSQL
+cluster.</p>
+
+<p>To create a PostgreSQL cluster that uses the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/">tablespace</a>
+feature with NFS storage, you can execute the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hactsluster --tablespaces<span style="color:#f92672">=</span><span style="color:#111">ts1</span><span style="color:#f92672">=</span>nfsstorage</code></pre></div>
+<p>You can use your preferred storage engine instead of <code>nfsstorage</code>. For example,
+to create multiple tablespaces on GKE, you can execute the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hactsluster --tablespaces<span style="color:#f92672">=</span><span style="color:#111">ts1</span><span style="color:#f92672">=</span>gce,ts2<span style="color:#f92672">=</span>gce</code></pre></div>
+<p>Tablespaces are immediately available once the PostgreSQL cluster is
+provisioned. For example, to create a table using the tablespace.</p>
+
 <h4 id="tracking-a-newly-provisioned-cluster">Tracking a Newly Provisioned Cluster</h4>
 
 <p>A new PostgreSQL cluster can take a few moments to provision. You may have

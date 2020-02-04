@@ -409,6 +409,16 @@ In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL
     </item>
     
     <item>
+      <title>Tablespaces</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/</guid>
+      <description>A Tablespace is a PostgreSQL feature that is used to store data on a volume that is different from the primary data directory. While most workloads do not require them, tablespaces can be particularly helpful for larger data sets or utilizing particular hardware to optimize performance on a particular PostgreSQL object (a table, index, etc.). Some examples of use cases for tablespaces include:
+ Partitioning larger data sets across different volumes Putting data onto archival systems Utilizing hardware (or a storage class) for a particular database Storing sensitive data on a volume that supports transparent data-encryption (TDE)  and others.</description>
+    </item>
+    
+    <item>
       <title>Updating Documentation</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/contributing/documentation-updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
