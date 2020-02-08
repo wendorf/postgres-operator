@@ -1145,9 +1145,6 @@ sets of variables cannot be used at the same time.</div>
 <ul>
 <li><code>archive_mode</code></li>
 <li><code>archive_timeout</code></li>
-<li><code>auto_failover</code></li>
-<li><code>auto_failover_sleep_secs</code></li>
-<li><code>auto_failover_replace_replica</code></li>
 <li><code>backup_storage</code></li>
 <li><code>backrest</code></li>
 <li><code>backrest_storage</code></li>
@@ -1161,6 +1158,7 @@ sets of variables cannot be used at the same time.</div>
 <li><code>db_port</code></li>
 <li><code>db_replicas</code></li>
 <li><code>db_user</code></li>
+<li><code>disable_auto_failover</code>`</li>
 <li><code>exporterport</code></li>
 <li><code>kubernetes_context</code> (Comment out if deploying to am OpenShift environment)</li>
 <li><code>metrics</code></li>
@@ -1209,27 +1207,6 @@ sets of variables cannot be used at the same time.</div>
 <td>60</td>
 <td><strong>Required</strong></td>
 <td>Set to a value in seconds to configure the timeout threshold for archiving.</td>
-</tr>
-
-<tr>
-<td><code>auto_failover</code></td>
-<td>false</td>
-<td><strong>Required</strong></td>
-<td>Set to true enable auto failover capabilities on all newly created cluster requests.  This can be disabled by the client.</td>
-</tr>
-
-<tr>
-<td><code>auto_failover_replace_replica</code></td>
-<td>false</td>
-<td><strong>Required</strong></td>
-<td>Set to true to replace promoted replicas during failovers with a new replica on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>auto_failover_sleep_secs</code></td>
-<td>9</td>
-<td><strong>Required</strong></td>
-<td>Set to a value in seconds to configure the sleep time before initiating a failover on all newly created clusters.</td>
 </tr>
 
 <tr>
@@ -1391,6 +1368,13 @@ sets of variables cannot be used at the same time.</div>
 <td>testuser</td>
 <td><strong>Required</strong></td>
 <td>Set to configure the username of the dedicated user account on all newly created clusters.</td>
+</tr>
+
+<tr>
+<td><code>disable_failover</code></td>
+<td>false</td>
+<td><strong>Required</strong></td>
+<td>Set to true disable auto failover capabilities on all newly created cluster requests. This cannot be overriden by the client on a cluster create, but on a cluster update. Setting this is not generally recommend, as it disable high-availability capabilities.</td>
 </tr>
 
 <tr>
