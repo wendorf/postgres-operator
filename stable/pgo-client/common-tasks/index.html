@@ -839,21 +839,21 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/">
-            Upgrade PGO 3.5 to 4.2.1
+            Upgrade PGO 3.5 to 4.2.2
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/">
-            Upgrade PGO 4.X to 4.2.1 (Ansible)
+            Upgrade PGO 4.X to 4.2.2 (Ansible)
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/">
-            Upgrade PGO 4.X to 4.2.1 (Bash)
+            Upgrade PGO 4.X to 4.2.2 (Bash)
           </a>
         </div>
     </li>
@@ -1014,11 +1014,11 @@ PostgreSQL cluster with the PostgreSQL Operator.</p>
 managing PostgreSQL clusters. The guide is broken up by different administrative
 topics, such as provisioning, high-availability, etc.</p>
 
-<h2 id="general-notes">General Notes</h2>
+<h2 id="setup-before-running-the-examples">Setup Before Running the Examples</h2>
 
 <p>Many of the <code>pgo</code> client commands require you to specify a namespace via the
 <code>-n</code> or <code>--namespace</code> flag. While this is a very helpful tool when managing
-PostgreSQL deployments across many Kubernetes namespaces, this can become
+PostgreSQL deployxments across many Kubernetes namespaces, this can become
 onerous for the intents of this guide.</p>
 
 <p>If you install the PostgreSQL Operator using the <a href="https://crunchydata.github.io/postgres-operator/stable/quickstart/">quickstart</a>
@@ -1031,9 +1031,9 @@ reference,</p>
 For even more convenience, we recommend setting <code>pgouser1</code> to be the value of
 the <code>PGO_NAMESPACE</code> variable. In the shell that you will be executing the <code>pgo</code>
 commands in, run the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>shell</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgouser1</code></pre></div>
 <p>If you do not wish to set this environmental variable, or are in an environment
-where you are unable to use envirionmental variables, you will have to use the
+where you are unable to use environmental variables, you will have to use the
 <code>--namespace</code> (or <code>-n</code>) flag for most commands, e.g.</p>
 
 <p><code>pgo version -n pgouser1</code></p>
@@ -1071,8 +1071,8 @@ command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>which, if working, will yield results similar to:</p>
 
-<pre><code>pgo client version 4.2.1
-pgo-apiserver version 4.2.1
+<pre><code>pgo client version 4.2.2
+pgo-apiserver version 4.2.2
 </code></pre>
 
 <h3 id="inspecting-the-postgresql-operator-configuration">Inspecting the PostgreSQL Operator Configuration</h3>
@@ -1088,7 +1088,7 @@ deployed by default, which storage classes are being used, etc.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">BasicAuth<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
 Cluster<span style="color:#111">:</span>
   CCPImagePrefix<span style="color:#111">:</span> crunchydata
-  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.1</span>-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">1</span>
+  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.2</span>-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">2</span>
   PrimaryNodeLabel<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   ReplicaNodeLabel<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
@@ -1113,7 +1113,6 @@ Cluster<span style="color:#111">:</span>
   BackrestS3Endpoint<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   BackrestS3Region<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   DisableAutofail<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
-  AutofailReplaceReplica<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PgmonitorPassword<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   EnableCrunchyadm<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   DisableReplicaStartFailReinit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
@@ -1123,7 +1122,7 @@ Pgo<span style="color:#111">:</span>
   PreferredFailoverNode<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Audit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PGOImagePrefix<span style="color:#111">:</span> crunchydata
-  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">1</span>
+  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">2</span>
 ContainerResources<span style="color:#111">:</span>
   large<span style="color:#111">:</span>
     RequestsMemory<span style="color:#111">:</span> 2Gi
@@ -1179,9 +1178,9 @@ Claims:                  8
 Total Volume Size:       8Gi       
 
 Database Images:
-                         4	crunchydata/crunchy-postgres-ha:centos7-12.1-4.2.1
-                         4	crunchydata/pgo-backrest-repo:centos7-4.2.1
-                         8	crunchydata/pgo-backrest:centos7-4.2.1
+                         4	crunchydata/crunchy-postgres-ha:centos7-12.2-4.2.2
+                         4	crunchydata/pgo-backrest-repo:centos7-4.2.2
+                         8	crunchydata/pgo-backrest:centos7-4.2.2
 
 Databases Not Ready:
 
@@ -1211,7 +1210,7 @@ Labels (count &gt; 1): [count] [label]
 	[4]	[pgo-pg-database=true]
 	[4]	[crunchy_collect=false]
 	[4]	[pg-pod-anti-affinity=]
-	[4]	[pgo-version=4.2.1]
+	[4]	[pgo-version=4.2.2]
 	[4]	[archive-timeout=60]
 	[2]	[pg-cluster=hacluster]
 </code></pre>
@@ -1242,7 +1241,7 @@ pgouser2                 accessible          accessible
 somethingelse            no access           no access   
 </code></pre>
 
-<p><strong>NOTE</strong>: Based on your deployment, your Kuberentes administrator may restrict
+<p><strong>NOTE</strong>: Based on your deployment, your Kubernetes administrator may restrict
 access to the multi-namespace feature of the PostgreSQL Operator. In this case,
 you do not need to worry about managing your namespaces and as such do not need
 to use this command, but we recommend setting the <code>PGO_NAMESPACE</code> variable as
@@ -1306,7 +1305,7 @@ including the nodes that the pods are assigned to</li>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
 <p>which will yield output similar to:</p>
 
-<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.1-4.2.1)
+<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.2-4.2.2)
 	pod : hacluster-6dc6cfcfb9-f9knq (Running) on node01 (1/1) (primary)
 	pvc : hacluster
 	resources : CPU Limit= Memory Limit=, CPU Request= Memory Request=
@@ -1314,7 +1313,7 @@ including the nodes that the pods are assigned to</li>
 	deployment : hacluster
 	deployment : hacluster-backrest-shared-repo
 	service : hacluster - ClusterIP (10.102.20.42)
-	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.2.1 current-primary=hacluster name=hacluster pgouser=pgoadmin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.2.2 current-primary=hacluster name=hacluster pgouser=pgoadmin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
 </code></pre>
 
 <h3 id="deleting-a-cluster">Deleting a Cluster</h3>
@@ -1386,7 +1385,7 @@ replicas (via <code>pgo scale</code>) for the PostgreSQL cluster as well as heal
 a <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/">failover scenario</a>.</p>
 
 <p>To create a backup, you can run the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster</code></pre></div>
 <p>which by default, will create an incremental pgBackRest backup. The reason for
 this is that the PostgreSQL Operator initially creates a pgBackRest full backup
 when the cluster is initial provisioned, and pgBackRest will take incremental
@@ -1400,15 +1399,15 @@ optimal disaster recovery setup.</p>
 <h4 id="creating-a-full-backup">Creating a Full Backup</h4>
 
 <p>You can create a full backup using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full&#34;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full&#34;</span></code></pre></div>
 <h4 id="creating-a-differential-backup">Creating a Differential Backup</h4>
 
 <p>You can create a differential backup using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=diff&#34;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=diff&#34;</span></code></pre></div>
 <h4 id="creating-an-incremental-backup">Creating an Incremental Backup</h4>
 
 <p>You can create a differential backup using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=incr&#34;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=incr&#34;</span></code></pre></div>
 <p>An incremental backup is created without specifying any options after a full or
 differential backup is taken.</p>
 
@@ -1441,7 +1440,7 @@ the full and differential backups that are retained</li>
 
 <p>For example, to create a full backup and retain the previous 7 full backups, you
 would execute the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full --repo1-retention-full=7&#34;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full --repo1-retention-full=7&#34;</span></code></pre></div>
 <h3 id="scheduling-backups">Scheduling Backups</h3>
 
 <p>Any effective disaster recovery strategy includes having regularly scheduled
@@ -1701,7 +1700,7 @@ into your Postgres cluster pod as follows:</p>
 <p>Note: backend metric storage such as Prometheus and front end
 visualization software such as Grafana are not created automatically
 by the PostgreSQL Operator.  For instructions on installing Grafana and
-Prometheus in your environment, see the <a href="https://access.crunchydata.com/documentation/crunchy-containers/4.2.1/examples/metrics/metrics/">Crunchy Container Suite documentation</a>.</p>
+Prometheus in your environment, see the <a href="https://access.crunchydata.com/documentation/crunchy-containers/4.2.2/examples/metrics/metrics/">Crunchy Container Suite documentation</a>.</p>
 
 <h3 id="create-a-cluster-using-specific-storage">Create a Cluster using Specific Storage</h3>
 
