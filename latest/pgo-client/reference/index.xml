@@ -163,7 +163,7 @@ pgo create schedule --schedule=&amp;quot;* * * * *&amp;quot; --schedule-type=pgb
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_user/</guid>
       <description>pgo create user Create a PostgreSQL user
 Synopsis Create a postgres user. For example:
-pgo create user --username=someuser --all --managed pgo create user --username=someuser mycluster --managed pgo create user --username=someuser -selector=name=mycluster --managed pgo create user --username=user1 --selector=name=mycluster  pgo create user [flags]  Options  -h, --help help for user --managed Creates a user with secrets that can be managed by the Operator. --password string The password to use for creating a new user which overrides a generated password.</description>
+pgo create user --username=someuser --all --managed pgo create user --username=someuser mycluster --managed pgo create user --username=someuser -selector=name=mycluster --managed pgo create user --username=user1 --selector=name=mycluster  pgo create user [flags]  Options  --all Create a user on every cluster. -h, --help help for user --managed Creates a user with secrets that can be managed by the Operator.</description>
     </item>
     
     <item>
@@ -240,7 +240,7 @@ pgo delete namespace mynamespace pgo delete namespace --selector=env=test  pgo d
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_pgbouncer/</guid>
       <description>pgo delete pgbouncer Delete a pgbouncer from a cluster
 Synopsis Delete a pgbouncer from a cluster. For example:
-pgo delete pgbouncer mycluster  pgo delete pgbouncer [flags]  Options  -h, --help help for pgbouncer --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo delete pgbouncer mycluster  pgo delete pgbouncer [flags]  Options  -h, --help help for pgbouncer --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering. --uninstall Used to remove any &amp;quot;pgbouncer&amp;quot; owned object and user from the PostgreSQL cluster  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -306,7 +306,7 @@ pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_df/</guid>
       <description>pgo df Display disk space for clusters
 Synopsis Displays the disk status for PostgreSQL clusters. For example:
-pgo df mycluster pgo df all pgo df --selector=env=research  pgo df [flags]  Options  -h, --help help for df -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo df mycluster pgo df --selector=env=research pgo df --all  pgo df [flags]  Options  --all Get disk utilization for all managed clusters -h, --help help for df -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -464,6 +464,17 @@ pgo show namespace  pgo show namespace [flags]  Options  --all show all resource
     </item>
     
     <item>
+      <title>pgo show pgbouncer</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgbouncer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgbouncer/</guid>
+      <description>pgo show pgbouncer Show pgbouncer deployment information
+Synopsis Show user, password, and service information about a pgbouncer deployment. For example:
+pgo show pgbouncer hacluster pgo show pgounbcer --selector=app=payment  pgo show pgbouncer [flags]  Options  -h, --help help for pgbouncer -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+    </item>
+    
+    <item>
       <title>pgo show pgorole</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgorole/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -526,7 +537,7 @@ pgo show schedule mycluster pgo show schedule --selector=pg-cluster=mycluster pg
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_user/</guid>
       <description>pgo show user Show user information
 Synopsis Show users on a cluster. For example:
-pgo show user --all pgo show user mycluster pgo show user --selector=name=nycluster  pgo show user [flags]  Options  --all show all clusters. --expired string Shows passwords that will expire in X days. -h, --help help for user -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo show user --all pgo show user mycluster pgo show user --selector=name=nycluster  pgo show user [flags]  Options  --all show all clusters. --expired int Shows passwords that will expire in X days. -h, --help help for user -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering.</description>
     </item>
     
     <item>
@@ -570,7 +581,7 @@ pgo test mycluster pgo test --selector=env=research pgo test --all  pgo test [fl
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update/</guid>
       <description>pgo update Update a pgouser, pgorole, or cluster
 Synopsis The update command allows you to update a pgouser, pgorole, or cluster. For example:
-pgo update pgouser someuser --pgouser-password=somenewpassword pgo update pgouser someuser --pgouser-roles=&amp;quot;role1,role2&amp;quot; pgo update pgouser someuser --pgouser-namespaces=&amp;quot;pgouser2&amp;quot; pgo update user mycluster --username=testuser --selector=name=mycluster --password=somepassword pgo update pgorole somerole --pgorole-permission=&amp;quot;Cat&amp;quot; pgo update namespace mynamespace pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster --all --autofail=true  pgo update [flags]  Options  -h, --help help for update  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster --all --autofail=true pgo update namespace mynamespace pgo update pgbouncer mycluster --rotate-password pgo update pgorole somerole --pgorole-permission=&amp;quot;Cat&amp;quot; pgo update pgouser someuser --pgouser-password=somenewpassword pgo update pgouser someuser --pgouser-roles=&amp;quot;role1,role2&amp;quot; pgo update pgouser someuser --pgouser-namespaces=&amp;quot;pgouser2&amp;quot; pgo update pgorole somerole --pgorole-permission=&amp;quot;Cat&amp;quot; pgo update user mycluster --username=testuser --selector=name=mycluster --password=somepassword  pgo update [flags]  Options  -h, --help help for update  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -593,6 +604,17 @@ pgo update cluster mycluster --autofail=false pgo update cluster mycluster myoth
       <description>pgo update namespace Update a namespace, applying Operator RBAC
 Synopsis UPDATE allows you to update a Namespace. For example: pgo update namespace mynamespace
 pgo update namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
+    </item>
+    
+    <item>
+      <title>pgo update pgbouncer</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgbouncer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgbouncer/</guid>
+      <description>pgo update pgbouncer Update a pgBouncer deployment for a PostgreSQL cluster
+Synopsis Used to update the pgBouncer deployment for a PostgreSQL cluster, such as by rotating a password. For example:
+pgo update pgbouncer hacluster --rotate-password  pgo update pgbouncer [flags]  Options  -h, --help help for pgbouncer --no-prompt No command line confirmation. -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; --rotate-password Used to rotate the pgBouncer service account password.</description>
     </item>
     
     <item>
@@ -623,9 +645,11 @@ pgo update pgouser [flags]  Options  --all-namespaces all namespaces. -h, --help
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_user/</guid>
-      <description>pgo update user Update a postgres user
-Synopsis UPDATE allows you to update a pgo user. For example: //change a password, set valid days for 40 days from now pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;password=foo &amp;ndash;valid-days=40 //expire password for a user pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;expire-user //Update all passwords older than the number of days specified pgo update user mycluster &amp;ndash;expired=45 &amp;ndash;password-length=8
-pgo update user [flags]  Options  --all all clusters.</description>
+      <description>pgo update user Update a PostgreSQL user
+Synopsis Allows the ability to perform various user management functions for PostgreSQL users.
+For example:
+//change a password, set valid days for 40 days from now pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;password=foo //expire password for a user pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;expire-user //Update all passwords older than the number of days specified pgo update user mycluster &amp;ndash;expired=45 &amp;ndash;password-length=8
+Disable the ability for a user to log into the PostgreSQL cluster pgo update user mycluster &amp;ndash;username=foobar &amp;ndash;disable-login</description>
     </item>
     
     <item>

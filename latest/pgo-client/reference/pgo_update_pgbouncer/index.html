@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Installation :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>pgo update pgbouncer :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/installation/">
+  <body data-url="/pgo-client/reference/pgo_update_pgbouncer/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -221,11 +221,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/" class="dd-item parent active haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">Installation</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">Installation</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -324,10 +323,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/">Using the pgo Client</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/">Using the pgo Client</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -338,10 +338,11 @@
           </a>
         </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/">pgo Client Reference</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/">pgo Client Reference</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -723,7 +724,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgbouncer/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgbouncer/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgbouncer/">
             pgo update pgbouncer
@@ -948,23 +949,77 @@
    Architecture</option>
     <option value="/configuration/" >
    Configuration</option>
-    <option value="/installation/"  selected>
-   Installation</option> 
-    <option value="/installation/prereq/" >
-  - 
-   Prerequisites</option>
-      <option value="/installation/common-env/" >- Operator Environment</option>
-    <option value="/installation/install-with-ansible/" >
-  - 
-   Install Operator Using Ansible</option>
-      <option value="/installation/operator-install/" >- Install Operator Using Bash</option>
-      <option value="/installation/developer-setup/" >- Developer Setup</option>
-    <option value="/installation/install-pgo-client/" >
-  - 
-   Install `pgo` Client</option>
-  
+    <option value="/installation/" >
+   Installation</option>
     <option value="/pgo-client/" >
-   Using the pgo Client</option>
+   Using the pgo Client</option> 
+      <option value="/pgo-client/common-tasks/" >- Common pgo Client Tasks</option>
+    <option value="/pgo-client/reference/" >
+  - 
+   pgo Client Reference</option> 
+      <option value="/pgo-client/reference/pgo_apply/" >-- pgo apply</option>
+      <option value="/pgo-client/reference/pgo_backup/" >-- pgo backup</option>
+      <option value="/pgo-client/reference/pgo_benchmark/" >-- pgo benchmark</option>
+      <option value="/pgo-client/reference/pgo_cat/" >-- pgo cat</option>
+      <option value="/pgo-client/reference/pgo_clone/" >-- pgo clone</option>
+      <option value="/pgo-client/reference/pgo_create/" >-- pgo create</option>
+      <option value="/pgo-client/reference/pgo_create_cluster/" >-- pgo create cluster</option>
+      <option value="/pgo-client/reference/pgo_create_namespace/" >-- pgo create namespace</option>
+      <option value="/pgo-client/reference/pgo_create_pgbouncer/" >-- pgo create pgbouncer</option>
+      <option value="/pgo-client/reference/pgo_create_pgorole/" >-- pgo create pgorole</option>
+      <option value="/pgo-client/reference/pgo_create_pgouser/" >-- pgo create pgouser</option>
+      <option value="/pgo-client/reference/pgo_create_policy/" >-- pgo create policy</option>
+      <option value="/pgo-client/reference/pgo_create_schedule/" >-- pgo create schedule</option>
+      <option value="/pgo-client/reference/pgo_create_user/" >-- pgo create user</option>
+      <option value="/pgo-client/reference/pgo_delete/" >-- pgo delete</option>
+      <option value="/pgo-client/reference/pgo_delete_backup/" >-- pgo delete backup</option>
+      <option value="/pgo-client/reference/pgo_delete_benchmark/" >-- pgo delete benchmark</option>
+      <option value="/pgo-client/reference/pgo_delete_cluster/" >-- pgo delete cluster</option>
+      <option value="/pgo-client/reference/pgo_delete_label/" >-- pgo delete label</option>
+      <option value="/pgo-client/reference/pgo_delete_namespace/" >-- pgo delete namespace</option>
+      <option value="/pgo-client/reference/pgo_delete_pgbouncer/" >-- pgo delete pgbouncer</option>
+      <option value="/pgo-client/reference/pgo_delete_pgorole/" >-- pgo delete pgorole</option>
+      <option value="/pgo-client/reference/pgo_delete_pgouser/" >-- pgo delete pgouser</option>
+      <option value="/pgo-client/reference/pgo_delete_policy/" >-- pgo delete policy</option>
+      <option value="/pgo-client/reference/pgo_delete_schedule/" >-- pgo delete schedule</option>
+      <option value="/pgo-client/reference/pgo_delete_user/" >-- pgo delete user</option>
+      <option value="/pgo-client/reference/pgo_df/" >-- pgo df</option>
+      <option value="/pgo-client/reference/pgo_failover/" >-- pgo failover</option>
+      <option value="/pgo-client/reference/pgo_label/" >-- pgo label</option>
+      <option value="/pgo-client/reference/pgo_load/" >-- pgo load</option>
+      <option value="/pgo-client/reference/pgo_ls/" >-- pgo ls</option>
+      <option value="/pgo-client/reference/pgo_reload/" >-- pgo reload</option>
+      <option value="/pgo-client/reference/pgo_restore/" >-- pgo restore</option>
+      <option value="/pgo-client/reference/pgo_scale/" >-- pgo scale</option>
+      <option value="/pgo-client/reference/pgo_scaledown/" >-- pgo scaledown</option>
+      <option value="/pgo-client/reference/pgo_show/" >-- pgo show</option>
+      <option value="/pgo-client/reference/pgo_show_backup/" >-- pgo show backup</option>
+      <option value="/pgo-client/reference/pgo_show_benchmark/" >-- pgo show benchmark</option>
+      <option value="/pgo-client/reference/pgo_show_cluster/" >-- pgo show cluster</option>
+      <option value="/pgo-client/reference/pgo_show_config/" >-- pgo show config</option>
+      <option value="/pgo-client/reference/pgo_show_namespace/" >-- pgo show namespace</option>
+      <option value="/pgo-client/reference/pgo_show_pgbouncer/" >-- pgo show pgbouncer</option>
+      <option value="/pgo-client/reference/pgo_show_pgorole/" >-- pgo show pgorole</option>
+      <option value="/pgo-client/reference/pgo_show_pgouser/" >-- pgo show pgouser</option>
+      <option value="/pgo-client/reference/pgo_show_policy/" >-- pgo show policy</option>
+      <option value="/pgo-client/reference/pgo_show_pvc/" >-- pgo show pvc</option>
+      <option value="/pgo-client/reference/pgo_show_schedule/" >-- pgo show schedule</option>
+      <option value="/pgo-client/reference/pgo_show_user/" >-- pgo show user</option>
+      <option value="/pgo-client/reference/pgo_show_workflow/" >-- pgo show workflow</option>
+      <option value="/pgo-client/reference/pgo_status/" >-- pgo status</option>
+      <option value="/pgo-client/reference/pgo_test/" >-- pgo test</option>
+      <option value="/pgo-client/reference/pgo_update/" >-- pgo update</option>
+      <option value="/pgo-client/reference/pgo_update_cluster/" >-- pgo update cluster</option>
+      <option value="/pgo-client/reference/pgo_update_namespace/" >-- pgo update namespace</option>
+      <option value="/pgo-client/reference/pgo_update_pgbouncer/"  selected>-- pgo update pgbouncer</option>
+      <option value="/pgo-client/reference/pgo_update_pgorole/" >-- pgo update pgorole</option>
+      <option value="/pgo-client/reference/pgo_update_pgouser/" >-- pgo update pgouser</option>
+      <option value="/pgo-client/reference/pgo_update_user/" >-- pgo update user</option>
+      <option value="/pgo-client/reference/pgo_upgrade/" >-- pgo upgrade</option>
+      <option value="/pgo-client/reference/pgo_version/" >-- pgo version</option>
+      <option value="/pgo-client/reference/pgo_watch/" >-- pgo watch</option>
+  
+  
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -991,7 +1046,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Installation/_index.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/pgo-client/reference/pgo_update_pgbouncer.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1008,7 +1063,17 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > Installation
+
+
+
+
+
+
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/pgo-client/'>Using the pgo Client</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/'>pgo Client Reference</a> > pgo update pgbouncer
+
+ 
+
+ 
 
  
 
@@ -1022,57 +1087,64 @@
     
     <div id="body-inner">
 
-    <h1>Installation</h1>
+    <h1>pgo update pgbouncer</h1>
 
     
 
     
+    
 
+<h2 id="pgo-update-pgbouncer">pgo update pgbouncer</h2>
 
+<p>Update a pgBouncer deployment for a PostgreSQL cluster</p>
 
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number"> 1  1</span>
-	
-</nav>
+<h3 id="synopsis">Synopsis</h3>
 
-</div>
+<p>Used to update the pgBouncer deployment for a PostgreSQL cluster, such
+    as by rotating a password. For example:</p>
 
+<pre><code>pgo update pgbouncer hacluster --rotate-password
+</code></pre>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/">Operator Environment</a></li>
+<pre><code>pgo update pgbouncer [flags]
+</code></pre>
+
+<h3 id="options">Options</h3>
+
+<pre><code>  -h, --help              help for pgbouncer
+      --no-prompt         No command line confirmation.
+  -o, --output string     The output format. Supported types are: &quot;json&quot;
+      --rotate-password   Used to rotate the pgBouncer service account password. Can cause interruption of service.
+  -s, --selector string   The selector to use for cluster filtering.
+</code></pre>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<pre><code>      --apiserver-url string     The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.
+      --debug                    Enable additional output for debugging.
+      --disable-tls              Disable TLS authentication to the Postgres Operator.
+      --exclude-os-trust         Exclude CA certs from OS default trust store
+  -n, --namespace string         The namespace to use for pgo requests.
+      --pgo-ca-cert string       The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.
+      --pgo-client-cert string   The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.
+      --pgo-client-key string    The Client Key file path for authenticating to the PostgreSQL Operator apiserver.
+</code></pre>
+
+<h3 id="see-also">SEE ALSO</h3>
+
+<ul>
+<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update/">pgo update</a>    - Update a pgouser, pgorole, or cluster</li>
 </ul>
 
-
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/">Install Operator Using Bash</a></li>
-</ul>
-
-
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/installation/developer-setup/">Developer Setup</a></li>
-</ul>
-
-
-
-<div style="margin-bottom:2rem"></div>
-
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number"> 1  1</span>
-	
-</nav>
-
-
+<h6 id="auto-generated-by-spf13-cobra-on-15-feb-2020">Auto generated by spf13/cobra on 15-Feb-2020</h6>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/configuration/tls/" title="TLS"> <i class="fa fa-chevron-left"></i><label>TLS</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/prereq/" title="Prerequisites" style="margin-right: 0px;"><label>Prerequisites</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_namespace/" title="pgo update namespace"> <i class="fa fa-chevron-left"></i><label>pgo update namespace</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgorole/" title="pgo update pgorole" style="margin-right: 0px;"><label>pgo update pgorole</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

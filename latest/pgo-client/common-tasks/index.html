@@ -632,6 +632,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgbouncer/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgbouncer/">
+            pgo show pgbouncer
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgorole/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgorole/">
@@ -713,6 +720,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_namespace/">
             pgo update namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgbouncer/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgbouncer/">
+            pgo update pgbouncer
           </a>
         </div>
     </li>
@@ -1099,15 +1113,12 @@ Cluster<span style="color:#111">:</span>
   PrimaryNodeLabel<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   ReplicaNodeLabel<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
-  LogStatement<span style="color:#111">:</span> none
-  LogMinDurationStatement<span style="color:#111">:</span> <span style="color:#d88200">&#34;60000&#34;</span>
   Metrics<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   Badger<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   Port<span style="color:#111">:</span> <span style="color:#d88200">&#34;5432&#34;</span>
   PGBadgerPort<span style="color:#111">:</span> <span style="color:#d88200">&#34;10000&#34;</span>
   ExporterPort<span style="color:#111">:</span> <span style="color:#d88200">&#34;9187&#34;</span>
   User<span style="color:#111">:</span> testuser
-  ArchiveTimeout<span style="color:#111">:</span> <span style="color:#d88200">&#34;60&#34;</span>
   Database<span style="color:#111">:</span> userdb
   PasswordAgeDays<span style="color:#111">:</span> <span style="color:#d88200">&#34;60&#34;</span>
   PasswordLength<span style="color:#111">:</span> <span style="color:#d88200">&#34;8&#34;</span>
@@ -1694,14 +1705,6 @@ pgo create pgbouncer --selector=name=hacluster
 <p>You can also specify a pgbouncer password as follows:</p>
 
 <pre><code>pgo create cluster hacluster --pgbouncer --pgbouncer-pass=somepass -n pgouser1
-</code></pre>
-
-<p>Note, the pgbouncer configuration defaults to specifying only
-a single entry for the primary database.  If you want it to
-have an entry for the replica service, add the following
-configuration to pgbouncer.ini:</p>
-
-<pre><code>{{.PG_REPLICA_SERVICE_NAME}} = host={{.PG_REPLICA_SERVICE_NAME}} port={{.PG_PORT}} auth_user={{.PG_USERNAME}} dbname={{.PG_DATABASE}}
 </code></pre>
 
 <p>You can remove a pgbouncer from a cluster as follows:</p>
