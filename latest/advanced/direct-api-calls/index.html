@@ -1032,7 +1032,7 @@
 
 <p>The most basic example of this interaction is getting the version of the API server. You can send a GET request to <code>$PGO_APISERVER_URL/version</code> and this will send back a json response including the API server version. This is important because the server version and the client version must match. If you are using <code>pgo</code> this means you must have the correct version of the client but with a direct call you can specify the client version as part of the request.</p>
 
-<p>The API server is setup to work with the pgo command line interface so the parameters that are passed to the server can be found by looking at the related flags. For example, the series parameter used in the <code>create</code> example below is the same as the <code>-e, --series</code> flag that is described in the <a href="https://access.crunchydata.com/documentation/postgres-operator/4.3.0/pgo-client/reference/pgo_create_cluster/">pgo cli docs</a>.</p>
+<p>The API server is setup to work with the pgo command line interface so the parameters that are passed to the server can be found by looking at the related flags.</p>
 
 <h6 id="get-api-server-version">Get API Server Version</h6>
 
@@ -1041,7 +1041,7 @@
 -X GET $PGO_APISERVER_URL/version
 </code></pre>
 
-<p>You can create a cluster by sending a POST request to <code>$PGO_APISERVER_URL/clusters</code>. In this example <code>--data</code> is being sent to the API URL that includes the client version that was returned from the version call, the namespace where the cluster should be created, the name of the new cluster and the series number. Series sets the number of clusters that will be created in the namespace.</p>
+<p>You can create a cluster by sending a POST request to <code>$PGO_APISERVER_URL/clusters</code>. In this example <code>--data</code> is being sent to the API URL that includes the client version that was returned from the version call, the namespace where the cluster should be created, and the name of the new cluster.</p>
 
 <h6 id="create-cluster">Create Cluster</h6>
 
