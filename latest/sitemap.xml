@@ -241,10 +241,6 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/</loc>
-  </url>
-  
-  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_cat/</loc>
   </url>
   
@@ -294,10 +290,6 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_backup/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/</loc>
   </url>
   
   <url>
@@ -378,10 +370,6 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_backup/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/</loc>
   </url>
   
   <url>

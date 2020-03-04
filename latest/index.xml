@@ -198,7 +198,7 @@ After upgrading to Operator 3.5, you will need to restore those clusters from th
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prerequisites/</guid>
       <description>Prerequisites The following is required prior to installing Crunchy PostgreSQL Operator using Ansible:
- postgres-operator playbooks source code for the target version Ansible 2.7.0+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
+ postgres-operator playbooks source code for the target version Ansible 2.8.0+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
     </item>
     
     <item>
@@ -475,18 +475,6 @@ pgo backup [flags]  Options  --backup-opts string The pgbackup options to pass i
     </item>
     
     <item>
-      <title>pgo benchmark</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/</guid>
-      <description>pgo benchmark Perform a pgBench benchmark against clusters
-Synopsis Benchmark run pgBench against PostgreSQL clusters, for example:
-pgo benchmark mycluster
-pgo benchmark [flags]  Options  -b, --benchmark-opts string The extra flags passed to pgBench during the benchmark. -c, --clients int The number of clients to be used in the benchmark. (default 1) -d, --database string The database where the benchmark should be run. (default &amp;quot;postgres&amp;quot;) -h, --help help for benchmark -i, --init-opts string The extra flags passed to pgBench during the initialization of the benchmark.</description>
-    </item>
-    
-    <item>
       <title>pgo cat</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_cat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -505,7 +493,7 @@ pgo cat mycluster /pgdata/mycluster/postgresql.conf  pgo cat [flags]  Options  -
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/</guid>
       <description>pgo clone Copies the primary database of an existing cluster to a new cluster
 Synopsis Clone makes a copy of an existing PostgreSQL cluster managed by the Operator and creates a new PostgreSQL cluster managed by the Operator, with the data from the old cluster.
-pgo clone oldcluster newcluster  pgo clone [flags]  Options  -h, --help help for clone --pgbackrest-storage-source string The data source for the clone when both &amp;quot;local&amp;quot; and &amp;quot;s3&amp;quot; are enabled in the source cluster.</description>
+pgo clone oldcluster newcluster  pgo clone [flags]  Options  -h, --help help for clone --pgbackrest-pvc-size string The size of the PVC capacity for the pgBackRest repository.</description>
     </item>
     
     <item>
@@ -615,7 +603,7 @@ pgo create user --username=someuser --all --managed pgo create user --username=s
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete/</guid>
       <description>pgo delete Delete an Operator resource
 Synopsis The delete command allows you to delete an Operator resource. For example:
-pgo delete backup mycluster pgo delete benchmark mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgbouncer mycluster pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo delete backup mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgbouncer mycluster pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -627,17 +615,6 @@ pgo delete backup mycluster pgo delete benchmark mycluster pgo delete cluster my
       <description>pgo delete backup Delete a backup
 Synopsis Delete a backup. For example:
 pgo delete backup mydatabase  pgo delete backup [flags]  Options  -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
-    </item>
-    
-    <item>
-      <title>pgo delete benchmark</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/</guid>
-      <description>pgo delete benchmark Delete benchmarks for a cluster
-Synopsis Delete benchmarks for a cluster. For example:
-pgo delete benchmark mycluster pgo delete benchmark --selector=env=test  pgo delete benchmark [flags]  Options  -h, --help help for benchmark -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -846,7 +823,7 @@ To list targetable replicas: pgo scaledown mycluster --query To scale down a spe
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show/</guid>
       <description>pgo show Show the description of a cluster
 Synopsis Show allows you to show the details of a policy, backup, pvc, or cluster. For example:
-pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo show benchmark mycluster pgo show cluster mycluster pgo show config pgo show pgouser someuser pgo show policy policy1 pgo show pvc mycluster pgo show namespace pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5 pgo show user --selector=name=mycluster  pgo show [flags]  Options  -h, --help help for show  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo show cluster mycluster pgo show config pgo show pgouser someuser pgo show policy policy1 pgo show pvc mycluster pgo show namespace pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5 pgo show user --selector=name=mycluster  pgo show [flags]  Options  -h, --help help for show  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -858,17 +835,6 @@ pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo
       <description>pgo show backup Show backup information
 Synopsis Show backup information. For example:
 pgo show backup mycluser  pgo show backup [flags]  Options  --backup-type string The backup type output to list. Valid choices are pgbackrest or pgdump. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
-    </item>
-    
-    <item>
-      <title>pgo show benchmark</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/</guid>
-      <description>pgo show benchmark Show benchmark information
-Synopsis Show benchmark results for clusters. For example:
-pgo show benchmark mycluster pgo show benchmark --selector=pg-cluster=mycluster  pgo show benchmark [flags]  Options  -h, --help help for benchmark -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>

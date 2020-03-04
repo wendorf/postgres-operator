@@ -360,13 +360,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/">
-            pgo benchmark
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_cat/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_cat/">
@@ -455,13 +448,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_backup/">
             pgo delete backup
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/">
-            pgo delete benchmark
           </a>
         </div>
     </li>
@@ -602,13 +588,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_backup/">
             pgo show backup
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/">
-            pgo show benchmark
           </a>
         </div>
     </li>
@@ -959,7 +938,6 @@
    pgo Client Reference</option> 
       <option value="/pgo-client/reference/pgo_apply/" >-- pgo apply</option>
       <option value="/pgo-client/reference/pgo_backup/" >-- pgo backup</option>
-      <option value="/pgo-client/reference/pgo_benchmark/" >-- pgo benchmark</option>
       <option value="/pgo-client/reference/pgo_cat/" >-- pgo cat</option>
       <option value="/pgo-client/reference/pgo_clone/" >-- pgo clone</option>
       <option value="/pgo-client/reference/pgo_create/" >-- pgo create</option>
@@ -973,7 +951,6 @@
       <option value="/pgo-client/reference/pgo_create_user/" >-- pgo create user</option>
       <option value="/pgo-client/reference/pgo_delete/" >-- pgo delete</option>
       <option value="/pgo-client/reference/pgo_delete_backup/" >-- pgo delete backup</option>
-      <option value="/pgo-client/reference/pgo_delete_benchmark/" >-- pgo delete benchmark</option>
       <option value="/pgo-client/reference/pgo_delete_cluster/" >-- pgo delete cluster</option>
       <option value="/pgo-client/reference/pgo_delete_label/" >-- pgo delete label</option>
       <option value="/pgo-client/reference/pgo_delete_namespace/" >-- pgo delete namespace</option>
@@ -994,7 +971,6 @@
       <option value="/pgo-client/reference/pgo_scaledown/" >-- pgo scaledown</option>
       <option value="/pgo-client/reference/pgo_show/" >-- pgo show</option>
       <option value="/pgo-client/reference/pgo_show_backup/" >-- pgo show backup</option>
-      <option value="/pgo-client/reference/pgo_show_benchmark/" >-- pgo show benchmark</option>
       <option value="/pgo-client/reference/pgo_show_cluster/" >-- pgo show cluster</option>
       <option value="/pgo-client/reference/pgo_show_config/" >-- pgo show config</option>
       <option value="/pgo-client/reference/pgo_show_namespace/" >-- pgo show namespace</option>
@@ -1119,6 +1095,7 @@
       --metrics                           Adds the crunchy-collect container to the database pod.
       --node-label string                 The node label (key=value) to use in placing the primary database. If not set, any node is used.
   -w, --password string                   The password to use for initial database users.
+      --pgbackrest-pvc-size string        The size of the PVC capacity for the pgBackRest repository. Overrides the value set in the storage class. This is ignored if the storage type of &quot;local&quot; is not used. Must follow the standard Kubernetes format, e.g. &quot;10.1Gi&quot;
       --pgbackrest-s3-bucket string       The AWS S3 bucket that should be utilized for the cluster when the &quot;s3&quot; storage type is enabled for pgBackRest.
       --pgbackrest-s3-endpoint string     The AWS S3 endpoint that should be utilized for the cluster when the &quot;s3&quot; storage type is enabled for pgBackRest.
       --pgbackrest-s3-key string          The AWS S3 key that should be utilized for the cluster when the &quot;s3&quot; storage type is enabled for pgBackRest.
@@ -1127,9 +1104,9 @@
       --pgbackrest-storage-type string    The type of storage to use with pgBackRest. Either &quot;local&quot;, &quot;s3&quot; or both, comma separated. (default &quot;local&quot;)
       --pgbadger                          Adds the crunchy-pgbadger container to the database pod.
       --pgbouncer                         Adds a crunchy-pgbouncer deployment to the cluster.
-      --pgbouncer-pass string             Password for the pgbouncer user of the crunchy-pgboucer deployment.
       --pod-anti-affinity string          Specifies the type of anti-affinity that should be utilized when applying  default pod anti-affinity rules to PG clusters (default &quot;preferred&quot;)
   -z, --policies string                   The policies to apply when creating a cluster, comma separated.
+      --pvc-size string                   The size of the PVC capacity for primary and replica PostgreSQL instances. Overrides the value set in the storage class. Must follow the standard Kubernetes format, e.g. &quot;10.1Gi&quot;
       --replica-count int                 The number of replicas to create as part of the cluster.
       --replica-storage-config string     The name of a Storage config in pgo.yaml to use for the cluster replica storage.
   -r, --resources-config string           The name of a container resource configuration in pgo.yaml that holds CPU and memory requests and limits.
@@ -1137,7 +1114,15 @@
       --service-type string               The Service type to use for the PostgreSQL cluster. If not set, the pgo.yaml default will be used.
       --storage-config string             The name of a Storage config in pgo.yaml to use for the cluster storage.
       --sync-replication                  Enables synchronous replication for the cluster.
-      --tablespaces string                A list of extra mounts to create for tablespaces. The format is a comma seperated list of &lt;mountName&gt;=&lt;storageConfig&gt;
+      --tablespace strings                Create a PostgreSQL tablespace on the cluster, e.g. &quot;name=ts1:storageconfig=nfsstorage&quot;. The format is a key/value map that is delimited by &quot;=&quot; and separated by &quot;:&quot;. The following parameters are available:
+                                          
+                                          - name (required): the name of the PostgreSQL tablespace
+                                          - storageconfig (required): the storage configuration to use, as specified in the list available in the &quot;pgo-config&quot; ConfigMap (aka &quot;pgo.yaml&quot;)
+                                          - pvcsize: the size of the PVC capacity, which overrides the value set in the specified storageconfig. Follows the Kubernetes quantity format.
+                                          
+                                          For example, to create a tablespace with the NFS storage configuration with a PVC of size 10Gi:
+                                          
+                                          --tablespace=name=ts1:storageconfig=nfsstorage:pvcsize=10Gi
 </code></pre>
 
 <h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
@@ -1158,7 +1143,7 @@
 <li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">pgo create</a>    - Create a Postgres Operator resource</li>
 </ul>
 
-<h6 id="auto-generated-by-spf13-cobra-on-29-jan-2020">Auto generated by spf13/cobra on 29-Jan-2020</h6>
+<h6 id="auto-generated-by-spf13-cobra-on-2-mar-2020">Auto generated by spf13/cobra on 2-Mar-2020</h6>
 
 
 

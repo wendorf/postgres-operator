@@ -359,13 +359,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/">
-            pgo benchmark
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_cat/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_cat/">
@@ -454,13 +447,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_backup/">
             pgo delete backup
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/">
-            pgo delete benchmark
           </a>
         </div>
     </li>
@@ -601,13 +587,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_backup/">
             pgo show backup
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/">
-            pgo show benchmark
           </a>
         </div>
     </li>
@@ -1110,11 +1089,15 @@ is deleted</li>
 
 <p>Tablespaces can be used in a cluster with the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
 command. The command follows this general format:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster --tablespaces<span style="color:#f92672">=</span><span style="color:#111">tablespace1</span><span style="color:#f92672">=</span>storageclass,tablespace2<span style="color:#f92672">=</span>storageclass</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>tablespace1:storageconfig<span style="color:#f92672">=</span>storageconfigname <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>tablespace2:storageconfig<span style="color:#f92672">=</span>storageconfigname</code></pre></div>
 <p>For example, to create tablespaces name <code>faststorage1</code> and <code>faststorage2</code> on
 PVCs that use the <code>nfsstorage</code> storage type, you would execute the following
 command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster --tablespaces<span style="color:#f92672">=</span><span style="color:#111">faststorage1</span><span style="color:#f92672">=</span>nfsstorage,faststorage2<span style="color:#f92672">=</span>nfsstorage</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>faststorage1:storageconfig<span style="color:#f92672">=</span>nfsstorage <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>faststorage2:storageconfig<span style="color:#f92672">=</span>nfsstorage</code></pre></div>
 <p>Once the cluster is initialized, you can immediately interface with the
 tablespaces! For example, if you wanted to create a table called <code>sensor_data</code>
 on the <code>faststorage1</code> tablespace, you could execute the following SQL:</p>

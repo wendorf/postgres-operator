@@ -359,13 +359,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_benchmark/">
-            pgo benchmark
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_cat/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_cat/">
@@ -454,13 +447,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_backup/">
             pgo delete backup
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_benchmark/">
-            pgo delete benchmark
           </a>
         </div>
     </li>
@@ -601,13 +587,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_backup/">
             pgo show backup
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_benchmark/">
-            pgo show benchmark
           </a>
         </div>
     </li>
@@ -1278,6 +1257,21 @@ command:</p>
 workflow id ae714d12-f5d0-4fa9-910f-21944b41dec8
 </code></pre>
 
+<h4 id="create-a-postgresql-cluster-with-different-pvc-sizes">Create a PostgreSQL Cluster with Different PVC Sizes</h4>
+
+<p>You can also create a PostgreSQL cluster with an arbitrary PVC size using the
+<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a> command. For
+example, if you want to create a PostgreSQL cluster with with a 128GB PVC, you
+can use the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster --pvc-size<span style="color:#f92672">=</span>128Gi</code></pre></div>
+<p>The above command sets the PVC size for all PostgreSQL instances in the cluster,
+i.e. the primary and replicas.</p>
+
+<p>This also extends to the size of the pgBackRest repository as well, if you are
+using the local Kubernetes cluster storage for your backup repository. To
+create a PostgreSQL cluster with a pgBackRest repository that uses a 1TB PVC,
+you can use the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster --pgbackrest-pvc-size<span style="color:#f92672">=</span>1Ti</code></pre></div>
 <h4 id="create-a-postgresql-cluster-with-postgis">Create a PostgreSQL Cluster with PostGIS</h4>
 
 <p>To create a PostgreSQL cluster that uses the geospatial extension PostGIS, you
@@ -1293,13 +1287,30 @@ cluster.</p>
 
 <p>To create a PostgreSQL cluster that uses the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/tablespaces/">tablespace</a>
 feature with NFS storage, you can execute the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hactsluster --tablespaces<span style="color:#f92672">=</span><span style="color:#111">ts1</span><span style="color:#f92672">=</span>nfsstorage</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hactsluster --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>ts1:storageconfig<span style="color:#f92672">=</span>nfsstorage</code></pre></div>
 <p>You can use your preferred storage engine instead of <code>nfsstorage</code>. For example,
 to create multiple tablespaces on GKE, you can execute the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hactsluster --tablespaces<span style="color:#f92672">=</span><span style="color:#111">ts1</span><span style="color:#f92672">=</span>gce,ts2<span style="color:#f92672">=</span>gce</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hactsluster <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>ts1:storageconfig<span style="color:#f92672">=</span>gce <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>ts2:storageconfig<span style="color:#f92672">=</span>gce</code></pre></div>
 <p>Tablespaces are immediately available once the PostgreSQL cluster is
-provisioned. For example, to create a table using the tablespace.</p>
-
+provisioned. For example, to create a table using the tablespace <code>ts1</code>, you can
+run the following SQL on your PostgreSQL cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#111">sensor_data</span> <span style="color:#111">(</span>
+  <span style="color:#111">id</span> <span style="color:#111">int</span> <span style="color:#00a8c8">GENERATED</span> <span style="color:#00a8c8">BY</span> <span style="color:#00a8c8">DEFAULT</span> <span style="color:#00a8c8">AS</span> <span style="color:#00a8c8">IDENTITY</span> <span style="color:#00a8c8">PRIMARY</span> <span style="color:#00a8c8">KEY</span><span style="color:#111">,</span>
+  <span style="color:#111">sensor1</span> <span style="color:#111">numeric</span><span style="color:#111">,</span>
+  <span style="color:#111">sensor2</span> <span style="color:#111">numeric</span><span style="color:#111">,</span>
+  <span style="color:#111">sensor3</span> <span style="color:#111">numeric</span><span style="color:#111">,</span>
+  <span style="color:#111">sensor4</span> <span style="color:#111">numeric</span>
+<span style="color:#111">)</span>
+<span style="color:#111">TABLESPACE</span> <span style="color:#111">ts1</span><span style="color:#111">;</span></code></pre></div>
+<p>You can also create tablespaces that have different sized PVCs from the ones
+defined in the storage specification. For instance, to create two tablespaces,
+one that uses a 10GiB PVC and one that uses a 20GiB PVC, you can execute the
+following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hactsluster <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>ts1:storageconfig<span style="color:#f92672">=</span>gce:pvcsize<span style="color:#f92672">=</span>10Gi <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>ts2:storageconfig<span style="color:#f92672">=</span>gce:pvcsize<span style="color:#f92672">=</span>20Gi</code></pre></div>
 <h4 id="tracking-a-newly-provisioned-cluster">Tracking a Newly Provisioned Cluster</h4>
 
 <p>A new PostgreSQL cluster can take a few moments to provision. You may have
@@ -1633,6 +1644,18 @@ cluster by using the <a href="https://crunchydata.github.io/postgres-operator/la
 create a new copy of a PostgreSQL cluster, you can execute the following
 command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo clone hacluster newhacluster</code></pre></div>
+<h3 id="clone-a-postgresql-cluster-to-different-pvc-size">Clone a PostgreSQL Cluster to Different PVC Size</h3>
+
+<p>You can have a cloned PostgreSQL cluster use a different PVC size, which is
+useful when moving your PostgreSQL cluster to a larger PVC. For example, to
+clone a PostgreSQL cluster to a 256GiB PVC, you can execute the following
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo clone hacluster newhacluster --pvc-size<span style="color:#f92672">=</span>256Gi</code></pre></div>
+<p>You can also have the cloned PostgreSQL cluster use a larger pgBackRest
+backup repository by setting its PVC size. For example, to have a cloned
+PostgreSQL cluster use a 1TiB pgBackRest repository, you can execute the
+following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo clone hacluster newhacluster --pgbackrest-pvc-size<span style="color:#f92672">=</span>1Ti</code></pre></div>
 <h2 id="monitoring">Monitoring</h2>
 
 <h3 id="view-disk-utilization">View Disk Utilization</h3>
