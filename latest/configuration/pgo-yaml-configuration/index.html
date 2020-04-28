@@ -1021,16 +1021,6 @@
 </tr>
 
 <tr>
-<td>PrimaryNodeLabel</td>
-<td>newly created primary deployments will specify this node label if specified, unless you override it using the &ndash;node-label command line flag, if not set, no node label is specifed</td>
-</tr>
-
-<tr>
-<td>ReplicaNodeLabel</td>
-<td>newly created replica deployments will specify this node label if specified, unless you override it using the &ndash;node-label command line flag, if not set, no node label is specifed</td>
-</tr>
-
-<tr>
 <td>CCPImagePrefix</td>
 <td>newly created containers will be based on this image prefix (e.g. crunchydata), update this if you require a custom image prefix</td>
 </tr>
@@ -1179,13 +1169,13 @@
 </tr>
 
 <tr>
-<td>ReplicaStorage</td>
-<td>required, the value of the storage configuration to use for the replica PostgreSQL deployments</td>
+<td>BackrestStorage</td>
+<td>required, the value of the storage configuration to use for the pgbackrest shared repository deployment created when a user specifies pgbackrest to be enabled on a cluster</td>
 </tr>
 
 <tr>
-<td>BackrestStorage</td>
-<td>required, the value of the storage configuration to use for the pgbackrest shared repository deployment created when a user specifies pgbackrest to be enabled on a cluster</td>
+<td>WALStorage</td>
+<td>optional, the value of the storage configuration to use for PostgreSQL Write Ahead Log</td>
 </tr>
 
 <tr>

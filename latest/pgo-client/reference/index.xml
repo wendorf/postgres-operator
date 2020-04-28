@@ -74,7 +74,7 @@ pgo create [flags]  Options  -h, --help help for create  Options inherited from 
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/</guid>
       <description>pgo create cluster Create a PostgreSQL cluster
 Synopsis Create a PostgreSQL cluster consisting of a primary and a number of replica backends. For example:
-pgo create cluster mycluster  pgo create cluster [flags]  Options  --ccp-image string The CCPImage name to use for cluster creation. If specified, overrides the value crunchy-postgres. -c, --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.yaml setting. --cpu string Set the number of millicores to request for the CPU, e.</description>
+pgo create cluster mycluster  pgo create cluster [flags]  Options  --ccp-image string The CCPImage name to use for cluster creation. If specified, overrides the value crunchy-postgres. --ccp-image-prefix string The CCPImagePrefix to use for cluster creation. If specified, overrides the global configuration. -c, --ccp-image-tag string The CCPImageTag to use for cluster creation.</description>
     </item>
     
     <item>

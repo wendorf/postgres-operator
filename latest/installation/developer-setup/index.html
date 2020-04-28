@@ -1085,9 +1085,13 @@ are possible, however we do not support building or running the Operator on othe
 <li><code>GOPATH</code> points to a directory containing <code>src</code>,<code>pkg</code>, and <code>bin</code> directories.</li>
 <li>The development host has <code>$GOPATH/bin</code> added to its <code>PATH</code> environment variable. Development tools will be installed to this path. Defining a <code>GOBIN</code> environment variable other than <code>$GOPATH/bin</code> may yield unexpected results.</li>
 <li>The development host has <code>git</code> installed and has cloned the postgres-operator repository to <code>$GOPATH/src/github.com/crunchydata/postgres-operator</code>. Makefile targets below are run from the repository directory.</li>
-<li>Deploying the Operator will require deployment access to a Kubernetes cluster. Clusters built on OpenShift Container Platform (OCP) or built using <code>kubeadm</code> are the validation targets for Pull Requests and thus recommended for devleopment. Instructions for setting up these clusters are outside the scope of this guide.</li>
+<li>Deploying the Operator will require deployment access to a Kubernetes or OpenShift cluster</li>
+<li>Once you have cloned the git repository, you will need to download the CentOS 7 repository files and GPG keys and place them in the <code>$PGOROOT/conf</code> directory. You can do so with the following code:</li>
 </ul>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">cd</span> <span style="color:#111">$PGOROOT</span>
+curl https://api.developers.crunchydata.com/downloads/repo/rpm-centos/postgresql12/crunchypg12.repo &gt; conf/crunchypg12.repo
+curl https://api.developers.crunchydata.com/downloads/repo/rpm-centos/postgresql11/crunchypg11.repo &gt; conf/crunchypg11.repo
+curl https://api.developers.crunchydata.com/downloads/gpg/RPM-GPG-KEY-crunchydata-dev &gt; conf/RPM-GPG-KEY-crunchydata-dev</code></pre></div>
 <h1 id="building">Building</h1>
 
 <h2 id="dependencies">Dependencies</h2>
@@ -1115,19 +1119,19 @@ are possible, however we do not support building or running the Operator on othe
 <h2 id="code-generation">Code Generation</h2>
 
 <p>Code generation is leveraged to generate the clients and informers utilized to interact with the
-with the various <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resources</a>
+various <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resources</a>
 (e.g. <code>pgclusters</code>) comprising the PostgreSQL Operator declarative API.  Code generation is provided
 by the <a href="https://github.com/kubernetes/code-generator">Kubernetes code-generator project</a>,
 and the following two <code>Make</code> targets are included within the PostgreSQL Operator project to both
 determine if any generated code within the project requires an update, and then update that code
 as needed:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Check to see if an update to generated code is needed:</span>
-make check-codegen
+make verify-codegen
 
 <span style="color:#75715e"># Update any generated code:</span>
 make update-codegen</code></pre></div>
 <p>Therefore, in the event that a Custom Resource defined within the PostgreSQL Operator API
-(<code>$PGOROOT/apis/crunchydata.com</code>) is updated, the <code>check-codegen</code> target will indicate that a
+(<code>$PGOROOT/apis/crunchydata.com</code>) is updated, the <code>verify-codegen</code> target will indicate that
 an update is needed, and the <code>update-codegen</code> target should then be utilized to generate the
 updated code prior to compiling.</p>
 
@@ -1149,25 +1153,27 @@ before proceeding.</div>
 
 <p>After a full compile, you will have a <code>pgo</code> binary in <code>$HOME/odev/bin</code> and the Operator images in your local Docker registry.</p>
 
-<h2 id="release">Release</h2>
-
-<p>You can perform a release build by running:</p>
-
-<pre><code>make release
-</code></pre>
-
-<p>This will compile the Mac and Windows versions of <code>pgo</code>.</p>
-
 <h1 id="deployment">Deployment</h1>
 
-<p>Now that you have built the Operator images, you can push them to your Kubernetes cluster if that cluster is remote to your development host.</p>
+<p>Now that you have built the PostgreSQL Operator images, you can now deploy them
+to your Kubernetes cluster. To deploy the image and associated Kubernetes
+manifests, you can execute the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make deployoperator</code></pre></div>
+<p>If your Kubernetes cluster is not local to your development host, you will need
+to specify a config file that will connect you to your Kubernetes cluster. See
+the <a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/">Kubernetes documentation</a>
+for details.</p>
 
-<p>You would then run:</p>
+<h1 id="testing">Testing</h1>
 
-<pre><code>make deployoperator
-</code></pre>
-
-<p>To deploy the Operator on your Kubernetes cluster.  If your Kubernetes cluster is not local to your development host, you will need to specify a config file that will connect you to your Kubernetes cluster. See the Kubernetes documentation for details.</p>
+<p>Once the PostgreSQL Operator is deployed, you can run the end-to-end regression
+test suite interface with the PostgreSQL client. You need to ensure
+that the <code>pgo</code> client executable is in your <code>$PATH</code>. The test suite can be run
+using the following commands:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">cd</span> <span style="color:#111">$PGOROOT</span>/testing/pgo_cli
+<span style="color:#111">GO111MODULE</span><span style="color:#f92672">=</span>on go <span style="color:#111">test</span> -count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> -parallel<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> -timeout<span style="color:#f92672">=</span>30m -v .</code></pre></div>
+<p>For more information, please follow the <a href="https://github.com/CrunchyData/postgres-operator/blob/master/testing/pgo_cli/README.md">testing README</a>
+in the source repository.</p>
 
 <h1 id="troubleshooting">Troubleshooting</h1>
 

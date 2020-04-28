@@ -1131,8 +1131,7 @@ the use of namespaces within the Operator.</p>
 <p>Inside <code>conf/postgres-operator/pgo.yaml</code> there are various storage configurations defined.</p>
 
 <pre><code>PrimaryStorage: gce
-XlogStorage: gce
-ArchiveStorage: gce
+WALStorage: gce
 BackupStorage: gce
 ReplicaStorage: gce
   gce:
