@@ -67,7 +67,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prerequisites/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/prerequisites/</loc>
   </url>
   
   <url>
@@ -83,23 +87,19 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator-installer/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-ansible/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-ansible/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/prereq/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-operator/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-operator/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/</loc>
   </url>
   
   <url>
@@ -107,7 +107,15 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/updating-operator/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/configuration/</loc>
   </url>
   
   <url>
@@ -115,15 +123,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-operator/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-operator/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-metrics/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/common-env/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/</loc>
   </url>
   
   <url>
@@ -147,7 +151,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/</loc>
   </url>
   
   <url>
@@ -159,11 +167,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/</loc>
   </url>
   
   <url>
@@ -171,11 +179,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/developer-setup/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/multi-cluster-kubernetes/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-pgo-client/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/contributing/developer-setup/</loc>
   </url>
   
   <url>

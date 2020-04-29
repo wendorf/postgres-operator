@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.3.0 4.3.0 12.2 2.24     11.7 2.24     10.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.3.0 4.3.0 12.2 2.25     11.7 2.25     10.</description>
     </item>
     
     <item>
@@ -181,12 +181,24 @@ After upgrading to Operator 3.5, you will need to restore those clusters from th
     
     <item>
       <title>Prerequisites</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prerequisites/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prerequisites/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/</guid>
       <description>Prerequisites The following is required prior to installing Crunchy PostgreSQL Operator using Ansible:
  postgres-operator playbooks source code for the target version Ansible 2.8.0+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
+    </item>
+    
+    <item>
+      <title>Prerequisites</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/prerequisites/</guid>
+      <description>Prerequisites The following is required prior to installing PostgreSQL Operator.
+Environment The PostgreSQL Operator is tested in the following environments:
+ Kubernetes v1.13+ Red Hat OpenShift v3.11+ Red Hat OpenShift v4.3+ VMWare Enterprise PKS 1.3+ IBM Cloud Pak Data  IBM Cloud Pak Data If you install the PostgreSQL Operator, which comes with Crunchy PostgreSQL for Kubernetes, on IBM Cloud Pak Data, please note the following additional requirements:
+ Cloud Pak Data Version 2.</description>
     </item>
     
     <item>
@@ -200,11 +212,22 @@ The below guide covers many of the common operations that are required when mana
     </item>
     
     <item>
-      <title>Installing Ansible</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-ansible/</link>
+      <title>Install the PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-ansible/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</guid>
+      <description>The PostgreSQL Operator Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the manifest directly from the repository:
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
+Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:</description>
+    </item>
+    
+    <item>
+      <title>Installing Ansible</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-ansible/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-ansible/</guid>
       <description>Installing Ansible on Linux, MacOS or Windows Ubuntu Subsystem To install Ansible on Linux or MacOS, see the official documentation provided by Ansible.
 Install Google Cloud SDK (Optional) If Crunchy PostgreSQL Operator is going to be installed in a Google Kubernetes Environment the Google Cloud SDK is required.
 To install the Google Cloud SDK on Linux or MacOS, see the official Google Cloud documentation.
@@ -213,10 +236,10 @@ When installing the Google Cloud SDK on the Windows Ubuntu Subsystem, run the fo
     
     <item>
       <title>Installing PostgreSQL Operator</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-operator/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-operator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-operator/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-operator/</guid>
       <description>Installing The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.
 The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks is stored. See the ansible directory in the Crunchy PostgreSQL Operator project for the inventory file, main playbook and ansible roles.
 Installing on Linux On a Linux host with Ansible installed we can run the following command to install the PostgreSQL Operator:</description>
@@ -224,30 +247,52 @@ Installing on Linux On a Linux host with Ansible installed we can run the follow
     
     <item>
       <title>Installing Metrics Infrastructure</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/</guid>
       <description>Installing PostgreSQL clusters created by the Crunchy PostgreSQL Operator can optionally be configured to serve performance metrics via Prometheus Exporters. The metric exporters included in the database pod serve realtime metrics for the database container. In order to store and view this data, Grafana and Prometheus are required. The Crunchy PostgreSQL Operator does not create this infrastructure, however, they can be installed using the provided Ansible roles.
 Prerequisites The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.</description>
     </item>
     
     <item>
-      <title>Updating PostgreSQL Operator</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/updating-operator/</link>
+      <title>Install `pgo` Client</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/updating-operator/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/</guid>
+      <description>Install the PostgreSQL Operator (pgo) Client The following will install and configure the pgo client on all systems. For the purpose of these instructions it&amp;rsquo;s assumed that the Crunchy PostgreSQL Operator is already deployed.
+Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  The Crunchy Postgres Operator als requires the following in order to authenticate with the apiserver:</description>
+    </item>
+    
+    <item>
+      <title>Updating PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/</guid>
       <description>Updating Updating the Crunchy PostgreSQL Operator is essential to the lifecycle management of the service. Using the update flag will:
  Update and redeploy the operator deployment Recreate configuration maps used by operator Remove any deprecated objects Allow administrators to change settings configured in the inventory Reinstall the pgo client if a new version is specified  The following assumes the proper prerequisites are satisfied we can now update the PostgreSQL Operator.</description>
     </item>
     
     <item>
-      <title>Uninstalling PostgreSQL Operator</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-operator/</link>
+      <title>Configuration Reference</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-operator/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/configuration/</guid>
+      <description>PostgreSQL Operator Installer Configuration The pgo-deployer container is launched by using a Kubernetes Job manifest and contains many configurable options.
+This section lists the options that you can configure to deploy the PostgreSQL Operator in your environment. The following list of environmental variables can be used in the postgres-operator.yml manifest.
+General Configuration These environmental variables affect the general configuration of the PostgreSQL Operator.
+   Name Default Required Description     ARCHIVE_MODE true Required Set to true enable archive logging on all newly created clusters.</description>
+    </item>
+    
+    <item>
+      <title>Uninstalling PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-operator/</guid>
       <description>Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator.
 First, it is recommended to use the playbooks tagged with the same version of the PostgreSQL Operator currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
@@ -256,26 +301,14 @@ ansible-playbook -i /path/to/inventory --tags=uninstall --ask-become-pass main.y
     
     <item>
       <title>Uninstalling Metrics Stack</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-metrics/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-metrics/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/</guid>
       <description>Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator Metrics Infrastructure.
 First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
 ansible-playbook -i /path/to/inventory --tags=uninstall-metrics main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
-    </item>
-    
-    <item>
-      <title>Operator Environment</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/common-env/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/common-env/</guid>
-      <description>For various scripts used by the Operator, the expenv utility is required as are certain environment variables.
-Download the expenv utility from its Github Releases page, and place it into your PATH (e.g. $HOME/odev/bin).
-The following environment variables are heavily used in the Bash installation procedures and may be used in Operator helper scripts.
-   Variable Ansible Inventory Example Description     DISABLE_EVENTING pgo_disable_eventing false Disable Operator eventing subsystem   DISABLE_TLS pgo_disable_tls false Disable TLS for Operator   GOPATH  $HOME/odev Golang project directory   GOBIN  $GOPATH/bin Golang binary target directory   NAMESPACE namespace pgouser1 Namespaces monitored by Operator   PGOROOT  $GOPATH/src/github.</description>
     </item>
     
     <item>
@@ -300,6 +333,17 @@ First, an entry needs to be added to the Pgcluster CRD that provides the essenti
     </item>
     
     <item>
+      <title>Bash Scripts</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/</guid>
+      <description>A full installation of the Operator includes the following steps:
+ create a project structure configure your environment variables configure Operator templates create security resources deploy the operator install pgo CLI (end user command tool)  Operator end-users are only required to install the pgo CLI client on their host and can skip the server-side installation steps. pgo CLI clients are provided for Linux, Mac, and Windows clients.
+The Operator can be deployed by multiple methods including:</description>
+    </item>
+    
+    <item>
       <title>Disaster Recovery</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -310,33 +354,22 @@ The PostgreSQL Operator uses the open source pgBackRest backup and restore utili
     </item>
     
     <item>
-      <title>Install Operator Using Bash</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/</link>
+      <title>Kubernetes Multi-Cluster Deployments</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/multi-cluster-kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/</guid>
-      <description>A full installation of the Operator includes the following steps:
- create a project structure configure your environment variables configure Operator templates create security resources deploy the operator install pgo CLI (end user command tool)  Operator end-users are only required to install the pgo CLI client on their host and can skip the server-side installation steps. pgo CLI clients are provided for Linux, Mac, and Windows clients.
-The Operator can be deployed by multiple methods including:</description>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/multi-cluster-kubernetes/</guid>
+      <description>Advanced high-availability and disaster recovery strategies involve spreading your database clusters across multiple data centers to help maximize uptime. In Kubernetes, this technique is known as &amp;ldquo;federation&amp;rdquo;. Federated Kubernetes clusters are able to communicate with each other, coordinate changes, and provide resiliency for applications that have high uptime requirements.
+As of this writing, federation in Kubernetes is still in ongoing development area and is something we monitor with intense interest.</description>
     </item>
     
     <item>
-      <title>High-Availability</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/</link>
+      <title>Development Environment</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/contributing/developer-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/</guid>
-      <description>One of the great things about PostgreSQL is its reliability: it is very stable and typically &amp;ldquo;just works.&amp;rdquo; However, there are certain things that can happen in the environment that PostgreSQL is deployed in that can affect its uptime, including:
- The database storage disk fails or some other hardware failure occurs The network on which the database resides becomes unreachable The host operating system becomes unstable and crashes A key database file becomes corrupted A data center is lost  There may also be downtime events that are due to the normal case of operations, such as performing a minor upgrade, security patching of operating system, hardware upgrade, or other maintenance.</description>
-    </item>
-    
-    <item>
-      <title>Developer Setup</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/developer-setup/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/developer-setup/</guid>
-      <description>The Postgres-Operator is an open source project hosted on GitHub.
+      <guid>https://crunchydata.github.io/postgres-operator/latest/contributing/developer-setup/</guid>
+      <description>The PostgreSQL Operator is an open source project hosted on GitHub.
 This guide is intended for those wanting to build the Operator from source or contribute via pull requests.
 Prerequisites The target development host for these instructions is a CentOS 7 or RHEL 7 host. Others operating systems are possible, however we do not support building or running the Operator on others at this time.
 Environment Variables The following environment variables are expected by the steps in this guide:</description>
@@ -348,9 +381,8 @@ Environment Variables The following environment variables are expected by the st
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/</guid>
-      <description>Operator Namespaces The Operator itself knows which namespace it is running within by referencing the PGO_OPERATOR_NAMESPACE environment variable at startup time from within its Deployment definition.
-The PGO_OPERATOR_NAMESPACE environment variable a user sets in their .bashrc file is used to determine what namespace the Operator is deployed into. The PGO_OPERATOR_NAMESPACE variable is referenced by the Operator during deployment.
-The .bashrc NAMESPACE environment variable a user sets determines which namespaces the Operator will watch.</description>
+      <description>Kubernetes Namespaces and the PostgreSQL Operator The PostgreSQL Operator leverages Kubernetes Namespaces to react to actions taken within a Namespace to keep its PostgreSQL clusters deployed as requested. Early on, the PostgreSQL Operator was scoped to a single namespace and would only watch PostgreSQL clusters in that Namspace, but since version 4.0, it has been expanded to be able to manage PostgreSQL clusters across multiple namespaces.
+The following provides more information about how the PostgreSQL Operator works with namespaces, and presents several deployment patterns that can be used to deploy the PostgreSQL Operator.</description>
     </item>
     
     <item>
