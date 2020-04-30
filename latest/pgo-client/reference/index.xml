@@ -96,7 +96,7 @@ pgo create namespace somenamespace Note: For Kubernetes versions prior to 1.12, 
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgbouncer/</guid>
       <description>pgo create pgbouncer Create a pgbouncer
 Synopsis Create a pgbouncer. For example:
-pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  --cpu string Set the number of millicores to request for CPU for pgBouncer. Defaults to being unset. -h, --help help for pgbouncer --memory string Set the amount of Memory to request for pgBouncer. Defaults to server value (24Mi). --replicas int32 Set the total number of pgBouncer instances to deploy.</description>
+pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  --cpu string Set the number of millicores to request for CPU for pgBouncer. Defaults to being unset. --enable-memory-limit Enables pgBouncer instances to be set with a memory limit on top of the memory request. -h, --help help for pgbouncer --memory string Set the amount of Memory to request for pgBouncer.</description>
     </item>
     
     <item>
@@ -547,7 +547,7 @@ pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/</guid>
       <description>pgo update cluster Update a PostgreSQL cluster
 Synopsis Update a PostgreSQL cluster. For example:
-pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --disable-autofail pgo update cluster --selector=name=mycluster --disable-autofail pgo update cluster --all --enable-autofail  pgo update cluster [flags]  Options  --all all resources. --cpu string Set the number of millicores to request for the CPU, e.g. &amp;quot;100m&amp;quot; or &amp;quot;0.1&amp;quot;. --disable-autofail Disables autofail capabitilies in the cluster. --enable-autofail Enables autofail capabitilies in the cluster.</description>
+pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --disable-autofail pgo update cluster --selector=name=mycluster --disable-autofail pgo update cluster --all --enable-autofail  pgo update cluster [flags]  Options  --all all resources. --cpu string Set the number of millicores to request for the CPU, e.g. &amp;quot;100m&amp;quot; or &amp;quot;0.1&amp;quot;. --disable-autofail Disables autofail capabitilies in the cluster. --disable-memory-limit Disables the PostgreSQL instances from being set with a memory limit on top of the memory request.</description>
     </item>
     
     <item>
@@ -569,7 +569,7 @@ pgo update namespace [flags]  Options  -h, --help help for namespace  Options in
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_pgbouncer/</guid>
       <description>pgo update pgbouncer Update a pgBouncer deployment for a PostgreSQL cluster
 Synopsis Used to update the pgBouncer deployment for a PostgreSQL cluster, such as by rotating a password. For example:
-pgo update pgbouncer hacluster --rotate-password  pgo update pgbouncer [flags]  Options  --cpu string Set the number of millicores to request for CPU for pgBouncer. -h, --help help for pgbouncer --memory string Set the amount of Memory to request for pgBouncer.</description>
+pgo update pgbouncer hacluster --rotate-password  pgo update pgbouncer [flags]  Options  --cpu string Set the number of millicores to request for CPU for pgBouncer. --disable-memory-limit Disables pgBouncer instances from being set with a memory limit on top of the memory request.</description>
     </item>
     
     <item>

@@ -803,9 +803,9 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config/">
+          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">
             Custom Configuration
           </a>
         </div>
@@ -836,42 +836,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/">
-            Upgrade PGO 3.5 Minor Versions
+            Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/">
-            Upgrade PGO 3.5 to 4.3.0
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_ansible/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_ansible/">
-            Upgrade PGO 4.X to 4.3.0 (Ansible)
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_bash/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_bash/">
-            Upgrade PGO 4.X to 4.3.0 (Bash)
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade41/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade41/">
-            Upgrade PostgreSQL Operator 4.1 Minor Versions
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/">
-            Upgrade to PGO 3.5 From Previous Versions
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4/">
+            Manual Upgrade - Operator 4
           </a>
         </div>
     </li>
@@ -1144,6 +1116,22 @@ deleted</li>
 <li>The Kubernetes Deployment associated with the replica is removed, as well as
 any other Kubernetes objects that are specifically associated with this replcia</li>
 </ul>
+
+<h2 id="custom-configuration-hahahugoshortcode-s0-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom Configuration</a></h2>
+
+<p>PostgreSQL workloads often need tuning and additional configuration in production
+environments, and the PostgreSQL Operator allows for this via its ability to
+manage <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">custom PostgreSQL configuration</a>.</p>
+
+<p>The custom configuration can be edit from a <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a>
+that follows the pattern of <code>&lt;clusterName&gt;-pgha-config</code>, where <code>&lt;clusterName&gt;</code>
+would be <code>hippo</code> in <code>pgo create cluster hippo</code>. When the ConfigMap is edited,
+the changes are automatically pushed out to all of the PostgreSQL instances
+within a cluster.</p>
+
+<p>For more information on how this works and what configuration settings are
+editable, please visit the &ldquo;<a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL configuration</a>&ldquo;
+section of the documentation.</p>
 
 <h2 id="deprovisioning">Deprovisioning</h2>
 

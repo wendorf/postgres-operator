@@ -15,7 +15,7 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/</loc>
   </url>
   
   <url>
@@ -47,23 +47,7 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_ansible/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_bash/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade41/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4/</loc>
   </url>
   
   <url>
