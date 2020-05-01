@@ -986,7 +986,7 @@
 <p>There are two paths to quickly get you up and running with the PostgreSQL Operator:</p>
 
 <ul>
-<li><a href="#ansible">Installation via Ansible</a></li>
+<li><a href="#postgresql-operator-installer">Installation via the PostgreSQL Operator Installer</a></li>
 <li>Installation via a Marketplace
 
 <ul>
@@ -996,140 +996,104 @@
 
 <p>Marketplaces can help you get more quickly started in your environment as they provide a mostly automated process, but there are a few steps you will need to take to ensure you can fully utilize your PostgreSQL Operator environment.</p>
 
-<h1 id="ansible">Ansible</h1>
+<h1 id="postgresql-operator-installer">PostgreSQL Operator Installer</h1>
 
 <p>Below will guide you through the steps for installing and using the PostgreSQL Operator using an installer that works with Ansible.</p>
 
-<h2 id="step-1-prerequisites">Step 1: Prerequisites</h2>
+<h2 id="the-very-very-quickstart">The Very, VERY Quickstart</h2>
 
-<h3 id="kubernetes-openshift">Kubernetes / OpenShift</h3>
+<p>If your environment is set up to use hostpath storage (found in things like <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">minikube</a> or <a href="https://developers.redhat.com/products/codeready-containers/overview">OpenShift Code Ready Containers</a>, the following command could work for you:</p>
 
-<ul>
-<li>A Kubernetes or OpenShift environment where you have enough privileges to install an application, i.e. you can add a <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole">ClusterRole</a>. If you&rsquo;re a Cluster Admin, you&rsquo;re all set.
+<pre><code>kubectl create namespace pgo
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml
+</code></pre>
 
-<ul>
-<li>Your Kubernetes version should be 1.13+. <strong>NOTE</strong>: For v4.3.0, while we have updated the PostgreSQL Operator for compatibility with 1.16+, we have not fully tested it.</li>
-<li>For OpenShift, the PostgreSQL Operator will work in 3.11+</li>
-</ul></li>
-<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">PersistentVolume</a>s that are available</li>
-</ul>
+<p>If not, please read onward: you can still get up and running fairly quickly with just a little bit of configuration.</p>
 
-<h3 id="your-environment">Your Environment</h3>
+<h2 id="step-1-configuration">Step 1: Configuration</h2>
 
-<ul>
-<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"><code>kubectl</code></a> or <a href="https://www.okd.io/download.html"><code>oc</code></a>. Ensure you can access your Kubernetes or OpenShift cluster (this is outside the scope of this document)</li>
-<li><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html"><code>ansible</code></a> 2.8.0+. Learn how to <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">download ansible</a></li>
-<li><code>git</code></li>
-<li>If you are installing to Google Kubernetes Engine, you will need the <a href="https://cloud.google.com/sdk/install"><code>gcloud</code></a> utility</li>
-</ul>
+<h3 id="get-the-postgresql-operator-installer-manifest">Get the PostgreSQL Operator Installer Manifest</h3>
 
-<h2 id="step-2-configuration">Step 2: Configuration</h2>
+<p>You will need to download the PostgreSQL Operator Installer manifest to your environment, which you can do with the following command:</p>
 
-<h3 id="get-the-postgresql-operator-ansible-installation-playbook">Get the PostgreSQL Operator Ansible Installation Playbook</h3>
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+</code></pre>
 
-<p>You can download the playbook by cloning the <a href="https://github.com/CrunchyData/postgres-operator">PostgreSQL Operator git repository</a> and running the following commands:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/CrunchyData/postgres-operator.git
-<span style="color:#111">cd</span> postgres-operator
-git checkout v4.3.0 <span style="color:#75715e"># you can substitute this for the version that you want to install</span>
-<span style="color:#111">cd</span> ansible</code></pre></div>
-<h3 id="configure-your-installation">Configure your Installation</h3>
+<p>If you wish to download a specific version of the installer, you can substitute <code>master</code> with the version of the tag, i.e.</p>
 
-<p>Within the <code>ansible</code> folder, there exists a file called <code>inventory</code>. When you open up this file, you can see several options that are used to install the PostgreSQL Operator. Most of these contain some sensible defaults for getting up and running quickly, but some you will need to fill out yourself.</p>
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.0/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+</code></pre>
 
-<p>Lines that start with a <code>#</code> are commented out. To activate that configuration setting, you will have to delete the <code>#</code>.</p>
+<h3 id="configure-the-postgresql-operator-installer">Configure the PostgreSQL Operator Installer</h3>
 
-<p>Set up your <code>inventory</code> file based on one of the environments that you are deploying to:</p>
+<p>There are many <a href="https://crunchydata.github.io/postgres-operator/latest/installation/configuration/">configuration parameters</a> to help you fine tune your installation, but there are a few that you may want to change to get the PostgreSQL Operator to run in your environment. Open up the <code>postgres-operator.yml</code> file and edit a few variables.</p>
 
-<h4 id="kubernetes">Kubernetes</h4>
+<p>Find the <code>PGO_ADMIN_PASSWORD</code> variable. This is the password you will use with the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/"><code>pgo</code> client</a> to manage your PostgreSQL clusters. The default is <code>password</code>, but you can change it to something like <code>hippo-elephant</code>.</p>
 
-<p>You will have to uncomment and set the <code>kubernetes_context</code> variable. This can be determined based on the output of the <code>kubectl config current-context</code> e.g.:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl config current-context
-kubernetes-admin@kubernetes</code></pre></div>
-<p>Note that the output will vary based on the Kubernetes cluster you are using.</p>
+<p>You will need also need to set the storage default storage classes that you would like the PostgreSQL Operator to use. These variables are called <code>PRIMARY_STORAGE</code>, <code>REPLICA_STORAGE</code>, <code>BACKUP_STORAGE</code>, and <code>BACKREST_STORAGE</code>. There are several storage configurations listed out in the configuration file under the heading <code>STORAGE[1-9]_TYPE</code>. Find the one that you want to use, and set it to that value.</p>
 
-<p>Using the above example, set the value of <code>kubernetes_context</code> to the output of the <code>kubectl config current-context</code> command, e.g.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">kubernetes_context</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;kubernetes-admin@kubernetes&#34;</span></code></pre></div>
-<p>Find the location of the <code>pgo_admin_password</code> configuration variable. Set this to a password of your choosing, e.g.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">pgo_admin_password</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;hippo-elephant&#34;</span></code></pre></div>
-<p>Finally, you will need to set the storage default storage classes that you would like the Operator to use. For example, if your Kubernetes environment is using NFS storage, you would set this variables to the following:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">backrest_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
-<span style="color:#111">backup_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
-<span style="color:#111">primary_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
-<span style="color:#111">replica_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span></code></pre></div>
-<p>For a full list of available storage types that can be used with this installation method, see: $URL</p>
+<p>For example, if your Kubernetes environment is using NFS storage, you would set these variables to the following:</p>
 
-<h4 id="openshift">OpenShift</h4>
+<pre><code>- name: BACKREST_STORAGE
+  value: &quot;nfsstorage&quot;
+- name: BACKUP_STORAGE
+  value: &quot;nfsstorage&quot;
+- name: PRIMARY_STORAGE
+  value: &quot;nfsstorage&quot;
+- name: REPLICA_STORAGE
+  value: &quot;nfsstorage&quot;
+</code></pre>
 
-<p>For an OpenShfit deployment, you will at a minimum have to to uncomment and set the <code>openshift_host</code> variable. This is the location of where your OpenShift environment is, and can be obtained from your administrator. For example:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">openshift_host</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;https://openshift.example.com:6443&#34;</span></code></pre></div>
-<p>Based on how your OpenShift environment is configured, you may need to set the following variables:</p>
+<p>For a full list of available storage types that can be used with this installation method, please review the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/configuration/">configuration parameters</a>.</p>
 
-<ul>
-<li><code>openshift_user</code></li>
-<li><code>openshift_password</code></li>
-<li><code>openshift_token</code></li>
-</ul>
+<h2 id="step-2-installation">Step 2: Installation</h2>
 
-<p>An optional <code>openshift_skip_tls_verify=true</code> variable is available if your OpenShift environment allows you to skip TLS verification.</p>
+<p>Installation is as easy as executing:</p>
 
-<p>Next, find the location of the <code>pgo_admin_password</code> configuration variable. Set this to a password of your choosing, e.g.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">pgo_admin_password</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;hippo-elephant&#34;</span></code></pre></div>
-<p>Finally, you will need to set the storage default storage classes that you would like the Operator to use. For example, if your OpenShift environment is using Rook storage, you would set this variables to the following:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">backrest_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;rook&#39;</span>
-<span style="color:#111">backup_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;rook&#39;</span>
-<span style="color:#111">primary_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;rook&#39;</span>
-<span style="color:#111">replica_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;rook&#39;</span></code></pre></div>
-<p>For a full list of available storage types that can be used with this installation method, see: $URL</p>
+<pre><code>kubectl create namespace pgo
+kubectl apply -f postgres-operator.yml
+</code></pre>
 
-<h4 id="google-kubernetes-engine-gke">Google Kubernetes Engine (GKE)</h4>
+<p>This will launch the <code>pgo-deployer</code> container that will run the various setup and installation jobs. This can take a few minutes to complete depending on your Kubernetes cluster.</p>
 
-<p>For deploying the PostgreSQL Operator to GKE, you will need to set up your cluster similar to the Kubernetes set up. First, you will need to get the value for the <code>kubernetes_context</code> variable. Using the <code>gcloud</code> utility, ensure you are logged into the GCP Project that you are installing the PostgreSQL Operator into:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gcloud config <span style="color:#111">set</span> project <span style="color:#f92672">[</span>PROJECT_ID<span style="color:#f92672">]</span></code></pre></div>
-<p>You can read about how you can <a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects?visit_id=637125463737632776-3096453244&amp;rd=1#identifying_projects">get the value of <code>[PROJECT_ID]</code></a></p>
+<p>While the installation is occurring, download the <code>pgo</code> client set up script. This will help set up your local environment for using the PostgreSQL Operator:</p>
 
-<p>From here, you can get the value that needs to be set into the <code>kubernetes_context</code>.</p>
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.0/installers/kubectl/client-setup.sh &gt; client-setup.sh
+chmod +x client-setup.sh
+</code></pre>
 
-<p>You will have to uncomment and set the <code>kubernetes_context</code> variable. This can be determined based on the output of the <code>kubectl config current-context</code> e.g.:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl config current-context
-gke_some-name_some-zone-some_project</code></pre></div>
-<p>Note that the output will vary based on your GKE project.</p>
+<p>When the PostgreSQL Operator is done installing, run the client setup script:</p>
 
-<p>Using the above example, set the value of <code>kubernetes_context</code> to the output of the <code>kubectl config current-context</code> command, e.g.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">kubernetes_context</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;gke_some-name_some-zone-some_project&#34;</span></code></pre></div>
-<p>Next, find the location of the <code>pgo_admin_password</code> configuration variable. Set this to a password of your choosing, e.g.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">pgo_admin_password</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;hippo-elephant&#34;</span></code></pre></div>
-<p>Finally, you will need to set the storage default storage classes that you would like the Operator to use. For deploying to GKE it is recommended to use the <code>gce</code> storag class:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">backrest_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;gce&#39;</span>
-<span style="color:#111">backup_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;gce&#39;</span>
-<span style="color:#111">primary_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;gce&#39;</span>
-<span style="color:#111">replica_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;gce&#39;</span></code></pre></div>
-<h2 id="step-3-installation">Step 3: Installation</h2>
+<pre><code>./client-setup.sh
+</code></pre>
 
-<p>Ensure you are still in the <code>ansible</code> directory and run the following command to install the PostgreSQL Operator:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ansible-playbook -i inventory --tags<span style="color:#f92672">=</span>install main.yml</code></pre></div>
-<p>This can take a few minutes to complete depending on your Kubernetes cluster.</p>
+<p>This will download the <code>pgo</code> client and provide instructions for how to easily use it in your environment. It will prompt you to add some environmental variables for you to set up in your session, which you can do with the following commands:</p>
 
-<p>While the PostgreSQL Operator is installing, for ease of using the <code>pgo</code> command line interface, you will need to set up some environmental variables. You can do so with the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGOUSER</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span><span style="color:#d88200">/.pgo/pgo/pgouser&#34;</span>
-<span style="color:#111">export</span> <span style="color:#111">PGO_CA_CERT</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span><span style="color:#d88200">/.pgo/pgo/client.crt&#34;</span>
-<span style="color:#111">export</span> <span style="color:#111">PGO_CLIENT_CERT</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span><span style="color:#d88200">/.pgo/pgo/client.crt&#34;</span>
-<span style="color:#111">export</span> <span style="color:#111">PGO_CLIENT_KEY</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span><span style="color:#d88200">/.pgo/pgo/client.pem&#34;</span>
-<span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;https://127.0.0.1:8443&#39;</span>
-<span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgouser1</code></pre></div>
+<pre><code>export PGOUSER=&quot;${HOME?}/.pgo/pgo/pgouser&quot;
+export PGO_CA_CERT=&quot;${HOME?}/.pgo/pgo/client.crt&quot;
+export PGO_CLIENT_CERT=&quot;${HOME?}/.pgo/pgo/client.crt&quot;
+export PGO_CLIENT_KEY=&quot;${HOME?}/.pgo/pgo/client.pem&quot;
+export PGO_APISERVER_URL='https://127.0.0.1:8443'
+export PGO_NAMESPACE=pgo
+</code></pre>
+
 <p>If you wish to permanently add these variables to your environment, you can run the following:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#d88200">&lt;&lt;EOF &gt;&gt; ~/.bashrc
-</span><span style="color:#d88200">export PGOUSER=&#34;${HOME?}/.pgo/pgo/pgouser&#34;
-</span><span style="color:#d88200">export PGO_CA_CERT=&#34;${HOME?}/.pgo/pgo/client.crt&#34;
-</span><span style="color:#d88200">export PGO_CLIENT_CERT=&#34;${HOME?}/.pgo/pgo/client.crt&#34;
-</span><span style="color:#d88200">export PGO_CLIENT_KEY=&#34;${HOME?}/.pgo/pgo/client.pem&#34;
-</span><span style="color:#d88200">export PGO_APISERVER_URL=&#39;https://127.0.0.1:8443&#39;
-</span><span style="color:#d88200">export PGO_NAMESPACE=pgouser1
-</span><span style="color:#d88200">EOF</span>
 
-<span style="color:#111">source</span> ~/.bashrc</code></pre></div>
+<pre><code>cat &lt;&lt;EOF &gt;&gt; ~/.bashrc
+export PGOUSER=&quot;${HOME?}/.pgo/pgo/pgouser&quot;
+export PGO_CA_CERT=&quot;${HOME?}/.pgo/pgo/client.crt&quot;
+export PGO_CLIENT_CERT=&quot;${HOME?}/.pgo/pgo/client.crt&quot;
+export PGO_CLIENT_KEY=&quot;${HOME?}/.pgo/pgo/client.pem&quot;
+export PGO_APISERVER_URL='https://127.0.0.1:8443'
+export PGO_NAMESPACE=pgo
+EOF
+
+source ~/.bashrc
+</code></pre>
+
 <p><strong>NOTE</strong>: For macOS users, you must use <code>~/.bash_profile</code> instead of <code>~/.bashrc</code></p>
 
-<h2 id="step-4-verification">Step 4: Verification</h2>
+<h2 id="step-3-verification">Step 3: Verification</h2>
 
 <p>Below are a few steps to check if the PostgreSQL Operator is up and running.</p>
 
@@ -1161,10 +1125,10 @@ postgres-operator-56d6ccb97-tmz7m   4/4     Running   0          2m
 pgo-apiserver version 4.3.0
 </code></pre>
 
-<h2 id="step-5-have-some-fun-create-a-postgresql-cluster">Step 5: Have Some Fun - Create a PostgreSQL Cluster</h2>
+<h2 id="step-4-have-some-fun-create-a-postgresql-cluster">Step 4: Have Some Fun - Create a PostgreSQL Cluster</h2>
 
-<p>The quickstart installation method creates two namespaces that you can deploy your PostgreSQL clusters into called <code>pgouser1</code> and <code>pgouser2</code>. Let&rsquo;s create a new PostgreSQL cluster in <code>pgouser1</code>:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster -n pgouser1 hippo</code></pre></div>
+<p>The quickstart installation method creates a namespace called <code>pgo</code> where the PostgreSQL Operator manages PostgreSQL clusters. Try creating a PostgreSQL cluster called <code>hippo</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster -n pgo hippo</code></pre></div>
 <p>Alternatively, because we set the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/#general-notes-on-using-the-pgo-client"><code>PGO_NAMESPACE</code></a> environmental variable in our <code>.bashrc</code> file, we could omit the <code>-n</code> flag from the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a> command and just run this:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hippo</code></pre></div>
 <p>Even with <code>PGO_NAMESPACE</code> set, you can always overwrite which namespace to use by setting the <code>-n</code> flag for the specific command. For explicitness, we will continue to use the <code>-n</code> flag in the remaining examples of this quickstart.</p>
@@ -1176,7 +1140,7 @@ workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
 </code></pre>
 
 <p>This will create a PostgreSQL cluster named <code>hippo</code>. It may take a few moments for the cluster to be provisioned. You can see the status of this cluster using the <code>pgo test</code> command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo <span style="color:#111">test</span> -n pgouser1 hippo</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo <span style="color:#111">test</span> -n pgo hippo</code></pre></div>
 <p>When everything is up and running, you should see output similar to this:</p>
 
 <pre><code>cluster : hippo
@@ -1186,7 +1150,7 @@ workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
 		primary (hippo-7b64747476-6dr4h): UP
 </code></pre>
 
-<p>The <code>pgo test</code> command provides you the basic information you need to connect to your PostgreSQL cluster from within your Kubernetes environment. For more detailed information, you can use <code>pgo show cluster -n pgouser1 hippo</code>.</p>
+<p>The <code>pgo test</code> command provides you the basic information you need to connect to your PostgreSQL cluster from within your Kubernetes environment. For more detailed information, you can use <code>pgo show cluster -n pgo hippo</code>.</p>
 
 <h1 id="marketplaces">Marketplaces</h1>
 
@@ -1202,7 +1166,7 @@ workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
 
 <p>The PostgreSQL Operator is installed as part of the <a href="https://console.cloud.google.com/marketplace/details/crunchydata/crunchy-postgresql-operator">Crunchy PostgreSQL for GKE</a> project that is available in the Google Cloud Platform Marketplace (GCP Marketplace). Please follow the steps deploy to get the PostgreSQL Operator deployed!</p>
 
-<h3 id="step-1-prerequisites-1">Step 1: Prerequisites</h3>
+<h3 id="step-1-prerequisites">Step 1: Prerequisites</h3>
 
 <h4 id="install-kubectl-and-gcloud-sdk">Install <code>Kubectl</code> and <code>gcloud</code> SDK</h4>
 

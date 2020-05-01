@@ -962,6 +962,8 @@
 
 <p>Safe, automated failover backed by a <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/">distributed consensus based high-availability solution</a>. Uses <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#inter-pod-affinity-and-anti-affinity">Pod Anti-Affinity</a> to help resiliency; you can configure how aggressive this can be! Failed primaries automatically heal, allowing for faster recovery time.</p>
 
+<p>Support for <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/multi-cluster-kubernetes/">standby PostgreSQL clusters</a> that work both within an across <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/multi-cluster-kubernetes/">multiple Kubernetes clusters</a>.</p>
+
 <h4 id="disaster-recovery">Disaster Recovery</h4>
 
 <p>Backups and restores leverage the open source <a href="https://www.pgbackrest.org">pgBackRest</a> utility and <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/">includes support for full, incremental, and differential backups as well as efficient delta restores</a>. Set how long you want your backups retained for. Works great with very large databases!</p>

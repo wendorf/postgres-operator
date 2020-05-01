@@ -998,7 +998,11 @@
 <p>If you believe that all the default settings in the installation manifest work
 for you, you can take a chance by running the manifest directly from the
 repository:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml</code></pre></div>
+
+<pre><code>kubectl create namespace pgo
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml
+</code></pre>
+
 <p>However, we still advise that you read onward to see how to properly configure
 the PostgreSQL Operator.</p>
 
@@ -1048,6 +1052,11 @@ these objects from the <code>postgres-operator.yml</code> manifest.</p>
 <p>By default, the installer will run in the <code>pgo</code> Namespace. This can be
 updated in the <code>postgres-operator.yml</code> file. <strong>Please ensure that this namespace
 exists before the job is run</strong>.</p>
+
+<p>For example, to create the <code>pgo</code> namespace:</p>
+
+<pre><code>kubectl create namespace pgo
+</code></pre>
 
 <p>The PostgreSQL Operator has the ability to manage PostgreSQL clusters across
 multiple Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Namespaces</a>,
@@ -1184,7 +1193,7 @@ file owner. All other permissions are removed.</li>
 <p>For convenience, after the script has finished, you can permanently at these
 environmental variables to your environment:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#d88200">&lt;&lt;EOF &gt;&gt; ~/.bashrc
-</span><span style="color:#d88200">export PATH=&#34;$HOME/.pgo/$PGO_OPERATOR_NAMESPACE/pgo:$PATH&#34;
+</span><span style="color:#d88200">export PATH=&#34;$HOME/.pgo/$PGO_OPERATOR_NAMESPACE:$PATH&#34;
 </span><span style="color:#d88200">export PGOUSER=&#34;$HOME/.pgo/$PGO_OPERATOR_NAMESPACE/pgouser&#34;
 </span><span style="color:#d88200">export PGO_CA_CERT=&#34;$HOME/.pgo/$PGO_OPERATOR_NAMESPACE/client.crt&#34;
 </span><span style="color:#d88200">export PGO_CLIENT_CERT=&#34;$HOME/.pgo/$PGO_OPERATOR_NAMESPACE/client.crt&#34;

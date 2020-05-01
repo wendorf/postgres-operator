@@ -1654,9 +1654,11 @@ section of the documentation.</p>
 <h2 id="clone-a-postgresql-cluster">Clone a PostgreSQL Cluster</h2>
 
 <p>You can create a copy of an existing PostgreSQL cluster in a new PostgreSQL
-cluster by using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/"><code>pgo clone</code></a> command. To
-create a new copy of a PostgreSQL cluster, you can execute the following
-command:</p>
+cluster by using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/"><code>pgo clone</code></a> command.
+The command copies the pgBackRest repository from the existing cluster and
+creates a new, single instance primary as its own cluster. To
+create the new, single instance, copy of a PostgreSQL cluster, you can execute
+the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo clone hacluster newhacluster</code></pre></div>
 <h3 id="clone-a-postgresql-cluster-to-different-pvc-size">Clone a PostgreSQL Cluster to Different PVC Size</h3>
 

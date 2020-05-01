@@ -176,7 +176,7 @@ The below guide covers many of the common operations that are required when mana
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</guid>
       <description>The PostgreSQL Operator Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the manifest directly from the repository:
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
 Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:</description>
     </item>
     
@@ -581,7 +581,7 @@ pgo create user --username=someuser --all --managed pgo create user --username=s
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete/</guid>
       <description>pgo delete Delete an Operator resource
 Synopsis The delete command allows you to delete an Operator resource. For example:
-pgo delete backup mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgbouncer mycluster pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo delete backup mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgbouncer mycluster pgo delete pgbouncer mycluster --uninstall pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -691,7 +691,7 @@ pgo delete schedule mycluster pgo delete schedule --selector=env=test pgo delete
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_user/</guid>
       <description>pgo delete user Delete a user
 Synopsis Delete a user. For example:
-pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [flags]  Options  --all Delete all PostgreSQL users from all clusters. -h, --help help for user --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering. --username string The username to delete.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [flags]  Options  --all Delete all PostgreSQL users from all clusters. -h, --help help for user --no-prompt No command line confirmation before delete. -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering. --username string The username to delete.</description>
     </item>
     
     <item>
@@ -1032,11 +1032,9 @@ Disable the ability for a user to log into the PostgreSQL cluster pgo update use
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_upgrade/</guid>
-      <description>pgo upgrade Perform an upgrade
-Synopsis UPGRADE performs an upgrade on a PostgreSQL cluster. For example:
-pgo upgrade mycluster
-This upgrade will update the CCPImageTag of the deployment for the primary and all replicas. The running containers are upgraded one at a time, sequentially, in the following order: replicas, backrest-repo, then primary.
-Note: If the PostgreSQL Operator is deployed using OLM, the value of the CCPImageTag is overriden by what is in the RELATEDIMAGE* environmental variables, e.</description>
+      <description>pgo upgrade Perform a cluster upgrade.
+Synopsis UPGRADE allows you to perform a comprehensive PGCluster upgrade (for use after performing a Postgres Operator upgrade). For example:
+pgo upgrade mycluster Upgrades the cluster for use with the upgraded Postgres Operator version.  pgo upgrade [flags]  Options  -h, --help help for upgrade --ignore-validation Disables version checking against the image tags when performing an cluster upgrade.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
