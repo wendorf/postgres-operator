@@ -104,5 +104,15 @@ In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL
  Partitioning larger data sets across different volumes Putting data onto archival systems Utilizing hardware (or a storage class) for a particular database Storing sensitive data on a volume that supports transparent data-encryption (TDE)  and others.</description>
     </item>
     
+    <item>
+      <title>pgAdmin 4</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/pgadmin4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/pgadmin4/</guid>
+      <description>pgAdmin 4 is a popular graphical user interface that makes it easy to work with PostgreSQL databases from both a desktop or web-based client. With its ability to manage and orchestrate changes for PostgreSQL users, the PostgreSQL Operator is a natural partner to keep a pgAdmin 4 environment synchronized with a PostgreSQL environment.
+The PostgreSQL Operator lets you deploy a pgAdmin 4 environment alongside a PostgreSQL cluster and keeps users&amp;rsquo; database credentials synchronized.</description>
+    </item>
+    
   </channel>
 </rss>

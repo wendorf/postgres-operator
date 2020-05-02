@@ -191,6 +191,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/pgadmin4/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/pgadmin4/">
+            pgAdmin 4
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/" class="dd-item haschildren
@@ -411,6 +418,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgadmin/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgadmin/">
+            pgo create pgadmin
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgbouncer/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgbouncer/">
@@ -485,6 +499,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_namespace/">
             pgo delete namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_pgadmin/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_pgadmin/">
+            pgo delete pgadmin
           </a>
         </div>
     </li>
@@ -618,6 +639,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_namespace/">
             pgo show namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgadmin/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgadmin/">
+            pgo show pgadmin
           </a>
         </div>
     </li>
@@ -886,6 +914,64 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/releases/">Release Notes</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/">
+            4.3.0
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.2/">
+            4.2.2
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.1/">
+            4.2.1
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.0/">
+            4.2.0
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.2/">
+            4.1.2
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.1/">
+            4.1.1
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.0/">
+            4.1.0
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
 
 
 
@@ -925,6 +1011,8 @@
   
     <option value="/contributing/" >
    Contributing</option>
+    <option value="/releases/" >
+   Release Notes</option>
 
 
 
@@ -1019,6 +1107,8 @@
 <li><p>Storage Requirements - An essential part of both the automated and manual upgrade procedures is the reuse of existing PVCs. As such, it is essential that the existing storage settings are maintained for any upgraded clusters.</p></li>
 
 <li><p>As opposed to the manual upgrade procedures, the automated upgrade is designed to leave existing resources (such as CRDs, config maps, secrets, etc) in place whenever possible to minimize the need for resource re-creation.</p></li>
+
+<li><p>Metrics - While the PostgreSQL Operator upgrade process will not delete an existing Metrics Stack, it does not currently support the upgrade of existing metrics infrastructure.</p></li>
 </ol>
 
 <h5 id="note-as-with-any-upgrade-procedure-it-is-strongly-recommended-that-a-full-logical-backup-is-taken-before-any-upgrade-procedure-is-started-please-see-the-logical-backups-pgo-client-common-tasks-logical-backups-pg-dump-pg-dumpall-section-of-the-common-tasks-page-for-more-information">NOTE: As with any upgrade procedure, it is strongly recommended that a full logical backup is taken before any upgrade procedure is started. Please see the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks#logical-backups-pg_dump--pg_dumpall">Logical Backups</a> section of the Common Tasks page for more information.</h5>
@@ -1100,8 +1190,7 @@ To help ensure that needed resources are not inadvertently deleted during an upg
 <p>This will follow a similar process to the documented manual process, where the pods, deployments, replicasets, pgtasks and jobs are deleted, the cluster&rsquo;s replicas are scaled down and replica PVCs deleted, but the primary PVC and backrest-repo PVC are left in place. Existing services for the primary, replica and backrest-shared-repo are also kept and will be updated to the requirements of the current version. Configmaps and secrets are kept except where deletion is required. For a cluster &lsquo;mycluster&rsquo;, the following configmaps will be deleted (if they exist) and recreated:</p>
 
 <pre><code>mycluster-leader
-mycluster-config
-mycluster-pgha-config
+mycluster-pgha-default-config
 </code></pre>
 
 <p>along with the following secret:</p>
@@ -1111,16 +1200,16 @@ mycluster-pgha-config
 
 <p>The pgcluster CRD will be read, updated automatically and replaced, at which point the normal cluster creation process will take over. The end result of the upgrade should be an identical numer of pods, deployments, replicas, etc with a new pgbackrest backup taken, but existing backups left in place.</p>
 
-<p>Finally, to disable PostgreSQL version checking during the upgrade, such as for when container images are re-tagged and no longer follow the standard version tagging format, use the &ldquo;disable-version-check&rdquo; flag:</p>
+<p>Finally, to disable PostgreSQL version checking during the upgrade, such as for when container images are re-tagged and no longer follow the standard version tagging format, use the &ldquo;ignore-validation&rdquo; flag:</p>
 
-<pre><code>pgo upgrade mycluster --disable-version-check
+<pre><code>pgo upgrade mycluster --ignore-validation
 </code></pre>
 
 <p>That will allow the upgrade to proceed, regardless of the tag values. Please note, the underlying image must still be chosen in accordance with the <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade#considerations">considerations</a> listed above.</p>
 
 <h2 id="manually-upgrading-the-operator-and-postgresql-clusters">Manually Upgrading the Operator and PostgreSQL Clusters</h2>
 
-<p>In the event that the automated upgrade cannot be used, below are manual upgrade procedures for both PostgreSQL Operator 3.5 and 4 releases. These procedures will require action by the Operator administrator of your organization in order to upgrade to the current release of the Operator. Some upgrade steps are still automated within the Operator, but not all are possible with this upgrade method. As such, the pages below show the specific steps required to upgrade different versions of the PostgreSQL Operator depending on your current environment.</p>
+<p>In the event that the automated upgrade cannot be used, below are manual upgrade procedures for both PostgreSQL Operator 3.5 and 4.0 releases. These procedures will require action by the Operator administrator of your organization in order to upgrade to the current release of the Operator. Some upgrade steps are still automated within the Operator, but not all are possible with this upgrade method. As such, the pages below show the specific steps required to upgrade different versions of the PostgreSQL Operator depending on your current environment.</p>
 
 <p>In the event that you are performing a manual upgrade, it is recommended to upgrade to the latest PostgreSQL Operator available.</p>
 

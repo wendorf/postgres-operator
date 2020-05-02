@@ -191,6 +191,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/pgadmin4/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/pgadmin4/">
+            pgAdmin 4
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/" class="dd-item haschildren
@@ -412,6 +419,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgadmin/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgadmin/">
+            pgo create pgadmin
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgbouncer/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgbouncer/">
@@ -486,6 +500,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_namespace/">
             pgo delete namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_pgadmin/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_pgadmin/">
+            pgo delete pgadmin
           </a>
         </div>
     </li>
@@ -619,6 +640,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_namespace/">
             pgo show namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgadmin/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_pgadmin/">
+            pgo show pgadmin
           </a>
         </div>
     </li>
@@ -886,6 +914,64 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/releases/">Release Notes</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/">
+            4.3.0
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.2/">
+            4.2.2
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.1/">
+            4.2.1
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.2.0/">
+            4.2.0
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.2/">
+            4.1.2
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.1/">
+            4.1.1
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.0/">
+            4.1.0
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
 
 
 
@@ -927,6 +1013,8 @@
    Upgrade</option>
     <option value="/contributing/" >
    Contributing</option>
+    <option value="/releases/" >
+   Release Notes</option>
 
 
 
@@ -1791,6 +1879,55 @@ client, but given it is a common question, we thought it may be helpful to link
 to how to do it from here. To find out more about how to
 <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">customize your PostgreSQL configuration</a>,
 please refer to the <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL Configuration</a>
+section of the documentation.</p>
+
+<h2 id="pgadmin-4-postgresql-administration">pgAdmin 4: PostgreSQL Administration</h2>
+
+<p><a href="https://www.pgadmin.org/">pgAdmin 4</a> is a popular graphical user interface that
+lets you work with PostgreSQL databases from both a desktop or web-based client.
+In the case of the PostgreSQL Operator, the pgAdmin 4 web client can be deployed
+and synchronized with PostgreSQL clusters so that users can administrate their
+databases with their PostgreSQL username and password.</p>
+
+<p>For example, let&rsquo;s work with a PostgreSQL cluster called <code>hippo</code> that has a user named <code>hippo</code> with password <code>datalake</code>, e.g.:</p>
+
+<pre><code>pgo create cluster hippo --username=hippo --password=datalake
+</code></pre>
+
+<p>Once the <code>hippo</code> PostgreSQL cluster is ready, create the pgAdmin 4 deployment
+with the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_pgadmin/"><code>pgo create pgadmin</code></a>
+command:</p>
+
+<pre><code>pgo create pgadmin hippo
+</code></pre>
+
+<p>This creates a pgAdmin 4 deployment unique to this PostgreSQL cluster and
+synchronizes the PostgreSQL user information into it. To access pgAdmin 4, you
+can set up a port-forward to the Service, which follows the
+pattern <code>&lt;clusterName&gt;-pgadmin</code>, to port <code>5050</code>:</p>
+
+<pre><code>kubectl port-forward svc/hippo-pgadmin 5050:5050
+</code></pre>
+
+<p>Point your browser at <code>http://localhost:5050</code> and use your database username
+(e.g. <code>hippo</code>) and password (e.g. <code>datalake</code>) to log in.</p>
+
+<p><img src="https://crunchydata.github.io/postgres-operator/latest/images/pgadmin4-login.png" alt="pgAdmin 4 Login Page" /></p>
+
+<p>(Note: if your password does not appear to work, you can retry setting up the
+user with the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_user/"><code>pgo update user</code></a>
+command: <code>pgo update user hippo --password=datalake</code>)</p>
+
+<p>The <code>pgo create user</code>, <code>pgo update user</code>, and <code>pgo delete user</code> commands are
+synchronized with the pgAdmin 4 deployment. Any user with credentials to this
+PostgreSQL cluster will be able to log in and use pgAdmin 4:</p>
+
+<p><img src="https://crunchydata.github.io/postgres-operator/latest/images/pgadmin4-query.png" alt="pgAdmin 4 Query" /></p>
+
+<p>You can remove the pgAdmin 4 deployment with the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_pgadmin/"><code>pgo delete pgadmin</code></a>
+command.</p>
+
+<p>For more information, please read the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/pgadmin4/">pgAdmin 4 Architecture</a>
 section of the documentation.</p>
 
 <h2 id="standby-clusters-multi-cluster-kubernetes-deployments">Standby Clusters: Multi-Cluster Kubernetes Deployments</h2>
