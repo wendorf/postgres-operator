@@ -42,24 +42,13 @@ The PostgreSQL Operator uses the open source pgBackRest backup and restore utili
     </item>
     
     <item>
-      <title>High-Availability</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/</guid>
-      <description>One of the great things about PostgreSQL is its reliability: it is very stable and typically &amp;ldquo;just works.&amp;rdquo; However, there are certain things that can happen in the environment that PostgreSQL is deployed in that can affect its uptime, including:
- The database storage disk fails or some other hardware failure occurs The network on which the database resides becomes unreachable The host operating system becomes unstable and crashes A key database file becomes corrupted A data center is lost  There may also be downtime events that are due to the normal case of operations, such as performing a minor upgrade, security patching of operating system, hardware upgrade, or other maintenance.</description>
-    </item>
-    
-    <item>
       <title>Namespace Management</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/architecture/namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/architecture/namespace/</guid>
-      <description>Operator Namespaces The Operator itself knows which namespace it is running within by referencing the PGO_OPERATOR_NAMESPACE environment variable at startup time from within its Deployment definition.
-The PGO_OPERATOR_NAMESPACE environment variable a user sets in their .bashrc file is used to determine what namespace the Operator is deployed into. The PGO_OPERATOR_NAMESPACE variable is referenced by the Operator during deployment.
-The .bashrc NAMESPACE environment variable a user sets determines which namespaces the Operator will watch.</description>
+      <description>Kubernetes Namespaces and the PostgreSQL Operator The PostgreSQL Operator leverages Kubernetes Namespaces to react to actions taken within a Namespace to keep its PostgreSQL clusters deployed as requested. Early on, the PostgreSQL Operator was scoped to a single namespace and would only watch PostgreSQL clusters in that Namspace, but since version 4.0, it has been expanded to be able to manage PostgreSQL clusters across multiple namespaces.
+The following provides more information about how the PostgreSQL Operator works with namespaces, and presents several deployment patterns that can be used to deploy the PostgreSQL Operator.</description>
     </item>
     
     <item>
@@ -103,6 +92,26 @@ The PostgreSQL Operator works with several different storage types, HostPath, Ne
       <description>User Roles in the PostgreSQL Operator The PostgreSQL Operator, when used in conjunction with the associated PostgreSQL Containers and Kubernetes, provides you with the ability to host your own open source, Kubernetes native PostgreSQL-as-a-Service infrastructure.
 In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL-as-a-Service capability, the following user roles will be required:
    Role Applicable Component Authorized Privileges and Functions Performed     Platform Admininistrator (Privileged User) PostgreSQL Operator The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more.</description>
+    </item>
+    
+    <item>
+      <title>Tablespaces</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/architecture/tablespaces/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/architecture/tablespaces/</guid>
+      <description>A Tablespace is a PostgreSQL feature that is used to store data on a volume that is different from the primary data directory. While most workloads do not require them, tablespaces can be particularly helpful for larger data sets or utilizing particular hardware to optimize performance on a particular PostgreSQL object (a table, index, etc.). Some examples of use cases for tablespaces include:
+ Partitioning larger data sets across different volumes Putting data onto archival systems Utilizing hardware (or a storage class) for a particular database Storing sensitive data on a volume that supports transparent data-encryption (TDE)  and others.</description>
+    </item>
+    
+    <item>
+      <title>pgAdmin 4</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/architecture/pgadmin4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/architecture/pgadmin4/</guid>
+      <description>pgAdmin 4 is a popular graphical user interface that makes it easy to work with PostgreSQL databases from both a desktop or web-based client. With its ability to manage and orchestrate changes for PostgreSQL users, the PostgreSQL Operator is a natural partner to keep a pgAdmin 4 environment synchronized with a PostgreSQL environment.
+The PostgreSQL Operator lets you deploy a pgAdmin 4 environment alongside a PostgreSQL cluster and keeps users&amp;rsquo; database credentials synchronized.</description>
     </item>
     
   </channel>

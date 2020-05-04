@@ -30,19 +30,7 @@ pgo apply mypolicy1 --selector=name=mycluster pgo apply mypolicy1 --selector=som
       <description>pgo backup Perform a Backup
 Synopsis BACKUP performs a Backup, for example:
 pgo backup mycluster
-pgo backup [flags]  Options  --backup-opts string The pgbackup options to pass into pgbackrest. --backup-type string The backup type to perform. Default is pgbackrest. Valid backup types are pgbackrest and pgdump. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup --pgbackrest-storage-type string The type of storage to use when scheduling pgBackRest backups. Either &amp;quot;local&amp;quot;, &amp;quot;s3&amp;quot; or both, comma separated.</description>
-    </item>
-    
-    <item>
-      <title>pgo benchmark</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_benchmark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_benchmark/</guid>
-      <description>pgo benchmark Perform a pgBench benchmark against clusters
-Synopsis Benchmark run pgBench against PostgreSQL clusters, for example:
-pgo benchmark mycluster
-pgo benchmark [flags]  Options  -b, --benchmark-opts string The extra flags passed to pgBench during the benchmark. -c, --clients int The number of clients to be used in the benchmark. (default 1) -d, --database string The database where the benchmark should be run. (default &amp;quot;postgres&amp;quot;) -h, --help help for benchmark -i, --init-opts string The extra flags passed to pgBench during the initialization of the benchmark.</description>
+pgo backup [flags]  Options  --backup-opts string The options to pass into pgbackrest. --backup-type string The backup type to perform. Default is pgbackrest. Valid backup types are pgbackrest and pgdump. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup --pgbackrest-storage-type string The type of storage to use when scheduling pgBackRest backups. Either &amp;quot;local&amp;quot;, &amp;quot;s3&amp;quot; or both, comma separated.</description>
     </item>
     
     <item>
@@ -64,7 +52,7 @@ pgo cat mycluster /pgdata/mycluster/postgresql.conf  pgo cat [flags]  Options  -
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/</guid>
       <description>pgo clone Copies the primary database of an existing cluster to a new cluster
 Synopsis Clone makes a copy of an existing PostgreSQL cluster managed by the Operator and creates a new PostgreSQL cluster managed by the Operator, with the data from the old cluster.
-pgo clone oldcluster newcluster  pgo clone [flags]  Options  -h, --help help for clone --pgbackrest-storage-source string The data source for the clone when both &amp;quot;local&amp;quot; and &amp;quot;s3&amp;quot; are enabled in the source cluster.</description>
+pgo clone oldcluster newcluster  pgo clone [flags]  Options  --enable-metrics If sets, enables metrics collection on the newly cloned cluster -h, --help help for clone --pgbackrest-pvc-size string The size of the PVC capacity for the pgBackRest repository.</description>
     </item>
     
     <item>
@@ -74,7 +62,7 @@ pgo clone oldcluster newcluster  pgo clone [flags]  Options  -h, --help help for
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/</guid>
       <description>pgo create Create a Postgres Operator resource
-Synopsis CREATE allows you to create a new Operator resource. For example: pgo create cluster pgo create pgbouncer pgo create pgouser pgo create pgorole pgo create policy pgo create namespace pgo create user
+Synopsis CREATE allows you to create a new Operator resource. For example: pgo create cluster pgo create pgadmin pgo create pgbouncer pgo create pgouser pgo create pgorole pgo create policy pgo create namespace pgo create user
 pgo create [flags]  Options  -h, --help help for create  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
@@ -86,7 +74,7 @@ pgo create [flags]  Options  -h, --help help for create  Options inherited from 
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_cluster/</guid>
       <description>pgo create cluster Create a PostgreSQL cluster
 Synopsis Create a PostgreSQL cluster consisting of a primary and a number of replica backends. For example:
-pgo create cluster mycluster  pgo create cluster [flags]  Options  --ccp-image string The CCPImage name to use for cluster creation. If specified, overrides the value crunchy-postgres. -c, --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.yaml setting. --custom-config string The name of a configMap that holds custom PostgreSQL configuration files used to override defaults.</description>
+pgo create cluster mycluster  pgo create cluster [flags]  Options  --ccp-image string The CCPImage name to use for cluster creation. If specified, overrides the value crunchy-postgres. --ccp-image-prefix string The CCPImagePrefix to use for cluster creation. If specified, overrides the global configuration. -c, --ccp-image-tag string The CCPImageTag to use for cluster creation.</description>
     </item>
     
     <item>
@@ -101,6 +89,17 @@ pgo create namespace somenamespace Note: For Kubernetes versions prior to 1.12, 
     </item>
     
     <item>
+      <title>pgo create pgadmin</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_pgadmin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_pgadmin/</guid>
+      <description>pgo create pgadmin Create a pgAdmin instance
+Synopsis Create a pgAdmin instance for mycluster. For example:
+pgo create pgadmin mycluster  pgo create pgadmin [flags]  Options  -h, --help help for pgadmin -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging.</description>
+    </item>
+    
+    <item>
       <title>pgo create pgbouncer</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_pgbouncer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -108,7 +107,7 @@ pgo create namespace somenamespace Note: For Kubernetes versions prior to 1.12, 
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_pgbouncer/</guid>
       <description>pgo create pgbouncer Create a pgbouncer
 Synopsis Create a pgbouncer. For example:
-pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  -h, --help help for pgbouncer --pgbouncer-pass string Password for the pgbouncer user of the crunchy-pgboucer deployment. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  --cpu string Set the number of millicores to request for CPU for pgBouncer. Defaults to being unset. --enable-memory-limit Enables pgBouncer instances to be set with a memory limit on top of the memory request. -h, --help help for pgbouncer --memory string Set the amount of Memory to request for pgBouncer.</description>
     </item>
     
     <item>
@@ -163,7 +162,7 @@ pgo create schedule --schedule=&amp;quot;* * * * *&amp;quot; --schedule-type=pgb
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_user/</guid>
       <description>pgo create user Create a PostgreSQL user
 Synopsis Create a postgres user. For example:
-pgo create user --username=someuser --all --managed pgo create user --username=someuser mycluster --managed pgo create user --username=someuser -selector=name=mycluster --managed pgo create user --username=user1 --selector=name=mycluster  pgo create user [flags]  Options  -h, --help help for user --managed Creates a user with secrets that can be managed by the Operator. --password string The password to use for creating a new user which overrides a generated password.</description>
+pgo create user --username=someuser --all --managed pgo create user --username=someuser mycluster --managed pgo create user --username=someuser -selector=name=mycluster --managed pgo create user --username=user1 --selector=name=mycluster  pgo create user [flags]  Options  --all Create a user on every cluster. -h, --help help for user --managed Creates a user with secrets that can be managed by the Operator.</description>
     </item>
     
     <item>
@@ -174,7 +173,7 @@ pgo create user --username=someuser --all --managed pgo create user --username=s
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_delete/</guid>
       <description>pgo delete Delete an Operator resource
 Synopsis The delete command allows you to delete an Operator resource. For example:
-pgo delete backup mycluster pgo delete benchmark mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgbouncer mycluster pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo delete backup mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgadmin mycluster pgo delete pgbouncer mycluster pgo delete pgbouncer mycluster --uninstall pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -186,17 +185,6 @@ pgo delete backup mycluster pgo delete benchmark mycluster pgo delete cluster my
       <description>pgo delete backup Delete a backup
 Synopsis Delete a backup. For example:
 pgo delete backup mydatabase  pgo delete backup [flags]  Options  -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
-    </item>
-    
-    <item>
-      <title>pgo delete benchmark</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_delete_benchmark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_delete_benchmark/</guid>
-      <description>pgo delete benchmark Delete benchmarks for a cluster
-Synopsis Delete benchmarks for a cluster. For example:
-pgo delete benchmark mycluster pgo delete benchmark --selector=env=test  pgo delete benchmark [flags]  Options  -h, --help help for benchmark -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -233,6 +221,17 @@ pgo delete namespace mynamespace pgo delete namespace --selector=env=test  pgo d
     </item>
     
     <item>
+      <title>pgo delete pgadmin</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_delete_pgadmin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_delete_pgadmin/</guid>
+      <description>pgo delete pgadmin Delete a pgAdmin instance from a cluster
+Synopsis Delete a pgAdmin instance from a cluster. For example:
+pgo delete pgadmin mycluster  pgo delete pgadmin [flags]  Options  -h, --help help for pgadmin --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+    </item>
+    
+    <item>
       <title>pgo delete pgbouncer</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_delete_pgbouncer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -240,7 +239,7 @@ pgo delete namespace mynamespace pgo delete namespace --selector=env=test  pgo d
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_delete_pgbouncer/</guid>
       <description>pgo delete pgbouncer Delete a pgbouncer from a cluster
 Synopsis Delete a pgbouncer from a cluster. For example:
-pgo delete pgbouncer mycluster  pgo delete pgbouncer [flags]  Options  -h, --help help for pgbouncer --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo delete pgbouncer mycluster  pgo delete pgbouncer [flags]  Options  -h, --help help for pgbouncer --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering. --uninstall Used to remove any &amp;quot;pgbouncer&amp;quot; owned object and user from the PostgreSQL cluster  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -295,7 +294,7 @@ pgo delete schedule mycluster pgo delete schedule --selector=env=test pgo delete
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_delete_user/</guid>
       <description>pgo delete user Delete a user
 Synopsis Delete a user. For example:
-pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [flags]  Options  --all Delete all PostgreSQL users from all clusters. -h, --help help for user --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering. --username string The username to delete.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [flags]  Options  --all Delete all PostgreSQL users from all clusters. -h, --help help for user --no-prompt No command line confirmation before delete. -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering. --username string The username to delete.</description>
     </item>
     
     <item>
@@ -306,7 +305,7 @@ pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_df/</guid>
       <description>pgo df Display disk space for clusters
 Synopsis Displays the disk status for PostgreSQL clusters. For example:
-pgo df mycluster pgo df all pgo df --selector=env=research  pgo df [flags]  Options  -h, --help help for df -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo df mycluster pgo df --selector=env=research pgo df --all  pgo df [flags]  Options  --all Get disk utilization for all managed clusters -h, --help help for df -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -340,17 +339,6 @@ pgo label mycluster yourcluster --label=environment=prod pgo label all --label=e
       <description>pgo load Perform a data load
 Synopsis LOAD performs a load. For example:
 pgo load --load-config=./load.json --selector=project=xray  pgo load [flags]  Options  -h, --help help for load --load-config string The load configuration to use that defines the load job. --policies string The policies to apply before loading a file, comma separated. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
-    </item>
-    
-    <item>
-      <title>pgo ls</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_ls/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_ls/</guid>
-      <description>pgo ls Perform a ls command on a cluster
-Synopsis LS performs a Linux ls command on a cluster directory. For example:
-pgo ls mycluster /pgdata/mycluster/pg_log  pgo ls [flags]  Options  -h, --help help for ls  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -405,7 +393,7 @@ To list targetable replicas: pgo scaledown mycluster --query To scale down a spe
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show/</guid>
       <description>pgo show Show the description of a cluster
 Synopsis Show allows you to show the details of a policy, backup, pvc, or cluster. For example:
-pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo show benchmark mycluster pgo show cluster mycluster pgo show config pgo show pgouser someuser pgo show policy policy1 pgo show pvc mycluster pgo show namespace pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5 pgo show user --selector=name=mycluster  pgo show [flags]  Options  -h, --help help for show  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo show cluster mycluster pgo show config pgo show pgouser someuser pgo show policy policy1 pgo show pvc mycluster pgo show namespace pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5 pgo show user --selector=name=mycluster  pgo show [flags]  Options  -h, --help help for show  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -417,17 +405,6 @@ pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo
       <description>pgo show backup Show backup information
 Synopsis Show backup information. For example:
 pgo show backup mycluser  pgo show backup [flags]  Options  --backup-type string The backup type output to list. Valid choices are pgbackrest or pgdump. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
-    </item>
-    
-    <item>
-      <title>pgo show benchmark</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show_benchmark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show_benchmark/</guid>
-      <description>pgo show benchmark Show benchmark information
-Synopsis Show benchmark results for clusters. For example:
-pgo show benchmark mycluster pgo show benchmark --selector=pg-cluster=mycluster  pgo show benchmark [flags]  Options  -h, --help help for benchmark -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -461,6 +438,28 @@ pgo show config  pgo show config [flags]  Options  -h, --help help for config  O
       <description>pgo show namespace Show namespace information
 Synopsis Show namespace information for the Operator. For example:
 pgo show namespace  pgo show namespace [flags]  Options  --all show all resources. -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
+    </item>
+    
+    <item>
+      <title>pgo show pgadmin</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show_pgadmin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show_pgadmin/</guid>
+      <description>pgo show pgadmin Show pgadmin deployment information
+Synopsis Show service information about a pgadmin deployment. For example:
+pgo show pgadmin thecluster pgo show pgadmin --selector=app=theapp  pgo show pgadmin [flags]  Options  -h, --help help for pgadmin -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+    </item>
+    
+    <item>
+      <title>pgo show pgbouncer</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show_pgbouncer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show_pgbouncer/</guid>
+      <description>pgo show pgbouncer Show pgbouncer deployment information
+Synopsis Show user, password, and service information about a pgbouncer deployment. For example:
+pgo show pgbouncer hacluster pgo show pgbouncer --selector=app=payment  pgo show pgbouncer [flags]  Options  -h, --help help for pgbouncer -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -526,7 +525,7 @@ pgo show schedule mycluster pgo show schedule --selector=pg-cluster=mycluster pg
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show_user/</guid>
       <description>pgo show user Show user information
 Synopsis Show users on a cluster. For example:
-pgo show user --all pgo show user mycluster pgo show user --selector=name=nycluster  pgo show user [flags]  Options  --all show all clusters. --expired string Shows passwords that will expire in X days. -h, --help help for user -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo show user --all pgo show user mycluster pgo show user --selector=name=nycluster  pgo show user [flags]  Options  --all show all clusters. --expired int Shows passwords that will expire in X days. -h, --help help for user -o, --output string The output format. Supported types are: &amp;quot;json&amp;quot; -s, --selector string The selector to use for cluster filtering.</description>
     </item>
     
     <item>
@@ -570,7 +569,7 @@ pgo test mycluster pgo test --selector=env=research pgo test --all  pgo test [fl
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update/</guid>
       <description>pgo update Update a pgouser, pgorole, or cluster
 Synopsis The update command allows you to update a pgouser, pgorole, or cluster. For example:
-pgo update pgouser someuser --pgouser-password=somenewpassword pgo update pgouser someuser --pgouser-roles=&amp;quot;role1,role2&amp;quot; pgo update pgouser someuser --pgouser-namespaces=&amp;quot;pgouser2&amp;quot; pgo update user mycluster --username=testuser --selector=name=mycluster --password=somepassword pgo update pgorole somerole --pgorole-permission=&amp;quot;Cat&amp;quot; pgo update namespace mynamespace pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster --all --autofail=true  pgo update [flags]  Options  -h, --help help for update  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster --all --autofail=true pgo update namespace mynamespace pgo update pgbouncer mycluster --rotate-password pgo update pgorole somerole --pgorole-permission=&amp;quot;Cat&amp;quot; pgo update pgouser someuser --pgouser-password=somenewpassword pgo update pgouser someuser --pgouser-roles=&amp;quot;role1,role2&amp;quot; pgo update pgouser someuser --pgouser-namespaces=&amp;quot;pgouser2&amp;quot; pgo update pgorole somerole --pgorole-permission=&amp;quot;Cat&amp;quot; pgo update user mycluster --username=testuser --selector=name=mycluster --password=somepassword  pgo update [flags]  Options  -h, --help help for update  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -581,7 +580,7 @@ pgo update pgouser someuser --pgouser-password=somenewpassword pgo update pgouse
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/</guid>
       <description>pgo update cluster Update a PostgreSQL cluster
 Synopsis Update a PostgreSQL cluster. For example:
-pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --disable-autofail pgo update cluster --selector=name=mycluster --disable-autofail pgo update cluster --all --enable-autofail  pgo update cluster [flags]  Options  --all all resources. --disable-autofail Disables autofail capabitilies in the cluster. --enable-autofail Enables autofail capabitilies in the cluster. -h, --help help for cluster --no-prompt No command line confirmation.</description>
+pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --disable-autofail pgo update cluster --selector=name=mycluster --disable-autofail pgo update cluster --all --enable-autofail  pgo update cluster [flags]  Options  --all all resources. --cpu string Set the number of millicores to request for the CPU, e.g. &amp;quot;100m&amp;quot; or &amp;quot;0.1&amp;quot;. --disable-autofail Disables autofail capabitilies in the cluster. --disable-memory-limit Disables the PostgreSQL instances from being set with a memory limit on top of the memory request.</description>
     </item>
     
     <item>
@@ -593,6 +592,17 @@ pgo update cluster mycluster --autofail=false pgo update cluster mycluster myoth
       <description>pgo update namespace Update a namespace, applying Operator RBAC
 Synopsis UPDATE allows you to update a Namespace. For example: pgo update namespace mynamespace
 pgo update namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
+    </item>
+    
+    <item>
+      <title>pgo update pgbouncer</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_pgbouncer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_pgbouncer/</guid>
+      <description>pgo update pgbouncer Update a pgBouncer deployment for a PostgreSQL cluster
+Synopsis Used to update the pgBouncer deployment for a PostgreSQL cluster, such as by rotating a password. For example:
+pgo update pgbouncer hacluster --rotate-password  pgo update pgbouncer [flags]  Options  --cpu string Set the number of millicores to request for CPU for pgBouncer. --disable-memory-limit Disables pgBouncer instances from being set with a memory limit on top of the memory request.</description>
     </item>
     
     <item>
@@ -623,9 +633,11 @@ pgo update pgouser [flags]  Options  --all-namespaces all namespaces. -h, --help
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_user/</guid>
-      <description>pgo update user Update a postgres user
-Synopsis UPDATE allows you to update a pgo user. For example: //change a password, set valid days for 40 days from now pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;password=foo &amp;ndash;valid-days=40 //expire password for a user pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;expire-user //Update all passwords older than the number of days specified pgo update user mycluster &amp;ndash;expired=45 &amp;ndash;password-length=8
-pgo update user [flags]  Options  --all all clusters.</description>
+      <description>pgo update user Update a PostgreSQL user
+Synopsis Allows the ability to perform various user management functions for PostgreSQL users.
+For example:
+//change a password, set valid days for 40 days from now pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;password=foo //expire password for a user pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;expire-user //Update all passwords older than the number of days specified pgo update user mycluster &amp;ndash;expired=45 &amp;ndash;password-length=8
+Disable the ability for a user to log into the PostgreSQL cluster pgo update user mycluster &amp;ndash;username=foobar &amp;ndash;disable-login</description>
     </item>
     
     <item>
@@ -634,11 +646,9 @@ pgo update user [flags]  Options  --all all clusters.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_upgrade/</guid>
-      <description>pgo upgrade Perform an upgrade
-Synopsis UPGRADE performs an upgrade on a PostgreSQL cluster. For example:
-pgo upgrade mycluster
-This upgrade will update the CCPImageTag of the deployment for the primary and all replicas. The running containers are upgraded one at a time, sequentially, in the following order: replicas, backrest-repo, then primary.
-Note: If the PostgreSQL Operator is deployed using OLM, the value of the CCPImageTag is overriden by what is in the RELATEDIMAGE* environmental variables, e.</description>
+      <description>pgo upgrade Perform a cluster upgrade.
+Synopsis UPGRADE allows you to perform a comprehensive PGCluster upgrade (for use after performing a Postgres Operator upgrade). For example:
+pgo upgrade mycluster Upgrades the cluster for use with the upgraded Postgres Operator version.  pgo upgrade [flags]  Options  -h, --help help for upgrade --ignore-validation Disables version checking against the image tags when performing an cluster upgrade.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
