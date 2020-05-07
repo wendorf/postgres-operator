@@ -1191,7 +1191,7 @@ Operator.</p>
 </tr>
 
 <tr>
-<td><code>CCP_IMAGE_PULL_MANIFEST</code></td>
+<td><code>CCP_IMAGE_PULL_SECRET_MANIFEST</code></td>
 <td></td>
 <td></td>
 <td>Provide a path to the Secret manifest to be installed in each namespace. (optional)</td>
@@ -1373,6 +1373,13 @@ Operator.</p>
 </tr>
 
 <tr>
+<td><code>METRICS_NAMESPACE</code></td>
+<td><code>pgo</code></td>
+<td></td>
+<td>Namespace in which the <code>metrics</code> deployments with be run.</td>
+</tr>
+
+<tr>
 <td><code>NAMESPACE</code></td>
 <td></td>
 <td></td>
@@ -1492,7 +1499,7 @@ Operator.</p>
 </tr>
 
 <tr>
-<td><code>PGO_IMAGE_PULL_MANIFEST</code></td>
+<td><code>PGO_IMAGE_PULL_SECRET_MANIFEST</code></td>
 <td></td>
 <td></td>
 <td>Provide a path to the Secret manifest to be installed in each namespace. (optional)</td>
@@ -2008,7 +2015,7 @@ other storage classes in production deployments.</p>
 </tr>
 
 <tr>
-<td>STORAGE6_ACCESS_MODE</td>
+<td>STORAGE7_ACCESS_MODE</td>
 <td>ReadWriteOnce</td>
 </tr>
 
@@ -2023,7 +2030,7 @@ other storage classes in production deployments.</p>
 </tr>
 
 <tr>
-<td>STORAGE6_CLASS</td>
+<td>STORAGE7_CLASS</td>
 <td>alternatesite</td>
 </tr>
 </tbody>
