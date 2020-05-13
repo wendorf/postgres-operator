@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Provisioning :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Automated PostgreSQL Operator Upgrade - Operator 4.1&#43; :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/architecture/provisioning/">
+  <body data-url="/upgrade/automatedupgrade/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -105,11 +105,10 @@
 
       </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/">Architecture</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/">Architecture</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -120,7 +119,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/" class="dd-item active">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/">
             Provisioning
@@ -854,14 +853,15 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade/">
             Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
@@ -1009,21 +1009,7 @@
     <option value="/quickstart/" >
    Quickstart</option>
     <option value="/architecture/" >
-   Architecture</option> 
-      <option value="/architecture/overview/" >- Overview</option>
-      <option value="/architecture/provisioning/"  selected>- Provisioning</option>
-      <option value="/architecture/disaster-recovery/" >- Disaster Recovery</option>
-    <option value="/architecture/high-availability/" >
-  - 
-   High-Availability</option>
-      <option value="/architecture/namespace/" >- Namespace Management</option>
-      <option value="/architecture/eventing/" >- Lifecycle Events</option>
-      <option value="/architecture/postgres-operator-containers-overview/" >- PostgreSQL Containers</option>
-      <option value="/architecture/storage-overview/" >- Storage</option>
-      <option value="/architecture/users-role-overview/" >- User &amp; Roles</option>
-      <option value="/architecture/tablespaces/" >- Tablespaces</option>
-      <option value="/architecture/pgadmin4/" >- pgAdmin 4</option>
-  
+   Architecture</option>
     <option value="/configuration/" >
    Configuration</option>
     <option value="/installation/" >
@@ -1035,7 +1021,12 @@
     <option value="/advanced/" >
    Advanced Topics</option>
     <option value="/upgrade/" >
-   Upgrade</option>
+   Upgrade</option> 
+      <option value="/upgrade/automatedupgrade/"  selected>- Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;</option>
+    <option value="/upgrade/manual/" >
+  - 
+   Manual Upgrades</option>
+  
     <option value="/contributing/" >
    Contributing</option>
     <option value="/releases/" >
@@ -1058,7 +1049,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/architecture/provisioning.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Upgrade/automatedupgrade.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1078,7 +1069,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/architecture/'>Architecture</a> > Provisioning
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/upgrade/'>Upgrade</a> > Automated PostgreSQL Operator Upgrade - Operator 4.1+
 
  
 
@@ -1094,185 +1085,149 @@
     
     <div id="body-inner">
 
-    <h1>Provisioning</h1>
+    <h1>Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;</h1>
 
     
 
     
     
 
-<p>What happens when the Crunchy PostgreSQL Operator creates a PostgreSQL cluster?</p>
+<h2 id="automated-postgresql-operator-upgrade-procedure">Automated PostgreSQL Operator Upgrade Procedure</h2>
 
-<p><img src="https://crunchydata.github.io/postgres-operator/latest/images/postgresql-cluster-ha-s3.png" alt="PostgreSQL HA Cluster" /></p>
-
-<p>First, an entry needs to be added to the <code>Pgcluster</code> CRD that provides the
-essential attributes for maintaining the definition of a PostgreSQL cluster.
-These attributes include:</p>
+<p>The automated upgrade to a new release of the PostgreSQL Operator comprises two main steps:</p>
 
 <ul>
-<li>Cluster name</li>
-<li>The storage and resource definitions to use</li>
-<li>References to any secrets required, e.g. ones to the pgBackRest repository</li>
-<li>High-availability rules</li>
-<li>Which sidecars and ancillary services are enabled, e.g. pgBouncer, pgMonitor</li>
+<li>Upgrading the PostgreSQL Operator itself</li>
+<li>Upgrading the existing PostgreSQL Clusters to the new release</li>
 </ul>
 
-<p>After the Pgcluster CRD entry is set up, the PostgreSQL Operator handles various
-tasks to ensure that a healthy PostgreSQL cluster can be deployed. These
-include:</p>
+<p>The first step will result in an upgraded PostgreSQL Operator that is able to create and manage new clusters as expected, but will be unable to manage existing clusters until they have been upgraded. The second step upgrades the clusters to the current Operator version, allowing them to once again be fully managed by the Operator.</p>
 
-<ul>
-<li>Allocating the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">PersistentVolumeClaim</a>s
-that are used to store the PostgreSQL data as well as the pgBackRest repository</li>
-<li>Setting up the Secrets specific to this PostgreSQL cluster</li>
-<li>Setting up the ConfigMap entries specific for this PostgreSQL cluster,
-including entries that may contain custom configurations as well as ones that
-are used for the PostgreSQL cluster to manage its high-availability</li>
-<li>Creating Deployments for the PostgreSQL primary instance and the pgBackRest
-repository</li>
-</ul>
+<p>The automated upgrade procedure is designed to facilate the quickest and most efficient method to the current release of the PostgreSQL Operator. However, as with any upgrade, there are several considerations before beginning.</p>
 
-<p>You will notice the presence of a pgBackRest repository. As of version 4.2, this
-is a mandatory feature for clusters that are deployed by the PostgreSQL
-Operator. In addition to providing an archive for the PostgreSQL write-ahead
-logs (WAL), the pgBackRest repository serves several critical functions,
-including:</p>
+<h3 id="considerations">Considerations</h3>
 
-<ul>
-<li>Used to efficiently provision new replicas that are added to the PostgreSQL
-cluster</li>
-<li>Prevent replicas from falling out of sync from the PostgreSQL primary by
-allowing them to replay old WAL logs</li>
-<li>Allow failed primaries to automatically and efficiently heal using the
-&ldquo;delta restore&rdquo; feature</li>
-<li>Serves as the basis for the cluster cloning feature</li>
-<li>&hellip;and of course, allow for one to take full, differential, and incremental
-backups and perform full and point-in-time restores</li>
-</ul>
+<ol>
+<li><p>Versions Supported - This upgrade currently supports cluster upgrades from PostgreSQL Operator version 4.1.0 and later.</p></li>
 
-<p>The pgBackRest repository can be configured to use storage that resides within
-the Kubernetes cluster (the <code>local</code> option), Amazon S3 or a storage system that
-uses the S3 protocol (the <code>s3</code> option), or both (<code>local,s3</code>).</p>
+<li><p>PostgreSQL Major Version Requirements - The underlying PostgreSQL major version must match between the old and new clusters. For example, if you are upgrading a 4.1.0 version of the PostgreSQL Operator and the cluster is using PostgreSQL 11.5, your upgraded clusters will need to use container images with a later minor version of PostgreSQL 11. Note that this is not a requirement for new clusters, which may use any currently supported version. For more information, please see the <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">Compatibility Requirements</a>.</p></li>
 
-<p>Once the PostgreSQL primary instance is ready, there are two follow up actions
-that the PostgreSQL Operator takes to properly leverage the pgBackRest
-repository:</p>
+<li><p>Cluster Downtime - The re-creation of clusters will take some time, generally on the order of minutes but potentially longer depending on the operating environment. As such, the timing of the upgrade will be an important consideration. It should be noted that the upgrade of the PostgreSQL Operator itself will leave any existing cluster resources in place until individual pgcluster upgrades are performed.</p></li>
 
-<ul>
-<li>A new pgBackRest stanza is created</li>
-<li>An initial backup is taken to facilitate the creation of any new replica</li>
-</ul>
+<li><p>Destruction and Re-creation of Certain Resources - As this upgrade process does destroy and recreate most elements of the cluster, unhealthy Kubernetes or Openshift environments may have difficulty recreating the necessary elements. Node availability, necessary PVC storage allocations and processing requirements are a few of the resource considerations to make before proceeding.</p></li>
 
-<p>At this point, if new replicas were requested as part of the <code>pgo create</code>
-command, they are provisioned from the pgBackRest repository.</p>
+<li><p>Compatibility with Custom Configurations -  Given the nearly endless potential for custom configuration settings, it is important to consider any resource or implemenation that might be uniquely tied to the current PostgreSQL Operator version.</p></li>
 
-<p>There is a Kubernetes Service created for the Deployment of the primary
-PostgreSQL instance, one for the pgBackRest repository, and one that encompasses
-all of the replicas. Additionally, if the connection pooler pgBouncer is
-deployed with this cluster, it will also have a service as well.</p>
+<li><p>Storage Requirements - An essential part of both the automated and manual upgrade procedures is the reuse of existing PVCs. As such, it is essential that the existing storage settings are maintained for any upgraded clusters.</p></li>
 
-<p>An optional monitoring sidecar can be deployed as well. The sidecar, called
-<code>collect</code>, uses the <code>crunchy-collect</code> container that is a part of pgMonitor and
-scrapes key health metrics into a Prometheus instance. See Monitoring for more
-information on how this works.</p>
+<li><p>As opposed to the manual upgrade procedures, the automated upgrade is designed to leave existing resources (such as CRDs, config maps, secrets, etc) in place whenever possible to minimize the need for resource re-creation.</p></li>
 
-<h2 id="horizontal-scaling">Horizontal Scaling</h2>
+<li><p>Metrics - While the PostgreSQL Operator upgrade process will not delete an existing Metrics Stack, it does not currently support the upgrade of existing metrics infrastructure.</p></li>
+</ol>
 
-<p>There are many reasons why you may want to horizontally scale your PostgreSQL
-cluster:</p>
+<h5 id="note-as-with-any-upgrade-procedure-it-is-strongly-recommended-that-a-full-logical-backup-is-taken-before-any-upgrade-procedure-is-started-please-see-the-logical-backups-pgo-client-common-tasks-logical-backups-pg-dump-pg-dumpall-section-of-the-common-tasks-page-for-more-information">NOTE: As with any upgrade procedure, it is strongly recommended that a full logical backup is taken before any upgrade procedure is started. Please see the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks#logical-backups-pg_dump--pg_dumpall">Logical Backups</a> section of the Common Tasks page for more information.</h5>
 
-<ul>
-<li>Add more redundancy by having additional replicas</li>
-<li>Leveraging load balancing for your read only queries</li>
-<li>Add in a new replica that has more storage or a different container resource
-profile, and then failover to that as the new primary</li>
-</ul>
+<h3 id="automated-upgrade-when-using-an-ansible-installation-of-the-postgresql-operator">Automated Upgrade when using an Ansible installation of the PostgreSQL Operator</h3>
 
-<p>and more.</p>
+<p>For existing PostgreSQL Operator deployments that were installed using Ansible, the upgrade process is straightforward.</p>
 
-<p>The PostgreSQL Operator enables the ability to scale up and down via the
-<code>pgo scale</code> and <code>pgo scaledown</code> commands respectively. When you run <code>pgo scale</code>,
-the PostgreSQL Operator takes the following steps:</p>
+<p>First, you will copy your existing inventory file as a backup for your existing settings. You will reference these settings, but you will need to use the updated version of the inventory file for the current version of PostgreSQL Operator.</p>
 
-<ul>
-<li>The PostgreSQL Operator creates a new Kubernetes Deployment with the
-information specified from the <code>pgo scale</code> command combined with the information
-already stored as part of the managing the existing PostgreSQL cluster</li>
-<li>During the provisioning of the replica, a pgBackRest restore takes place in
-order to bring it up to the point of the last backup. If data already exists
-as part of this replica, then a &ldquo;delta restore&rdquo; is performed. (<strong>NOTE</strong>: If you
-have not taken a backup in awhile and your database is large, consider taking a
-backup before performing scaling up.)</li>
-<li>The new replica boots up in recovery mode and recovers to the latest point in
-time. This allows it to catch up to the current primary.</li>
-<li>Once the replica has recovered, it joins the primary as a streaming replica!</li>
-</ul>
+<p>Once you&rsquo;ve checked out the appropriate release tag, please follow the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/">Update Instructions</a>, being sure to update the new inventory file with your required settings. Please keep the above <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade#considerations">Considerations</a> in mind, particularly with regard to the version and storage requirements listed.</p>
 
-<p>If pgMonitor is enabled, a <code>collect</code> sidecar is also added to the replica
-Deployment.</p>
+<p>Once the update is complete, you should now see the PostgreSQL Operator pods are up and ready. It is strongly recommended that you create a test cluster to validate proper functionality before moving on to the <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade#postgresql-operator-automated-cluster-upgrade">Automated Cluster Upgrade</a> section below.</p>
 
-<p>Scaling down works in the opposite way:</p>
+<h3 id="automated-upgrade-when-using-a-bash-installation-of-the-postgresql-operator">Automated Upgrade when using a Bash installation of the PostgreSQL Operator</h3>
 
-<ul>
-<li>The PostgreSQL instance on the scaled down replica is stopped. By default, the
-data is explicitly wiped out unless the <code>--keep-data</code> flag on <code>pgo scaledown</code> is
-specified. Once the data is removed, the PersistentVolumeClaim (PVC) is also
-deleted</li>
-<li>The Kubernetes Deployment associated with the replica is removed, as well as
-any other Kubernetes objects that are specifically associated with this replcia</li>
-</ul>
+<p>Like the Ansible procedure given above, the Bash upgrade procedure for upgrading the PostgreSQL Operator will require some manual configuration steps before the upgrade can take place. These updates will be made to your user&rsquo;s environment variables and the pgo.yaml configuration file.</p>
 
-<h2 id="custom-configuration-hahahugoshortcode-s0-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom Configuration</a></h2>
+<h4 id="postgresql-operator-configuration-updates">PostgreSQL Operator Configuration Updates</h4>
 
-<p>PostgreSQL workloads often need tuning and additional configuration in production
-environments, and the PostgreSQL Operator allows for this via its ability to
-manage <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">custom PostgreSQL configuration</a>.</p>
+<p>To begin, you will need to make the following updates to your existing configuration.</p>
 
-<p>The custom configuration can be edit from a <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a>
-that follows the pattern of <code>&lt;clusterName&gt;-pgha-config</code>, where <code>&lt;clusterName&gt;</code>
-would be <code>hippo</code> in <code>pgo create cluster hippo</code>. When the ConfigMap is edited,
-the changes are automatically pushed out to all of the PostgreSQL instances
-within a cluster.</p>
+<h5 id="bashrc-file-updates">Bashrc File Updates</h5>
 
-<p>For more information on how this works and what configuration settings are
-editable, please visit the &ldquo;<a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL configuration</a>&ldquo;
-section of the documentation.</p>
+<p>First, you will make the following updates to your $HOME/.bashrc file.</p>
 
-<h2 id="deprovisioning">Deprovisioning</h2>
+<p>When upgrading from version 4.1.X, in <code>$HOME/.bashrc</code></p>
 
-<p>There may become a point where you need to completely deprovision, or delete, a
-PostgreSQL cluster. You can delete a cluster managed by the PostgreSQL Operator
-using the <code>pgo delete</code> command. By default, all data and backups are removed
-when you delete a PostgreSQL cluster, but there are some options that allow you
-to retain data, including:</p>
+<p>Add the following variables:</p>
 
-<ul>
-<li><code>--keep-backups</code> - this retains the pgBackRest repository. This can be used to
-restore the data to a new PostgreSQL cluster.</li>
-<li><code>--keep-data</code> - this retains the PostgreSQL data directory (aka <code>PGDATA</code>) from
-the primary PostgreSQL instance in the cluster. This can be used to recreate the
-PostgreSQL cluster of the same name.</li>
-</ul>
+<pre><code>export TLS_CA_TRUST=&quot;&quot;
+export ADD_OS_TRUSTSTORE=false
+export NOAUTH_ROUTES=&quot;&quot;
 
-<p>When the PostgreSQL cluster is deleted, the following takes place:</p>
+# Disable default inclusion of OS trust in PGO clients
+export EXCLUDE_OS_TRUST=false
+</code></pre>
 
-<ul>
-<li>All PostgreSQL instances are stopped. By default, the data is explicitly wiped
-out unless the <code>--keep-data</code> flag on <code>pgo scaledown</code> is specified. Once the data
-is removed, the PersistentVolumeClaim (PVC) is also deleted</li>
-<li>Any Services, ConfigMaps, Secrets, etc. Kubernetes objects are all deleted</li>
-<li>The Kubernetes Deployments associated with the PostgreSQL instances are
-removed, as well as the Kubernetes Deployments associated with pgBackRest
-repository and, if deployed, the pgBouncer connection pooler</li>
-</ul>
+<p>Then, for either 4.1.X or 4.2.X,</p>
+
+<p>Update the <code>PGO_VERSION</code> variable to <code>4.3.0</code></p>
+
+<p>Finally, source this file with</p>
+
+<pre><code>source $HOME/.bashrc
+</code></pre>
+
+<h5 id="postgresql-operator-configuration-file-updates">PostgreSQL Operator Configuration File updates</h5>
+
+<p>Next, you will and save a copy of your existing pgo.yaml file (<code>$PGOROOT/conf/postgres-operator/pgo.yaml</code>) as pgo_old.yaml or similar.</p>
+
+<p>Once this is saved, you will checkout the current release of the PostgreSQL Operator and update the pgo.yaml for the current version, making sure to make updates to the CCPImageTag and storage settings in line with the <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade#considerations">Considerations</a> given above.</p>
+
+<h4 id="upgrading-the-operator">Upgrading the Operator</h4>
+
+<p>Once the above configuration updates are completed, the PostgreSQL Operator can be upgraded.
+To help ensure that needed resources are not inadvertently deleted during an upgrade of the PostgreSQL Operator, a helper script is provided. This script provides a similar function to the Ansible installation method&rsquo;s &lsquo;update&rsquo; tag, where the Operator is undeployed, and the designated namespaces, RBAC rules, pods, etc are redeployed or recreated as appropriate, but required CRDs and other resources are left in place.</p>
+
+<p>To use the script, execute:</p>
+
+<pre><code>$PGOROOT/deploy/upgrade-pgo.sh
+</code></pre>
+
+<p>This script will undeploy the current PostgreSQL Operator, configure the desired namespaces, install the RBAC configuration, deploy the new Operator, and, attempt to install a new PGO client, assuming default location settings are being used.</p>
+
+<p>After this script completes, it is strongly recommended that you create a test cluster to validate the Operator is functioning as expected before moving on to the individual cluster upgrades.</p>
+
+<h2 id="postgresql-operator-automated-cluster-upgrade">PostgreSQL Operator Automated Cluster Upgrade</h2>
+
+<p>Previously, the existing cluster upgrade focused on updating a cluster&rsquo;s underlying container images. However, due to the various changes in the PostgreSQL Operator&rsquo;s operation between the various versions (including numerous updates to the relevant CRDs, integration of Patroni for HA and other significant changes), updates between PostgreSQL Operator releases required the manual deletion of the existing clusters while preserving the underlying PVC storage. After installing the new PostgreSQL Operator version, the clusters could be recreated manually with the name of the new cluster matching the existing PVC&rsquo;s name.</p>
+
+<p>The automated upgrade process provides a mechanism where, instead of being deleted, the existing PostgreSQL clusters will be left in place during the PostgreSQL Operator upgrade. While normal Operator functionality will be restricted on these existing clusters until they are upgraded to the currently installed PostgreSQL Operator version, the pods, services, etc will still be in place and accessible via other methods (e.g. kubectl, service IP, etc).</p>
+
+<p>To upgrade a particular cluster, use</p>
+
+<pre><code>pgo upgrade mycluster
+</code></pre>
+
+<p>This will follow a similar process to the documented manual process, where the pods, deployments, replicasets, pgtasks and jobs are deleted, the cluster&rsquo;s replicas are scaled down and replica PVCs deleted, but the primary PVC and backrest-repo PVC are left in place. Existing services for the primary, replica and backrest-shared-repo are also kept and will be updated to the requirements of the current version. Configmaps and secrets are kept except where deletion is required. For a cluster &lsquo;mycluster&rsquo;, the following configmaps will be deleted (if they exist) and recreated:</p>
+
+<pre><code>mycluster-leader
+mycluster-pgha-default-config
+</code></pre>
+
+<p>along with the following secret:</p>
+
+<pre><code>mycluster-backrest-repo-config
+</code></pre>
+
+<p>The pgcluster CRD will be read, updated automatically and replaced, at which point the normal cluster creation process will take over. The end result of the upgrade should be an identical numer of pods, deployments, replicas, etc with a new pgbackrest backup taken, but existing backups left in place.</p>
+
+<p>Finally, to disable PostgreSQL version checking during the upgrade, such as for when container images are re-tagged and no longer follow the standard version tagging format, use the &ldquo;ignore-validation&rdquo; flag:</p>
+
+<pre><code>pgo upgrade mycluster --ignore-validation
+</code></pre>
+
+<p>That will allow the upgrade to proceed, regardless of the tag values. Please note, the underlying image must still be chosen in accordance with the <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade#considerations">Considerations</a> listed above.</p>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/architecture/overview/" title="Overview"> <i class="fa fa-chevron-left"></i><label>Overview</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/" title="Disaster Recovery" style="margin-right: 0px;"><label>Disaster Recovery</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/" title="Upgrade"> <i class="fa fa-chevron-left"></i><label>Upgrade</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/" title="Manual Upgrades" style="margin-right: 0px;"><label>Manual Upgrades</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Provisioning :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Manual Upgrade - Operator 3.5 :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/architecture/provisioning/">
+  <body data-url="/upgrade/manual/upgrade35/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -105,11 +105,10 @@
 
       </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/">Architecture</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/">Architecture</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -120,7 +119,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/" class="dd-item active">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/">
             Provisioning
@@ -854,10 +853,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -868,14 +868,15 @@
           </a>
         </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/">Manual Upgrades</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
@@ -1009,21 +1010,7 @@
     <option value="/quickstart/" >
    Quickstart</option>
     <option value="/architecture/" >
-   Architecture</option> 
-      <option value="/architecture/overview/" >- Overview</option>
-      <option value="/architecture/provisioning/"  selected>- Provisioning</option>
-      <option value="/architecture/disaster-recovery/" >- Disaster Recovery</option>
-    <option value="/architecture/high-availability/" >
-  - 
-   High-Availability</option>
-      <option value="/architecture/namespace/" >- Namespace Management</option>
-      <option value="/architecture/eventing/" >- Lifecycle Events</option>
-      <option value="/architecture/postgres-operator-containers-overview/" >- PostgreSQL Containers</option>
-      <option value="/architecture/storage-overview/" >- Storage</option>
-      <option value="/architecture/users-role-overview/" >- User &amp; Roles</option>
-      <option value="/architecture/tablespaces/" >- Tablespaces</option>
-      <option value="/architecture/pgadmin4/" >- pgAdmin 4</option>
-  
+   Architecture</option>
     <option value="/configuration/" >
    Configuration</option>
     <option value="/installation/" >
@@ -1035,7 +1022,15 @@
     <option value="/advanced/" >
    Advanced Topics</option>
     <option value="/upgrade/" >
-   Upgrade</option>
+   Upgrade</option> 
+      <option value="/upgrade/automatedupgrade/" >- Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;</option>
+    <option value="/upgrade/manual/" >
+  - 
+   Manual Upgrades</option> 
+      <option value="/upgrade/manual/upgrade35/"  selected>-- Manual Upgrade - Operator 3.5</option>
+      <option value="/upgrade/manual/upgrade4/" >-- Manual Upgrade - Operator 4</option>
+  
+  
     <option value="/contributing/" >
    Contributing</option>
     <option value="/releases/" >
@@ -1058,7 +1053,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/architecture/provisioning.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Upgrade/manual/upgrade35.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1078,7 +1073,12 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/architecture/'>Architecture</a> > Provisioning
+
+
+
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/upgrade/'>Upgrade</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/'>Manual Upgrades</a> > Manual Upgrade - Operator 3.5
+
+ 
 
  
 
@@ -1094,185 +1094,239 @@
     
     <div id="body-inner">
 
-    <h1>Provisioning</h1>
+    <h1>Manual Upgrade - Operator 3.5</h1>
 
     
 
     
     
 
-<p>What happens when the Crunchy PostgreSQL Operator creates a PostgreSQL cluster?</p>
+<h2 id="upgrading-the-crunchy-postgresql-operator-from-version-3-5-to-4-3-0">Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to 4.3.0</h2>
 
-<p><img src="https://crunchydata.github.io/postgres-operator/latest/images/postgresql-cluster-ha-s3.png" alt="PostgreSQL HA Cluster" /></p>
+<p>This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version 4.3.0. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</p>
 
-<p>First, an entry needs to be added to the <code>Pgcluster</code> CRD that provides the
-essential attributes for maintaining the definition of a PostgreSQL cluster.
-These attributes include:</p>
+<h4 id="crunchy-postgresql-high-availability-containers">Crunchy PostgreSQL High Availability Containers</h4>
 
-<ul>
-<li>Cluster name</li>
-<li>The storage and resource definitions to use</li>
-<li>References to any secrets required, e.g. ones to the pgBackRest repository</li>
-<li>High-availability rules</li>
-<li>Which sidecars and ancillary services are enabled, e.g. pgBouncer, pgMonitor</li>
-</ul>
+<p>Using the PostgreSQL Operator 4.3.0 requires replacing your <code>crunchy-postgres</code> and <code>crunchy-postgres-gis</code> containers with the <code>crunchy-postgres-ha</code> and <code>crunchy-postgres-gis-ha</code> containers respectively. The underlying PostgreSQL installations in the container remain the same but are now optimized for Kubernetes environments to provide the new high-availability functionality.</p>
 
-<p>After the Pgcluster CRD entry is set up, the PostgreSQL Operator handles various
-tasks to ensure that a healthy PostgreSQL cluster can be deployed. These
-include:</p>
+<p>A major change to this container is that the PostgreSQL process is now managed by Patroni. This allows a PostgreSQL cluster that is deployed by the PostgreSQL Operator to manage its own uptime and availability, to elect a new leader in the event of a downtime scenario, and to automatically heal after a failover event.</p>
 
-<ul>
-<li>Allocating the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">PersistentVolumeClaim</a>s
-that are used to store the PostgreSQL data as well as the pgBackRest repository</li>
-<li>Setting up the Secrets specific to this PostgreSQL cluster</li>
-<li>Setting up the ConfigMap entries specific for this PostgreSQL cluster,
-including entries that may contain custom configurations as well as ones that
-are used for the PostgreSQL cluster to manage its high-availability</li>
-<li>Creating Deployments for the PostgreSQL primary instance and the pgBackRest
-repository</li>
-</ul>
+<p>When creating your new clusters using version 4.3.0 of the PostgreSQL Operator, the <code>pgo create cluster</code> command will automatically use the new <code>crunchy-postgres-ha</code> image if the image is unspecified. If you are creating a PostGIS enabled cluster, please be sure to use the updated image name, as with the command:</p>
 
-<p>You will notice the presence of a pgBackRest repository. As of version 4.2, this
-is a mandatory feature for clusters that are deployed by the PostgreSQL
-Operator. In addition to providing an archive for the PostgreSQL write-ahead
-logs (WAL), the pgBackRest repository serves several critical functions,
-including:</p>
+<pre><code>pgo create cluster mygiscluster --ccp-image=crunchy-postgres-gis-ha
+</code></pre>
+
+<p>NOTE: As with any upgrade procedure, it is strongly recommended that a full logical backup is taken before any upgrade procedure is started. Please see the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks#logical-backups-pg_dump--pg_dumpall">Logical Backups</a> section of the Common Tasks page for more information.</p>
+
+<h5 id="prerequisites">Prerequisites.</h5>
+
+<p>You will need the following items to complete the upgrade:</p>
 
 <ul>
-<li>Used to efficiently provision new replicas that are added to the PostgreSQL
-cluster</li>
-<li>Prevent replicas from falling out of sync from the PostgreSQL primary by
-allowing them to replay old WAL logs</li>
-<li>Allow failed primaries to automatically and efficiently heal using the
-&ldquo;delta restore&rdquo; feature</li>
-<li>Serves as the basis for the cluster cloning feature</li>
-<li>&hellip;and of course, allow for one to take full, differential, and incremental
-backups and perform full and point-in-time restores</li>
+<li>The code for the latest PostgreSQL Operator available</li>
+<li>The latest client binary</li>
 </ul>
 
-<p>The pgBackRest repository can be configured to use storage that resides within
-the Kubernetes cluster (the <code>local</code> option), Amazon S3 or a storage system that
-uses the S3 protocol (the <code>s3</code> option), or both (<code>local,s3</code>).</p>
+<h5 id="step-1">Step 1</h5>
 
-<p>Once the PostgreSQL primary instance is ready, there are two follow up actions
-that the PostgreSQL Operator takes to properly leverage the pgBackRest
-repository:</p>
+<p>Create a new Linux user with the same permissions as the existing user used to install the Crunchy PostgreSQL Operator. This is necessary to avoid any issues with environment variable differences between 3.5 and 4.3.0.</p>
 
-<ul>
-<li>A new pgBackRest stanza is created</li>
-<li>An initial backup is taken to facilitate the creation of any new replica</li>
-</ul>
+<h5 id="step-2">Step 2</h5>
 
-<p>At this point, if new replicas were requested as part of the <code>pgo create</code>
-command, they are provisioned from the pgBackRest repository.</p>
+<p>For the cluster(s) you wish to upgrade, record the cluster details provided by</p>
 
-<p>There is a Kubernetes Service created for the Deployment of the primary
-PostgreSQL instance, one for the pgBackRest repository, and one that encompasses
-all of the replicas. Additionally, if the connection pooler pgBouncer is
-deployed with this cluster, it will also have a service as well.</p>
+<pre><code>pgo show cluster &lt;clustername&gt;
+</code></pre>
 
-<p>An optional monitoring sidecar can be deployed as well. The sidecar, called
-<code>collect</code>, uses the <code>crunchy-collect</code> container that is a part of pgMonitor and
-scrapes key health metrics into a Prometheus instance. See Monitoring for more
-information on how this works.</p>
+<p>so that your new clusters can be recreated with the proper settings.</p>
 
-<h2 id="horizontal-scaling">Horizontal Scaling</h2>
+<p>Also, you will need to note the name of the primary PVC. If it does not exactly match the cluster name, you will need to recreate your cluster using the primary PVC name as the new cluster name.</p>
 
-<p>There are many reasons why you may want to horizontally scale your PostgreSQL
-cluster:</p>
+<p>For example, given the following output:</p>
 
-<ul>
-<li>Add more redundancy by having additional replicas</li>
-<li>Leveraging load balancing for your read only queries</li>
-<li>Add in a new replica that has more storage or a different container resource
-profile, and then failover to that as the new primary</li>
-</ul>
+<pre><code>$ pgo show cluster mycluster
 
-<p>and more.</p>
+cluster : mycluster (crunchy-postgres:centos7-11.5-2.4.2)
+	pod : mycluster-7bbf54d785-pk5dq (Running) on kubernetes1 (1/1) (replica)
+	pvc : mycluster
+	pod : mycluster-ypvq-5b9b8d645-nvlb6 (Running) on kubernetes1 (1/1) (primary)
+	pvc : mycluster-ypvq
+...
+</code></pre>
 
-<p>The PostgreSQL Operator enables the ability to scale up and down via the
-<code>pgo scale</code> and <code>pgo scaledown</code> commands respectively. When you run <code>pgo scale</code>,
-the PostgreSQL Operator takes the following steps:</p>
+<p>the new cluster&rsquo;s name will need to be &ldquo;mycluster-ypvq&rdquo;</p>
 
-<ul>
-<li>The PostgreSQL Operator creates a new Kubernetes Deployment with the
-information specified from the <code>pgo scale</code> command combined with the information
-already stored as part of the managing the existing PostgreSQL cluster</li>
-<li>During the provisioning of the replica, a pgBackRest restore takes place in
-order to bring it up to the point of the last backup. If data already exists
-as part of this replica, then a &ldquo;delta restore&rdquo; is performed. (<strong>NOTE</strong>: If you
-have not taken a backup in awhile and your database is large, consider taking a
-backup before performing scaling up.)</li>
-<li>The new replica boots up in recovery mode and recovers to the latest point in
-time. This allows it to catch up to the current primary.</li>
-<li>Once the replica has recovered, it joins the primary as a streaming replica!</li>
-</ul>
+<h5 id="step-3">Step 3</h5>
 
-<p>If pgMonitor is enabled, a <code>collect</code> sidecar is also added to the replica
-Deployment.</p>
+<p>NOTE: Skip this step if your primary PVC still matches your original cluster name, or if you do not have pgBackrestBackups you wish to preserve for use in the upgraded cluster.</p>
 
-<p>Scaling down works in the opposite way:</p>
+<p>Otherwise, noting the primary PVC name mentioned in Step 2, run</p>
 
-<ul>
-<li>The PostgreSQL instance on the scaled down replica is stopped. By default, the
-data is explicitly wiped out unless the <code>--keep-data</code> flag on <code>pgo scaledown</code> is
-specified. Once the data is removed, the PersistentVolumeClaim (PVC) is also
-deleted</li>
-<li>The Kubernetes Deployment associated with the replica is removed, as well as
-any other Kubernetes objects that are specifically associated with this replcia</li>
-</ul>
+<pre><code>kubectl exec mycluster-backrest-shared-repo-&lt;id&gt; -- bash -c &quot;mv /backrestrepo/mycluster-backrest-shared-repo /backrestrepo/mycluster-ypvq-backrest-shared-repo&quot;
+</code></pre>
 
-<h2 id="custom-configuration-hahahugoshortcode-s0-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom Configuration</a></h2>
+<p>where &ldquo;mycluster&rdquo; is the original cluster name, &ldquo;mycluster-ypvq&rdquo; is the primary PVC name and &ldquo;mycluster-backrest-shared-repo-<id>&rdquo; is the pgBackRest shared repo pod name.</p>
 
-<p>PostgreSQL workloads often need tuning and additional configuration in production
-environments, and the PostgreSQL Operator allows for this via its ability to
-manage <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">custom PostgreSQL configuration</a>.</p>
+<h5 id="step-4">Step 4</h5>
 
-<p>The custom configuration can be edit from a <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a>
-that follows the pattern of <code>&lt;clusterName&gt;-pgha-config</code>, where <code>&lt;clusterName&gt;</code>
-would be <code>hippo</code> in <code>pgo create cluster hippo</code>. When the ConfigMap is edited,
-the changes are automatically pushed out to all of the PostgreSQL instances
-within a cluster.</p>
+<p>For the cluster(s) you wish to upgrade, scale down any replicas, if necessary, then delete the cluster</p>
 
-<p>For more information on how this works and what configuration settings are
-editable, please visit the &ldquo;<a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL configuration</a>&ldquo;
-section of the documentation.</p>
+<pre><code>pgo delete cluster &lt;clustername&gt;
+</code></pre>
 
-<h2 id="deprovisioning">Deprovisioning</h2>
+<p>If there are any remaining jobs for this deleted cluster, use</p>
 
-<p>There may become a point where you need to completely deprovision, or delete, a
-PostgreSQL cluster. You can delete a cluster managed by the PostgreSQL Operator
-using the <code>pgo delete</code> command. By default, all data and backups are removed
-when you delete a PostgreSQL cluster, but there are some options that allow you
-to retain data, including:</p>
+<pre><code>kubectl -n &lt;namespace&gt; delete job &lt;jobname&gt;
+</code></pre>
 
-<ul>
-<li><code>--keep-backups</code> - this retains the pgBackRest repository. This can be used to
-restore the data to a new PostgreSQL cluster.</li>
-<li><code>--keep-data</code> - this retains the PostgreSQL data directory (aka <code>PGDATA</code>) from
-the primary PostgreSQL instance in the cluster. This can be used to recreate the
-PostgreSQL cluster of the same name.</li>
-</ul>
+<p>to remove the job and any associated &ldquo;Completed&rdquo; pods.</p>
 
-<p>When the PostgreSQL cluster is deleted, the following takes place:</p>
+<p>NOTE: Please record the name of each cluster, the namespace used, and be sure not to delete the associated PVCs or CRDs!</p>
 
-<ul>
-<li>All PostgreSQL instances are stopped. By default, the data is explicitly wiped
-out unless the <code>--keep-data</code> flag on <code>pgo scaledown</code> is specified. Once the data
-is removed, the PersistentVolumeClaim (PVC) is also deleted</li>
-<li>Any Services, ConfigMaps, Secrets, etc. Kubernetes objects are all deleted</li>
-<li>The Kubernetes Deployments associated with the PostgreSQL instances are
-removed, as well as the Kubernetes Deployments associated with pgBackRest
-repository and, if deployed, the pgBouncer connection pooler</li>
-</ul>
+<h5 id="step-5">Step 5</h5>
+
+<p>Delete the 3.5.x version of the operator by executing:</p>
+
+<pre><code>$COROOT/deploy/cleanup.sh
+$COROOT/deploy/remove-crd.sh
+</code></pre>
+
+<h5 id="step-6">Step 6</h5>
+
+<p>Log in as your new Linux user and install the 4.3.0 PostgreSQL Operator as described in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/">Bash Installation Procedure</a>.</p>
+
+<p>Be sure to add the existing namespace to the Operator&rsquo;s list of watched namespaces (see the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/">Namespace</a> section of this document for more information) and make sure to avoid overwriting any existing data storage.</p>
+
+<p>We strongly recommend that you create a test cluster before proceeding to the next step.</p>
+
+<h5 id="step-7">Step 7</h5>
+
+<p>Once the Operator is installed and functional, create a new 4.3.0 cluster matching the cluster details recorded in Step 1. Be sure to use the primary PVC name (also noted in Step 1) and the same major PostgreSQL version as was used previously. This will allow the new clusters to utilize the existing PVCs.</p>
+
+<p>NOTE: If you have existing pgBackRest backups stored that you would like to have available in the upgraded cluster, you will need to follow the <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/#pgbackrest-repo-pvc-renaming">PVC Renaming Procedure</a>.</p>
+
+<p>A simple example is given below, but more information on cluster creation can be found <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks#creating-a-postgresql-cluster">here</a></p>
+
+<pre><code>pgo create cluster &lt;clustername&gt; -n &lt;namespace&gt;
+</code></pre>
+
+<h5 id="step-8">Step 8</h5>
+
+<p>Manually update the old leftover Secrets to use the new label as defined in 4.3.0:</p>
+
+<pre><code>kubectl -n &lt;namespace&gt; label secret/&lt;clustername&gt;-postgres-secret pg-cluster=&lt;clustername&gt; -n &lt;namespace&gt;
+kubectl -n &lt;namespace&gt; label secret/&lt;clustername&gt;-primaryuser-secret pg-cluster=&lt;clustername&gt; -n &lt;namespace&gt;
+kubectl -n &lt;namespace&gt; label secret/&lt;clustername&gt;-testuser-secret pg-cluster=&lt;clustername&gt; -n &lt;namespace&gt;
+</code></pre>
+
+<h5 id="step-9">Step 9</h5>
+
+<p>To verify cluster status, run</p>
+
+<pre><code>pgo test &lt;clustername&gt; -n &lt;namespace&gt;
+</code></pre>
+
+<p>Output should be similar to:</p>
+
+<pre><code>cluster : mycluster
+        Services
+                primary (10.106.70.238:5432): UP
+        Instances
+                primary (mycluster-7d49d98665-7zxzd): UP
+</code></pre>
+
+<h5 id="step-10">Step 10</h5>
+
+<p>Scale up to the required number of replicas, as needed.</p>
+
+<p>Congratulations! Your cluster is upgraded and ready to use!</p>
+
+<h3 id="pgbackrest-repo-pvc-renaming">pgBackRest Repo PVC Renaming</h3>
+
+<p>If the pgcluster you are upgrading has an existing pgBackRest repo PVC that you would like to continue to use (which is required for existing pgBackRest backups to be accessible by your new cluster), the following renaming procedure will be needed.</p>
+
+<h5 id="step-1-1">Step 1</h5>
+
+<p>To start, if your current cluster is &ldquo;mycluster&rdquo;, the pgBackRest PVC created by version 3.5 of the Postgres Operator will be named &ldquo;mycluster-backrest-shared-repo&rdquo;. This will need to be renamed to &ldquo;mycluster-pgbr-repo&rdquo; to be used in your new cluster.</p>
+
+<p>To begin, save the output from</p>
+
+<pre><code>kubectl -n &lt;namespace&gt; describe pvc mycluster-backrest-shared-repo
+</code></pre>
+
+<p>for later use when recreating this PVC with the new name. In this output, note the &ldquo;Volume&rdquo; name, which is the name of the underlying PV.</p>
+
+<h5 id="step-2-1">Step 2</h5>
+
+<p>Now use</p>
+
+<pre><code>kubectl -n &lt;namespace&gt; get pv &lt;PV name&gt;
+</code></pre>
+
+<p>to check the &ldquo;RECLAIM POLICY&rdquo;. If this is not set to &ldquo;Retain&rdquo;, edit the &ldquo;persistentVolumeReclaimPolicy&rdquo; value so that it is set to &ldquo;Retain&rdquo; using</p>
+
+<pre><code>kubectl -n &lt;namespace&gt; patch pv &lt;PV name&gt; --type='json' -p='[{&quot;op&quot;: &quot;replace&quot;, &quot;path&quot;: &quot;/spec/persistentVolumeReclaimPolicy&quot;, &quot;value&quot;:&quot;Retain&quot;}]'
+</code></pre>
+
+<h5 id="step-3-1">Step 3</h5>
+
+<p>Now, delete the PVC:</p>
+
+<pre><code>kubectl -n &lt;namespace&gt; delete pvc mycluster-backrest-shared-repo
+</code></pre>
+
+<h5 id="step-4-1">Step 4</h5>
+
+<p>You will remove the &ldquo;claimRef&rdquo; section of the PV with</p>
+
+<pre><code>kubectl -n &lt;namespace&gt; patch pv &lt;PV name&gt; --type=json -p='[{&quot;op&quot;: &quot;remove&quot;, &quot;path&quot;: &quot;/spec/claimRef&quot;}]'
+</code></pre>
+
+<p>which will make the PV &ldquo;Available&rdquo; so it may be reused by the new PVC.</p>
+
+<h5 id="step-5-1">Step 5</h5>
+
+<p>Now, create a file with contents similar to the following:</p>
+
+<pre><code>kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mycluster-pgbr-repo 
+  namespace: demo
+spec:
+  storageClassName: &quot;&quot;
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi
+  volumeMode: Filesystem
+  volumeName: &quot;crunchy-pv156&quot;
+</code></pre>
+
+<p>where name matches your new cluster (Remember that this will need to match the &ldquo;primary PVC&rdquo; name identified in <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/#step-2">Step 2</a> of the upgrade procedure!) and namespace, storageClassName, accessModes, storage, volumeMode and volumeName match your original PVC.</p>
+
+<h5 id="step-6-1">Step 6</h5>
+
+<p>Now you can use the new file to recreate your PVC using</p>
+
+<pre><code>kubectl -n &lt;namespace&gt; create -f &lt;filename&gt;
+</code></pre>
+
+<p>To check that your PVC is &ldquo;Bound&rdquo;, run</p>
+
+<pre><code>kubectl -n &lt;namespace&gt; get pvc mycluster-pgbr-repo
+</code></pre>
+
+<p>Congratulations, you have renamed your PVC! Once the PVC Status is &ldquo;Bound&rdquo;, your cluster can be recreated. If you altered the Reclaim Policy on your PV in Step 1, you will want to reset it now.</p>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/architecture/overview/" title="Overview"> <i class="fa fa-chevron-left"></i><label>Overview</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/" title="Disaster Recovery" style="margin-right: 0px;"><label>Disaster Recovery</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/" title="Manual Upgrades"> <i class="fa fa-chevron-left"></i><label>Manual Upgrades</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade4/" title="Manual Upgrade - Operator 4" style="margin-right: 0px;"><label>Manual Upgrade - Operator 4</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

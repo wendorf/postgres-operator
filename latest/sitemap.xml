@@ -43,11 +43,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade4/</loc>
   </url>
   
   <url>
@@ -127,6 +127,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/</loc>
   </url>
   
@@ -140,6 +144,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/</loc>
   </url>
   
   <url>

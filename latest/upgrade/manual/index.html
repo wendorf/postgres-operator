@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Manual Upgrade - Operator 4 :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Manual Upgrades :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/upgrade/upgrade4/">
+  <body data-url="/upgrade/manual/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -861,19 +861,36 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/" class="dd-item parent active haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/">Manual Upgrades</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4/" class="dd-item active">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -1006,8 +1023,13 @@
    Advanced Topics</option>
     <option value="/upgrade/" >
    Upgrade</option> 
-      <option value="/upgrade/upgrade35/" >- Manual Upgrade - Operator 3.5</option>
-      <option value="/upgrade/upgrade4/"  selected>- Manual Upgrade - Operator 4</option>
+      <option value="/upgrade/automatedupgrade/" >- Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;</option>
+    <option value="/upgrade/manual/"  selected>
+  - 
+   Manual Upgrades</option> 
+      <option value="/upgrade/manual/upgrade35/" >-- Manual Upgrade - Operator 3.5</option>
+      <option value="/upgrade/manual/upgrade4/" >-- Manual Upgrade - Operator 4</option>
+  
   
     <option value="/contributing/" >
    Contributing</option>
@@ -1031,7 +1053,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Upgrade/upgrade4.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Upgrade/manual/_index.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1051,7 +1073,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/upgrade/'>Upgrade</a> > Manual Upgrade - Operator 4
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/upgrade/'>Upgrade</a> > Manual Upgrades
 
  
 
@@ -1067,349 +1089,32 @@
     
     <div id="body-inner">
 
-    <h1>Manual Upgrade - Operator 4</h1>
+    <h1>Manual Upgrades</h1>
 
     
 
     
-    
 
-<h2 id="manual-postgresql-operator-4-upgrade-procedure">Manual PostgreSQL Operator 4 Upgrade Procedure</h2>
 
-<p>Below are the procedures for upgrading to version 4.3.0 of the Crunchy PostgreSQL Operator using the Bash or Ansible installation methods. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably for those upgrading from 4.1 and below, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator did not use the HA containers.</p>
 
-<h4 id="crunchy-postgresql-high-availability-containers">Crunchy PostgreSQL High Availability Containers</h4>
+<h2 id="manually-upgrading-the-operator-and-postgresql-clusters">Manually Upgrading the Operator and PostgreSQL Clusters</h2>
 
-<p>Using the PostgreSQL Operator 4.3.0 requires replacing your <code>crunchy-postgres</code> and <code>crunchy-postgres-gis</code> containers with the <code>crunchy-postgres-ha</code> and <code>crunchy-postgres-gis-ha</code> containers respectively. The underlying PostgreSQL installations in the container remain the same but are now optimized for Kubernetes environments to provide the new high-availability functionality.</p>
+<p>In the event that the automated upgrade cannot be used, below are manual upgrade procedures for both PostgreSQL Operator 3.5 and 4.0 releases. These procedures will require action by the Operator administrator of your organization in order to upgrade to the current release of the Operator. Some upgrade steps are still automated within the Operator, but not all are possible with this upgrade method. As such, the pages below show the specific steps required to upgrade different versions of the PostgreSQL Operator depending on your current environment.</p>
 
-<p>A major change to this container is that the PostgreSQL process is now managed by Patroni. This allows a PostgreSQL cluster that is deployed by the PostgreSQL Operator to manage its own uptime and availability, to elect a new leader in the event of a downtime scenario, and to automatically heal after a failover event.</p>
+<p>In the event that you are performing a manual upgrade, it is recommended to upgrade to the latest PostgreSQL Operator available.</p>
 
-<p>When creating your new clusters using version 4.3.0 of the PostgreSQL Operator, the <code>pgo create cluster</code> command will automatically use the new <code>crunchy-postgres-ha</code> image if the image is unspecified. If you are creating a PostGIS enabled cluster, please be sure to use the updated image name, as with the command:</p>
+<p><a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/">Manual Upgrade - PostgreSQL Operator 3.5</a></p>
 
-<pre><code>pgo create cluster mygiscluster --ccp-image=crunchy-postgres-gis-ha
-</code></pre>
+<p><a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade4/">Manual Upgrade - PostgreSQL Operator 4</a></p>
 
-<h5 id="note-as-with-any-upgrade-procedure-it-is-strongly-recommended-that-a-full-logical-backup-is-taken-before-any-upgrade-procedure-is-started-please-see-the-logical-backups-pgo-client-common-tasks-logical-backups-pg-dump-pg-dumpall-section-of-the-common-tasks-page-for-more-information">NOTE: As with any upgrade procedure, it is strongly recommended that a full logical backup is taken before any upgrade procedure is started. Please see the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks#logical-backups-pg_dump--pg_dumpall">Logical Backups</a> section of the Common Tasks page for more information.</h5>
-
-<p>The Ansible installation upgrade procedure is below. Please click <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4#bash-installation-upgrade-procedure">here</a> for the Bash installation upgrade procedure.</p>
-
-<h3 id="ansible-installation-upgrade-procedure">Ansible Installation Upgrade Procedure</h3>
-
-<p>Below are the procedures for upgrading the PostgreSQL Operator and PostgreSQL clusters using the Ansible installation method.</p>
-
-<h5 id="prerequisites">Prerequisites.</h5>
-
-<p>You will need the following items to complete the upgrade:</p>
-
-<ul>
-<li>The latest 4.3.0 code for the Postgres Operator available</li>
-</ul>
-
-<p>These instructions assume you are executing in a terminal window and that your user has admin privileges in your Kubernetes or Openshift environment.</p>
-
-<h5 id="step-0">Step 0</h5>
-
-<p>For the cluster(s) you wish to upgrade, record the cluster details provided by</p>
-
-<pre><code>    pgo show cluster &lt;clustername&gt;
-</code></pre>
-
-<p>so that your new clusters can be recreated with the proper settings.</p>
-
-<p>Also, you will need to note the name of the primary PVC. If it does not exactly match the cluster name, you will need to recreate your cluster using the primary PVC name as the new cluster name.</p>
-
-<p>For example, given the following output:</p>
-
-<pre><code>    $ pgo show cluster mycluster
-
-    cluster : mycluster (crunchy-postgres:centos7-11.5-2.4.2)
-            pod : mycluster-7bbf54d785-pk5dq (Running) on kubernetes1 (1/1) (replica)
-            pvc : mycluster
-            pod : mycluster-ypvq-5b9b8d645-nvlb6 (Running) on kubernetes1 (1/1) (primary)
-            pvc : mycluster-ypvq
-    ...
-</code></pre>
-
-<p>the new cluster&rsquo;s name will need to be &ldquo;mycluster-ypvq&rdquo;</p>
-
-<h5 id="step-1">Step 1</h5>
-
-<p>For the cluster(s) you wish to upgrade, scale down any replicas, if necessary (see <code>pgo scaledown --help</code> for more information on command usage) page for more information), then delete the cluster</p>
-
-<pre><code>    pgo delete cluster &lt;clustername&gt;
-</code></pre>
-
-<h5 id="please-note-the-name-of-each-cluster-the-namespace-used-and-be-sure-not-to-delete-the-associated-pvcs-or-crds">Please note the name of each cluster, the namespace used, and be sure not to delete the associated PVCs or CRDs!</h5>
-
-<h5 id="step-2">Step 2</h5>
-
-<p>Save a copy of your current inventory file with a new name (such as <code>inventory.backup)</code> and checkout the latest 4.3.0 tag of the Postgres Operator.</p>
-
-<h5 id="step-3">Step 3</h5>
-
-<p>Update the new inventory file with the appropriate values for your new Operator installation, as described in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/">Ansible Install Prerequisites</a> and the <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">Compatibility Requirements Guide</a>.</p>
-
-<h5 id="step-4">Step 4</h5>
-
-<p>Now you can upgrade your Operator installation and configure your connection settings as described in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/">Ansible Update Page</a>.</p>
-
-<h5 id="step-5">Step 5</h5>
-
-<p>Verify the Operator is running:</p>
-
-<pre><code>kubectl get pod -n &lt;operator namespace&gt;
-</code></pre>
-
-<p>And that it is upgraded to the appropriate version</p>
-
-<pre><code>pgo version
-</code></pre>
-
-<h5 id="step-6">Step 6</h5>
-
-<p>Once the Operator is installed and functional, create a new 4.3.0 cluster matching the cluster details recorded in Step 0. Be sure to use the primary PVC name (also noted in Step 0) and the same major PostgreSQL version as was used previously. This will allow the new clusters to utilize the existing PVCs. A simple example is given below, but more information on cluster creation can be found <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks#creating-a-postgresql-cluster">here</a></p>
-
-<pre><code>    pgo create cluster &lt;clustername&gt; -n &lt;namespace&gt;
-</code></pre>
-
-<h5 id="step-7">Step 7</h5>
-
-<p>To verify cluster status, run</p>
-
-<pre><code>    pgo test &lt;clustername&gt; -n &lt;namespace&gt;
-</code></pre>
-
-<p>Output should be similar to:</p>
-
-<pre><code>cluster : mycluster
-        Services
-                primary (10.106.70.238:5432): UP
-        Instances
-                primary (mycluster-7d49d98665-7zxzd): UP
-</code></pre>
-
-<h5 id="step-8">Step 8</h5>
-
-<p>Scale up to the required number of replicas, as needed.</p>
-
-<p>Congratulations! Your cluster is upgraded and ready to use!</p>
-
-<h3 id="bash-installation-upgrade-procedure">Bash Installation Upgrade Procedure</h3>
-
-<p>Below are the procedures for upgrading the PostgreSQL Operator and PostgreSQL clusters using the Bash installation method.</p>
-
-<h5 id="prerequisites-1">Prerequisites.</h5>
-
-<p>You will need the following items to complete the upgrade:</p>
-
-<ul>
-<li>The code for the latest release of the PostgreSQL Operator</li>
-<li>The latest PGO client binary</li>
-</ul>
-
-<p>Finally, these instructions assume you are executing from $PGOROOT in a terminal window and that your user has admin privileges in your Kubernetes or Openshift environment.</p>
-
-<h5 id="step-0-1">Step 0</h5>
-
-<p>You will most likely want to run:</p>
-
-<pre><code>pgo show config -n &lt;any watched namespace&gt;
-</code></pre>
-
-<p>Save this output to compare once the procedure has been completed to ensure none of the current configuration changes are missing.</p>
-
-<h5 id="step-1-1">Step 1</h5>
-
-<p>For the cluster(s) you wish to upgrade, record the cluster details provided by</p>
-
-<pre><code>    pgo show cluster &lt;clustername&gt;
-</code></pre>
-
-<p>so that your new clusters can be recreated with the proper settings.</p>
-
-<h5 id="step-2-1">Step 2</h5>
-
-<p>For the cluster(s) you wish to upgrade, scale down any replicas, if necessary (see <code>pgo scaledown --help</code> for more information on command usage) page for more information), then delete the cluster</p>
-
-<pre><code>pgo delete cluster &lt;clustername&gt;
-</code></pre>
-
-<h5 id="note-please-record-the-name-of-each-cluster-the-namespace-used-and-be-sure-not-to-delete-the-associated-pvcs-or-crds">NOTE: Please record the name of each cluster, the namespace used, and be sure not to delete the associated PVCs or CRDs!</h5>
-
-<h5 id="step-3-1">Step 3</h5>
-
-<p>Delete the 4.X version of the Operator by executing:</p>
-
-<pre><code>$PGOROOT/deploy/cleanup.sh
-$PGOROOT/deploy/remove-crd.sh
-$PGOROOT/deploy/cleanup-rbac.sh
-</code></pre>
-
-<h5 id="step-4-1">Step 4</h5>
-
-<p>For versions 4.0, 4.1 and 4.2, update environment variables in the bashrc:</p>
-
-<pre><code>export PGO_VERSION=4.3.0
-</code></pre>
-
-<p>Note: This will be the only update to the bashrc file for 4.2.</p>
-
-<p>If you are pulling your images from the same registry as before this should be the only update to the existing 4.X environment variables.</p>
-
-<h6 id="operator-4-0">Operator 4.0</h6>
-
-<p>If you are upgrading from PostgreSQL Operator 4.0, you will need the following new environment variables:</p>
-
-<pre><code># PGO_INSTALLATION_NAME is the unique name given to this Operator install
-# this supports multi-deployments of the Operator on the same Kubernetes cluster
-export PGO_INSTALLATION_NAME=devtest
-
-# for setting the pgo apiserver port, disabling TLS or not verifying TLS
-# if TLS is disabled, ensure setip() function port is updated and http is used in place of https
-export PGO_APISERVER_PORT=8443          # Defaults: 8443 for TLS enabled, 8080 for TLS disabled
-export DISABLE_TLS=false
-export TLS_NO_VERIFY=false
-export TLS_CA_TRUST=&quot;&quot;
-export ADD_OS_TRUSTSTORE=false
-export NOAUTH_ROUTES=&quot;&quot;
-
-# for disabling the Operator eventing
-export DISABLE_EVENTING=false
-</code></pre>
-
-<p>There is a new eventing feature, so if you want an alias to look at the eventing logs you can add the following:</p>
-
-<pre><code>elog () {
-$PGO_CMD  -n &quot;$PGO_OPERATOR_NAMESPACE&quot; logs `$PGO_CMD  -n &quot;$PGO_OPERATOR_NAMESPACE&quot; get pod --selector=name=postgres-operator -o jsonpath=&quot;{.items[0].metadata.name}&quot;` -c event
-}
-</code></pre>
-
-<h6 id="operator-4-1">Operator 4.1</h6>
-
-<p>If you are upgrading from PostgreSQL Operator 4.1.0 or 4.1.1, you will only need the following subset of the environment variables listed above:</p>
-
-<pre><code>export TLS_CA_TRUST=&quot;&quot;
-export ADD_OS_TRUSTSTORE=false
-export NOAUTH_ROUTES=&quot;&quot;
-</code></pre>
-
-<h5 id="step-5-1">Step 5</h5>
-
-<p>Source the updated bash file:</p>
-
-<pre><code>source ~/.bashrc
-</code></pre>
-
-<h5 id="step-6-1">Step 6</h5>
-
-<p>Ensure you have checked out the latest 4.3.0 version of the source code and update the pgo.yaml file in <code>$PGOROOT/conf/postgres-operator/pgo.yaml</code></p>
-
-<p>You will want to use the 4.3.0 pgo.yaml file and update custom settings such as image locations, storage, and resource configs.</p>
-
-<h5 id="step-7-1">Step 7</h5>
-
-<p>Create an initial Operator Admin user account.
-You will need to edit the <code>$PGOROOT/deploy/install-bootstrap-creds.sh</code> file to configure the username and password that you want for the Admin account. The default values are:</p>
-
-<pre><code>export PGOADMIN_USERNAME=pgoadmin
-export PGOADMIN_PASSWORD=examplepassword
-</code></pre>
-
-<p>You will need to update the <code>$HOME/.pgouser</code>file to match the values you set in order to use the Operator. Additional accounts can be created later following the steps described in the &lsquo;Operator Security&rsquo; section of the main <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/">Bash Installation Guide</a>. Once these accounts are created, you can change this file to login in via the PGO CLI as that user.</p>
-
-<h5 id="step-8-1">Step 8</h5>
-
-<p>Install the 4.3.0 Operator:</p>
-
-<p>Setup the configured namespaces:</p>
-
-<pre><code>make setupnamespaces
-</code></pre>
-
-<p>Install the RBAC configurations:</p>
-
-<pre><code>make installrbac
-</code></pre>
-
-<p>Deploy the PostgreSQL Operator:</p>
-
-<pre><code>make deployoperator
-</code></pre>
-
-<p>Verify the Operator is running:</p>
-
-<pre><code>kubectl get pod -n &lt;operator namespace&gt;
-</code></pre>
-
-<h5 id="step-9">Step 9</h5>
-
-<p>Next, update the PGO client binary to 4.3.0 by replacing the existing 4.X binary with the latest 4.3.0 binary available.</p>
-
-<p>You can run:</p>
-
-<pre><code>which pgo
-</code></pre>
-
-<p>to ensure you are replacing the current binary.</p>
-
-<h5 id="step-10">Step 10</h5>
-
-<p>You will want to make sure that any and all configuration changes have been updated.  You can run:</p>
-
-<pre><code>pgo show config -n &lt;any watched namespace&gt;
-</code></pre>
-
-<p>This will print out the current configuration that the Operator will be using.</p>
-
-<p>To ensure that you made any required configuration changes, you can compare with Step 0 to make sure you did not miss anything.  If you happened to miss a setting, update the pgo.yaml file and rerun:</p>
-
-<pre><code>make deployoperator
-</code></pre>
-
-<h5 id="step-11">Step 11</h5>
-
-<p>The Operator is now upgraded to 4.3.0 and all users and roles have been recreated.
-Verify this by running:</p>
-
-<pre><code>pgo version
-</code></pre>
-
-<h5 id="step-12">Step 12</h5>
-
-<p>Once the Operator is installed and functional, create a new 4.3.0 cluster matching the cluster details recorded in Step 1. Be sure to use the same name and the same major PostgreSQL version as was used previously. This will allow the new clusters to utilize the existing PVCs. A simple example is given below, but more information on cluster creation can be found <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks#creating-a-postgresql-cluster">here</a></p>
-
-<pre><code>    pgo create cluster &lt;clustername&gt; -n &lt;namespace&gt;
-</code></pre>
-
-<h5 id="step-13">Step 13</h5>
-
-<p>To verify cluster status, run</p>
-
-<pre><code>    pgo test &lt;clustername&gt; -n &lt;namespace&gt;
-</code></pre>
-
-<p>Output should be similar to:</p>
-
-<pre><code>cluster : mycluster
-        Services
-                primary (10.106.70.238:5432): UP
-        Instances
-                primary (mycluster-7d49d98665-7zxzd): UP
-</code></pre>
-
-<h5 id="step-14">Step 14</h5>
-
-<p>Scale up to the required number of replicas, as needed.</p>
-
-<p>Congratulations! Your cluster is upgraded and ready to use!</p>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/" title="Manual Upgrade - Operator 3.5"> <i class="fa fa-chevron-left"></i><label>Manual Upgrade - Operator 3.5</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/contributing/" title="Contributing" style="margin-right: 0px;"><label>Contributing</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade/" title="Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;"> <i class="fa fa-chevron-left"></i><label>Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/" title="Manual Upgrade - Operator 3.5" style="margin-right: 0px;"><label>Manual Upgrade - Operator 3.5</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
