@@ -1326,6 +1326,13 @@ Operator.</p>
 </tr>
 
 <tr>
+<td><code>DISABLE_FSGROUP</code></td>
+<td>false</td>
+<td></td>
+<td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in deployment environments that have a restricted Security Context Constraints.</td>
+</tr>
+
+<tr>
 <td><code>EXPORTERPORT</code></td>
 <td>9187</td>
 <td><strong>Required</strong></td>

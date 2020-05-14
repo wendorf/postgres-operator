@@ -1233,6 +1233,11 @@
 <td>DefaultPgBouncerMemory</td>
 <td>string, matches a Kubernetes resource value. If set, it is used as the default value of the memory request for pgBouncer instances (default <code>24Mi</code>)</td>
 </tr>
+
+<tr>
+<td>DisableFSGroup</td>
+<td>If set to <code>true</code>, this will disable the use of the fsGroup for the containers related to PostgreSQL, which is normally set to 26. This is geared towards deployments that use Security Context Constraints in the mode of restricted (default <code>false</code>)</td>
+</tr>
 </tbody>
 </table>
 
