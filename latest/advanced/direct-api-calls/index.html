@@ -1102,7 +1102,7 @@
 <h6 id="get-api-server-version">Get API Server Version</h6>
 
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
--u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
+-u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X GET $PGO_APISERVER_URL/version
 </code></pre>
 
@@ -1111,7 +1111,7 @@
 <h6 id="create-cluster">Create Cluster</h6>
 
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
--u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
+-u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
   '{&quot;ClientVersion&quot;:&quot;4.3.0&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
@@ -1125,7 +1125,7 @@ $PGO_APISERVER_URL/clusters
 <h6 id="show-cluster">Show Cluster</h6>
 
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
--u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
+-u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
   '{&quot;ClientVersion&quot;:&quot;4.3.0&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
@@ -1136,7 +1136,7 @@ $PGO_APISERVER_URL/showclusters
 <h6 id="delete-cluster">Delete Cluster</h6>
 
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
--u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
+-u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
   '{&quot;ClientVersion&quot;:&quot;4.3.0&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,

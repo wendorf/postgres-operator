@@ -40,7 +40,8 @@ Overview The PostgreSQL Operator comes with a container called pgo-deployer whic
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/</guid>
       <description>Install the PostgreSQL Operator (pgo) Client The following will install and configure the pgo client on all systems. For the purpose of these instructions it&amp;rsquo;s assumed that the Crunchy PostgreSQL Operator is already deployed.
-Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  The Crunchy Postgres Operator als requires the following in order to authenticate with the apiserver:</description>
+Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  To authenticate with the Crunchy PostgreSQL Operator API:
+ Client CA Certificate Client TLS Certificate Client Key pgouser file containing &amp;lt;username&amp;gt;:&amp;lt;password&amp;gt;  All of the requirements above should be obtained from an administrator who installed the Crunchy PostgreSQL Operator.</description>
     </item>
     
     <item>

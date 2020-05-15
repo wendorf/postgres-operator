@@ -1274,7 +1274,7 @@ chmod +x client-setup.sh
 
 <ul>
 <li>Sets <code>$PGO_OPERATOR_NAMESPACE</code> to <code>pgo</code> if it is unset. This is the default
-namespace that the PostgreSQßL Operator is deployed to</li>
+namespace that the PostgreSQL Operator is deployed to</li>
 <li>Checks for valid Operating Systems and determines which <code>pgo</code> binary to
 download</li>
 <li>Creates a directory in <code>$HOME/.pgo/$PGO_OPERATOR_NAMESPACE</code> (e.g. <code>/home/hippo/.pgo/pgo</code>)</li>
@@ -1303,10 +1303,6 @@ environmental variables to your environment:</p>
 </span><span style="color:#d88200">export PGO_CLIENT_CERT=&#34;$HOME/.pgo/$PGO_OPERATOR_NAMESPACE/client.crt&#34;
 </span><span style="color:#d88200">export PGO_CLIENT_KEY=&#34;$HOME/.pgo/$PGO_OPERATOR_NAMESPACE/client.key&#34;
 </span><span style="color:#d88200">EOF</span></code></pre></div>
-<div class="notices tip" >If you are using MacOS the <code>pgo-mac</code> binary will need to be renamed to <code>pgo</code>.
-Alternatively, you can update your path to include <code>pgo-mac</code>.
-<code>export PATH=&quot;$HOME/.pgo/$PGO_OPERATOR_NAMESPACE/pgo-mac:$PATH&quot;</code></div>
-
 <p>By default, the <code>client-setup.sh</code> script targets the user that is stored in the
 <code>pgouser-admin</code> secret in the <code>pgo</code> (<code>$PGO_OPERATOR_NAMESPACE</code>) Namespace. If
 you wish to use a different Secret, you can set the <code>PGO_USER_ADMIN</code>
