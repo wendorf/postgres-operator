@@ -587,6 +587,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restore/">
@@ -1208,11 +1215,11 @@ the <code>pgo</code> client.</p>
 pod. You can run single commands with the kubectl or oc command line tools
 or multiple commands by exec&rsquo;ing into the pod with bash.</p>
 
-<pre><code>kubectl exec -it -n pgo &lt;pgo-client-deployment-name&gt; -c &quot;pgo version&quot;
+<pre><code>kubectl exec -it -n pgo deploy/pgo-client -- pgo version
 
 # or
 
-kubectl exec -it -n pgo &lt;pgo-client-deployment-name&gt; bash
+kubectl exec -it -n pgo deploy/pgo-client bash
 </code></pre>
 
 <p>The deployment does not require any configuration to connect to the operator.</p>

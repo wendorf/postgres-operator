@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Prerequisites :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>pgo restart :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/installation/other/ansible/prerequisites/">
+  <body data-url="/pgo-client/reference/pgo_restart/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -237,11 +237,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">Installation</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">Installation</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -273,23 +272,21 @@
           </a>
         </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/">Other Methods</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/">Other Methods</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/">Ansible</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/">Ansible</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/" class="dd-item active">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/">
             Prerequisites
@@ -351,10 +348,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/">Using the pgo Client</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/">Using the pgo Client</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -365,10 +363,11 @@
           </a>
         </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/">pgo Client Reference</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/">pgo Client Reference</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -589,7 +588,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restart/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restart/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restart/">
             pgo restart
@@ -1022,30 +1021,76 @@
     <option value="/configuration/" >
    Configuration</option>
     <option value="/installation/" >
-   Installation</option> 
-      <option value="/installation/prerequisites/" >- Prerequisites</option>
-      <option value="/installation/postgres-operator/" >- Install the PostgreSQL Operator</option>
-      <option value="/installation/pgo-client/" >- Install `pgo` Client</option>
-      <option value="/installation/configuration/" >- Configuration Reference</option>
-    <option value="/installation/other/" >
-  - 
-   Other Methods</option> 
-    <option value="/installation/other/ansible/" >
-  -- 
-   Ansible</option> 
-      <option value="/installation/other/ansible/prerequisites/"  selected>--- Prerequisites</option>
-      <option value="/installation/other/ansible/installing-ansible/" >--- Installing Ansible</option>
-      <option value="/installation/other/ansible/installing-operator/" >--- Installing PostgreSQL Operator</option>
-      <option value="/installation/other/ansible/installing-metrics/" >--- Installing Metrics Infrastructure</option>
-      <option value="/installation/other/ansible/updating-operator/" >--- Updating PostgreSQL Operator</option>
-      <option value="/installation/other/ansible/uninstalling-operator/" >--- Uninstalling PostgreSQL Operator</option>
-      <option value="/installation/other/ansible/uninstalling-metrics/" >--- Uninstalling Metrics Stack</option>
-  
-      <option value="/installation/other/bash/" >-- Bash Scripts</option>
-  
-  
+   Installation</option>
     <option value="/pgo-client/" >
-   Using the pgo Client</option>
+   Using the pgo Client</option> 
+      <option value="/pgo-client/common-tasks/" >- Common pgo Client Tasks</option>
+    <option value="/pgo-client/reference/" >
+  - 
+   pgo Client Reference</option> 
+      <option value="/pgo-client/reference/pgo_apply/" >-- pgo apply</option>
+      <option value="/pgo-client/reference/pgo_backup/" >-- pgo backup</option>
+      <option value="/pgo-client/reference/pgo_cat/" >-- pgo cat</option>
+      <option value="/pgo-client/reference/pgo_clone/" >-- pgo clone</option>
+      <option value="/pgo-client/reference/pgo_create/" >-- pgo create</option>
+      <option value="/pgo-client/reference/pgo_create_cluster/" >-- pgo create cluster</option>
+      <option value="/pgo-client/reference/pgo_create_namespace/" >-- pgo create namespace</option>
+      <option value="/pgo-client/reference/pgo_create_pgadmin/" >-- pgo create pgadmin</option>
+      <option value="/pgo-client/reference/pgo_create_pgbouncer/" >-- pgo create pgbouncer</option>
+      <option value="/pgo-client/reference/pgo_create_pgorole/" >-- pgo create pgorole</option>
+      <option value="/pgo-client/reference/pgo_create_pgouser/" >-- pgo create pgouser</option>
+      <option value="/pgo-client/reference/pgo_create_policy/" >-- pgo create policy</option>
+      <option value="/pgo-client/reference/pgo_create_schedule/" >-- pgo create schedule</option>
+      <option value="/pgo-client/reference/pgo_create_user/" >-- pgo create user</option>
+      <option value="/pgo-client/reference/pgo_delete/" >-- pgo delete</option>
+      <option value="/pgo-client/reference/pgo_delete_backup/" >-- pgo delete backup</option>
+      <option value="/pgo-client/reference/pgo_delete_cluster/" >-- pgo delete cluster</option>
+      <option value="/pgo-client/reference/pgo_delete_label/" >-- pgo delete label</option>
+      <option value="/pgo-client/reference/pgo_delete_namespace/" >-- pgo delete namespace</option>
+      <option value="/pgo-client/reference/pgo_delete_pgadmin/" >-- pgo delete pgadmin</option>
+      <option value="/pgo-client/reference/pgo_delete_pgbouncer/" >-- pgo delete pgbouncer</option>
+      <option value="/pgo-client/reference/pgo_delete_pgorole/" >-- pgo delete pgorole</option>
+      <option value="/pgo-client/reference/pgo_delete_pgouser/" >-- pgo delete pgouser</option>
+      <option value="/pgo-client/reference/pgo_delete_policy/" >-- pgo delete policy</option>
+      <option value="/pgo-client/reference/pgo_delete_schedule/" >-- pgo delete schedule</option>
+      <option value="/pgo-client/reference/pgo_delete_user/" >-- pgo delete user</option>
+      <option value="/pgo-client/reference/pgo_df/" >-- pgo df</option>
+      <option value="/pgo-client/reference/pgo_failover/" >-- pgo failover</option>
+      <option value="/pgo-client/reference/pgo_label/" >-- pgo label</option>
+      <option value="/pgo-client/reference/pgo_load/" >-- pgo load</option>
+      <option value="/pgo-client/reference/pgo_reload/" >-- pgo reload</option>
+      <option value="/pgo-client/reference/pgo_restart/"  selected>-- pgo restart</option>
+      <option value="/pgo-client/reference/pgo_restore/" >-- pgo restore</option>
+      <option value="/pgo-client/reference/pgo_scale/" >-- pgo scale</option>
+      <option value="/pgo-client/reference/pgo_scaledown/" >-- pgo scaledown</option>
+      <option value="/pgo-client/reference/pgo_show/" >-- pgo show</option>
+      <option value="/pgo-client/reference/pgo_show_backup/" >-- pgo show backup</option>
+      <option value="/pgo-client/reference/pgo_show_cluster/" >-- pgo show cluster</option>
+      <option value="/pgo-client/reference/pgo_show_config/" >-- pgo show config</option>
+      <option value="/pgo-client/reference/pgo_show_namespace/" >-- pgo show namespace</option>
+      <option value="/pgo-client/reference/pgo_show_pgadmin/" >-- pgo show pgadmin</option>
+      <option value="/pgo-client/reference/pgo_show_pgbouncer/" >-- pgo show pgbouncer</option>
+      <option value="/pgo-client/reference/pgo_show_pgorole/" >-- pgo show pgorole</option>
+      <option value="/pgo-client/reference/pgo_show_pgouser/" >-- pgo show pgouser</option>
+      <option value="/pgo-client/reference/pgo_show_policy/" >-- pgo show policy</option>
+      <option value="/pgo-client/reference/pgo_show_pvc/" >-- pgo show pvc</option>
+      <option value="/pgo-client/reference/pgo_show_schedule/" >-- pgo show schedule</option>
+      <option value="/pgo-client/reference/pgo_show_user/" >-- pgo show user</option>
+      <option value="/pgo-client/reference/pgo_show_workflow/" >-- pgo show workflow</option>
+      <option value="/pgo-client/reference/pgo_status/" >-- pgo status</option>
+      <option value="/pgo-client/reference/pgo_test/" >-- pgo test</option>
+      <option value="/pgo-client/reference/pgo_update/" >-- pgo update</option>
+      <option value="/pgo-client/reference/pgo_update_cluster/" >-- pgo update cluster</option>
+      <option value="/pgo-client/reference/pgo_update_namespace/" >-- pgo update namespace</option>
+      <option value="/pgo-client/reference/pgo_update_pgbouncer/" >-- pgo update pgbouncer</option>
+      <option value="/pgo-client/reference/pgo_update_pgorole/" >-- pgo update pgorole</option>
+      <option value="/pgo-client/reference/pgo_update_pgouser/" >-- pgo update pgouser</option>
+      <option value="/pgo-client/reference/pgo_update_user/" >-- pgo update user</option>
+      <option value="/pgo-client/reference/pgo_upgrade/" >-- pgo upgrade</option>
+      <option value="/pgo-client/reference/pgo_version/" >-- pgo version</option>
+      <option value="/pgo-client/reference/pgo_watch/" >-- pgo watch</option>
+  
+  
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1074,7 +1119,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/installation/other/ansible/prerequisites.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/pgo-client/reference/pgo_restart.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1097,12 +1142,7 @@
 
 
 
-
-
-
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/installation/'>Installation</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/installation/other/'>Other Methods</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/'>Ansible</a> > Prerequisites
-
- 
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/pgo-client/'>Using the pgo Client</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/'>pgo Client Reference</a> > pgo restart
 
  
 
@@ -1120,976 +1160,70 @@
     
     <div id="body-inner">
 
-    <h1>Prerequisites</h1>
+    <h1>pgo restart</h1>
 
     
 
     
     
 
-<h1 id="prerequisites">Prerequisites</h1>
+<h2 id="pgo-restart">pgo restart</h2>
 
-<p>The following is required prior to installing Crunchy PostgreSQL Operator using Ansible:</p>
+<p>Restarts the PostgrSQL database within a PostgreSQL cluster</p>
 
-<ul>
-<li><a href="https://github.com/CrunchyData/postgres-operator/">postgres-operator playbooks</a> source code for the target version</li>
-<li>Ansible 2.8.0+</li>
-</ul>
+<h3 id="synopsis">Synopsis</h3>
 
-<h2 id="kubernetes-installs">Kubernetes Installs</h2>
+<p>Restarts one or more PostgreSQL databases within a PostgreSQL cluster.</p>
 
-<ul>
-<li>Kubernetes v1.11+</li>
-<li>Cluster admin privileges in Kubernetes</li>
-<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> configured to communicate with Kubernetes</li>
-</ul>
+<pre><code>For example, to restart the primary and all replicas:
+pgo restart mycluster
 
-<h2 id="openshift-installs">OpenShift Installs</h2>
+Or target a specific instance within the cluster:
+pgo restart mycluster --target=mycluster-abcd
 
-<ul>
-<li>OpenShift v3.09+</li>
-<li>Cluster admin privileges in OpenShift</li>
-<li><a href="https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html">oc</a> configured to communicate with OpenShift</li>
-</ul>
+And use the 'query' flag obtain a list of all instances within the cluster:
+pgo restart mycluster --query
+</code></pre>
 
-<h2 id="installing-from-a-windows-host">Installing from a Windows Host</h2>
+<pre><code>pgo restart [flags]
+</code></pre>
 
-<p>If the Crunchy PostgreSQL Operator is being installed from a Windows host the following
-are required:</p>
+<h3 id="options">Options</h3>
 
-<ul>
-<li><a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux (WSL)</a></li>
-<li><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Ubuntu for Windows</a></li>
-</ul>
+<pre><code>  -h, --help                 help for restart
+      --no-prompt            No command line confirmation.
+  -o, --output string        The output format. Supported types are: &quot;json&quot;
+      --query                Prints the list of instances that can be restarted.
+      --target stringArray   The instance that will be restarted.
+</code></pre>
 
-<h2 id="permissions">Permissions</h2>
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
 
-<p>The installation of the Crunchy PostgreSQL Operator requires elevated privileges.<br />
-It is required that the playbooks are run as a <code>cluster-admin</code> to ensure the playbooks
-can install:</p>
+<pre><code>      --apiserver-url string     The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.
+      --debug                    Enable additional output for debugging.
+      --disable-tls              Disable TLS authentication to the Postgres Operator.
+      --exclude-os-trust         Exclude CA certs from OS default trust store
+  -n, --namespace string         The namespace to use for pgo requests.
+      --pgo-ca-cert string       The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.
+      --pgo-client-cert string   The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.
+      --pgo-client-key string    The Client Key file path for authenticating to the PostgreSQL Operator apiserver.
+</code></pre>
 
-<ul>
-<li>Custom Resource Definitions</li>
-<li>Cluster RBAC</li>
-<li>Create required namespaces</li>
-</ul>
-
-<div class="notices warning" ><p>In Kubernetes versions prior to 1.12 (including Openshift up through 3.11), there is a limitation that requires an extra step during installation for the operator to function properly with watched namespaces. This limitation does not exist when using Kubernetes 1.12+. When a list of namespaces are provided through the NAMESPACE environment variable, the setupnamespaces.sh script handles the limitation properly in both the bash and ansible installation.</p>
-
-<p>However, if the user wishes to add a new watched namespace after installation, where the user would normally use pgo create namespace to add the new namespace, they should instead run the add-targeted-namespace.sh script or they may give themselves cluster-admin privileges instead of having to run setupnamespaces.sh script. Again, this is only required when running on a Kubernetes distribution whose version is below 1.12. In Kubernetes version 1.12+ the pgo create namespace command works as expected.</p>
-</div>
-
-<h2 id="obtaining-operator-ansible-role">Obtaining Operator Ansible Role</h2>
-
-<p>There are two ways to obtain the Crunchy PostgreSQL Operator Roles:</p>
+<h3 id="see-also">SEE ALSO</h3>
 
 <ul>
-<li><p>Clone the <a href="https://github.com/CrunchyData/postgres-operator">postgres-operator project</a></p></li>
-
-<li><p><code>postgres-operator-playbooks</code> RPM provided for Crunchy customers via the <a href="https://access.crunchydata.com/">Crunchy Access Portal</a>.</p></li>
+<li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo/">pgo</a>  - The pgo command line interface.</li>
 </ul>
 
-<h3 id="github-installation">GitHub Installation</h3>
-
-<p>All necessary files (inventory, main playbook and roles) can be found in the
-<a href="https://github.com/CrunchyData/postgres-operator/tree/master/installers/ansible"><code>installers/ansible</code></a> directory
-in the <a href="https://github.com/CrunchyData/postgres-operator">source code</a>.</p>
-
-<h3 id="rpm-installation-using-yum">RPM Installation using Yum</h3>
-
-<p>Available to Crunchy customers is an RPM containing all the necessary Ansible roles
-and files required for installation using Ansible.  The RPM can be found in Crunchy&rsquo;s
-yum repository.  For information on setting up <code>yum</code> to use the Crunchy repository,
-see the <a href="https://access.crunchydata.com/">Crunchy Access Portal</a>.</p>
-
-<p>To install the Crunchy PostgreSQL Operator Ansible roles using <code>yum</code>, run the following
-command on a RHEL or CentOS host:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum install postgres-operator-playbooks</code></pre></div>
-<ul>
-<li>Ansible roles can be found in: <code>/usr/share/ansible/roles/crunchydata</code></li>
-<li>Ansible playbooks/inventory files can be found in: <code>/usr/share/ansible/postgres-operator/playbooks</code></li>
-</ul>
-
-<p>Once installed users should take a copy of the <code>inventory</code> file included in the installation
-using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /usr/share/ansible/postgres-operator/playbooks/inventory <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span></code></pre></div>
-<h2 id="configuring-the-inventory-file">Configuring the Inventory File</h2>
-
-<p>The <code>inventory</code> file included with the PostgreSQL Operator Playbooks allows installers
-to configure how the operator will function when deployed into Kubernetes.  This file
-should contain all configurable variables the playbooks offer.</p>
-
-<h3 id="requirements">Requirements</h3>
-
-<p>The following configuration parameters must be set in order to deploy the
-Crunchy PostgreSQL Operator.</p>
-
-<p>Additionally, <code>storage</code> variables will need to be defined to provide the Crunchy
-PostgreSQL Operator with any required storage configuration.  Guidance for
-defining <code>storage</code> variables can be found further in this documentation.</p>
-
-<div class="notices tip" >You should remove or comment out variables either either the  <code>kubernetes</code> or
-<code>openshift</code> variables if you are not being using them for your environment. Both
-sets of variables cannot be used at the same time.</div>
-
-<ul>
-<li><code>archive_mode</code></li>
-<li><code>archive_timeout</code></li>
-<li><code>backup_storage</code></li>
-<li><code>backrest</code></li>
-<li><code>backrest_storage</code></li>
-<li><code>badger</code></li>
-<li><code>ccp_image_prefix</code></li>
-<li><code>ccp_image_tag</code></li>
-<li><code>create_rbac</code></li>
-<li><code>db_password_length</code></li>
-<li><code>db_port</code></li>
-<li><code>db_replicas</code></li>
-<li><code>db_user</code></li>
-<li><code>disable_auto_failover</code>`</li>
-<li><code>exporterport</code></li>
-<li><code>kubernetes_context</code> (Comment out if deploying to am OpenShift environment)</li>
-<li><code>metrics</code></li>
-<li><code>openshift_host</code> (Comment out if deploying to a Kubernetes environment)</li>
-<li><code>openshift_password</code> (Comment out if deploying to a Kubernetes environment)</li>
-<li><code>openshift_skip_tls_verify</code> (Comment out if deploying to a Kubernetes environment)</li>
-<li><code>openshift_token</code> (Comment out if deploying to a Kubernetes environment)</li>
-<li><code>openshift_user</code> (Comment out if deploying to a Kubernetes environment)</li>
-<li><code>pgbadgerport</code></li>
-<li><code>pgo_admin_password</code></li>
-<li><code>pgo_admin_perms</code></li>
-<li><code>pgo_admin_role_name</code></li>
-<li><code>pgo_admin_username</code></li>
-<li><code>pgo_client_version</code></li>
-<li><code>pgo_image_prefix</code></li>
-<li><code>pgo_image_tag</code></li>
-<li><code>pgo_installation_name</code></li>
-<li><code>pgo_operator_namespace</code></li>
-<li><code>primary_storage</code></li>
-<li><code>replica_storage</code></li>
-<li><code>scheduler_timeout</code></li>
-</ul>
-
-<h3 id="configuration-parameters">Configuration Parameters</h3>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Default</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>archive_mode</code></td>
-<td>true</td>
-<td><strong>Required</strong></td>
-<td>Set to true enable archive logging on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>archive_timeout</code></td>
-<td>60</td>
-<td><strong>Required</strong></td>
-<td>Set to a value in seconds to configure the timeout threshold for archiving.</td>
-</tr>
-
-<tr>
-<td><code>backrest</code></td>
-<td>false</td>
-<td><strong>Required</strong></td>
-<td>Set to true enable pgBackRest capabilities on all newly created cluster request.  This can be disabled by the client.</td>
-</tr>
-
-<tr>
-<td><code>backrest_aws_s3_bucket</code></td>
-<td></td>
-<td></td>
-<td>Set to configure the bucket used by pgBackRest with Amazon Web Service S3 for backups and restoration in S3.</td>
-</tr>
-
-<tr>
-<td><code>backrest_aws_s3_endpoint</code></td>
-<td></td>
-<td></td>
-<td>Set to configure the endpoint used by pgBackRest with Amazon Web Service S3 for backups and restoration in S3.</td>
-</tr>
-
-<tr>
-<td><code>backrest_aws_s3_key</code></td>
-<td></td>
-<td></td>
-<td>Set to configure the key used by pgBackRest to authenticate with Amazon Web Service S3 for backups and restoration in S3.</td>
-</tr>
-
-<tr>
-<td><code>backrest_aws_s3_region</code></td>
-<td></td>
-<td></td>
-<td>Set to configure the region used by pgBackRest with Amazon Web Service S3 for backups and restoration in S3.</td>
-</tr>
-
-<tr>
-<td><code>backrest_aws_s3_secret</code></td>
-<td></td>
-<td></td>
-<td>Set to configure the secret used by pgBackRest to authenticate with Amazon Web Service S3 for backups and restoration in S3.</td>
-</tr>
-
-<tr>
-<td><code>backrest_storage</code></td>
-<td>storageos</td>
-<td><strong>Required</strong></td>
-<td>Set to configure which storage definition to use when creating volumes used by pgBackRest on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>backup_storage</code></td>
-<td>storageos</td>
-<td><strong>Required</strong></td>
-<td>Set to configure which storage definition to use when creating volumes used for storing logical backups created by <code>pg_dump</code>.</td>
-</tr>
-
-<tr>
-<td><code>badger</code></td>
-<td>false</td>
-<td><strong>Required</strong></td>
-<td>Set to true enable pgBadger capabilities on all newly created clusters.  This can be disabled by the client.</td>
-</tr>
-
-<tr>
-<td><code>ccp_image_prefix</code></td>
-<td>crunchydata</td>
-<td><strong>Required</strong></td>
-<td>Configures the image prefix used when creating containers from Crunchy Container Suite.</td>
-</tr>
-
-<tr>
-<td><code>ccp_image_tag</code></td>
-<td></td>
-<td><strong>Required</strong></td>
-<td>Configures the image tag (version) used when creating containers from Crunchy Container Suite.</td>
-</tr>
-
-<tr>
-<td><code>cleanup</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure the playbooks to delete all objects when uninstalling the Operator.  Note: this will delete all objects related to the Operator (including clusters provisioned).</td>
-</tr>
-
-<tr>
-<td><code>create_rbac</code></td>
-<td>true</td>
-<td><strong>Required</strong></td>
-<td>Set to <code>true</code> if the installer should create the RBAC resources required to run the PostgreSQL Operator.</td>
-</tr>
-
-<tr>
-<td><code>crunchy_debug</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure Operator to use debugging mode.  Note: this can cause sensitive data such as passwords to appear in Operator logs.</td>
-</tr>
-
-<tr>
-<td><code>default_instance_memory</code></td>
-<td>512Mi</td>
-<td></td>
-<td>The default amount of memory to request for a PostgreSQL instance</td>
-</tr>
-
-<tr>
-<td><code>default_pgbackrest_memory</code></td>
-<td>48Mi</td>
-<td></td>
-<td>The default amount of memory to request for a pgBackRest repository</td>
-</tr>
-
-<tr>
-<td><code>default_pgbouncer_memory</code></td>
-<td>24Mi</td>
-<td></td>
-<td>The default amount of memory to request for a pgBouncer instance</td>
-</tr>
-
-<tr>
-<td><code>delete_metrics_namespace</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure whether or not the metrics namespace (defined using variable <code>metrics_namespace</code>) is deleted when uninstalling the metrics infrastructure</td>
-</tr>
-
-<tr>
-<td><code>delete_operator_namespace</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure whether or not the PGO operator namespace (defined using variable <code>pgo_operator_namespace</code>) is deleted when uninstalling the PGO.</td>
-</tr>
-
-<tr>
-<td><code>delete_watched_namespaces</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure whether or not the PGO watched namespaces (defined using variable <code>namespace</code>) are deleted when uninstalling the PGO.</td>
-</tr>
-
-<tr>
-<td><code>disable_fsgroup</code></td>
-<td>false</td>
-<td></td>
-<td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in deployment environments that have a restricted Security Context Constraints.</td>
-</tr>
-
-<tr>
-<td><code>db_name</code></td>
-<td>userdb</td>
-<td></td>
-<td>Set to a value to configure the default database name on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>db_password_age_days</code></td>
-<td>0</td>
-<td></td>
-<td>Set to a value in days to configure the expiration age on PostgreSQL role passwords on all newly created clusters. If set to &ldquo;0&rdquo;, this is the same as saying the password never expires</td>
-</tr>
-
-<tr>
-<td><code>db_password_length</code></td>
-<td>24</td>
-<td><strong>Required</strong></td>
-<td>Set to configure the size of passwords generated by the operator on all newly created roles.</td>
-</tr>
-
-<tr>
-<td><code>db_port</code></td>
-<td>5432</td>
-<td><strong>Required</strong></td>
-<td>Set to configure the default port used on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>db_replicas</code></td>
-<td>1</td>
-<td><strong>Required</strong></td>
-<td>Set to configure the amount of replicas provisioned on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>db_user</code></td>
-<td>testuser</td>
-<td><strong>Required</strong></td>
-<td>Set to configure the username of the dedicated user account on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>disable_failover</code></td>
-<td>false</td>
-<td><strong>Required</strong></td>
-<td>Set to true disable auto failover capabilities on all newly created cluster requests. This cannot be overridden by the client on a cluster create, but on a cluster update. Setting this is not generally recommend, as it disable high-availability capabilities.</td>
-</tr>
-
-<tr>
-<td><code>exporterport</code></td>
-<td>9187</td>
-<td><strong>Required</strong></td>
-<td>Set to configure the default port used to connect to postgres exporter.</td>
-</tr>
-
-<tr>
-<td><code>grafana_admin_password</code></td>
-<td></td>
-<td></td>
-<td>Set to configure the login password for the Grafana administrator.</td>
-</tr>
-
-<tr>
-<td><code>grafana_admin_username</code></td>
-<td>admin</td>
-<td></td>
-<td>Set to configure the login username for the Grafana administrator.</td>
-</tr>
-
-<tr>
-<td><code>grafana_install</code></td>
-<td>true</td>
-<td></td>
-<td>Set to true to install Crunchy Grafana to visualize metrics.</td>
-</tr>
-
-<tr>
-<td><code>grafana_storage_access_mode</code></td>
-<td></td>
-<td></td>
-<td>Set to the access mode used by the configured storage class for Grafana persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>grafana_storage_class_name</code></td>
-<td></td>
-<td></td>
-<td>Set to the name of the storage class used when creating Grafana persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>grafana_volume_size</code></td>
-<td></td>
-<td></td>
-<td>Set to the size of persistent volume to create for Grafana.</td>
-</tr>
-
-<tr>
-<td><code>kubernetes_context</code></td>
-<td></td>
-<td><strong>Required</strong>, if deploying to Kubernetes</td>
-<td>When deploying to Kubernetes, set to configure the context name of the kubeconfig to be used for authentication.</td>
-</tr>
-
-<tr>
-<td><code>log_statement</code></td>
-<td>none</td>
-<td></td>
-<td>Set to <code>none</code>, <code>ddl</code>, <code>mod</code>, or <code>all</code> to configure the statements that will be logged in PostgreSQL&rsquo;s logs on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>metrics</code></td>
-<td>false</td>
-<td><strong>Required</strong></td>
-<td>Set to true enable performance metrics on all newly created clusters.  This can be disabled by the client.</td>
-</tr>
-
-<tr>
-<td><code>metrics_namespace</code></td>
-<td>metrics</td>
-<td></td>
-<td>Configures the target namespace when deploying Grafana and/or Prometheus</td>
-</tr>
-
-<tr>
-<td><code>namespace</code></td>
-<td></td>
-<td></td>
-<td>Set to a comma delimited string of all the namespaces Operator will manage.</td>
-</tr>
-
-<tr>
-<td><code>namespace_mode</code></td>
-<td>dynamic</td>
-<td><strong>Required</strong></td>
-<td>Determines which <code>ClusterRoles</code> will be installed as required to enable various namespace functionality within the Operator. Valid values are <code>dynamic</code>, <code>readonly</code> or <code>disabled</code>. If <code>disabled</code> is selected, then no <code>ClusterRoles</code> are installed.</td>
-</tr>
-
-<tr>
-<td><code>openshift_host</code></td>
-<td></td>
-<td><strong>Required</strong>, if deploying to OpenShift</td>
-<td>When deploying to OpenShift, set to configure the hostname of the OpenShift cluster to connect to.</td>
-</tr>
-
-<tr>
-<td><code>openshift_password</code></td>
-<td></td>
-<td><strong>Required</strong>, if deploying to OpenShift</td>
-<td>When deploying to OpenShift, set to configure the password used for login.</td>
-</tr>
-
-<tr>
-<td><code>openshift_skip_tls_verify</code></td>
-<td></td>
-<td><strong>Required</strong>, if deploying to OpenShift</td>
-<td>When deploying to Openshift, set to ignore the integrity of TLS certificates for the OpenShift cluster.</td>
-</tr>
-
-<tr>
-<td><code>openshift_token</code></td>
-<td></td>
-<td><strong>Required</strong>, if deploying to OpenShift</td>
-<td>When deploying to OpenShift, set to configure the token used for login (when not using username/password authentication).</td>
-</tr>
-
-<tr>
-<td><code>openshift_user</code></td>
-<td></td>
-<td><strong>Required</strong>, if deploying to OpenShift</td>
-<td>When deploying to OpenShift, set to configure the username used for login.</td>
-</tr>
-
-<tr>
-<td><code>pgbadgerport</code></td>
-<td>10000</td>
-<td><strong>Required</strong></td>
-<td>Set to configure the default port used to connect to pgbadger.</td>
-</tr>
-
-<tr>
-<td><code>pgo_add_os_ca_store</code></td>
-<td>false</td>
-<td></td>
-<td>When true, includes system default certificate authorities</td>
-</tr>
-
-<tr>
-<td><code>pgo_admin_username</code></td>
-<td>admin</td>
-<td><strong>Required</strong></td>
-<td>Configures the pgo administrator username.</td>
-</tr>
-
-<tr>
-<td><code>pgo_admin_password</code></td>
-<td></td>
-<td><strong>Required</strong></td>
-<td>Configures the pgo administrator password.</td>
-</tr>
-
-<tr>
-<td><code>pgo_admin_perms</code></td>
-<td><code>*</code></td>
-<td><strong>Required</strong></td>
-<td>Sets the access control rules provided by the PostgreSQL Operator RBAC resources for the PostgreSQL Operator administrative account that is created by this installer. Defaults to allowing all of the permissions, which is represented with the <code>*</code></td>
-</tr>
-
-<tr>
-<td><code>pgo_admin_role_name</code></td>
-<td>pgoadmin</td>
-<td><strong>Required</strong></td>
-<td>Sets the name of the PostgreSQL Operator role that is utilized for administrative operations performed by the PostgreSQL Operator.</td>
-</tr>
-
-<tr>
-<td><code>pgo_apiserver_port</code></td>
-<td>8443</td>
-<td></td>
-<td>Set to configure the port used by the Crunchy PostgreSQL Operator apiserver.</td>
-</tr>
-
-<tr>
-<td><code>pgo_client_install</code></td>
-<td>true</td>
-<td></td>
-<td>Configures the playbooks to install the <code>pgo</code> client if set to true.</td>
-</tr>
-
-<tr>
-<td><code>pgo_client_version</code></td>
-<td></td>
-<td><strong>Required</strong></td>
-<td>Configures which version of <code>pgo</code> the playbooks should install.</td>
-</tr>
-
-<tr>
-<td><code>pgo_disable_eventing</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure whether or not eventing should be enabled for the Crunchy PostgreSQL Operator installation.</td>
-</tr>
-
-<tr>
-<td><code>pgo_disable_tls</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure whether or not TLS should be enabled for the Crunchy PostgreSQL Operator apiserver.</td>
-</tr>
-
-<tr>
-<td><code>pgo_image_prefix</code></td>
-<td>crunchydata</td>
-<td><strong>Required</strong></td>
-<td>Configures the image prefix used when creating containers for the Crunchy PostgreSQL Operator (apiserver, operator, scheduler..etc).</td>
-</tr>
-
-<tr>
-<td><code>pgo_image_tag</code></td>
-<td></td>
-<td><strong>Required</strong></td>
-<td>Configures the image tag used when creating containers for the Crunchy PostgreSQL Operator (apiserver, operator, scheduler..etc)</td>
-</tr>
-
-<tr>
-<td><code>pgo_installation_name</code></td>
-<td></td>
-<td><strong>Required</strong></td>
-<td>The name of the PGO installation.</td>
-</tr>
-
-<tr>
-<td><code>pgo_noauth_routes</code></td>
-<td></td>
-<td></td>
-<td>Configures URL routes with mTLS and HTTP BasicAuth disabled.</td>
-</tr>
-
-<tr>
-<td><code>pgo_operator_namespace</code></td>
-<td></td>
-<td><strong>Required</strong></td>
-<td>Set to configure the namespace where Operator will be deployed.</td>
-</tr>
-
-<tr>
-<td><code>pgo_tls_ca_store</code></td>
-<td></td>
-<td></td>
-<td>Set to add additional Certificate Authorities for Operator to trust (PEM-encoded file).</td>
-</tr>
-
-<tr>
-<td><code>pgo_tls_no_verify</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure Operator to verify TLS certificates.</td>
-</tr>
-
-<tr>
-<td><code>pgo_client_container_install</code></td>
-<td>false</td>
-<td></td>
-<td>Installs the pgo-client deployment along with ansible install</td>
-</tr>
-
-<tr>
-<td><code>pgo_apiserver_url</code></td>
-<td><code>https://postgres-operator</code></td>
-<td></td>
-<td>Sets the <code>pgo_apiserver_url</code> in the pgo-client deployment</td>
-</tr>
-
-<tr>
-<td><code>pgo_client_cert_secret</code></td>
-<td><code>pgo.tls</code></td>
-<td></td>
-<td>Sets the secret that the pgo-client will use when connecting to the operator. Secret should hold the TLS certs</td>
-</tr>
-
-<tr>
-<td><code>pod_anti_affinity</code></td>
-<td>preferred</td>
-<td></td>
-<td>Sets the default pod anti-affinity for the deployed PostgreSQL clusters, which is applied to the PostgreSQL instances, the pgBackRest repository, and any pgBouncer instances</td>
-</tr>
-
-<tr>
-<td><code>pod_anti_affinity_pgbackrest</code></td>
-<td></td>
-<td></td>
-<td>If set, overrides the value of <code>pod_anti_affinity</code> for just the pgBackRest repository</td>
-</tr>
-
-<tr>
-<td><code>pod_anti_affinity_pgbouncer</code></td>
-<td></td>
-<td></td>
-<td>If set, overrides the value of <code>pod_anti_affinity</code> for just the pgBouncer Pods</td>
-</tr>
-
-<tr>
-<td><code>primary_storage</code></td>
-<td>storageos</td>
-<td><strong>Required</strong></td>
-<td>Set to configure which storage definition to use when creating volumes used by PostgreSQL primaries on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_install</code></td>
-<td>true</td>
-<td></td>
-<td>Set to true to install Crunchy Prometheus timeseries database.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_storage_access_mode</code></td>
-<td></td>
-<td></td>
-<td>Set to the access mode used by the configured storage class for Prometheus persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_storage_class_name</code></td>
-<td></td>
-<td></td>
-<td>Set to the name of the storage class used when creating Prometheus persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>replica_storage</code></td>
-<td>storageos</td>
-<td><strong>Required</strong></td>
-<td>Set to configure which storage definition to use when creating volumes used by PostgreSQL replicas on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>scheduler_timeout</code></td>
-<td>3600</td>
-<td><strong>Required</strong></td>
-<td>Set to a value in seconds to configure the <code>pgo-scheduler</code> timeout threshold when waiting for schedules to complete.</td>
-</tr>
-
-<tr>
-<td><code>service_type</code></td>
-<td>ClusterIP</td>
-<td></td>
-<td>Set to configure the type of Kubernetes service provisioned on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>sync_replication</code></td>
-<td>false</td>
-<td></td>
-<td>If set to true, defaults the PostgreSQL clusters to be deployed with synchronous replication</td>
-</tr>
-
-<tr>
-<td><code>pgo_cluster_admin</code></td>
-<td>false</td>
-<td></td>
-<td>Determines whether or not the <code>cluster-admin</code> role is assigned to the PGO service account. Must be <code>true</code> to enable PGO namespace &amp; role creation when installing in OpenShift.</td>
-</tr>
-</tbody>
-</table>
-
-<div class="notices tip" ><p>To retrieve the <code>kubernetes_context</code> value for Kubernetes installs, run the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl config current-context</code></pre></div></div>
-
-<h2 id="storage">Storage</h2>
-
-<p>Kubernetes and OpenShift offer support for a wide variety of different storage types, and by default, the <code>inventory</code> is
-pre-populated with storage configurations for some of these storage types.  However, the storage types defined
-in the <code>inventory</code> can be modified or removed as needed, while additional storage configurations can also be
-added to meet the specific storage requirements for your PG clusters.</p>
-
-<p>The following <code>storage</code> variables are utilized to add or modify operator storage configurations in the <code>inventory</code>:</p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>storage&lt;ID&gt;_name</code></td>
-<td>Yes</td>
-<td>Set to specify a name for the storage configuration.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_access_mode</code></td>
-<td>Yes</td>
-<td>Set to configure the access mode of the volumes created when using this storage definition.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_size</code></td>
-<td>Yes</td>
-<td>Set to configure the size of the volumes created when using this storage definition.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_class</code></td>
-<td>Required when using the <code>dynamic</code> storage type</td>
-<td>Set to configure the storage class name used when creating dynamic volumes.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_supplemental_groups</code></td>
-<td>Required when using NFS storage</td>
-<td>Set to configure any supplemental groups that should be added to security contexts on newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_type</code></td>
-<td>Yes</td>
-<td>Set to either <code>create</code> or <code>dynamic</code> to configure the operator to create persistent volumes or have them created dynamically by a storage class.</td>
-</tr>
-</tbody>
-</table>
-
-<p>The <code>ID</code> portion of <code>storage</code> prefix for each variable name above should be an integer that is used to group the various <code>storage</code> variables into a single storage configuration.  For instance, the following shows a single storage configuration for NFS storage:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">storage3_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
-<span style="color:#75af00">storage3_access_mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;ReadWriteMany&#39;</span>
-<span style="color:#75af00">storage3_size</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;1G&#39;</span>
-<span style="color:#75af00">storage3_type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;create&#39;</span>
-<span style="color:#75af00">storage3_supplemental_groups</span><span style="color:#f92672">=</span><span style="color:#d88200">65534</span></code></pre></div>
-<p>As this example storage configuration shows, integer <code>3</code> is used as the ID for each of the <code>storage</code> variables, which together form a single storage configuration called <code>nfsstorage</code>.  This approach allows different storage configurations to be created by defining the proper <code>storage</code> variables with a unique ID for each required storage configuration.</p>
-
-<p>Additionally, once all storage configurations have been defined in the <code>inventory</code>, they can then be used to specify the default storage configuration that should be utilized for the various PG pods created by the operator.  This is done using the following variables, which are also defined in the <code>inventory</code>:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">backrest_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
-<span style="color:#75af00">backup_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
-<span style="color:#75af00">primary_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
-<span style="color:#75af00">replica_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span></code></pre></div>
-<p>With the configuration shown above, the <code>nfsstorage</code> storage configuration would be used by default for the various containers created for a PG cluster (i.e. containers for the primary DB, replica DB&rsquo;s, backups and/or <code>pgBackRest</code>).</p>
-
-<h3 id="examples">Examples</h3>
-
-<p>The following are additional examples of storage configurations for various storage types.</p>
-
-<h4 id="generic-storage-class">Generic Storage Class</h4>
-
-<p>The following example defines a storageTo setup storage1 to use the storage class <code>fast</code></p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">storage5_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;storageos&#39;</span>
-<span style="color:#75af00">storage5_access_mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;ReadWriteOnce&#39;</span>
-<span style="color:#75af00">storage5_size</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;5Gi&#39;</span>
-<span style="color:#75af00">storage5_type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;dynamic&#39;</span>
-<span style="color:#75af00">storage5_class</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;fast&#39;</span></code></pre></div>
-<p>To assign this storage definition to all <code>primary</code> pods created by the Operator, we
-can configure the <code>primary_storage=storageos</code> variable in the inventory file.</p>
-
-<h4 id="gke">GKE</h4>
-
-<p>The storage class provided by Google Kubernetes Environment (GKE) can be configured
-to be used by the Operator by setting the following variables in the <code>inventory</code> file:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">storage8_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;gce&#39;</span>
-<span style="color:#75af00">storage8_access_mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;ReadWriteOnce&#39;</span>
-<span style="color:#75af00">storage8_size</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;300M&#39;</span>
-<span style="color:#75af00">storage8_type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;dynamic&#39;</span>
-<span style="color:#75af00">storage8_class</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;standard&#39;</span></code></pre></div>
-<p>To assign this storage definition to all <code>primary</code> pods created by the Operator, we
-can configure the <code>primary_storage=gce</code> variable in the inventory file.</p>
-
-<h3 id="considerations-for-multi-zone-cloud-environments">Considerations for Multi-Zone Cloud Environments</h3>
-
-<p>When using the Operator in a Kubernetes cluster consisting of nodes that span
-multiple zones, special consideration must betaken to ensure all pods and the
-volumes they require are scheduled and provisioned within the same zone.  Specifically,
-being that a pod is unable mount a volume that is located in another zone, any
-volumes that are dynamically provisioned must be provisioned in a topology-aware
-manner according to the specific scheduling requirements for the pod. For instance,
-this means ensuring that the volume containing the database files for the primary
-database in a new PostgreSQL cluster is provisioned in the same zone as the node
-containing the PostgreSQL primary pod that will be using it.</p>
-
-<h2 id="resource-configuration">Resource Configuration</h2>
-
-<p>Kubernetes and OpenShift allow specific resource requirements to be specified for the various containers deployed inside of a pod.
-This includes defining the required resources for each container, i.e. how much memory and CPU each container will need, while also
-allowing resource limits to be defined, i.e. the maximum amount of memory and CPU a container will be allowed to consume.
-In support of this capability, the Crunchy PGO allows any required resource configurations to be defined in the <code>inventory</code>, which
-can the be utilized by the operator to set any desired resource requirements/limits for the various containers that will
-be deployed by the Crunchy PGO when creating and managing PG clusters.</p>
-
-<p>The following <code>resource</code> variables are utilized to add or modify operator resource configurations in the <code>inventory</code>:</p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>resource&lt;ID&gt;_requests_memory</code></td>
-<td>Yes</td>
-<td>The amount of memory required by the container.</td>
-</tr>
-
-<tr>
-<td><code>resource&lt;ID&gt;_requests_cpu</code></td>
-<td>Yes</td>
-<td>The amount of CPU required by the container.</td>
-</tr>
-
-<tr>
-<td><code>resource&lt;ID&gt;_limits_memory</code></td>
-<td>Yes</td>
-<td>The maximum amount of memory that can be consumed by the container.</td>
-</tr>
-
-<tr>
-<td><code>resource&lt;ID&gt;_limits_cpu</code></td>
-<td>Yes</td>
-<td>The maximum amount of CPU that can be consumed by the container.</td>
-</tr>
-</tbody>
-</table>
-
-<p>The <code>ID</code> portion of <code>resource</code> prefix for each variable name above should be an integer that is used to group the various <code>resource</code> variables into a single resource configuration.  For instance, the following shows a single resource configuration called <code>small</code>:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">resource1_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
-<span style="color:#75af00">resource1_requests_memory</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;512Mi&#39;</span>
-<span style="color:#75af00">resource1_requests_cpu</span><span style="color:#f92672">=</span><span style="color:#d88200">0.1</span>
-<span style="color:#75af00">resource1_limits_memory</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;512Mi&#39;</span>
-<span style="color:#75af00">resource1_limits_cpu</span><span style="color:#f92672">=</span><span style="color:#d88200">0.1</span></code></pre></div>
-<p>As this example resource configuration shows, integer <code>1</code> is used as the ID for each of the <code>resource</code> variables, which together form a single resource configuration called <code>small</code>.  This approach allows different resource configurations to be created by defining the proper <code>resource</code> variables with a unique ID for each required resource configuration.</p>
-
-<p>With the configuration shown above, the <code>large</code> resource configuration would be used by default for all database containers, while the <code>small</code> resource configuration would then be utilized by default for the various other containers created for a PG cluster.</p>
-
-<h2 id="understanding-pgo-operator-namespace-namespace">Understanding <code>pgo_operator_namespace</code> &amp; <code>namespace</code></h2>
-
-<p>The Crunchy PostgreSQL Operator can be configured to be deployed and manage a single
-namespace or manage several namespaces.  The following are examples of different types
-of deployment models configurable in the <code>inventory</code> file.</p>
-
-<h3 id="single-namespace">Single Namespace</h3>
-
-<p>To deploy the Crunchy PostgreSQL Operator to work with a single namespace (in this example
-our namespace is named <code>pgo</code>), configure the following <code>inventory</code> settings:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">pgo_operator_namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span>
-<span style="color:#75af00">namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span></code></pre></div>
-<h3 id="multiple-namespaces">Multiple Namespaces</h3>
-
-<p>To deploy the Crunchy PostgreSQL Operator to work with multiple namespaces (in this example
-our namespaces are named <code>pgo</code>, <code>pgouser1</code> and <code>pgouser2</code>), configure the following <code>inventory</code> settings:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">pgo_operator_namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span>
-<span style="color:#75af00">namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgouser1,pgouser2&#39;</span></code></pre></div>
-<h2 id="deploying-multiple-operators">Deploying Multiple Operators</h2>
-
-<p>The 4.0 release of the Crunchy PostgreSQL Operator allows for multiple operator deployments in the same cluster.<br />
-To install the Crunchy PostgreSQL Operator to multiple namespaces, it&rsquo;s recommended to have an <code>inventory</code> file
-for each deployment of the operator.</p>
-
-<p>For each operator deployment the following inventory variables should be configured uniquely for each install.</p>
-
-<p>For example, operator could be deployed twice by changing the <code>pgo_operator_namespace</code> and <code>namespace</code> for those
-deployments:</p>
-
-<p>Inventory A would deploy operator to the <code>pgo</code> namespace and it would manage the <code>pgo</code> target namespace.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-init" data-lang="init"># Inventory A
-pgo_operator_namespace=&#39;pgo&#39;
-namespace=&#39;pgo&#39;
-...</code></pre></div>
-<p>Inventory B would deploy operator to the <code>pgo2</code> namespace and it would manage the <code>pgo2</code> and <code>pgo3</code> target namespaces.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-init" data-lang="init"># Inventory B
-pgo_operator_namespace=&#39;pgo2&#39;
-namespace=&#39;pgo2,pgo3&#39;
-...</code></pre></div>
-<p>Each install of the operator will create a corresponding directory in <code>$HOME/.pgo/&lt;PGO NAMESPACE&gt;</code> which will contain
-the TLS and <code>pgouser</code> client credentials.</p>
-
-<h2 id="deploying-grafana-and-prometheus">Deploying Grafana and Prometheus</h2>
-
-<p>PostgreSQL clusters created by the operator can be configured to create additional containers for collecting metrics.<br />
-These metrics are very useful for understanding the overall health and performance of PostgreSQL database deployments
-over time.  The collectors included by the operator are:</p>
-
-<ul>
-<li>PostgreSQL Exporter - PostgreSQL metrics</li>
-</ul>
-
-<p>The operator, however, does not install the necessary timeseries database (Prometheus) for storing the collected
-metrics or the front end visualization (Grafana) of those metrics.</p>
-
-<p>Included in these playbooks are roles for deploying Granfana and/or Prometheus.  See the <code>inventory</code> file
-for options to install the metrics stack.</p>
-
-<div class="notices tip" >At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.</div>
+<h6 id="auto-generated-by-spf13-cobra-on-15-may-2020">Auto generated by spf13/cobra on 15-May-2020</h6>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/" title="Ansible"> <i class="fa fa-chevron-left"></i><label>Ansible</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-ansible/" title="Installing Ansible" style="margin-right: 0px;"><label>Installing Ansible</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/" title="pgo reload"> <i class="fa fa-chevron-left"></i><label>pgo reload</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restore/" title="pgo restore" style="margin-right: 0px;"><label>pgo restore</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
