@@ -944,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/">
@@ -1110,7 +1117,7 @@ options.</p>
 
 <p>This section lists the options that you can configure to deploy the PostgreSQL
 Operator in your environment. The following list of environmental variables can
-be used in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.0/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yml</code></a>
+be used in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.1/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yml</code></a>
 manifest.</p>
 
 <h2 id="general-configuration">General Configuration</h2>
@@ -1337,6 +1344,13 @@ Operator.</p>
 <td>false</td>
 <td></td>
 <td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in OpenShift environments that have a <code>restricted</code> Security Context Constraints.</td>
+</tr>
+
+<tr>
+<td><code>DYNAMIC_RBAC</code></td>
+<td>false</td>
+<td></td>
+<td>When using a <code>readonly</code> or <code>disabled</code> <code>NAMESPACE_MODE</code>, determines whether or not the PostgreSQL Operator itself will granted the permissions needed to create required RBAC within a target namespace.</td>
 </tr>
 
 <tr>

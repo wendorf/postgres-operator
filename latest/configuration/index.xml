@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.3.0 4.3.0 12.2 2.25     11.7 2.25     10.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.3.1 4.3.1 12.3 2.25     11.8 2.25     10.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</guid>
       <description>The operator is template-driven; this makes it simple to configure both the client and the operator.
 conf Directory The Operator is configured with a collection of files found in the conf directory. These configuration files are deployed to your Kubernetes cluster when the Operator is deployed. Changes made to any of these configuration files currently require a redeployment of the Operator on the Kubernetes cluster.
-The server components of the Operator include Role Based Access Control resources which need to be created a single time by a Kubernetes cluster-admin user.</description>
+The server components of the Operator include Role Based Access Control resources which need to be created a single time by a privileged Kubernetes user.</description>
     </item>
     
     <item>

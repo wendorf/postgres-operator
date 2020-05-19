@@ -946,6 +946,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/">
@@ -1164,13 +1171,12 @@ are required:</p>
 
 <h2 id="permissions">Permissions</h2>
 
-<p>The installation of the Crunchy PostgreSQL Operator requires elevated privileges.<br />
-It is required that the playbooks are run as a <code>cluster-admin</code> to ensure the playbooks
-can install:</p>
+<p>The installation of the Crunchy PostgreSQL Operator requires elevated
+privileges, as the following objects need to be created:</p>
 
 <ul>
 <li>Custom Resource Definitions</li>
-<li>Cluster RBAC</li>
+<li>Cluster RBAC for using one of the multi-namespace modes</li>
 <li>Create required namespaces</li>
 </ul>
 
@@ -1491,6 +1497,13 @@ sets of variables cannot be used at the same time.</div>
 <td>false</td>
 <td><strong>Required</strong></td>
 <td>Set to true disable auto failover capabilities on all newly created cluster requests. This cannot be overridden by the client on a cluster create, but on a cluster update. Setting this is not generally recommend, as it disable high-availability capabilities.</td>
+</tr>
+
+<tr>
+<td><code>dynamic_rbac</code></td>
+<td>false</td>
+<td></td>
+<td>When using a <code>readonly</code> or <code>disabled</code> <code>namespace_mode</code>, determines whether or not the PostgreSQL Operator itself will granted the permissions needed to create required RBAC within a target namespace.</td>
 </tr>
 
 <tr>

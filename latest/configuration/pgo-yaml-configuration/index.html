@@ -944,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/">
@@ -1128,7 +1135,7 @@
 
 <tr>
 <td>CCPImageTag</td>
-<td>newly created containers will be based on this image version (e.g. centos7-12.2-4.3.0), unless you override it using the &ndash;ccp-image-tag command line flag</td>
+<td>newly created containers will be based on this image version (e.g. centos7-12.3-4.3.1), unless you override it using the &ndash;ccp-image-tag command line flag</td>
 </tr>
 
 <tr>
@@ -1395,6 +1402,11 @@ for other access modes it might support.</p>
 <tr>
 <td>NamespaceRefreshInterval</td>
 <td>The refresh interval for the namespace controller (defaults to 60 seconds)</td>
+</tr>
+
+<tr>
+<td>NamespaceWorkerCount</td>
+<td>The number of workers created for the worker queue within the Namespace controller (defaults to 2)</td>
 </tr>
 
 <tr>

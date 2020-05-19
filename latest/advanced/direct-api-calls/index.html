@@ -944,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/">
@@ -1120,7 +1127,7 @@
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.3.0&quot;,
+  '{&quot;ClientVersion&quot;:&quot;4.3.1&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Name&quot;:&quot;mycluster&quot;,
   &quot;Series&quot;:1}' \
@@ -1134,7 +1141,7 @@ $PGO_APISERVER_URL/clusters
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.3.0&quot;,
+  '{&quot;ClientVersion&quot;:&quot;4.3.1&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Clustername&quot;:&quot;mycluster&quot;}' \
 $PGO_APISERVER_URL/showclusters
@@ -1145,7 +1152,7 @@ $PGO_APISERVER_URL/showclusters
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.3.0&quot;,
+  '{&quot;ClientVersion&quot;:&quot;4.3.1&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Clustername&quot;:&quot;mycluster&quot;}' \
 $PGO_APISERVER_URL/clustersdelete

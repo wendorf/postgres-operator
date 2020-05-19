@@ -945,6 +945,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/">
@@ -1142,7 +1149,7 @@
 cd $HOME/odev/src/github.com/crunchydata
 git clone https://github.com/CrunchyData/postgres-operator.git
 cd postgres-operator
-git checkout v4.3.0
+git checkout v4.3.1
 </code></pre>
 
 <p>This creates a directory structure under your HOME directory name <em>odev</em> and clones the current Operator version to that structure.</p>
@@ -1164,23 +1171,9 @@ source $HOME/.bashrc
 
 <h2 id="default-installation-namespace-creation">Default Installation - Namespace Creation</h2>
 
-<p>The default installation will create 3 namespaces to use
-for deploying the Operator into and for holding Postgres clusters
-created by the Operator.</p>
-
 <p>Creating Kubernetes namespaces is typically something that only a
 privileged Kubernetes user can perform so log into your Kubernetes cluster as a user
 that has the necessary privileges.</p>
-
-<p>On Openshift if you do not want to install the Operator as the system
-administrator, you can grant cluster-admin privileges to a user
-as follows:</p>
-
-<pre><code>oc adm policy add-cluster-role-to-user cluster-admin pgoinstaller
-</code></pre>
-
-<p>In the above command, you are granting cluster-admin privileges
-to a user named pgoinstaller.</p>
 
 <p>The <em>NAMESPACE</em> environment variable is a comma separated list
 of namespaces that specify where the Operator will be provisioing

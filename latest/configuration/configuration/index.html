@@ -944,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.0/">
@@ -1105,7 +1112,7 @@
 
 <p>The Operator is configured with a collection of files found in the <em>conf</em> directory.  These configuration files are deployed to your Kubernetes cluster when the Operator is deployed.  Changes made to any of these configuration files currently require a redeployment of the Operator on the Kubernetes cluster.</p>
 
-<p>The server components of the Operator include Role Based Access Control resources which need to be created a single time by a Kubernetes cluster-admin user.  See the Installation section for details on installing a Postgres Operator server.</p>
+<p>The server components of the Operator include Role Based Access Control resources which need to be created a single time by a privileged Kubernetes user.  See the Installation section for details on installing a Postgres Operator server.</p>
 
 <p>The configuration files used by the Operator are found in 2 places:
  * the pgo-config ConfigMap in the namespace the Operator is running in
