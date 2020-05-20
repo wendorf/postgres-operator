@@ -1184,6 +1184,7 @@
 
 <ul>
 <li>Fix for cloning a PostgreSQL cluster when the pgBackRest repository is stored in S3.</li>
+<li>The <code>pgo show namespace</code> command now properly indicates which namespaces a user is able to access.</li>
 <li>Ensure the <code>pgo-apiserver</code> will successfully run if <code>PGO_DISABLE_TLS</code> is set to <code>true</code>. Reported by (@zhubx007).</li>
 <li>Prevent a run of <code>pgo-deployer</code> from failing if it detects the existence of dependent cluster-wide objects already present.</li>
 <li>Deployments with <code>pgo-deployer</code> using the default file with <code>hostpathstorage</code> will now successfully deploy PostgreSQL clusters without any adjustments.</li>
