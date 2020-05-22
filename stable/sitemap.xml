@@ -43,11 +43,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/</loc>
   </url>
   
   <url>
@@ -127,6 +127,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/</loc>
   </url>
   
@@ -135,11 +139,19 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/</loc>
   </url>
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/</loc>
   </url>
   
   <url>
@@ -382,6 +394,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_reload/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/</loc>
   </url>
   
   <url>

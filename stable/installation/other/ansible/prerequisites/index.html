@@ -589,6 +589,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/">
@@ -863,19 +870,35 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -923,6 +946,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/">
@@ -1141,13 +1171,12 @@ are required:</p>
 
 <h2 id="permissions">Permissions</h2>
 
-<p>The installation of the Crunchy PostgreSQL Operator requires elevated privileges.<br />
-It is required that the playbooks are run as a <code>cluster-admin</code> to ensure the playbooks
-can install:</p>
+<p>The installation of the Crunchy PostgreSQL Operator requires elevated
+privileges, as the following objects need to be created:</p>
 
 <ul>
 <li>Custom Resource Definitions</li>
-<li>Cluster RBAC</li>
+<li>Cluster RBAC for using one of the multi-namespace modes</li>
 <li>Create required namespaces</li>
 </ul>
 
@@ -1175,7 +1204,7 @@ directory in the  <a href="https://github.com/CrunchyData/postgres-operator">pos
 
 <p>Available to Crunchy customers is an RPM containing all the necessary Ansible roles
 and files required for installation using Ansible.  The RPM can be found in Crunchy&rsquo;s
-yum repository.  For information on setting up <code>yum</code> to use the Crunchy repoistory,
+yum repository.  For information on setting up <code>yum</code> to use the Crunchy repository,
 see the <a href="https://access.crunchydata.com/">Crunchy Access Portal</a>.</p>
 
 <p>To install the Crunchy PostgreSQL Operator Ansible roles using <code>yum</code>, run the following
@@ -1414,6 +1443,13 @@ sets of variables cannot be used at the same time.</div>
 </tr>
 
 <tr>
+<td><code>disable_fsgroup</code></td>
+<td>false</td>
+<td></td>
+<td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in deployment environments that have a restricted Security Context Constraints.</td>
+</tr>
+
+<tr>
 <td><code>db_name</code></td>
 <td>userdb</td>
 <td></td>
@@ -1459,7 +1495,14 @@ sets of variables cannot be used at the same time.</div>
 <td><code>disable_failover</code></td>
 <td>false</td>
 <td><strong>Required</strong></td>
-<td>Set to true disable auto failover capabilities on all newly created cluster requests. This cannot be overriden by the client on a cluster create, but on a cluster update. Setting this is not generally recommend, as it disable high-availability capabilities.</td>
+<td>Set to true disable auto failover capabilities on all newly created cluster requests. This cannot be overridden by the client on a cluster create, but on a cluster update. Setting this is not generally recommend, as it disable high-availability capabilities.</td>
+</tr>
+
+<tr>
+<td><code>dynamic_rbac</code></td>
+<td>false</td>
+<td></td>
+<td>When using a <code>readonly</code> or <code>disabled</code> <code>namespace_mode</code>, determines whether or not the PostgreSQL Operator itself will granted the permissions needed to create required RBAC within a target namespace.</td>
 </tr>
 
 <tr>

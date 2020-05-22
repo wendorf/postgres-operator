@@ -587,6 +587,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/">
@@ -861,19 +868,35 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -921,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/">
@@ -1096,21 +1126,21 @@ PostgreSQL deployments across many Kubernetes namespaces, this can become
 onerous for the intents of this guide.</p>
 
 <p>If you install the PostgreSQL Operator using the <a href="https://crunchydata.github.io/postgres-operator/stable/quickstart/">quickstart</a>
-guide, you will have two namespaces installed: <code>pgouser1</code> and <code>pgouser2</code>. We
+guide, you will install the PostgreSQL Operator to a namespace called <code>pgo</code>. We
 can choose to always use one of these namespaces by setting the <code>PGO_NAMESPACE</code>
 environmental variable, which is detailed in the global <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/"><code>pgo</code> Client</a>
 reference,</p>
 
-<p>For convenience, we will use the <code>pgouser1</code> namespace in the examples below.
-For even more convenience, we recommend setting <code>pgouser1</code> to be the value of
+<p>For convenience, we will use the <code>pgo</code> namespace in the examples below.
+For even more convenience, we recommend setting <code>pgo</code> to be the value of
 the <code>PGO_NAMESPACE</code> variable. In the shell that you will be executing the <code>pgo</code>
 commands in, run the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgouser1</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgo</code></pre></div>
 <p>If you do not wish to set this environmental variable, or are in an environment
 where you are unable to use environmental variables, you will have to use the
 <code>--namespace</code> (or <code>-n</code>) flag for most commands, e.g.</p>
 
-<p><code>pgo version -n pgouser1</code></p>
+<p><code>pgo version -n pgo</code></p>
 
 <h2 id="syntax">Syntax</h2>
 

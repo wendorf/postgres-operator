@@ -587,6 +587,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/">
@@ -861,19 +868,35 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -921,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/">
@@ -1092,7 +1122,7 @@ is already deployed.</p>
 <li>For OpenShift deployments: <a href="https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html">oc</a> configured to communicate with OpenShift</li>
 </ul>
 
-<p>The Crunchy Postgres Operator als requires the following in order to authenticate with the apiserver:</p>
+<p>To authenticate with the Crunchy PostgreSQL Operator API:</p>
 
 <ul>
 <li>Client CA Certificate</li>
@@ -1104,9 +1134,9 @@ is already deployed.</p>
 <p>All of the requirements above should be obtained from an administrator who installed the Crunchy
 PostgreSQL Operator.</p>
 
-<h2 id="linux-and-macos">Linux and MacOS</h2>
+<h2 id="linux-and-macos">Linux and macOS</h2>
 
-<p>The following will setup the <code>pgo</code> client to be used on a Linux or MacOS system.</p>
+<p>The following will setup the <code>pgo</code> client to be used on a Linux or macOS system.</p>
 
 <h3 id="installing-the-client">Installing the Client</h3>
 
@@ -1192,11 +1222,11 @@ the <code>pgo</code> client.</p>
 pod. You can run single commands with the kubectl or oc command line tools
 or multiple commands by exec&rsquo;ing into the pod with bash.</p>
 
-<pre><code>kubectl exec -it -n pgo &lt;pgo-client-deployment-name&gt; -c &quot;pgo version&quot;
+<pre><code>kubectl exec -it -n pgo deploy/pgo-client -- pgo version
 
 # or
 
-kubectl exec -it -n pgo &lt;pgo-client-deployment-name&gt; bash
+kubectl exec -it -n pgo deploy/pgo-client bash
 </code></pre>
 
 <p>The deployment does not require any configuration to connect to the operator.</p>

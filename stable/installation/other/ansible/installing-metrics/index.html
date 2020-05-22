@@ -589,6 +589,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/">
@@ -863,19 +870,35 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -923,6 +946,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/">
@@ -1115,7 +1145,7 @@ using the provided Ansible roles.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
-<p>The following assumes the proper <a href="https://crunchydata.github.io/postgres-operator/stable/installation/install-with-ansible/prerequisites/">prerequisites are satisfied</a>
+<p>The following assumes the proper <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/prerequisites/">prerequisites are satisfied</a>
 we can now install the PostgreSQL Operator.</p>
 
 <p>At a minimum, the following inventory variables should be configured to install the
@@ -1268,9 +1298,9 @@ following commands:</p>
 
 ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install-metrics --ask-become-pass <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>    /usr/share/ansible/postgres-operator/playbooks/main.yml</code></pre></div>
-<h2 id="installing-on-macos">Installing on MacOS</h2>
+<h2 id="installing-on-macos">Installing on macOS</h2>
 
-<p>On a MacOS host with Ansible installed we can run the following command to install
+<p>On a macOS host with Ansible installed we can run the following command to install
 the Metrics stack:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install-metrics main.yml</code></pre></div>
 <h2 id="installing-on-windows">Installing on Windows</h2>

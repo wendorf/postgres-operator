@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.3.0 4.3.0 12.2 2.25     11.7 2.25     10.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.3.1 4.3.1 12.3 2.25     11.8 2.25     10.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       <guid>https://crunchydata.github.io/postgres-operator/stable/configuration/configuration/</guid>
       <description>The operator is template-driven; this makes it simple to configure both the client and the operator.
 conf Directory The Operator is configured with a collection of files found in the conf directory. These configuration files are deployed to your Kubernetes cluster when the Operator is deployed. Changes made to any of these configuration files currently require a redeployment of the Operator on the Kubernetes cluster.
-The server components of the Operator include Role Based Access Control resources which need to be created a single time by a Kubernetes cluster-admin user.</description>
+The server components of the Operator include Role Based Access Control resources which need to be created a single time by a privileged Kubernetes user.</description>
     </item>
     
     <item>
@@ -102,7 +102,8 @@ username:password:pgoadmin: pgouser1:password:pgoadmin:pgouser1 pgouser2:passwor
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/security/install-postgres-operator-rbac/</guid>
-      <description>Installation of PostgreSQL Operator RBAC Please note, installation of the PostgreSQL Operator RBAC requires Kubernetes Cluster-Admin.
+      <description>Installation of PostgreSQL Operator RBAC For a list of the RBAC required to install the PostgreSQL Operator, please view the postgres-operator.yml file:
+https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.1/installers/kubectl/postgres-operator.yml
 The first step is to install the PostgreSQL Operator RBAC configuration. This can be accomplished by running:
 make installrbac  This script will install the PostreSQL Operator Custom Resource Definitions, CRD’s and creates the following RBAC resources on your Kubernetes cluster:
    Setting Definition     Custom Resource Definitions (crd.</description>
@@ -121,20 +122,20 @@ Adjust the default keys to meet your security requirements using your own keys. 
     
     <item>
       <title>Manual Upgrade - Operator 3.5</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/</link>
+      <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/</guid>
-      <description>Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to 4.3.0 This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version 4.3.0. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
+      <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/</guid>
+      <description>Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to 4.3.1 This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version 4.3.1. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
     </item>
     
     <item>
       <title>Manual Upgrade - Operator 4</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/</link>
+      <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/</guid>
-      <description>Manual PostgreSQL Operator 4 Upgrade Procedure Below are the procedures for upgrading to version 4.3.0 of the Crunchy PostgreSQL Operator using the Bash or Ansible installation methods. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably for those upgrading from 4.1 and below, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers.</description>
+      <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/</guid>
+      <description>Manual PostgreSQL Operator 4 Upgrade Procedure Below are the procedures for upgrading to version 4.3.1 of the Crunchy PostgreSQL Operator using the Bash or Ansible installation methods. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably for those upgrading from 4.1 and below, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers.</description>
     </item>
     
     <item>
@@ -176,7 +177,7 @@ The below guide covers many of the common operations that are required when mana
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/</guid>
       <description>The PostgreSQL Operator Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the manifest directly from the repository:
-kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.1/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
 Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:</description>
     </item>
     
@@ -186,9 +187,9 @@ Overview The PostgreSQL Operator comes with a container called pgo-deployer whic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/installing-ansible/</guid>
-      <description>Installing Ansible on Linux, MacOS or Windows Ubuntu Subsystem To install Ansible on Linux or MacOS, see the official documentation provided by Ansible.
+      <description>Installing Ansible on Linux, macOS or Windows Ubuntu Subsystem To install Ansible on Linux or macOS, see the official documentation provided by Ansible.
 Install Google Cloud SDK (Optional) If Crunchy PostgreSQL Operator is going to be installed in a Google Kubernetes Environment the Google Cloud SDK is required.
-To install the Google Cloud SDK on Linux or MacOS, see the official Google Cloud documentation.
+To install the Google Cloud SDK on Linux or macOS, see the official Google Cloud documentation.
 When installing the Google Cloud SDK on the Windows Ubuntu Subsystem, run the following commands to install:</description>
     </item>
     
@@ -199,7 +200,7 @@ When installing the Google Cloud SDK on the Windows Ubuntu Subsystem, run the fo
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/installing-operator/</guid>
       <description>Installing The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.
-The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks is stored. See the ansible directory in the Crunchy PostgreSQL Operator project for the inventory file, main playbook and ansible roles.
+The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks are stored. See the installers/ansible directory in the Crunchy PostgreSQL Operator project for the inventory file, main playbook and ansible roles.
 Installing on Linux On a Linux host with Ansible installed we can run the following command to install the PostgreSQL Operator:</description>
     </item>
     
@@ -220,7 +221,8 @@ Prerequisites The following assumes the proper prerequisites are satisfied we ca
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/</guid>
       <description>Install the PostgreSQL Operator (pgo) Client The following will install and configure the pgo client on all systems. For the purpose of these instructions it&amp;rsquo;s assumed that the Crunchy PostgreSQL Operator is already deployed.
-Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  The Crunchy Postgres Operator als requires the following in order to authenticate with the apiserver:</description>
+Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  To authenticate with the Crunchy PostgreSQL Operator API:
+ Client CA Certificate Client TLS Certificate Client Key pgouser file containing &amp;lt;username&amp;gt;:&amp;lt;password&amp;gt;  All of the requirements above should be obtained from an administrator who installed the Crunchy PostgreSQL Operator.</description>
     </item>
     
     <item>
@@ -267,6 +269,28 @@ ansible-playbook -i /path/to/inventory --tags=uninstall --ask-become-pass main.y
 First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
 ansible-playbook -i /path/to/inventory --tags=uninstall-metrics main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
+    </item>
+    
+    <item>
+      <title>Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/</guid>
+      <description>Automated PostgreSQL Operator Upgrade Procedure The automated upgrade to a new release of the PostgreSQL Operator comprises two main steps:
+ Upgrading the PostgreSQL Operator itself Upgrading the existing PostgreSQL Clusters to the new release  The first step will result in an upgraded PostgreSQL Operator that is able to create and manage new clusters as expected, but will be unable to manage existing clusters until they have been upgraded.</description>
+    </item>
+    
+    <item>
+      <title>4.3.1</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/</guid>
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.3.1 on May 18, 2020.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+The PostgreSQL Operator 4.3.1 release includes the following software versions upgrades:
+ The PostgreSQL containers now use versions 12.3, 11.8, 10.13, 9.6.18, and 9.5.22  PostgreSQL Operator is tested with Kubernetes 1.13 - 1.18, OpenShift 3.11+, OpenShift 4.3+, Google Kubernetes Engine (GKE), and VMware Enterprise PKS 1.</description>
     </item>
     
     <item>
@@ -374,7 +398,7 @@ The focus of the 4.2.0 release of the PostgreSQL Operator was on the resiliency 
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/multi-cluster-kubernetes/</guid>
       <description>Advanced high-availability and disaster recovery strategies involve spreading your database clusters across multiple data centers to help maximize uptime. In Kubernetes, this technique is known as &amp;ldquo;federation&amp;rdquo;. Federated Kubernetes clusters are able to communicate with each other, coordinate changes, and provide resiliency for applications that have high uptime requirements.
-As of this writing, federation in Kubernetes is still in ongoing development area and is something we monitor with intense interest.</description>
+As of this writing, federation in Kubernetes is still in ongoing development and is something we monitor with intense interest. As Kubernetes federation continues to mature, we wanted to provide a way to deploy PostgreSQL clusters managed by the PostgreSQL Operator that can span multiple Kubernetes clusters.</description>
     </item>
     
     <item>
@@ -860,6 +884,17 @@ pgo load --load-config=./load.json --selector=project=xray  pgo load [flags]  Op
       <description>pgo reload Perform a cluster reload
 Synopsis RELOAD performs a PostgreSQL reload on a cluster or set of clusters. For example:
 pgo reload mycluster  pgo reload [flags]  Options  -h, --help help for reload --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+    </item>
+    
+    <item>
+      <title>pgo restart</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/</guid>
+      <description>pgo restart Restarts the PostgrSQL database within a PostgreSQL cluster
+Synopsis Restarts one or more PostgreSQL databases within a PostgreSQL cluster.
+For example, to restart the primary and all replicas: pgo restart mycluster Or target a specific instance within the cluster: pgo restart mycluster --target=mycluster-abcd And use the &#39;query&#39; flag obtain a list of all instances within the cluster: pgo restart mycluster --query  pgo restart [flags]  Options  -h, --help help for restart --no-prompt No command line confirmation.</description>
     </item>
     
     <item>

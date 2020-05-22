@@ -586,6 +586,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/">
@@ -861,19 +868,35 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -921,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/">
@@ -1088,7 +1118,7 @@ be provisioned in a topology-aware manner according to the specific scheduling r
 <p>This means that when a new PostgreSQL cluster is created, it is necessary to ensure that the volume containing the database
 files for the primary PostgreSQL database within the PostgreSQL clluster is provisioned in the same zone as the node containing the PostgreSQL primary pod that will be accesing the applicable volume.</p>
 
-<h4 id="dynamic-provisioning-of-volumes-default-behavoir">Dynamic Provisioning of Volumes: Default Behavoir</h4>
+<h4 id="dynamic-provisioning-of-volumes-default-behavior">Dynamic Provisioning of Volumes: Default Behavior</h4>
 
 <p>By default, the Kubernetes scheduler will ensure any pods created that claim a specific volume via a PVC are scheduled on a
 node in the same zone as that volume.  This is part of the default Kubernetes <a href="https://kubernetes.io/docs/setup/multiple-zones/">multi-zone support</a>.</p>
@@ -1104,7 +1134,7 @@ soon as they are requested, which means volumes are provisioned without knowledg
 <p>This behavior defined using the <code>volumeBindingMode</code> configuration applicable to the Storage Class being utilized to
 dynamically provision the volume.  By default,<code>volumeBindingMode</code> is set to <code>Immediate</code>.</p>
 
-<p>This default behavoir for dynamic provisioning can be seen in the Storage Class definition for a Google Cloud Engine Persistent Disk (GCE PD):</p>
+<p>This default behavior for dynamic provisioning can be seen in the Storage Class definition for a Google Cloud Engine Persistent Disk (GCE PD):</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -1117,7 +1147,7 @@ volumeBindingMode: Immediate</code></pre></div>
 
 <h4 id="issues-with-dynamic-provisioning-of-volumes-in-postgresql-operator">Issues with Dynamic Provisioning of Volumes in PostgreSQL Operator</h4>
 
-<p>Unfortunately, the default setting for dynamic provisinoing of volumes in mulit-zone Kubernetes cluster environments results in undesired behavoir when using the PostgreSQL Operator.</p>
+<p>Unfortunately, the default setting for dynamic provisinoing of volumes in mulit-zone Kubernetes cluster environments results in undesired behavior when using the PostgreSQL Operator.</p>
 
 <p>Within the PostgreSQL Operator, a <strong>node label</strong> is implemented as a <code>preferredDuringSchedulingIgnoredDuringExecution</code> node
 affinity rule, which is an affinity rule that Kubernetes will attempt to adhere to when scheduling any pods for the cluster,

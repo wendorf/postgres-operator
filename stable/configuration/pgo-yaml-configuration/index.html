@@ -587,6 +587,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/">
@@ -861,19 +868,35 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -921,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/">
@@ -1105,7 +1135,7 @@
 
 <tr>
 <td>CCPImageTag</td>
-<td>newly created containers will be based on this image version (e.g. centos7-12.2-4.3.0), unless you override it using the &ndash;ccp-image-tag command line flag</td>
+<td>newly created containers will be based on this image version (e.g. centos7-12.3-4.3.1), unless you override it using the &ndash;ccp-image-tag command line flag</td>
 </tr>
 
 <tr>
@@ -1216,6 +1246,11 @@
 <tr>
 <td>DefaultPgBouncerMemory</td>
 <td>string, matches a Kubernetes resource value. If set, it is used as the default value of the memory request for pgBouncer instances (default <code>24Mi</code>)</td>
+</tr>
+
+<tr>
+<td>DisableFSGroup</td>
+<td>If set to <code>true</code>, this will disable the use of the fsGroup for the containers related to PostgreSQL, which is normally set to 26. This is geared towards deployments that use Security Context Constraints in the mode of restricted (default <code>false</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -1367,6 +1402,11 @@ for other access modes it might support.</p>
 <tr>
 <td>NamespaceRefreshInterval</td>
 <td>The refresh interval for the namespace controller (defaults to 60 seconds)</td>
+</tr>
+
+<tr>
+<td>NamespaceWorkerCount</td>
+<td>The number of workers created for the worker queue within the Namespace controller (defaults to 2)</td>
 </tr>
 
 <tr>

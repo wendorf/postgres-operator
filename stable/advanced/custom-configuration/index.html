@@ -586,6 +586,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/">
@@ -861,19 +868,35 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -921,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/">
@@ -1122,7 +1152,7 @@ that will include the PostgreSQL configuration files within that directory.</p>
 configuration of a wide variety of tuning parameters for you PostgreSQL cluster.
 This includes various PostgreSQL settings, e.g. those that should be applied to
 files such as <code>postgresql.conf</code>, <code>pg_hba.conf</code> and <code>pg_ident.conf</code>, as well as
-tuning paramters for the High Availability features inlcuded in each cluster.
+tuning parameters for the High Availability features included in each cluster.
 The various configuration settings available can be
 <a href="https://access.crunchydata.com/documentation/patroni/latest/settings/index.html#settings">found here</a></p>
 
@@ -1281,9 +1311,9 @@ updated, e.g.:</p>
 postgresql<span style="color:#111">:</span>
   parameters<span style="color:#111">:</span>
     max_wal_senders<span style="color:#111">:</span> <span style="color:#ae81ff">10</span></code></pre></div>
-<p>The various key/value pairs provided within the <code>paramters</code> section result in the
+<p>The various key/value pairs provided within the <code>parameters</code> section result in the
 configuration of the same settings within the <code>postgresql.conf</code> file.  Please note that
-settings applied locally to a database server take precendence over those set via the DCS (with the
+settings applied locally to a database server take precedence over those set via the DCS (with the
 exception being those that must be set via the DCS, as
 <a href="https://access.crunchydata.com/documentation/patroni/latest/dynamic_configuration/">described here</a>).</p>
 
@@ -1292,35 +1322,32 @@ exception being those that must be set via the DCS, as
 
 <h4 id="restarting-database-servers">Restarting Database Servers</h4>
 
-<p>Changes to certain settings may require a restart of a PostgreSQL database.
-This can be accomplished using the <code>patronictl</code> utility included wihtin
-each PostgreSQL database container in the cluster, specifically
-using the <code>patronictl restart</code> command.  For example, to detect if a
-restart is needed for a server in a cluster called <code>mycluster</code>, the
-<code>kubectl exec</code> command can be utilized to access the database container for
-the primary PostgreSQL database server, and run the <code>patronictl list</code>
-command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#111">exec</span> -it mycluster-6f89d8bb85-pnlwz -- patronictl list
-+ Cluster: mycluster <span style="color:#f92672">(</span><span style="color:#ae81ff">6821144425371877525</span><span style="color:#f92672">)</span> -------+---------+----+-----------+-----------------+
-<span style="color:#111">|</span>            Member           <span style="color:#111">|</span>    Host   <span style="color:#111">|</span>  Role  <span style="color:#111">|</span>  State  <span style="color:#111">|</span> TL <span style="color:#111">|</span> Lag in MB <span style="color:#111">|</span> Pending restart <span style="color:#111">|</span>
-+-----------------------------+-----------+--------+---------+----+-----------+-----------------+
-<span style="color:#111">|</span> mycluster-6f89d8bb85-pnlwz <span style="color:#111">|</span> <span style="color:#ae81ff">10</span>.44.0.6 <span style="color:#111">|</span> Leader <span style="color:#111">|</span> running <span style="color:#111">|</span>  <span style="color:#ae81ff">1</span> <span style="color:#111">|</span>           <span style="color:#111">|</span>        *        <span style="color:#111">|</span>
-+-----------------------------+-----------+--------+---------+----+-----------+-----------------+</code></pre></div>
-<p>Here we can see that the <code>mycluster-6f89d8bb85-pnlwz</code> server is pending a restart,
-which can then be accomplished as follows:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#111">exec</span> -it mycluster-6f89d8bb85-pnlwz -- patronictl restart mycluster mycluster-6f89d8bb85-pnlwz
-+ Cluster: mycluster <span style="color:#f92672">(</span><span style="color:#ae81ff">6821144425371877525</span><span style="color:#f92672">)</span> -------+---------+----+-----------+
-<span style="color:#111">|</span>            Member           <span style="color:#111">|</span>    Host   <span style="color:#111">|</span>  Role  <span style="color:#111">|</span>  State  <span style="color:#111">|</span> TL <span style="color:#111">|</span> Lag in MB <span style="color:#111">|</span>
-+-----------------------------+-----------+--------+---------+----+-----------+
-<span style="color:#111">|</span> mycluster-6f89d8bb85-pnlwz <span style="color:#111">|</span> <span style="color:#ae81ff">10</span>.44.0.6 <span style="color:#111">|</span> Leader <span style="color:#111">|</span> running <span style="color:#111">|</span>  <span style="color:#ae81ff">1</span> <span style="color:#111">|</span>           <span style="color:#111">|</span>
-+-----------------------------+-----------+--------+---------+----+-----------+
-When should the restart take place <span style="color:#f92672">(</span>e.g. <span style="color:#ae81ff">2020</span>-04-29T17:23<span style="color:#f92672">)</span>  <span style="color:#f92672">[</span>now<span style="color:#f92672">]</span>: now
-Are you sure you want to restart members mycluster-6f89d8bb85-pnlwz? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: y
-Restart <span style="color:#00a8c8">if</span> the PostgreSQL version is less than provided <span style="color:#f92672">(</span>e.g. <span style="color:#ae81ff">9</span>.5.2<span style="color:#f92672">)</span>  <span style="color:#f92672">[]</span>:
-Success: restart on member mycluster-6f89d8bb85-pnlwz</code></pre></div>
-<p>Please note that these commands can be run from the primary or any replica
-database container within the PostgreSQL cluster being updated.</p>
+<p>Changes to certain settings may require one or more PostgreSQL databases within the cluster to be
+restarted.  This can be accomplished using the <code>pgo restart</code> command included with the <code>pgo</code> client.
+To detect if a restart is needed for a instance within a cluster called <code>mycluster</code> after making a
+configuration change, the <code>query</code> flag can be utilized with the <code>pgo restart</code> command as follows:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pgo restart mycluster2 --query
 
+Cluster: mycluster2
+INSTANCE                ROLE            STATUS          NODE            REPLICATION LAG         PENDING RESTART
+mycluster               primary         running         node01                     <span style="color:#ae81ff">0</span> MB                   <span style="color:#111">false</span>
+mycluster-ambq          replica         running         node01                     <span style="color:#ae81ff">0</span> MB                    true</code></pre></div>
+<p>Here we can see that the <code>mycluster-ambq</code> instance (i.e. the sole replica in cluster <code>mycluster</code>)
+is pending a restart, as shown by the <code>PENDING RESTART</code> column.  A restart can then be requested
+as follows:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pgo restart mycluster --target mycluster-ambq
+WARNING: Are you sure? <span style="color:#f92672">(</span>yes/no<span style="color:#f92672">)</span>: yes
+Successfully restarted instance mycluster</code></pre></div>
+<p>It is also possible to target multiple instances at the same time:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pgo restart mycluster --target mycluster --target mycluster-ambq
+WARNING: Are you sure? <span style="color:#f92672">(</span>yes/no<span style="color:#f92672">)</span>: yes
+Successfully restarted instance mycluster
+Successfully restarted instance mycluster-ambq</code></pre></div>
+<p>Or if no target is specified, the all instances within the cluster will be restarted:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pgo restart mycluster
+WARNING: Are you sure? <span style="color:#f92672">(</span>yes/no<span style="color:#f92672">)</span>: yes
+Successfully restarted instance mycluster
+Successfully restarted instance mycluster-ambq</code></pre></div>
 <h3 id="refreshing-configuration-settings">Refreshing Configuration Settings</h3>
 
 <p>If necessary, it is possible to refresh the configuration stored within the

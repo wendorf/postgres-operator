@@ -29,7 +29,7 @@ Environment The PostgreSQL Operator is tested in the following environments:
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/</guid>
       <description>The PostgreSQL Operator Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the manifest directly from the repository:
-kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.1/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
 Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:</description>
     </item>
     
@@ -40,7 +40,8 @@ Overview The PostgreSQL Operator comes with a container called pgo-deployer whic
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/</guid>
       <description>Install the PostgreSQL Operator (pgo) Client The following will install and configure the pgo client on all systems. For the purpose of these instructions it&amp;rsquo;s assumed that the Crunchy PostgreSQL Operator is already deployed.
-Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  The Crunchy Postgres Operator als requires the following in order to authenticate with the apiserver:</description>
+Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  To authenticate with the Crunchy PostgreSQL Operator API:
+ Client CA Certificate Client TLS Certificate Client Key pgouser file containing &amp;lt;username&amp;gt;:&amp;lt;password&amp;gt;  All of the requirements above should be obtained from an administrator who installed the Crunchy PostgreSQL Operator.</description>
     </item>
     
     <item>

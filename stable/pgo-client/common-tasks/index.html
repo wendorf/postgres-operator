@@ -587,6 +587,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restart/">
+            pgo restart
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_restore/">
@@ -861,19 +868,35 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade/">
+            Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/">Manual Upgrades</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade35/">
             Manual Upgrade - Operator 3.5
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4/">
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/upgrade4/">
             Manual Upgrade - Operator 4
           </a>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -921,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
+            4.3.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.0/">
@@ -1093,21 +1123,21 @@ PostgreSQL deployxments across many Kubernetes namespaces, this can become
 onerous for the intents of this guide.</p>
 
 <p>If you install the PostgreSQL Operator using the <a href="https://crunchydata.github.io/postgres-operator/stable/quickstart/">quickstart</a>
-guide, you will have two namespaces installed: <code>pgouser1</code> and <code>pgouser2</code>. We
+guide, you will install the PostgreSQL Operator to a namespace called <code>pgo</code>. We
 can choose to always use one of these namespaces by setting the <code>PGO_NAMESPACE</code>
 environmental variable, which is detailed in the global <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/"><code>pgo</code> Client</a>
 reference,</p>
 
-<p>For convenience, we will use the <code>pgouser1</code> namespace in the examples below.
-For even more convenience, we recommend setting <code>pgouser1</code> to be the value of
+<p>For convenience, we will use the <code>pgo</code> namespace in the examples below.
+For even more convenience, we recommend setting <code>pgo</code> to be the value of
 the <code>PGO_NAMESPACE</code> variable. In the shell that you will be executing the <code>pgo</code>
 commands in, run the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgouser1</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgo</code></pre></div>
 <p>If you do not wish to set this environmental variable, or are in an environment
 where you are unable to use environmental variables, you will have to use the
 <code>--namespace</code> (or <code>-n</code>) flag for most commands, e.g.</p>
 
-<p><code>pgo version -n pgouser1</code></p>
+<p><code>pgo version -n pgo</code></p>
 
 <h3 id="json-output">JSON Output</h3>
 
@@ -1142,8 +1172,8 @@ command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>which, if working, will yield results similar to:</p>
 
-<pre><code>pgo client version 4.3.0
-pgo-apiserver version 4.3.0
+<pre><code>pgo client version 4.3.1
+pgo-apiserver version 4.3.1
 </code></pre>
 
 <h3 id="inspecting-the-postgresql-operator-configuration">Inspecting the PostgreSQL Operator Configuration</h3>
@@ -1159,7 +1189,7 @@ deployed by default, which storage classes are being used, etc.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">BasicAuth<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
 Cluster<span style="color:#111">:</span>
   CCPImagePrefix<span style="color:#111">:</span> crunchydata
-  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.2</span>-<span style="color:#ae81ff">4.3</span>.<span style="color:#ae81ff">0</span>
+  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.3</span>-<span style="color:#ae81ff">4.3</span>.<span style="color:#ae81ff">1</span>
   Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Metrics<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   Badger<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
@@ -1186,7 +1216,7 @@ Cluster<span style="color:#111">:</span>
 Pgo<span style="color:#111">:</span>
   Audit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PGOImagePrefix<span style="color:#111">:</span> crunchydata
-  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.3</span>.<span style="color:#ae81ff">0</span>
+  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.3</span>.<span style="color:#ae81ff">1</span>
 PrimaryStorage<span style="color:#111">:</span> nfsstorage
 BackupStorage<span style="color:#111">:</span> nfsstorage
 ReplicaStorage<span style="color:#111">:</span> nfsstorage
@@ -1224,20 +1254,20 @@ Claims:                  8
 Total Volume Size:       8Gi       
 
 Database Images:
-                         4	crunchydata/crunchy-postgres-ha:centos7-12.2-4.3.0
-                         4	crunchydata/pgo-backrest-repo:centos7-4.3.0
-                         8	crunchydata/pgo-backrest:centos7-4.3.0
+                         4	crunchydata/crunchy-postgres-ha:centos7-12.3-4.3.1
+                         4	crunchydata/pgo-backrest-repo:centos7-4.3.1
+                         8	crunchydata/pgo-backrest:centos7-4.3.1
 
 Databases Not Ready:
 
 Labels (count &gt; 1): [count] [label]
 	[8]	[vendor=crunchydata]
 	[4]	[pgo-backrest-repo=true]
-	[4]	[pgouser=pgoadmin]
+	[4]	[pgouser=admin]
 	[4]	[pgo-pg-database=true]
 	[4]	[crunchy_collect=false]
 	[4]	[pg-pod-anti-affinity=]
-	[4]	[pgo-version=4.3.0]
+	[4]	[pgo-version=4.3.1]
 	[4]	[archive-timeout=60]
 	[2]	[pg-cluster=hacluster]
 </code></pre>
@@ -1256,7 +1286,7 @@ the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show namespace --all</code></pre></div>
 <p>which yields output similar to:</p>
 
-<pre><code>pgo username: pgoadmin
+<pre><code>pgo username: admin
 namespace                useraccess          installaccess       
 default                  accessible          no access           
 kube-node-lease          accessible          no access           
@@ -1392,7 +1422,7 @@ including the nodes that the pods are assigned to</li>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
 <p>which will yield output similar to:</p>
 
-<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.2-4.3.0)
+<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.3-4.3.1)
 	pod : hacluster-6dc6cfcfb9-f9knq (Running) on node01 (1/1) (primary)
 	pvc : hacluster
 	resources : CPU Limit= Memory Limit=, CPU Request= Memory Request=
@@ -1400,7 +1430,7 @@ including the nodes that the pods are assigned to</li>
 	deployment : hacluster
 	deployment : hacluster-backrest-shared-repo
 	service : hacluster - ClusterIP (10.102.20.42)
-	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.3.0 current-primary=hacluster name=hacluster pgouser=pgoadmin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.3.1 current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
 </code></pre>
 
 <h3 id="deleting-a-cluster">Deleting a Cluster</h3>
