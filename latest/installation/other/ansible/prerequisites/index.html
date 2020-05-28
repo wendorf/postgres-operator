@@ -946,6 +946,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.2/">
+            4.3.2
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.3.1/">
@@ -1252,7 +1259,7 @@ sets of variables cannot be used at the same time.</div>
 <li><code>db_port</code></li>
 <li><code>db_replicas</code></li>
 <li><code>db_user</code></li>
-<li><code>disable_auto_failover</code>`</li>
+<li><code>disable_auto_failover</code></li>
 <li><code>exporterport</code></li>
 <li><code>kubernetes_context</code> (Comment out if deploying to am OpenShift environment)</li>
 <li><code>metrics</code></li>
@@ -1529,7 +1536,7 @@ sets of variables cannot be used at the same time.</div>
 
 <tr>
 <td><code>grafana_install</code></td>
-<td>true</td>
+<td>false</td>
 <td></td>
 <td>Set to true to install Crunchy Grafana to visualize metrics.</td>
 </tr>
@@ -1578,7 +1585,7 @@ sets of variables cannot be used at the same time.</div>
 
 <tr>
 <td><code>metrics_namespace</code></td>
-<td>metrics</td>
+<td>pgo</td>
 <td></td>
 <td>Configures the target namespace when deploying Grafana and/or Prometheus</td>
 </tr>
@@ -1809,7 +1816,7 @@ sets of variables cannot be used at the same time.</div>
 
 <tr>
 <td><code>prometheus_install</code></td>
-<td>true</td>
+<td>false</td>
 <td></td>
 <td>Set to true to install Crunchy Prometheus timeseries database.</td>
 </tr>
