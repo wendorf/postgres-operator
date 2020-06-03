@@ -944,6 +944,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/">
+            4.3.2
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.1/">
@@ -1118,7 +1125,7 @@ for you, you can take a chance by running the manifest directly from the
 repository:</p>
 
 <pre><code>kubectl create namespace pgo
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.1/installers/kubectl/postgres-operator.yml
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml
 </code></pre>
 
 <p>However, we still advise that you read onward to see how to properly configure
@@ -1140,7 +1147,7 @@ handles a variety of lifecycle actions for the PostgreSQL Operator, including:</
 and takes care of setting up all of the objects required to run the PostgreSQL
 Operator.</p>
 
-<p>The installation manifest, called <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.1/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yaml</code></a>, is available in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.1/installers/kubectl/postgres-operator.yml"><code>installers/kubectl/postgres-operator.yml</code></a>
+<p>The installation manifest, called <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.2/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yaml</code></a>, is available in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.2/installers/kubectl/postgres-operator.yml"><code>installers/kubectl/postgres-operator.yml</code></a>
 path in the PostgreSQL Operator repository.</p>
 
 <h2 id="requirements">Requirements</h2>
@@ -1159,9 +1166,9 @@ permissions. This is required to create the <a href="https://kubernetes.io/docs/
 that power the PostgreSQL Operator. While the PostgreSQL Operator itself can be
 scoped to a specific namespace, you will need to have <code>cluster-admin</code> for the
 initial deployment, or privileges that allow you to install Custom Resource
-Definitions. The required list of privileges are available in the <a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.1/installers/kubectl/postgres-operator.yml">postgres-operator.yml</a> file:</p>
+Definitions. The required list of privileges are available in the <a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml">postgres-operator.yml</a> file:</p>
 
-<p><a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.1/installers/kubectl/postgres-operator.yml">https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.1/installers/kubectl/postgres-operator.yml</a></p>
+<p><a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml">https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml</a></p>
 
 <p>If you have already configured the ServiceAccount and ClusterRoleBinding for the
 installation process (e.g. from a previous installation), then you can remove
@@ -1218,7 +1225,7 @@ PostgreSQL Operator cannot create the RBAC itself.</p></li>
 <h2 id="configuration-postgres-operator-yml">Configuration - <code>postgres-operator.yml</code></h2>
 
 <p>The <code>postgres-operator.yml</code> file contains all of the configuration parameters
-for deploying the PostgreSQL Operator. The <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.1/installers/kubectl/postgres-operator.yml">example file</a>
+for deploying the PostgreSQL Operator. The <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.2/installers/kubectl/postgres-operator.yml">example file</a>
 contains defaults that should work in most Kubernetes environments, but it may
 require some customization.</p>
 
@@ -1338,8 +1345,8 @@ please see <a href="https://crunchydata.github.io/postgres-operator/stable/insta
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.3.1
-pgo-apiserver version 4.3.1
+<pre><code>pgo client version 4.3.2
+pgo-apiserver version 4.3.2
 </code></pre>
 
 <h2 id="post-installation">Post-Installation</h2>
