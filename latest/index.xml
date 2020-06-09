@@ -1216,7 +1216,7 @@ pgo upgrade mycluster Upgrades the cluster for use with the upgraded Postgres Op
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_version/</guid>
       <description>pgo version Print version information for the PostgreSQL Operator
 Synopsis VERSION allows you to print version information for the postgres-operator. For example:
-pgo version  pgo version [flags]  Options  -h, --help help for version  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
+pgo version  pgo version [flags]  Options  --client Only return the version of the pgo client. This does not make a call to the API server. -h, --help help for version  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
