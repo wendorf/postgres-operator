@@ -1234,7 +1234,7 @@ make verify-codegen
 <span style="color:#75715e"># Update any generated code:</span>
 make update-codegen</code></pre></div>
 <p>Therefore, in the event that a Custom Resource defined within the PostgreSQL Operator API
-(<code>$PGOROOT/apis/crunchydata.com</code>) is updated, the <code>verify-codegen</code> target will indicate that
+(<code>$PGOROOT/pkg/apis/crunchydata.com</code>) is updated, the <code>verify-codegen</code> target will indicate that
 an update is needed, and the <code>update-codegen</code> target should then be utilized to generate the
 updated code prior to compiling.</p>
 
