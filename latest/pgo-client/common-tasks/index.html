@@ -1214,6 +1214,8 @@ Cluster<span style="color:#111">:</span>
   BackrestS3Bucket<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   BackrestS3Endpoint<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   BackrestS3Region<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  BackrestS3URIStyle<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  BackrestS3VerifyTLS<span style="color:#111">:</span> <span style="color:#00a8c8">true</span>
   DisableAutofail<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PgmonitorPassword<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   EnableCrunchyadm<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
@@ -1998,6 +2000,8 @@ specifications:</p>
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-bucket<span style="color:#f92672">=</span>watering-hole <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-endpoint<span style="color:#f92672">=</span>s3.amazonaws.com <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-region<span style="color:#f92672">=</span>us-east-1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --pgbackrest-s3-uri-style<span style="color:#f92672">=</span>host <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --pgbackrest-s3-verify-tls<span style="color:#f92672">=</span><span style="color:#111">true</span> <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --password-superuser<span style="color:#f92672">=</span>supersecrethippo <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --password-replication<span style="color:#f92672">=</span>somewhatsecrethippo <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --password<span style="color:#f92672">=</span>opensourcehippo</code></pre></div>
@@ -2012,6 +2016,8 @@ following command:</p>
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-bucket<span style="color:#f92672">=</span>watering-hole <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-endpoint<span style="color:#f92672">=</span>s3.amazonaws.com <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-region<span style="color:#f92672">=</span>us-east-1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --pgbackrest-s3-uri-style<span style="color:#f92672">=</span>host <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --pgbackrest-s3-verify-tls<span style="color:#f92672">=</span><span style="color:#111">true</span> <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pgbackrest-repo-path<span style="color:#f92672">=</span>/backrestrepo/hippo-backrest-shared-repo <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --password-superuser<span style="color:#f92672">=</span>supersecrethippo <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --password-replication<span style="color:#f92672">=</span>somewhatsecrethippo <span style="color:#8045ff">\

@@ -1311,7 +1311,9 @@ the AWS S3 region to the <code>Cluster</code> section of the <code>pgo.yaml</cod
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">Cluster<span style="color:#111">:</span>
   BackrestS3Bucket<span style="color:#111">:</span> my-postgresql-backups-example
   BackrestS3Endpoint<span style="color:#111">:</span> s3.amazonaws.com
-  BackrestS3Region<span style="color:#111">:</span> us-east-<span style="color:#ae81ff">1</span></code></pre></div>
+  BackrestS3Region<span style="color:#111">:</span> us-east-<span style="color:#ae81ff">1</span>
+  BackrestS3URIStyle<span style="color:#111">:</span> host
+  BackrestS3VerifyTLS<span style="color:#111">:</span> <span style="color:#00a8c8">true</span></code></pre></div>
 <p>These values can also be set on a per-cluster basis with the
 <code>pgo create cluster</code> command, i.e.:</p>
 
@@ -1322,6 +1324,8 @@ the AWS S3 region to the <code>Cluster</code> section of the <code>pgo.yaml</cod
 <li><code>--pgbackrest-s3-key-secret</code>- specifies the AWS S3 key secret that should be
 utilized</li>
 <li><code>--pgbackrest-s3-region</code> - specifies the AWS S3 region that should be utilized</li>
+<li><code>--pgbackrest-s3-uri-style</code> -  specifies whether &ldquo;host&rdquo; or &ldquo;path&rdquo; style URIs should be utilized</li>
+<li><code>--pgbackrest-s3-verify-tls</code> - set this value to &ldquo;true&rdquo; to enable TLS verification</li>
 </ul>
 
 <p>Sensitive information, such as the values of the AWS S3 keys and secrets, are
