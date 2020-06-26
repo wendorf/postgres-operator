@@ -1368,13 +1368,6 @@ Operator.</p>
 </tr>
 
 <tr>
-<td><code>DYNAMIC_RBAC</code></td>
-<td>false</td>
-<td></td>
-<td>When using a <code>readonly</code> or <code>disabled</code> <code>NAMESPACE_MODE</code>, determines whether or not the PostgreSQL Operator itself will granted the permissions needed to create required RBAC within a target namespace.</td>
-</tr>
-
-<tr>
 <td><code>EXPORTERPORT</code></td>
 <td>9187</td>
 <td><strong>Required</strong></td>
@@ -1455,7 +1448,7 @@ Operator.</p>
 <td><code>NAMESPACE_MODE</code></td>
 <td>dynamic</td>
 <td></td>
-<td>When installing RBAC using &lsquo;create_rbac&rsquo;, the namespace mode determines what Cluster Roles are installed. Options: <code>dynamic</code>, <code>readonly</code>, and <code>disabled</code></td>
+<td>Determines which namespace permissions are assigned to the PostgreSQL Operator using a ClusterRole. Options: <code>dynamic</code>, <code>readonly</code>, and <code>disabled</code></td>
 </tr>
 
 <tr>
@@ -1645,6 +1638,13 @@ Operator.</p>
 <td>1G</td>
 <td></td>
 <td>Set to the size of persistent volume to create for Prometheus.</td>
+</tr>
+
+<tr>
+<td><code>RECONCILE_RBAC</code></td>
+<td>true</td>
+<td></td>
+<td>Determines whether or not the PostgreSQL Operator will granted the permissions needed to reconcile RBAC within targeted namespaces.</td>
 </tr>
 
 <tr>

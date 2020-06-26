@@ -145,7 +145,7 @@ Adjust the default keys to meet your security requirements using your own keys. 
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/</guid>
       <description>Prerequisites The following is required prior to installing Crunchy PostgreSQL Operator using Ansible:
- postgres-operator playbooks source code for the target version Ansible 2.8.0+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
+ postgres-operator playbooks source code for the target version Ansible 2.9.0+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
     </item>
     
     <item>

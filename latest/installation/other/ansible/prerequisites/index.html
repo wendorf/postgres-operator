@@ -1147,7 +1147,7 @@
 
 <ul>
 <li><a href="https://github.com/CrunchyData/postgres-operator/">postgres-operator playbooks</a> source code for the target version</li>
-<li>Ansible 2.8.0+</li>
+<li>Ansible 2.9.0+</li>
 </ul>
 
 <h2 id="kubernetes-installs">Kubernetes Installs</h2>
@@ -1521,13 +1521,6 @@ sets of variables cannot be used at the same time.</div>
 </tr>
 
 <tr>
-<td><code>dynamic_rbac</code></td>
-<td>false</td>
-<td></td>
-<td>When using a <code>readonly</code> or <code>disabled</code> <code>namespace_mode</code>, determines whether or not the PostgreSQL Operator itself will granted the permissions needed to create required RBAC within a target namespace.</td>
-</tr>
-
-<tr>
 <td><code>exporterport</code></td>
 <td>9187</td>
 <td><strong>Required</strong></td>
@@ -1615,7 +1608,7 @@ sets of variables cannot be used at the same time.</div>
 <td><code>namespace_mode</code></td>
 <td>dynamic</td>
 <td><strong>Required</strong></td>
-<td>Determines which <code>ClusterRoles</code> will be installed as required to enable various namespace functionality within the Operator. Valid values are <code>dynamic</code>, <code>readonly</code> or <code>disabled</code>. If <code>disabled</code> is selected, then no <code>ClusterRoles</code> are installed.</td>
+<td>Determines which namespace permissions are assigned to the PostgreSQL Operator using a ClusterRole. Options: <code>dynamic</code>, <code>readonly</code>, and <code>disabled</code></td>
 </tr>
 
 <tr>
@@ -1847,6 +1840,13 @@ sets of variables cannot be used at the same time.</div>
 <td></td>
 <td></td>
 <td>Set to the name of the storage class used when creating Prometheus persistent volumes.</td>
+</tr>
+
+<tr>
+<td><code>reconcile_rbac</code></td>
+<td>true</td>
+<td></td>
+<td>Determines whether or not the PostgreSQL Operator will granted the permissions needed to reconcile RBAC within targeted namespaces.</td>
 </tr>
 
 <tr>

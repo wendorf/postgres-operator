@@ -1910,7 +1910,59 @@ in your <code>psql</code> terminal:</p>
 <code>--tls-only</code> with TLS disabled (i.e. <code>PGSSLMODE=disable</code>), you will receive an
 error that connections without TLS are unsupported.</p>
 
-<h2 id="custom-postgresql-configuration-hahahugoshortcode-s0-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL Configuration</a></h2>
+<h3 id="tls-authentication-for-postgresql-replication">TLS Authentication for PostgreSQL Replication</h3>
+
+<p>PostgreSQL supports <a href="https://www.postgresql.org/docs/current/auth-cert.html">certificate-based authentication</a>,
+which allows for PostgreSQL to authenticate users based on the common name (CN)
+in a certificate. Using this feature, the PostgreSQL Operator allows you to
+configure PostgreSQL replicas in a cluster to authenticate using a certificate
+instead of a password.</p>
+
+<p>To use this feature, first you will need to set up a Kubernetes TLS Secret that
+has a CN of <code>primaryuser</code>. If you do not wish to have this as your CN, you will
+need to map the CN of this certificate to the value of <code>primaryuser</code> using a
+<a href="https://www.postgresql.org/docs/current/auth-username-maps.html">pg_ident</a>
+username map, which you can configure as part of a
+<a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">custom PostgreSQL configuration</a>.</p>
+
+<p>You also need to ensure that the certificate is verifiable by the certificate
+authority (CA) chain that you have provided for your PostgreSQL cluster. The CA
+is provided as part of the <code>--server-ca-secret</code> flag in the
+<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
+command.</p>
+
+<p>To create a PostgreSQL cluster that uses TLS authentication for replication,
+first create Kubernetes Secrets for the server and the CA. For the purposes of
+this example, we will use the ones that were created earlier: <code>postgresql-ca</code>
+and <code>hacluster-tls-keypair</code>. After generating a certificate that has a CN of
+<code>primaryuser</code>, create a Kubernetes Secret that references this TLS keypair
+called <code>hacluster-tls-replication-keypair</code>:</p>
+
+<pre><code>kubectl create secret tls hacluster-tls-replication-keypair \
+  --cert=/path/to/replication.crt \
+  --key=/path/to/replication.key
+</code></pre>
+
+<p>We can now create a PostgreSQL cluster and allow for it to use TLS
+authentication for its replicas! Let&rsquo;s create a PostgreSQL cluster with two
+replicas that also requires TLS for any connection:</p>
+
+<pre><code>pgo create cluster hippo \
+  --tls-only \
+  --server-ca-secret=hacluster-tls-keypair \
+  --server-tls-secret=postgresql-ca \
+  --replication-tls-secret=hacluster-tls-replication-keypair \
+  --replica-count=2
+</code></pre>
+
+<p>By default, the PostgreSQL Operator has each replica connect to PostgreSQL using
+a <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS">PostgreSQL TLS mode</a>
+of <code>verify-ca</code>. If you wish to perform TLS mutual authentication between
+PostgreSQL instances (i.e. certificate-based authentication with SSL mode of
+<code>verify-full</code>), you will need to create a
+<a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">PostgreSQL custom configuration</a>.</p>
+
+<h2 id="custom-postgresql-configuration-hahahugoshortcode-s3-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL Configuration</a></h2>
 
 <p>Customizing PostgreSQL configuration is currently not subject to the <code>pgo</code>
 client, but given it is a common question, we thought it may be helpful to link

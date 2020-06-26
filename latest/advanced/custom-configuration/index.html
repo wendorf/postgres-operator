@@ -1327,7 +1327,22 @@ exception being those that must be set via the DCS, as
 <p>Also, please note that <code>pg_hba</code> and <code>pg_ident</code> sections exist to update both the <code>pg_hba.conf</code> and
 <code>pg_ident.conf</code> PostgreSQL configuration files as needed.</p>
 
-<h4 id="restarting-database-servers">Restarting Database Servers</h4>
+<h4 id="a-note-on-customizing-authentication">A Note on Customizing <code>authentication</code></h4>
+
+<p>One of the blocks that can be modified in a <code>local</code> database setting is the
+<code>authentication</code> block. This can be useful for setting customizations such as
+TLS connection requirements (<code>sslmode</code>). However, one should take care when
+modifying this block, as modifying certain parameters can interfere with the
+management features that the PostgreSQL Operator provides.</p>
+
+<p>In particular, one should <strong>not</strong> customize the <code>username</code> or <code>password</code>
+attributes within this section as that will interface with the PostgreSQL
+Operator. Additionally, is using the built-in support for certificate-based
+authentication for replication users, you should not modify the <code>sslcert</code>,
+<code>sslkey</code>, <code>sslrootcert</code>, and <code>sslcrl</code> entries in the <code>replication</code> block of the
+<code>authentication</code> block.</p>
+
+<h3 id="restarting-database-servers">Restarting Database Servers</h3>
 
 <p>Changes to certain settings may require one or more PostgreSQL databases within the cluster to be
 restarted.  This can be accomplished using the <code>pgo restart</code> command included with the <code>pgo</code> client.
