@@ -1164,12 +1164,12 @@ sudo chmod +x /usr/local/bin/pgo</code></pre></div>
 chmod <span style="color:#ae81ff">700</span> <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span>/.pgo</code></pre></div>
 <p>Next, copy the certificates to this new directory:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /PATH/TO/client.crt <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span>/.pgo/client.crt <span style="color:#f92672">&amp;&amp;</span> chmod <span style="color:#ae81ff">600</span> <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span>/.pgo/client.crt
-cp /PATH/TO/client.pem <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span>/.pgo/client.pem <span style="color:#f92672">&amp;&amp;</span> chmod <span style="color:#ae81ff">400</span> <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span>/.pgo/client.pem</code></pre></div>
+cp /PATH/TO/client.key <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span>/.pgo/client.key <span style="color:#f92672">&amp;&amp;</span> chmod <span style="color:#ae81ff">400</span> <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span>/.pgo/client.key</code></pre></div>
 <p>Finally, set the following environment variables to point to the client TLS files:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#d88200">&lt;&lt;EOF &gt;&gt; ${HOME?}/.bashrc
 </span><span style="color:#d88200">export PGO_CA_CERT=&#34;${HOME?}/.pgo/client.crt&#34;
 </span><span style="color:#d88200">export PGO_CLIENT_CERT=&#34;${HOME?}/.pgo/client.crt&#34;
-</span><span style="color:#d88200">export PGO_CLIENT_KEY=&#34;${HOME?}/.pgo/client.pem&#34;
+</span><span style="color:#d88200">export PGO_CLIENT_KEY=&#34;${HOME?}/.pgo/client.key&#34;
 </span><span style="color:#d88200">EOF</span></code></pre></div>
 <p>Apply those changes to the current session by running:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">source</span> ~/.bashrc</code></pre></div>
@@ -1278,11 +1278,11 @@ following command:</p>
 
 <p>Next, copy the certificates to this new directory:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">copy <span style="color:#8045ff">\P</span>ATH<span style="color:#8045ff">\T</span>O<span style="color:#8045ff">\c</span>lient.crt <span style="color:#d88200">&#34;%HOMEPATH%\pgo&#34;</span>
-copy <span style="color:#8045ff">\P</span>ATH<span style="color:#8045ff">\T</span>O<span style="color:#8045ff">\c</span>lient.pem <span style="color:#d88200">&#34;%HOMEPATH%\pgo&#34;</span></code></pre></div>
+copy <span style="color:#8045ff">\P</span>ATH<span style="color:#8045ff">\T</span>O<span style="color:#8045ff">\c</span>lient.key <span style="color:#d88200">&#34;%HOMEPATH%\pgo&#34;</span></code></pre></div>
 <p>Finally, set the following environment variables to point to the client TLS files:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">setx PGO_CA_CERT <span style="color:#d88200">&#34;%HOMEPATH%\pgo\client.crt&#34;</span>
 setx PGO_CLIENT_CERT <span style="color:#d88200">&#34;%HOMEPATH%\pgo\client.crt&#34;</span>
-setx PGO_CLIENT_KEY <span style="color:#d88200">&#34;%HOMEPATH%\pgo\client.pem&#34;</span></code></pre></div>
+setx PGO_CLIENT_KEY <span style="color:#d88200">&#34;%HOMEPATH%\pgo\client.key&#34;</span></code></pre></div>
 <h4 id="configuring-pgouser-1">Configuring <code>pgouser</code></h4>
 
 <p>The <code>pgouser</code> file contains the username and password used for authentication with the Crunchy
