@@ -1148,29 +1148,23 @@ we can now install the PostgreSQL Operator.</p>
 
 <p>The commands should be run in the directory where the Crunchy PostgreSQL Operator
 playbooks are stored.  See the <code>installers/ansible</code> directory in the Crunchy PostgreSQL Operator
-project for the inventory file, main playbook and ansible roles.</p>
+project for the inventory file, values file, main playbook and ansible roles.</p>
 
 <h2 id="installing-on-linux">Installing on Linux</h2>
 
 <p>On a Linux host with Ansible installed we can run the following command to install
 the PostgreSQL Operator:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install --ask-become-pass main.yml</code></pre></div>
-<p>If the Crunchy PostgreSQL Operator playbooks were installed using <code>yum</code>, use the
-following commands:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">ANSIBLE_ROLES_PATH</span><span style="color:#f92672">=</span>/usr/share/ansible/roles/crunchydata
-
-ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install --ask-become-pass <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>    /usr/share/ansible/postgres-operator/playbooks/main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>install --ask-become-pass main.yml</code></pre></div>
 <h2 id="installing-on-macos">Installing on macOS</h2>
 
 <p>On a macOS host with Ansible installed we can run the following command to install
 the PostgreSQL Operator.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install --ask-become-pass main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>install --ask-become-pass main.yml</code></pre></div>
 <h2 id="installing-on-windows-ubuntu-subsystem">Installing on Windows Ubuntu Subsystem</h2>
 
 <p>On a Windows host with an Ubuntu subsystem we can run the following commands to install
 the PostgreSQL Operator.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install --ask-become-pass main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>install --ask-become-pass main.yml</code></pre></div>
 <h2 id="verifying-the-installation">Verifying the Installation</h2>
 
 <p>This may take a few minutes to deploy.  To check the status of the deployment run

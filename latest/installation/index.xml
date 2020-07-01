@@ -50,10 +50,9 @@ Prerequisites  For Kubernetes deployments: kubectl configured to communicate wit
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/configuration/</guid>
-      <description>PostgreSQL Operator Installer Configuration The pgo-deployer container is launched by using a Kubernetes Job manifest and contains many configurable options.
-This section lists the options that you can configure to deploy the PostgreSQL Operator in your environment. The following list of environmental variables can be used in the postgres-operator.yml manifest.
-General Configuration These environmental variables affect the general configuration of the PostgreSQL Operator.
-   Name Default Required Description     ARCHIVE_MODE true Required Set to true enable archive logging on all newly created clusters.</description>
+      <description>PostgreSQL Operator Installer Configuration When installing the PostgreSQL Operator you have many configuration options, these options are listed in this section.
+General Configuration These variables affect the general configuration of the PostgreSQL Operator.
+   Name Default Required Description     archive_mode true Required Set to true enable archive logging on all newly created clusters.   archive_timeout 60 Required Set to a value in seconds to configure the timeout threshold for archiving.</description>
     </item>
     
   </channel>

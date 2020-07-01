@@ -1118,18 +1118,12 @@
 
 <h1 id="postgresql-operator-installer-configuration">PostgreSQL Operator Installer Configuration</h1>
 
-<p>The <a href="https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/"><code>pgo-deployer</code> container</a>
-is launched by using a Kubernetes Job manifest and contains many configurable
-options.</p>
-
-<p>This section lists the options that you can configure to deploy the PostgreSQL
-Operator in your environment. The following list of environmental variables can
-be used in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.3.2/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yml</code></a>
-manifest.</p>
+<p>When installing the PostgreSQL Operator you have many configuration options, these
+options are listed in this section.</p>
 
 <h2 id="general-configuration">General Configuration</h2>
 
-<p>These environmental variables affect the general configuration of the PostgreSQL
+<p>These variables affect the general configuration of the PostgreSQL
 Operator.</p>
 
 <table>
@@ -1144,525 +1138,525 @@ Operator.</p>
 
 <tbody>
 <tr>
-<td><code>ARCHIVE_MODE</code></td>
+<td><code>archive_mode</code></td>
 <td>true</td>
 <td><strong>Required</strong></td>
 <td>Set to true enable archive logging on all newly created clusters.</td>
 </tr>
 
 <tr>
-<td><code>ARCHIVE_TIMEOUT</code></td>
+<td><code>archive_timeout</code></td>
 <td>60</td>
 <td><strong>Required</strong></td>
 <td>Set to a value in seconds to configure the timeout threshold for archiving.</td>
 </tr>
 
 <tr>
-<td><code>BACKREST</code></td>
-<td>true</td>
-<td><strong>Required</strong></td>
-<td>Set to true enable pgBackRest capabilities on all newly created cluster request.  This can be disabled by the client.</td>
-</tr>
-
-<tr>
-<td><code>BACKREST_AWS_S3_BUCKET</code></td>
+<td><code>backrest_aws_s3_bucket</code></td>
 <td></td>
 <td></td>
 <td>Set to configure the <em>bucket</em> used by pgBackRest with Amazon Web Service S3 for backups and restoration in S3.</td>
 </tr>
 
 <tr>
-<td><code>BACKREST_AWS_S3_ENDPOINT</code></td>
+<td><code>backrest_aws_s3_endpoint</code></td>
 <td></td>
 <td></td>
 <td>Set to configure the <em>endpoint</em> used by pgBackRest with Amazon Web Service S3 for backups and restoration in S3.</td>
 </tr>
 
 <tr>
-<td><code>BACKREST_AWS_S3_KEY</code></td>
+<td><code>backrest_aws_s3_key</code></td>
 <td></td>
 <td></td>
 <td>Set to configure the <em>key</em> used by pgBackRest with Amazon Web Service S3 for backups and restoration in S3.</td>
 </tr>
 
 <tr>
-<td><code>BACKREST_AWS_S3_REGION</code></td>
+<td><code>backrest_aws_s3_region</code></td>
 <td></td>
 <td></td>
 <td>Set to configure the <em>region</em> used by pgBackRest with Amazon Web Service S3 for backups and restoration in S3.</td>
 </tr>
 
 <tr>
-<td><code>BACKREST_AWS_S3_SECRET</code></td>
+<td><code>backrest_aws_s3_secret</code></td>
 <td></td>
 <td></td>
 <td>Set to configure the <em>secret</em> used by pgBackRest with Amazon Web Service S3 for backups and restoration in S3.</td>
 </tr>
 
 <tr>
-<td><code>BACKREST_AWS_S3_URI_STYLE</code></td>
+<td><code>backrest_aws_s3_uri_style</code></td>
 <td></td>
 <td></td>
 <td>Set to configure whether “host” or “path” style URIs will be used when connecting to S3.</td>
 </tr>
 
 <tr>
-<td><code>BACKREST_AWS_S3_VERIFY_TLS</code></td>
-<td>true</td>
+<td><code>backrest_aws_s3_verify_tls</code></td>
 <td></td>
-<td>Set this value to true to enable TLS verification when making a pgBackRest connection to S3.</td>
+<td></td>
+<td>Set this value to true to enable TLS verification when making a pgBackRest connection to S3.f</td>
 </tr>
 
 <tr>
-<td><code>BACKREST_PORT</code></td>
+<td><code>backrest_port</code></td>
 <td>2022</td>
 <td><strong>Required</strong></td>
 <td>Defines the port where pgBackRest will run.</td>
 </tr>
 
 <tr>
-<td><code>BADGER</code></td>
+<td><code>badger</code></td>
 <td>false</td>
 <td><strong>Required</strong></td>
 <td>Set to true enable pgBadger capabilities on all newly created clusters. This can be disabled by the client.</td>
 </tr>
 
 <tr>
-<td><code>CCP_IMAGE_PREFIX</code></td>
-<td>crunchydata</td>
+<td><code>ccp_image_prefix</code></td>
+<td>registry.developers.crunchydata.com/crunchydata</td>
 <td><strong>Required</strong></td>
 <td>Configures the image prefix used when creating containers from Crunchy Container Suite.</td>
 </tr>
 
 <tr>
-<td><code>CCP_IMAGE_PULL_SECRET</code></td>
+<td><code>ccp_image_pull_secret</code></td>
 <td></td>
 <td></td>
 <td>Name of a Secret containing credentials for container image registries.</td>
 </tr>
 
 <tr>
-<td><code>CCP_IMAGE_PULL_SECRET_MANIFEST</code></td>
+<td><code>ccp_image_pull_secret_manifest</code></td>
 <td></td>
 <td></td>
 <td>Provide a path to the Secret manifest to be installed in each namespace. (optional)</td>
 </tr>
 
 <tr>
-<td><code>CCP_IMAGE_TAG</code></td>
-<td></td>
+<td><code>ccp_image_tag</code></td>
+<td>centos7-12.3-4.3.2</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag (version) used when creating containers from Crunchy Container Suite.</td>
 </tr>
 
 <tr>
-<td><code>CREATE_RBAC</code></td>
+<td><code>create_rbac</code></td>
 <td>true</td>
 <td><strong>Required</strong></td>
 <td>Set to true if the installer should create the RBAC resources required to run the PostgreSQL Operator.</td>
 </tr>
 
 <tr>
-<td><code>CRUNCHY_DEBUG</code></td>
+<td><code>crunchy_debug</code></td>
 <td>false</td>
 <td></td>
 <td>Set to configure Operator to use debugging mode. Note: this can cause sensitive data such as passwords to appear in Operator logs.</td>
 </tr>
 
 <tr>
-<td><code>DB_NAME</code></td>
+<td><code>db_name</code></td>
 <td></td>
 <td></td>
-<td>Set to a value to configure the default database name on all newly created clusters.  By default, the PostgreSQL Operator will set it to the name of the cluster that is being created.</td>
+<td>Set to a value to configure the default database name on all newly created clusters. By default, the PostgreSQL Operator will set it to the name of the cluster that is being created.</td>
 </tr>
 
 <tr>
-<td><code>DB_PASSWORD_AGE_DAYS</code></td>
+<td><code>db_password_age_days</code></td>
 <td>0</td>
 <td></td>
-<td>Set to a value in days to configure the expiration age on PostgreSQL role passwords on all newly created clusters. If set to &ldquo;0&rdquo;, this is the same as saying the password never expires</td>
+<td>Set to a value in days to configure the expiration age on PostgreSQL role passwords on all newly created clusters. If set to “0”, this is the same as saying the password never expires</td>
 </tr>
 
 <tr>
-<td><code>DB_PASSWORD_LENGTH</code></td>
+<td><code>db_password_length</code></td>
 <td>24</td>
 <td></td>
 <td>Set to configure the size of passwords generated by the operator on all newly created roles.</td>
 </tr>
 
 <tr>
-<td><code>DB_PORT</code></td>
+<td><code>db_port</code></td>
 <td>5432</td>
 <td><strong>Required</strong></td>
 <td>Set to configure the default port used on all newly created clusters.</td>
 </tr>
 
 <tr>
-<td><code>DB_REPLICAS</code></td>
+<td><code>db_replicas</code></td>
 <td>0</td>
 <td><strong>Required</strong></td>
 <td>Set to configure the amount of replicas provisioned on all newly created clusters.</td>
 </tr>
 
 <tr>
-<td><code>DB_USER</code></td>
+<td><code>db_user</code></td>
 <td>testuser</td>
 <td><strong>Required</strong></td>
 <td>Set to configure the username of the dedicated user account on all newly created clusters.</td>
 </tr>
 
 <tr>
-<td><code>DEFAULT_INSTANCE_MEMORY</code></td>
+<td><code>default_instance_memory</code></td>
 <td>128Mi</td>
 <td></td>
 <td>Represents the memory request for a PostgreSQL instance.</td>
 </tr>
 
 <tr>
-<td><code>DEFAULT_PGBACKREST_MEMORY</code></td>
+<td><code>default_pgbackrest_memory</code></td>
 <td>48Mi</td>
 <td></td>
 <td>Represents the memory request for a pgBackRest repository.</td>
 </tr>
 
 <tr>
-<td><code>DEFAULT_PGBOUNCER_MEMORY</code></td>
+<td><code>default_pgbouncer_memory</code></td>
 <td>24Mi</td>
 <td></td>
 <td>Represents the memory request for a pgBouncer instance.</td>
 </tr>
 
 <tr>
-<td><code>DELETE_METRICS_NAMESPACE</code></td>
+<td><code>delete_metrics_namespace</code></td>
 <td>false</td>
 <td></td>
 <td>Set to configure whether or not the metrics namespace (defined using variable <code>metrics_namespace</code>) is deleted when uninstalling the metrics infrastructure.</td>
 </tr>
 
 <tr>
-<td><code>DELETE_OPERATOR_NAMESPACE</code></td>
+<td><code>delete_operator_namespace</code></td>
 <td>false</td>
 <td></td>
 <td>Set to configure whether or not the PGO operator namespace (defined using variable <code>pgo_operator_namespace</code>) is deleted when uninstalling the PGO.</td>
 </tr>
 
 <tr>
-<td><code>DELETE_WATCHED_NAMESPACES</code></td>
+<td><code>delete_watched_namespaces</code></td>
 <td>false</td>
 <td></td>
 <td>Set to configure whether or not the PGO watched namespaces (defined using variable <code>namespace</code>) are deleted when uninstalling the PGO.</td>
 </tr>
 
 <tr>
-<td><code>DISABLE_AUTO_FAILOVER</code></td>
+<td><code>disable_auto_failover</code></td>
 <td>false</td>
 <td></td>
 <td>If set, will disable autofail capabilities by default in any newly created cluster</td>
 </tr>
 
 <tr>
-<td><code>DISABLE_FSGROUP</code></td>
+<td><code>disable_fsgroup</code></td>
 <td>false</td>
 <td></td>
 <td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in OpenShift environments that have a <code>restricted</code> Security Context Constraints.</td>
 </tr>
 
 <tr>
-<td><code>EXPORTERPORT</code></td>
+<td><code>exporterport</code></td>
 <td>9187</td>
 <td><strong>Required</strong></td>
 <td>Set to configure the default port used to connect to postgres exporter.</td>
 </tr>
 
 <tr>
-<td><code>GRAFANA_ADMIN_PASSWORD</code></td>
+<td><code>grafana_admin_password</code></td>
 <td></td>
 <td></td>
 <td>Set to configure the login password for the Grafana administrator.</td>
 </tr>
 
 <tr>
-<td><code>GRAFANA_ADMIN_USERNAME</code></td>
+<td><code>grafana_admin_username</code></td>
 <td>admin</td>
 <td></td>
 <td>Set to configure the login username for the Grafana administrator.</td>
 </tr>
 
 <tr>
-<td><code>GRAFANA_INSTALL</code></td>
+<td><code>grafana_install</code></td>
 <td>false</td>
 <td></td>
 <td>Set to true to install Crunchy Grafana to visualize metrics.</td>
 </tr>
 
 <tr>
-<td><code>GRAFANA_STORAGE_ACCESS_MODE</code></td>
+<td><code>grafana_storage_access_mode</code></td>
 <td>ReadWriteOnce</td>
 <td></td>
 <td>Set to the access mode used by the configured storage class for Grafana persistent volumes.</td>
 </tr>
 
 <tr>
-<td><code>GRAFANA_STORAGE_CLASS_NAME</code></td>
+<td><code>grafana_storage_class_name</code></td>
 <td>fast</td>
 <td></td>
 <td>Set to the name of the storage class used when creating Grafana persistent volumes.</td>
 </tr>
 
 <tr>
-<td><code>GRAFANA_SUPPLEMENTAL_GROUPS</code></td>
+<td><code>grafana_supplemental_groups</code></td>
 <td>65534</td>
 <td></td>
 <td>Set to configure any supplemental groups that should be added to security contexts for Grafana.</td>
 </tr>
 
 <tr>
-<td><code>GRAFANA_VOLUME_SIZE</code></td>
+<td><code>grafana_volume_size</code></td>
 <td>1G</td>
 <td></td>
 <td>Set to the size of persistent volume to create for Grafana.</td>
 </tr>
 
 <tr>
-<td><code>METRICS</code></td>
+<td><code>metrics</code></td>
 <td>false</td>
 <td><strong>Required</strong></td>
 <td>Set to true enable performance metrics on all newly created clusters. This can be disabled by the client.</td>
 </tr>
 
 <tr>
-<td><code>METRICS_NAMESPACE</code></td>
-<td><code>pgo</code></td>
+<td><code>metrics_namespace</code></td>
+<td>pgo</td>
 <td></td>
 <td>Namespace in which the <code>metrics</code> deployments with be run.</td>
 </tr>
 
 <tr>
-<td><code>NAMESPACE</code></td>
-<td></td>
+<td><code>namespace</code></td>
+<td>pgo</td>
 <td></td>
 <td>Set to a comma delimited string of all the namespaces Operator will manage.</td>
 </tr>
 
 <tr>
-<td><code>NAMESPACE_MODE</code></td>
+<td><code>namespace_mode</code></td>
 <td>dynamic</td>
 <td></td>
 <td>Determines which namespace permissions are assigned to the PostgreSQL Operator using a ClusterRole. Options: <code>dynamic</code>, <code>readonly</code>, and <code>disabled</code></td>
 </tr>
 
 <tr>
-<td><code>PGBADGERPORT</code></td>
+<td><code>pgbadgerport</code></td>
 <td>10000</td>
 <td><strong>Required</strong></td>
 <td>Set to configure the default port used to connect to pgbadger.</td>
 </tr>
 
 <tr>
-<td><code>PGO_ADD_OS_CA_STORE</code></td>
+<td><code>pgo_add_os_ca_store</code></td>
 <td>false</td>
 <td><strong>Required</strong></td>
 <td>When true, includes system default certificate authorities.</td>
 </tr>
 
 <tr>
-<td><code>PGO_ADMIN_PASSWORD</code></td>
-<td></td>
+<td><code>pgo_admin_password</code></td>
+<td>examplepassword</td>
 <td><strong>Required</strong></td>
 <td>Configures the pgo administrator password.</td>
 </tr>
 
 <tr>
-<td><code>PGO_ADMIN_PERMS</code></td>
+<td><code>pgo_admin_perms</code></td>
 <td>*</td>
 <td><strong>Required</strong></td>
 <td>Sets the access control rules provided by the PostgreSQL Operator RBAC resources for the PostgreSQL Operator administrative account that is created by this installer. Defaults to allowing all of the permissions, which is represented with the *</td>
 </tr>
 
 <tr>
-<td><code>PGO_ADMIN_ROLE_NAME</code></td>
+<td><code>pgo_admin_role_name</code></td>
 <td>pgoadmin</td>
 <td><strong>Required</strong></td>
 <td>Sets the name of the PostgreSQL Operator role that is utilized for administrative operations performed by the PostgreSQL Operator.</td>
 </tr>
 
 <tr>
-<td><code>PGO_ADMIN_USERNAME</code></td>
+<td><code>pgo_admin_username</code></td>
 <td>admin</td>
 <td><strong>Required</strong></td>
 <td>Configures the pgo administrator username.</td>
 </tr>
 
 <tr>
-<td><code>PGO_APISERVER_PORT</code></td>
+<td><code>pgo_apiserver_port</code></td>
 <td>8443</td>
 <td></td>
 <td>Set to configure the port used by the Crunchy PostgreSQL Operator apiserver.</td>
 </tr>
 
 <tr>
-<td><code>PGO_APISERVER_URL</code></td>
+<td><code>pgo_apiserver_url</code></td>
 <td><a href="https://postgres-operator">https://postgres-operator</a></td>
 <td></td>
 <td>Sets the <code>pgo_apiserver_url</code> for the <code>pgo-client</code> deployment.</td>
 </tr>
 
 <tr>
-<td><code>PGO_CLIENT_CERT_SECRET</code></td>
+<td><code>pgo_client_cert_secret</code></td>
 <td>pgo.tls</td>
 <td></td>
 <td>Sets the secret that the <code>pgo-client</code> will use when connecting to the PostgreSQL Operator.</td>
 </tr>
 
 <tr>
-<td><code>PGO_CLIENT_CONTAINER_INSTALL</code></td>
+<td><code>pgo_client_container_install</code></td>
 <td>false</td>
 <td></td>
 <td>Run the <code>pgo-client</code> deployment with the PostgreSQL Operator.</td>
 </tr>
 
 <tr>
-<td><code>PGO_CLUSTER_ADMIN</code></td>
+<td><code>pgo_client_version</code></td>
+<td>4.3.2</td>
+<td><strong>Required</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>pgo_cluster_admin</code></td>
 <td>false</td>
 <td><strong>Required</strong></td>
 <td>Determines whether or not the cluster-admin role is assigned to the PGO service account. Must be true to enable PGO namespace &amp; role creation when installing in OpenShift.</td>
 </tr>
 
 <tr>
-<td><code>PGO_DISABLE_EVENTING</code></td>
+<td><code>pgo_disable_eventing</code></td>
 <td>false</td>
 <td></td>
 <td>Set to configure whether or not eventing should be enabled for the Crunchy PostgreSQL Operator installation.</td>
 </tr>
 
 <tr>
-<td><code>PGO_DISABLE_TLS</code></td>
+<td><code>pgo_disable_tls</code></td>
 <td>false</td>
 <td></td>
 <td>Set to configure whether or not TLS should be enabled for the Crunchy PostgreSQL Operator apiserver.</td>
 </tr>
 
 <tr>
-<td><code>PGO_IMAGE_PREFIX</code></td>
-<td>crunchydata</td>
+<td><code>pgo_image_prefix</code></td>
+<td>registry.developers.crunchydata.com/crunchydata</td>
 <td><strong>Required</strong></td>
 <td>Configures the image prefix used when creating containers for the Crunchy PostgreSQL Operator (apiserver, operator, scheduler..etc).</td>
 </tr>
 
 <tr>
-<td><code>PGO_IMAGE_PULL_SECRET</code></td>
+<td><code>pgo_image_pull_secret</code></td>
 <td></td>
 <td></td>
 <td>Name of a Secret containing credentials for container image registries.</td>
 </tr>
 
 <tr>
-<td><code>PGO_IMAGE_PULL_SECRET_MANIFEST</code></td>
+<td><code>pgo_image_pull_secret_manifest</code></td>
 <td></td>
 <td></td>
 <td>Provide a path to the Secret manifest to be installed in each namespace. (optional)</td>
 </tr>
 
 <tr>
-<td><code>PGO_IMAGE_TAG</code></td>
-<td></td>
+<td><code>pgo_image_tag</code></td>
+<td>centos7-4.3.2</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag used when creating containers for the Crunchy PostgreSQL Operator (apiserver, operator, scheduler..etc)</td>
 </tr>
 
 <tr>
-<td><code>PGO_INSTALLATION_NAME</code></td>
+<td><code>pgo_installation_name</code></td>
 <td>devtest</td>
 <td><strong>Required</strong></td>
 <td>The name of the PGO installation.</td>
 </tr>
 
 <tr>
-<td><code>PGO_NOAUTH_ROUTES</code></td>
+<td><code>pgo_noauth_routes</code></td>
 <td></td>
 <td></td>
 <td>Configures URL routes with mTLS and HTTP BasicAuth disabled.</td>
 </tr>
 
 <tr>
-<td><code>PGO_OPERATOR_NAMESPACE</code></td>
+<td><code>pgo_operator_namespace</code></td>
 <td>pgo</td>
 <td><strong>Required</strong></td>
 <td>Set to configure the namespace where Operator will be deployed.</td>
 </tr>
 
 <tr>
-<td><code>PGO_TLS_CA_STORE</code></td>
+<td><code>pgo_tls_ca_store</code></td>
 <td></td>
 <td></td>
 <td>Set to add additional Certificate Authorities for Operator to trust (PEM-encoded file).</td>
 </tr>
 
 <tr>
-<td><code>PGO_TLS_NO_VERIFY</code></td>
+<td><code>pgo_tls_no_verify</code></td>
 <td>false</td>
 <td></td>
 <td>Set to configure Operator to verify TLS certificates.</td>
 </tr>
 
 <tr>
-<td><code>PROMETHEUS_INSTALL</code></td>
+<td><code>prometheus_install</code></td>
 <td>false</td>
 <td></td>
 <td>Set to true to install Crunchy Grafana to visualize metrics.</td>
 </tr>
 
 <tr>
-<td><code>PROMETHEUS_STORAGE_ACCESS_MODE</code></td>
+<td><code>prometheus_storage_access_mode</code></td>
 <td>ReadWriteOnce</td>
 <td></td>
 <td>Set to the access mode used by the configured storage class for Prometheus persistent volumes.</td>
 </tr>
 
 <tr>
-<td><code>PROMETHEUS_STORAGE_CLASS_NAME</code></td>
+<td><code>prometheus_storage_class_name</code></td>
 <td>fast</td>
 <td></td>
 <td>Set to the name of the storage class used when creating Prometheus persistent volumes.</td>
 </tr>
 
 <tr>
-<td><code>PROMETHEUS_SUPPLEMENTAL_GROUPS</code></td>
+<td><code>prometheus_supplemental_groups</code></td>
 <td>65534</td>
 <td></td>
 <td>Set to configure any supplemental groups that should be added to security contexts for Prometheus.</td>
 </tr>
 
 <tr>
-<td><code>PROMETHEUS_VOLUME_SIZE</code></td>
+<td><code>prometheus_volume_size</code></td>
 <td>1G</td>
 <td></td>
 <td>Set to the size of persistent volume to create for Prometheus.</td>
 </tr>
 
 <tr>
-<td><code>RECONCILE_RBAC</code></td>
+<td><code>reconcile_rbac</code></td>
 <td>true</td>
 <td></td>
 <td>Determines whether or not the PostgreSQL Operator will granted the permissions needed to reconcile RBAC within targeted namespaces.</td>
 </tr>
 
 <tr>
-<td><code>SCHEDULER_TIMEOUT</code></td>
+<td><code>scheduler_timeout</code></td>
 <td>3600</td>
 <td><strong>Required</strong></td>
 <td>Set to a value in seconds to configure the <code>pgo-scheduler</code> timeout threshold when waiting for schedules to complete.</td>
 </tr>
 
 <tr>
-<td><code>SERVICE_TYPE</code></td>
+<td><code>service_type</code></td>
 <td>ClusterIP</td>
 <td></td>
 <td>Set to configure the type of Kubernetes service provisioned on all newly created clusters.</td>
 </tr>
 
 <tr>
-<td><code>SYNC_REPLICATION</code></td>
+<td><code>sync_replication</code></td>
 <td>false</td>
 <td></td>
 <td>If set to <code>true</code> will automatically enable synchronous replication in new PostgreSQL clusters.</td>
@@ -1739,43 +1733,11 @@ integer that is used to group the various storage variables into a single
 storage configuration.</p>
 
 <h3 id="example-storage-configuration">Example Storage Configuration</h3>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>STORAGE3_NAME</td>
-<td>nfsstorage</td>
-</tr>
-
-<tr>
-<td>STORAGE3_ACCESS_MODE</td>
-<td>ReadWriteMany</td>
-</tr>
-
-<tr>
-<td>STORAGE3_SIZE</td>
-<td>1G</td>
-</tr>
-
-<tr>
-<td>STORAGE3_TYPE</td>
-<td>create</td>
-</tr>
-
-<tr>
-<td>STORAGE3_SUPPLEMENTAL_GROUPS</td>
-<td>65534</td>
-</tr>
-</tbody>
-</table>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">storage3_name<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span>
+storage3_access_mode<span style="color:#111">:</span> <span style="color:#d88200">&#39;ReadWriteMany&#39;</span>
+storage3_size<span style="color:#111">:</span> <span style="color:#d88200">&#39;1G&#39;</span>
+storage3_type<span style="color:#111">:</span> <span style="color:#d88200">&#39;create&#39;</span>
+storage3_supplemental_groups<span style="color:#111">:</span> <span style="color:#ae81ff">65534</span></code></pre></div>
 <p>As this example storage configuration shows, integer <code>3</code> is used as the ID for
 each of the <code>storage</code> variables, which together form a single storage
 configuration called <code>nfsstorage</code>. This approach allows different storage
@@ -1802,43 +1764,64 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td><code>BACKREST_STORAGE</code></td>
+<td><code>backrest_storage</code></td>
 <td>hostpathstorage</td>
 <td><strong>Required</strong></td>
 <td>Set the value of the storage configuration to use for the pgbackrest shared repository deployment created when a user specifies pgbackrest to be enabled on a cluster.</td>
 </tr>
 
 <tr>
-<td><code>BACKUP_STORAGE</code></td>
+<td><code>backup_storage</code></td>
 <td>hostpathstorage</td>
 <td><strong>Required</strong></td>
 <td>Set the value of the storage configuration to use for backups, including the storage for pgbackrest repo volumes.</td>
 </tr>
 
 <tr>
-<td><code>PRIMARY_STORAGE</code></td>
+<td><code>primary_storage</code></td>
 <td>hostpathstorage</td>
 <td><strong>Required</strong></td>
 <td>Set to configure which storage definition to use when creating volumes used by PostgreSQL primaries on all newly created clusters.</td>
 </tr>
 
 <tr>
-<td><code>REPLICA_STORAGE</code></td>
+<td><code>replica_storage</code></td>
 <td>hostpathstorage</td>
 <td><strong>Required</strong></td>
 <td>Set to configure which storage definition to use when creating volumes used by PostgreSQL replicas on all newly created clusters.</td>
 </tr>
 
 <tr>
-<td><code>WAL_STORAGE</code></td>
+<td><code>wal_storage</code></td>
 <td></td>
 <td></td>
-<td>Set to configure which storage definition to use when creating volumes used for PostgreSQL Write-Ahead Log</td>
+<td>Set to configure which storage definition to use when creating volumes used for PostgreSQL Write-Ahead Log.</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="storage-configuration-types">Storage Configuration Types</h3>
+<h4 id="example-defaults">Example Defaults</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">backrest_storage<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span>
+backup_storage<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span>
+primary_storage<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span>
+replica_storage<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span></code></pre></div>
+<p>With the configuration shown above, the <code>nfsstorage</code> storage configuration would
+be used by default for the various containers created for a PG cluster
+(i.e. containers for the primary DB, replica DB&rsquo;s, backups and/or <code>pgBackRest</code>).</p>
+
+<h3 id="considerations-for-multi-zone-cloud-environments">Considerations for Multi-Zone Cloud Environments</h3>
+
+<p>When using the Operator in a Kubernetes cluster consisting of nodes that span
+multiple zones, special consideration must be taken to ensure all pods and the
+volumes they require are scheduled and provisioned within the same zone.  Specifically,
+being that a pod is unable mount a volume that is located in another zone, any
+volumes that are dynamically provisioned must be provisioned in a topology-aware
+manner according to the specific scheduling requirements for the pod. For instance,
+this means ensuring that the volume containing the database files for the primary
+database in a new PostgreSQL cluster is provisioned in the same zone as the node
+containing the PostgreSQL primary pod that will be using it.</p>
+
+<h3 id="default-storage-configuration-types">Default Storage Configuration Types</h3>
 
 <h4 id="host-path-storage">Host Path Storage</h4>
 
@@ -1852,22 +1835,22 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE1_NAME</td>
+<td>storage1_name</td>
 <td>hostpathstorage</td>
 </tr>
 
 <tr>
-<td>STORAGE1_ACCESS_MODE</td>
+<td>storage1_access_mode</td>
 <td>ReadWriteMany</td>
 </tr>
 
 <tr>
-<td>STORAGE1_SIZE</td>
+<td>storage1_size</td>
 <td>1G</td>
 </tr>
 
 <tr>
-<td>STORAGE1_TYPE</td>
+<td>storage1_type</td>
 <td>create</td>
 </tr>
 </tbody>
@@ -1885,22 +1868,22 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE2_NAME</td>
+<td>storage2_name</td>
 <td>replicastorage</td>
 </tr>
 
 <tr>
-<td>STORAGE2_ACCESS_MODE</td>
+<td>storage2_access_mode</td>
 <td>ReadWriteMany</td>
 </tr>
 
 <tr>
-<td>STORAGE2_SIZE</td>
+<td>storage2_size</td>
 <td>1G</td>
 </tr>
 
 <tr>
-<td>STORAGE2_TYPE</td>
+<td>storage2_type</td>
 <td>create</td>
 </tr>
 </tbody>
@@ -1918,27 +1901,27 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE3_NAME</td>
+<td>storage3_name</td>
 <td>nfsstorage</td>
 </tr>
 
 <tr>
-<td>STORAGE3_ACCESS_MODE</td>
+<td>storage3_access_mode</td>
 <td>ReadWriteMany</td>
 </tr>
 
 <tr>
-<td>STORAGE3_SIZE</td>
+<td>storage3_size</td>
 <td>1G</td>
 </tr>
 
 <tr>
-<td>STORAGE3_TYPE</td>
+<td>storage3_type</td>
 <td>create</td>
 </tr>
 
 <tr>
-<td>STORAGE3_SUPPLEMENTAL_GROUPS</td>
+<td>storage3_supplemental_groups</td>
 <td>65534</td>
 </tr>
 </tbody>
@@ -1956,32 +1939,32 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE4_NAME</td>
+<td>storage4_name</td>
 <td>nfsstoragered</td>
 </tr>
 
 <tr>
-<td>STORAGE4_ACCESS_MODE</td>
+<td>storage4_access_mode</td>
 <td>ReadWriteMany</td>
 </tr>
 
 <tr>
-<td>STORAGE4_SIZE</td>
+<td>storage4_size</td>
 <td>1G</td>
 </tr>
 
 <tr>
-<td>STORAGE4_MATCH_LABELS</td>
+<td>storage4_match_labels</td>
 <td>crunchyzone=red</td>
 </tr>
 
 <tr>
-<td>STORAGE4_TYPE</td>
+<td>storage4_type</td>
 <td>create</td>
 </tr>
 
 <tr>
-<td>STORAGE4_SUPPLEMENTAL_GROUPS</td>
+<td>storage4_supplemental_groups</td>
 <td>65534</td>
 </tr>
 </tbody>
@@ -1999,27 +1982,27 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE5_NAME</td>
+<td>storage5_name</td>
 <td>storageos</td>
 </tr>
 
 <tr>
-<td>STORAGE5_ACCESS_MODE</td>
+<td>storage5_access_mode</td>
 <td>ReadWriteOnce</td>
 </tr>
 
 <tr>
-<td>STORAGE5_SIZE</td>
+<td>storage5_size</td>
 <td>5Gi</td>
 </tr>
 
 <tr>
-<td>STORAGE5_TYPE</td>
+<td>storage5_type</td>
 <td>dynamic</td>
 </tr>
 
 <tr>
-<td>STORAGE5_CLASS</td>
+<td>storage5_class</td>
 <td>fast</td>
 </tr>
 </tbody>
@@ -2037,27 +2020,27 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE6_NAME</td>
+<td>storage6_name</td>
 <td>primarysite</td>
 </tr>
 
 <tr>
-<td>STORAGE6_ACCESS_MODE</td>
+<td>storage6_access_mode</td>
 <td>ReadWriteOnce</td>
 </tr>
 
 <tr>
-<td>STORAGE6_SIZE</td>
+<td>storage6_size</td>
 <td>4G</td>
 </tr>
 
 <tr>
-<td>STORAGE6_TYPE</td>
+<td>storage6_type</td>
 <td>dynamic</td>
 </tr>
 
 <tr>
-<td>STORAGE6_CLASS</td>
+<td>storage6_class</td>
 <td>primarysite</td>
 </tr>
 </tbody>
@@ -2075,27 +2058,27 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE7_NAME</td>
+<td>storage7_name</td>
 <td>alternatesite</td>
 </tr>
 
 <tr>
-<td>STORAGE7_ACCESS_MODE</td>
+<td>storage7_access_mode</td>
 <td>ReadWriteOnce</td>
 </tr>
 
 <tr>
-<td>STORAGE7_SIZE</td>
+<td>storage7_size</td>
 <td>4G</td>
 </tr>
 
 <tr>
-<td>STORAGE7_TYPE</td>
+<td>storage7_type</td>
 <td>dynamic</td>
 </tr>
 
 <tr>
-<td>STORAGE7_CLASS</td>
+<td>storage7_class</td>
 <td>alternatesite</td>
 </tr>
 </tbody>
@@ -2113,27 +2096,27 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE8_NAME</td>
+<td>storage8_name</td>
 <td>gce</td>
 </tr>
 
 <tr>
-<td>STORAGE8_ACCESS_MODE</td>
+<td>storage8_access_mode</td>
 <td>ReadWriteOnce</td>
 </tr>
 
 <tr>
-<td>STORAGE8_SIZE</td>
+<td>storage8_size</td>
 <td>300M</td>
 </tr>
 
 <tr>
-<td>STORAGE8_TYPE</td>
+<td>storage8_type</td>
 <td>dynamic</td>
 </tr>
 
 <tr>
-<td>STORAGE8_CLASS</td>
+<td>storage8_class</td>
 <td>standard</td>
 </tr>
 </tbody>
@@ -2151,27 +2134,27 @@ other storage classes in production deployments.</p>
 
 <tbody>
 <tr>
-<td>STORAGE9_NAME</td>
+<td>storage9_name</td>
 <td>rook</td>
 </tr>
 
 <tr>
-<td>STORAGE9_ACCESS_MODE</td>
+<td>storage9_access_mode</td>
 <td>ReadWriteOnce</td>
 </tr>
 
 <tr>
-<td>STORAGE9_SIZE</td>
+<td>storage9_size</td>
 <td>1Gi</td>
 </tr>
 
 <tr>
-<td>STORAGE9_TYPE</td>
+<td>storage9_type</td>
 <td>dynamic</td>
 </tr>
 
 <tr>
-<td>STORAGE9_CLASS</td>
+<td>storage9_class</td>
 <td>rook-ceph-block</td>
 </tr>
 </tbody>
@@ -2213,27 +2196,69 @@ for pgBackRest and pgBouncer respectively</p>
 
 <tbody>
 <tr>
-<td><code>POD_ANTI_AFFINITY</code></td>
+<td><code>pod_anti_affinity</code></td>
 <td>preferred</td>
 <td></td>
 <td>This will set the default pod anti-affinity for the deployed PostgreSQL clusters.</td>
 </tr>
 
 <tr>
-<td><code>POD_ANTI_AFFINITY_PGBACKREST</code></td>
+<td><code>pod_anti_affinity_pgbackrest</code></td>
 <td></td>
 <td></td>
 <td>This will set the default pod anti-affinity for the pgBackRest pods.</td>
 </tr>
 
 <tr>
-<td><code>POD_ANTI_AFFINITY_PGBOUNCER</code></td>
+<td><code>pod_anti_affinity_pgbouncer</code></td>
 <td></td>
 <td></td>
 <td>This will set the default pod anti-affinity for the pgBouncer pods.</td>
 </tr>
 </tbody>
 </table>
+
+<h2 id="understanding-pgo-operator-namespace-namespace">Understanding <code>pgo_operator_namespace</code> &amp; <code>namespace</code></h2>
+
+<p>The Crunchy PostgreSQL Operator can be configured to be deployed and manage a single
+namespace or manage several namespaces.  The following are examples of different types
+of deployment models:</p>
+
+<h3 id="single-namespace">Single Namespace</h3>
+
+<p>To deploy the Crunchy PostgreSQL Operator to work with a single namespace (in this example
+our namespace is named <code>pgo</code>), configure the following settings:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">pgo_operator_namespace<span style="color:#111">:</span> <span style="color:#d88200">&#39;pgo&#39;</span>
+namespace<span style="color:#111">:</span> <span style="color:#d88200">&#39;pgo&#39;</span></code></pre></div>
+<h3 id="multiple-namespaces">Multiple Namespaces</h3>
+
+<p>To deploy the Crunchy PostgreSQL Operator to work with multiple namespaces (in this example
+our namespaces are named <code>pgo</code>, <code>pgouser1</code> and <code>pgouser2</code>), configure the following settings:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">pgo_operator_namespace<span style="color:#111">:</span> <span style="color:#d88200">&#39;pgo&#39;</span>
+namespace<span style="color:#111">:</span> <span style="color:#d88200">&#39;pgouser1,pgouser2&#39;</span></code></pre></div>
+<h2 id="deploying-multiple-operators">Deploying Multiple Operators</h2>
+
+<p>The 4.0 release of the Crunchy PostgreSQL Operator allows for multiple operator deployments in the same cluster.<br />
+To install the Crunchy PostgreSQL Operator to multiple namespaces, it&rsquo;s recommended to have an configuration file
+for each deployment of the operator.</p>
+
+<p>For each operator deployment the following variables should be configured uniquely for each install.</p>
+
+<p>For example, operator could be deployed twice by changing the <code>pgo_operator_namespace</code> and <code>namespace</code> for those
+deployments:</p>
+
+<p>Install A would deploy operator to the <code>pgo</code> namespace and it would manage the <code>pgo</code> target namespace.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># Config A</span>
+pgo_operator_namespace<span style="color:#111">:</span> <span style="color:#d88200">&#39;pgo&#39;</span>
+namespace<span style="color:#111">:</span> <span style="color:#d88200">&#39;pgo&#39;</span>
+...</code></pre></div>
+<p>Install B would deploy operator to the <code>pgo2</code> namespace and it would manage the <code>pgo2</code> and <code>pgo3</code> target namespaces.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># Config B</span>
+pgo_operator_namespace<span style="color:#111">:</span> <span style="color:#d88200">&#39;pgo2&#39;</span>
+namespace<span style="color:#111">:</span> <span style="color:#d88200">&#39;pgo2,pgo3&#39;</span>
+...</code></pre></div>
+<p>Each install of the operator will create a corresponding directory in <code>$HOME/.pgo/&lt;PGO NAMESPACE&gt;</code> which will contain
+the TLS and <code>pgouser</code> client credentials.</p>
 
 
 

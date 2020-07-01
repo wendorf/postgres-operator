@@ -1153,20 +1153,16 @@ kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator
 
 <p>There are many <a href="https://crunchydata.github.io/postgres-operator/latest/installation/configuration/">configuration parameters</a> to help you fine tune your installation, but there are a few that you may want to change to get the PostgreSQL Operator to run in your environment. Open up the <code>postgres-operator.yml</code> file and edit a few variables.</p>
 
-<p>Find the <code>PGO_ADMIN_PASSWORD</code> variable. This is the password you will use with the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/"><code>pgo</code> client</a> to manage your PostgreSQL clusters. The default is <code>password</code>, but you can change it to something like <code>hippo-elephant</code>.</p>
+<p>Find the <code>pgo_admin_password</code> variable. This is the password you will use with the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/"><code>pgo</code> client</a> to manage your PostgreSQL clusters. The default is <code>password</code>, but you can change it to something like <code>hippo-elephant</code>.</p>
 
-<p>You will need also need to set the storage default storage classes that you would like the PostgreSQL Operator to use. These variables are called <code>PRIMARY_STORAGE</code>, <code>REPLICA_STORAGE</code>, <code>BACKUP_STORAGE</code>, and <code>BACKREST_STORAGE</code>. There are several storage configurations listed out in the configuration file under the heading <code>STORAGE[1-9]_TYPE</code>. Find the one that you want to use, and set it to that value.</p>
+<p>You will need also need to set the storage default storage classes that you would like the PostgreSQL Operator to use. These variables are called <code>primary_storage</code>, <code>replica_storage</code>, <code>backup_storage</code>, and <code>backrest_storage</code>. There are several storage configurations listed out in the configuration file under the heading <code>storage[1-9]_name</code>. Find the one that you want to use, and set it to that value.</p>
 
 <p>For example, if your Kubernetes environment is using NFS storage, you would set these variables to the following:</p>
 
-<pre><code>- name: BACKREST_STORAGE
-  value: &quot;nfsstorage&quot;
-- name: BACKUP_STORAGE
-  value: &quot;nfsstorage&quot;
-- name: PRIMARY_STORAGE
-  value: &quot;nfsstorage&quot;
-- name: REPLICA_STORAGE
-  value: &quot;nfsstorage&quot;
+<pre><code>backrest_storage: &quot;nfsstorage&quot;
+backup_storage: &quot;nfsstorage&quot;
+primary_storage: &quot;nfsstorage&quot;
+replica_storage: &quot;nfsstorage&quot;
 </code></pre>
 
 <p>For a full list of available storage types that can be used with this installation method, please review the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/configuration/">configuration parameters</a>.</p>

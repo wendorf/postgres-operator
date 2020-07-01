@@ -1174,6 +1174,13 @@ Definitions. The required list of privileges are available in the <a href="https
 installation process (e.g. from a previous installation), then you can remove
 these objects from the <code>postgres-operator.yml</code> manifest.</p>
 
+<h3 id="config-map">Config Map</h3>
+
+<p>The <code>pgo-deployer</code> uses a <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">Kubernetes ConfigMap</a>
+to pass configuration options into the installer. The ConfigMap is defined in
+the <code>postgres-operator.yaml</code> file and can be updated based on your configuration
+preferences.</p>
+
 <h3 id="namespaces">Namespaces</h3>
 
 <p>By default, the installer will run in the <code>pgo</code> Namespace. This can be

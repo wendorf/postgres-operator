@@ -1150,7 +1150,7 @@ of the service.  Using the <code>update</code> flag will:</p>
 <li>Update and redeploy the operator deployment</li>
 <li>Recreate configuration maps used by operator</li>
 <li>Remove any deprecated objects</li>
-<li>Allow administrators to change settings configured in the <code>inventory</code></li>
+<li>Allow administrators to change settings configured in the <code>values.yaml</code></li>
 <li>Reinstall the <code>pgo</code> client if a new version is specified</li>
 </ul>
 
@@ -1159,29 +1159,23 @@ we can now update the PostgreSQL Operator.</p>
 
 <p>The commands should be run in the directory where the Crunchy PostgreSQL Operator
 playbooks is stored.  See the <code>ansible</code> directory in the Crunchy PostgreSQL Operator
-project for the inventory file, main playbook and ansible roles.</p>
+project for the inventory file, values file, main playbook and ansible roles.</p>
 
 <h2 id="updating-on-linux">Updating on Linux</h2>
 
 <p>On a Linux host with Ansible installed we can run the following command to update<br />
 the PostgreSQL Operator:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>update --ask-become-pass main.yml</code></pre></div>
-<p>If the Crunchy PostgreSQL Operator playbooks were installed using <code>yum</code>, use the
-following commands:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">ANSIBLE_ROLES_PATH</span><span style="color:#f92672">=</span>/usr/share/ansible/roles/crunchydata
-
-ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>update --ask-become-pass <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>    /usr/share/ansible/postgres-operator/playbooks/main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>update --ask-become-pass main.yml</code></pre></div>
 <h2 id="updating-on-macos">Updating on macOS</h2>
 
 <p>On a macOS host with Ansible installed we can run the following command to update<br />
 the PostgreSQL Operator.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>update --ask-become-pass main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>update --ask-become-pass main.yml</code></pre></div>
 <h2 id="updating-on-windows-ubuntu-subsystem">Updating on Windows Ubuntu Subsystem</h2>
 
 <p>On a Windows host with an Ubuntu subsystem we can run the following commands to update<br />
 the PostgreSQL Operator.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>update --ask-become-pass main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>update --ask-become-pass main.yml</code></pre></div>
 <h2 id="verifying-the-update">Verifying the Update</h2>
 
 <p>This may take a few minutes to deploy.  To check the status of the deployment run
