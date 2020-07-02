@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.3.2 4.3.2 12.3 2.25     11.8 2.25     10.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.4.0 4.4.0 12.3 2.25     11.8 2.25     10.</description>
     </item>
     
     <item>
@@ -103,7 +103,7 @@ username:password:pgoadmin: pgouser1:password:pgoadmin:pgouser1 pgouser2:passwor
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/security/install-postgres-operator-rbac/</guid>
       <description>Installation of PostgreSQL Operator RBAC For a list of the RBAC required to install the PostgreSQL Operator, please view the postgres-operator.yml file:
-https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml
+https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.1/installers/kubectl/postgres-operator.yml
 The first step is to install the PostgreSQL Operator RBAC configuration. This can be accomplished by running:
 make installrbac  This script will install the PostreSQL Operator Custom Resource Definitions, CRD’s and creates the following RBAC resources on your Kubernetes cluster:
    Setting Definition     Custom Resource Definitions (crd.</description>
@@ -126,7 +126,7 @@ Adjust the default keys to meet your security requirements using your own keys. 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/</guid>
-      <description>Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to 4.3.2 This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version 4.3.2. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
+      <description>Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to 4.4.0-beta.1 This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version 4.4.0-beta.1. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
     </item>
     
     <item>
@@ -135,7 +135,7 @@ Adjust the default keys to meet your security requirements using your own keys. 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade4/</guid>
-      <description>Manual PostgreSQL Operator 4 Upgrade Procedure Below are the procedures for upgrading to version 4.3.2 of the Crunchy PostgreSQL Operator using the Bash or Ansible installation methods. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably for those upgrading from 4.1 and below, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers.</description>
+      <description>Manual PostgreSQL Operator 4 Upgrade Procedure Below are the procedures for upgrading to version 4.4.0-beta.1 of the Crunchy PostgreSQL Operator using the Bash or Ansible installation methods. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably for those upgrading from 4.1 and below, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers.</description>
     </item>
     
     <item>
@@ -177,7 +177,7 @@ The below guide covers many of the common operations that are required when mana
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</guid>
       <description>The PostgreSQL Operator Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the manifest directly from the repository:
-kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.1/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
 Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:</description>
     </item>
     
@@ -368,6 +368,17 @@ The Operator can be deployed by multiple methods including:</description>
       <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/</guid>
       <description>When using the PostgreSQL Operator, the answer to the question &amp;ldquo;do you take backups of your database&amp;rdquo; is automatically &amp;ldquo;yes!&amp;rdquo;
 The PostgreSQL Operator uses the open source pgBackRest backup and restore utility that is designed for working with databases that are many terabytes in size. As described in the Provisioning section, pgBackRest is enabled by default as it permits the PostgreSQL Operator to automate some advanced as well as convenient behaviors, including:</description>
+    </item>
+    
+    <item>
+      <title>Helm Chart</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/</guid>
+      <description>The PostgreSQL Operator Helm Chart Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:
+ Installation Upgrading Uninstallation  After configuring the values.yaml file with you configuration options, the installer will be run using the helm command line tool and takes care of setting up all of the objects required to run the PostgreSQL Operator.
+The Helm chart is available in the Helm directory in the PostgreSQL Operator repository.</description>
     </item>
     
     <item>
@@ -575,7 +586,7 @@ pgo apply mypolicy1 --selector=name=mycluster pgo apply mypolicy1 --selector=som
       <description>pgo backup Perform a Backup
 Synopsis BACKUP performs a Backup, for example:
 pgo backup mycluster
-pgo backup [flags]  Options  --backup-opts string The options to pass into pgbackrest. --backup-type string The backup type to perform. Default is pgbackrest. Valid backup types are pgbackrest and pgdump. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup --pgbackrest-storage-type string The type of storage to use when scheduling pgBackRest backups. Either &amp;quot;local&amp;quot;, &amp;quot;s3&amp;quot; or both, comma separated.</description>
+pgo backup [flags]  Options  --backup-opts string The options to pass into pgbackrest. --backup-type string The backup type to perform. Default is pgbackrest. Valid backup types are pgbackrest and pgdump. (default &amp;quot;pgbackrest&amp;quot;) -d, --database string The name of the database pgdump will backup. (default &amp;quot;postgres&amp;quot;) -h, --help help for backup --pgbackrest-storage-type string The type of storage to use when scheduling pgBackRest backups.</description>
     </item>
     
     <item>

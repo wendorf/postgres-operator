@@ -30,7 +30,7 @@ pgo apply mypolicy1 --selector=name=mycluster pgo apply mypolicy1 --selector=som
       <description>pgo backup Perform a Backup
 Synopsis BACKUP performs a Backup, for example:
 pgo backup mycluster
-pgo backup [flags]  Options  --backup-opts string The options to pass into pgbackrest. --backup-type string The backup type to perform. Default is pgbackrest. Valid backup types are pgbackrest and pgdump. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup --pgbackrest-storage-type string The type of storage to use when scheduling pgBackRest backups. Either &amp;quot;local&amp;quot;, &amp;quot;s3&amp;quot; or both, comma separated.</description>
+pgo backup [flags]  Options  --backup-opts string The options to pass into pgbackrest. --backup-type string The backup type to perform. Default is pgbackrest. Valid backup types are pgbackrest and pgdump. (default &amp;quot;pgbackrest&amp;quot;) -d, --database string The name of the database pgdump will backup. (default &amp;quot;postgres&amp;quot;) -h, --help help for backup --pgbackrest-storage-type string The type of storage to use when scheduling pgBackRest backups.</description>
     </item>
     
     <item>

@@ -344,6 +344,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/">
+            Helm Chart
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -1179,8 +1186,8 @@ command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>which, if working, will yield results similar to:</p>
 
-<pre><code>pgo client version 4.3.2
-pgo-apiserver version 4.3.2
+<pre><code>pgo client version 4.4.0-beta.1
+pgo-apiserver version 4.4.0-beta.1
 </code></pre>
 
 <h3 id="inspecting-the-postgresql-operator-configuration">Inspecting the PostgreSQL Operator Configuration</h3>
@@ -1196,7 +1203,7 @@ deployed by default, which storage classes are being used, etc.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">BasicAuth<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
 Cluster<span style="color:#111">:</span>
   CCPImagePrefix<span style="color:#111">:</span> crunchydata
-  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.3</span>-<span style="color:#ae81ff">4.3</span>.<span style="color:#ae81ff">2</span>
+  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.3</span>-<span style="color:#ae81ff">4.4</span>.<span style="color:#ae81ff">0</span>-beta.<span style="color:#ae81ff">1</span>
   Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Metrics<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   Badger<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
@@ -1225,7 +1232,7 @@ Cluster<span style="color:#111">:</span>
 Pgo<span style="color:#111">:</span>
   Audit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PGOImagePrefix<span style="color:#111">:</span> crunchydata
-  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.3</span>.<span style="color:#ae81ff">2</span>
+  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.4</span>.<span style="color:#ae81ff">0</span>-beta.<span style="color:#ae81ff">1</span>
 PrimaryStorage<span style="color:#111">:</span> nfsstorage
 BackupStorage<span style="color:#111">:</span> nfsstorage
 ReplicaStorage<span style="color:#111">:</span> nfsstorage
@@ -1262,9 +1269,9 @@ Claims:                  8
 Total Volume Size:       8Gi       
 
 Database Images:
-                         4	crunchydata/crunchy-postgres-ha:centos7-12.3-4.3.2
-                         4	crunchydata/pgo-backrest-repo:centos7-4.3.2
-                         8	crunchydata/pgo-backrest:centos7-4.3.2
+                         4	crunchydata/crunchy-postgres-ha:centos7-12.3-4.4.0-beta.1
+                         4	crunchydata/pgo-backrest-repo:centos7-4.4.0-beta.1
+                         8	crunchydata/pgo-backrest:centos7-4.4.0-beta.1
 
 Databases Not Ready:
 
@@ -1275,7 +1282,7 @@ Labels (count &gt; 1): [count] [label]
 	[4]	[pgo-pg-database=true]
 	[4]	[crunchy_collect=false]
 	[4]	[pg-pod-anti-affinity=]
-	[4]	[pgo-version=4.3.2]
+	[4]	[pgo-version=4.4.0-beta.1]
 	[4]	[archive-timeout=60]
 	[2]	[pg-cluster=hacluster]
 </code></pre>
@@ -1430,7 +1437,7 @@ including the nodes that the pods are assigned to</li>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
 <p>which will yield output similar to:</p>
 
-<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.3-4.3.2)
+<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.3-4.4.0-beta.1)
 	pod : hacluster-6dc6cfcfb9-f9knq (Running) on node01 (1/1) (primary)
 	pvc : hacluster
 	resources : CPU Limit= Memory Limit=, CPU Request= Memory Request=
@@ -1438,7 +1445,7 @@ including the nodes that the pods are assigned to</li>
 	deployment : hacluster
 	deployment : hacluster-backrest-shared-repo
 	service : hacluster - ClusterIP (10.102.20.42)
-	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.3.2 current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.4.0-beta.1 current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
 </code></pre>
 
 <h3 id="deleting-a-cluster">Deleting a Cluster</h3>
@@ -1643,9 +1650,12 @@ provide only a subset of a database, such as a table.</p>
 
 <h4 id="create-a-logical-backup">Create a Logical Backup</h4>
 
-<p>To create a logical backup of a full database, you can run the following
+<p>To create a logical backup of the &lsquo;postgres&rsquo; database, you can run the following
 command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-type<span style="color:#f92672">=</span>pgdump</code></pre></div>
+<p>To create a logical backup of a specific database, you can use the <code>--database</code> flag,
+as in the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-type<span style="color:#f92672">=</span>pgdump --database<span style="color:#f92672">=</span>mydb</code></pre></div>
 <p>You can pass in specific options to <code>--backup-opts</code>, which can accept most of
 the options that the <a href="https://www.postgresql.org/docs/current/app-pgdump.html"><code>pg_dump</code></a>
 command accepts. For example, to only dump the data from a specific table called
@@ -1671,6 +1681,10 @@ backup.</p>
 <p>You can restore a logical backup using the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster --backup-type<span style="color:#f92672">=</span>pgdump --backup-pvc<span style="color:#f92672">=</span>hacluster-pgdump-pvc <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pitr-target<span style="color:#f92672">=</span><span style="color:#d88200">&#34;2019-01-15-00-03-25&#34;</span> -n pgouser1</code></pre></div>
+<p>To restore to a specific database, add the <code>--pgdump-database</code> flag to the
+command from above:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster --backup-type<span style="color:#f92672">=</span>pgdump --backup-pvc<span style="color:#f92672">=</span>hacluster-pgdump-pvc <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --pgdump-database<span style="color:#f92672">=</span>mydb --pitr-target<span style="color:#f92672">=</span><span style="color:#d88200">&#34;2019-01-15-00-03-25&#34;</span> -n pgouser1</code></pre></div>
 <h2 id="high-availability-scaling-up-down">High-Availability: Scaling Up &amp; Down</h2>
 
 <p>The PostgreSQL Operator supports a robust <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability">high-availability</a>
