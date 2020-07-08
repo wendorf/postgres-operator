@@ -1266,6 +1266,41 @@ within a cluster.</p>
 editable, please visit the &ldquo;<a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL configuration</a>&ldquo;
 section of the documentation.</p>
 
+<h2 id="provisioning-using-a-backup-from-an-another-postgresql-cluster">Provisioning Using a Backup from an Another PostgreSQL Cluster</h2>
+
+<p>When provisioning a new PostgreSQL cluster, it is possible to bootstrap the cluster using an
+existing backup from either another PostgreSQL cluster that is currently running, or from a
+PostgreSQL cluster that no longer exists (specifically a cluster that was deleted using the
+ <code>keep-backups</code> option, as discussed in section <a href="#deprovisioning">Deprovisioning</a> below).  This
+is specifically accomplished by performing a <code>pgbackrest restore</code>  during cluster initialization
+in order to populate the initial <code>PGDATA</code> directory for the new cluster using the contents of a
+backup from another cluster.</p>
+
+<p>To leverage this capability, the name of the cluster containing the backup that should be utilzed
+when restoring simply needs to be specified using the <code>restore-from</code>  option when creating a new
+cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster mycluster2 --restore-from<span style="color:#f92672">=</span>mycluster1</code></pre></div>
+<p>By default, pgBackRest will restore the latest backup available in the repository, and will replay
+all available WAL archives.  However, additional pgBackRest options can be specified using the
+<code>restore-opts</code> option, which allows the restore command to be further tailored and customized.  For
+instance, the following demonstrates how a point-in-time restore can be utilized when creating a
+new cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster mycluster2 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-from<span style="color:#f92672">=</span>mycluster1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=time --target=&#39;2020-07-02 20:19:36.13557+00&#39;&#34;</span></code></pre></div>
+<p>Additionally, if bootstrapping from a cluster the utilizes AWS S3 storage with pgBackRest (or a
+cluster that utilized AWS S3 storage in the case of a former cluster), you can also also specify
+<code>s3</code> as the repository type in order to restore from a backup stored in an S3 storage bucket:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster mycluster2 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-from<span style="color:#f92672">=</span>mycluster1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--repo-type=s3&#34;</span></code></pre></div>
+<p>When restoring from a cluster that is currently running, the new cluster will simply connect to
+the existing pgBackRest repository host for that cluster in order to perform the pgBackRest
+restore.  If restoring from a former cluster that has since been deleted, a new pgBackRest
+repository host will be deployed for the sole purpose of bootstrapping the new cluster, and will
+then be destroyed once the restore is complete.  Also, please note that it is only possible for
+one cluster to bootstrap from another cluster (whether running or not) at any given time.</p>
+
 <h2 id="deprovisioning">Deprovisioning</h2>
 
 <p>There may become a point where you need to completely deprovision, or delete, a

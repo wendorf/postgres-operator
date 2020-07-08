@@ -1397,6 +1397,21 @@ following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hactsluster <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>ts1:storageconfig<span style="color:#f92672">=</span>gce:pvcsize<span style="color:#f92672">=</span>10Gi <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>    --tablespace<span style="color:#f92672">=</span><span style="color:#111">name</span><span style="color:#f92672">=</span>ts2:storageconfig<span style="color:#f92672">=</span>gce:pvcsize<span style="color:#f92672">=</span>20Gi</code></pre></div>
+<h4 id="create-a-postgresql-cluster-using-a-backup-from-another-postgresql-cluster">Create a PostgreSQL Cluster Using a Backup from Another PostgreSQL Cluster</h4>
+
+<p>It is also possible to create a new PostgreSQL Cluster using a backup from another
+PostgreSQL cluster.  To do so, simply specify the cluster containing the backup
+that you would like to utilize using the <code>restore-from</code> option:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster2 --restore-from<span style="color:#f92672">=</span>hacluster1</code></pre></div>
+<p>When using this approach, a <code>pgbackrest restore</code> will be performed using the pgBackRest
+repository for the <code>restore-from</code> cluster specified in order to populate the initial
+<code>PGDATA</code> directory for the new PostgreSQL cluster.  By default, pgBackRest will restore
+to the latest backup available and replay all WAL.  However, a <code>restore-opts</code> option
+is also available that allows the <code>restore</code> command to be further customized, e.g. to
+perform a point-in-time restore and/or restore from an S3 storage bucket:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster2 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-from<span style="color:#f92672">=</span>hacluster1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--repo-type=s3 --type=time --target=&#39;2020-07-02 20:19:36.13557+00&#39;&#34;</span></code></pre></div>
 <h4 id="tracking-a-newly-provisioned-cluster">Tracking a Newly Provisioned Cluster</h4>
 
 <p>A new PostgreSQL cluster can take a few moments to provision. You may have
