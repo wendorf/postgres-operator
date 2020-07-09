@@ -1152,7 +1152,7 @@ handles a variety of lifecycle actions for the PostgreSQL Operator, including:</
 installer will be run using the <code>helm</code> command line tool and takes care of
 setting up all of the objects required to run the PostgreSQL Operator.</p>
 
-<p>The Helm chart is available in the <a href="https://github.com/CrunchyData/postgres-operator/tree/master/installers/helm">Helm</a>
+<p>The <code>postgres-operator</code> Helm chart is available in the <a href="https://github.com/CrunchyData/postgres-operator/tree/master/installers/helm">Helm</a>
 directory in the PostgreSQL Operator repository.</p>
 
 <h2 id="requirements">Requirements</h2>
@@ -1279,6 +1279,23 @@ please see <a href="https://crunchydata.github.io/postgres-operator/latest/insta
 pgo-apiserver version 4.4.0-beta.1
 </code></pre>
 
+<h2 id="metrics-chart">Metrics Chart</h2>
+
+<p>The PostgreSQL Operator metrics infrastructure can be installed using a separate
+Helm chart. This chart can install or uninstall the Grafana and Prometheus
+deployments that are part of the metrics stack. The metrics installer runs
+similarly to the <code>postgres-operator</code> chart by creating the ServiceAccount, RBAC
+resources, and ConfigMap that are needed to run the install job.</p>
+
+<p>The <code>metrics</code> Helm chart is available in the <a href="https://github.com/CrunchyData/postgres-operator/tree/master/installers/helm">Helm</a>
+directory in the PostgreSQL Operator repository.</p>
+
+<h3 id="installing">Installing</h3>
+
+<div class="notices tip" >Ensure that you have installed the PostgreSQL Operator before installing metrics.</div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">helm install metrics -n pgo /path/to/metrics/chart_dir</code></pre></div>
+<h3 id="uninstalling">Uninstalling</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">helm install metrics -n pgo /path/to/metrics/chart_dir</code></pre></div>
 <h2 id="upgrade-and-uninstall">Upgrade and Uninstall</h2>
 
 <p>Once install has be completed using Helm, it will also be used to upgrade and

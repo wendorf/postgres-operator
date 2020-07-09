@@ -378,7 +378,7 @@ The PostgreSQL Operator uses the open source pgBackRest backup and restore utili
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/</guid>
       <description>The PostgreSQL Operator Helm Chart Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:
  Installation Upgrading Uninstallation  After configuring the values.yaml file with you configuration options, the installer will be run using the helm command line tool and takes care of setting up all of the objects required to run the PostgreSQL Operator.
-The Helm chart is available in the Helm directory in the PostgreSQL Operator repository.</description>
+The postgres-operator Helm chart is available in the Helm directory in the PostgreSQL Operator repository.</description>
     </item>
     
     <item>
