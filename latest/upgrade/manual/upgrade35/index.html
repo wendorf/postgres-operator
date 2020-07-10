@@ -807,6 +807,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/custom-resources/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/custom-resources/">Using Custom Resources</a>
+
+      </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/security/" class="dd-item haschildren
         ">
       <div>
@@ -1045,6 +1052,8 @@
    Installation</option>
     <option value="/pgo-client/" >
    Using the pgo Client</option>
+    <option value="/custom-resources/" >
+   Using Custom Resources</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1129,17 +1138,17 @@
     
     
 
-<h2 id="upgrading-the-crunchy-postgresql-operator-from-version-3-5-to-4-4-0-beta-1">Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to 4.4.0-beta.1</h2>
+<h2 id="upgrading-the-crunchy-postgresql-operator-from-version-3-5-to-hahahugoshortcode-s0-hbhb">Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/manual/upgrade35.md:7:66&#34;[0m</h2>
 
-<p>This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version 4.4.0-beta.1. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</p>
+<p>This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/manual/upgrade35.md:9:139&#34;[0m. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</p>
 
 <h4 id="crunchy-postgresql-high-availability-containers">Crunchy PostgreSQL High Availability Containers</h4>
 
-<p>Using the PostgreSQL Operator 4.4.0-beta.1 requires replacing your <code>crunchy-postgres</code> and <code>crunchy-postgres-gis</code> containers with the <code>crunchy-postgres-ha</code> and <code>crunchy-postgres-gis-ha</code> containers respectively. The underlying PostgreSQL installations in the container remain the same but are now optimized for Kubernetes environments to provide the new high-availability functionality.</p>
+<p>Using the PostgreSQL Operator Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/manual/upgrade35.md:13:31&#34;[0m requires replacing your <code>crunchy-postgres</code> and <code>crunchy-postgres-gis</code> containers with the <code>crunchy-postgres-ha</code> and <code>crunchy-postgres-gis-ha</code> containers respectively. The underlying PostgreSQL installations in the container remain the same but are now optimized for Kubernetes environments to provide the new high-availability functionality.</p>
 
 <p>A major change to this container is that the PostgreSQL process is now managed by Patroni. This allows a PostgreSQL cluster that is deployed by the PostgreSQL Operator to manage its own uptime and availability, to elect a new leader in the event of a downtime scenario, and to automatically heal after a failover event.</p>
 
-<p>When creating your new clusters using version 4.4.0-beta.1 of the PostgreSQL Operator, the <code>pgo create cluster</code> command will automatically use the new <code>crunchy-postgres-ha</code> image if the image is unspecified. If you are creating a PostGIS enabled cluster, please be sure to use the updated image name, as with the command:</p>
+<p>When creating your new clusters using version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/manual/upgrade35.md:17:47&#34;[0m of the PostgreSQL Operator, the <code>pgo create cluster</code> command will automatically use the new <code>crunchy-postgres-ha</code> image if the image is unspecified. If you are creating a PostGIS enabled cluster, please be sure to use the updated image name, as with the command:</p>
 
 <pre><code>pgo create cluster mygiscluster --ccp-image=crunchy-postgres-gis-ha
 </code></pre>
@@ -1157,7 +1166,7 @@
 
 <h5 id="step-1">Step 1</h5>
 
-<p>Create a new Linux user with the same permissions as the existing user used to install the Crunchy PostgreSQL Operator. This is necessary to avoid any issues with environment variable differences between 3.5 and 4.4.0-beta.1.</p>
+<p>Create a new Linux user with the same permissions as the existing user used to install the Crunchy PostgreSQL Operator. This is necessary to avoid any issues with environment variable differences between 3.5 and Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/manual/upgrade35.md:33:213&#34;[0m.</p>
 
 <h5 id="step-2">Step 2</h5>
 
@@ -1221,7 +1230,7 @@ $COROOT/deploy/remove-crd.sh
 
 <h5 id="step-6">Step 6</h5>
 
-<p>Log in as your new Linux user and install the 4.4.0-beta.1 PostgreSQL Operator as described in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/">Bash Installation Procedure</a>.</p>
+<p>Log in as your new Linux user and install the Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/manual/upgrade35.md:103:47&#34;[0m PostgreSQL Operator as described in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/">Bash Installation Procedure</a>.</p>
 
 <p>Be sure to add the existing namespace to the Operator&rsquo;s list of watched namespaces (see the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/">Namespace</a> section of this document for more information) and make sure to avoid overwriting any existing data storage.</p>
 
@@ -1229,7 +1238,7 @@ $COROOT/deploy/remove-crd.sh
 
 <h5 id="step-7">Step 7</h5>
 
-<p>Once the Operator is installed and functional, create a new 4.4.0-beta.1 cluster matching the cluster details recorded in Step 1. Be sure to use the primary PVC name (also noted in Step 1) and the same major PostgreSQL version as was used previously. This will allow the new clusters to utilize the existing PVCs.</p>
+<p>Once the Operator is installed and functional, create a new Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/manual/upgrade35.md:112:61&#34;[0m cluster matching the cluster details recorded in Step 1. Be sure to use the primary PVC name (also noted in Step 1) and the same major PostgreSQL version as was used previously. This will allow the new clusters to utilize the existing PVCs.</p>
 
 <p>NOTE: If you have existing pgBackRest backups stored that you would like to have available in the upgraded cluster, you will need to follow the <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/#pgbackrest-repo-pvc-renaming">PVC Renaming Procedure</a>.</p>
 
@@ -1240,7 +1249,7 @@ $COROOT/deploy/remove-crd.sh
 
 <h5 id="step-8">Step 8</h5>
 
-<p>Manually update the old leftover Secrets to use the new label as defined in 4.4.0-beta.1:</p>
+<p>Manually update the old leftover Secrets to use the new label as defined in Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/manual/upgrade35.md:124:77&#34;[0m:</p>
 
 <pre><code>kubectl -n &lt;namespace&gt; label secret/&lt;clustername&gt;-postgres-secret pg-cluster=&lt;clustername&gt; -n &lt;namespace&gt;
 kubectl -n &lt;namespace&gt; label secret/&lt;clustername&gt;-primaryuser-secret pg-cluster=&lt;clustername&gt; -n &lt;namespace&gt;
@@ -1319,7 +1328,7 @@ kubectl -n &lt;namespace&gt; label secret/&lt;clustername&gt;-testuser-secret pg
 <pre><code>kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: mycluster-pgbr-repo 
+  name: mycluster-pgbr-repo
   namespace: demo
 spec:
   storageClassName: &quot;&quot;

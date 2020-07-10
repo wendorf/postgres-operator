@@ -807,6 +807,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/custom-resources/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/custom-resources/">Using Custom Resources</a>
+
+      </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/security/" class="dd-item haschildren
         ">
       <div>
@@ -1044,6 +1051,8 @@
    Installation</option>
     <option value="/pgo-client/" >
    Using the pgo Client</option>
+    <option value="/custom-resources/" >
+   Using Custom Resources</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1141,7 +1150,7 @@
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.4.0-beta.1&quot;,
+  '{&quot;ClientVersion&quot;:&quot;Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/advanced/direct-api-calls.md:30:22&#34;[0m&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Name&quot;:&quot;mycluster&quot;,
   &quot;Series&quot;:1}' \
@@ -1155,7 +1164,7 @@ $PGO_APISERVER_URL/clusters
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.4.0-beta.1&quot;,
+  '{&quot;ClientVersion&quot;:&quot;Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/advanced/direct-api-calls.md:44:22&#34;[0m&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Clustername&quot;:&quot;mycluster&quot;}' \
 $PGO_APISERVER_URL/showclusters
@@ -1166,7 +1175,7 @@ $PGO_APISERVER_URL/showclusters
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u admin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.4.0-beta.1&quot;,
+  '{&quot;ClientVersion&quot;:&quot;Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/advanced/direct-api-calls.md:55:22&#34;[0m&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Clustername&quot;:&quot;mycluster&quot;}' \
 $PGO_APISERVER_URL/clustersdelete
