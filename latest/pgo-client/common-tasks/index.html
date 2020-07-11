@@ -1912,8 +1912,8 @@ your PostgreSQL cluster</li>
 <p>Using the above example, to create a TLS-enabled PostgreSQL cluster that can
 accept both TLS and non-TLS connections, execute the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster-tls <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --server-ca-secret<span style="color:#f92672">=</span>hacluster-tls-keypair <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --server-tls-secret<span style="color:#f92672">=</span>postgresql-ca</code></pre></div>
+</span><span style="color:#8045ff"></span>  --server-ca-secret<span style="color:#f92672">=</span>postgresql-ca <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --server-tls-secret<span style="color:#f92672">=</span>hacluster-tls-keypair</code></pre></div>
 <p>Including the <code>--server-ca-secret</code> and <code>--server-tls-secret</code> flags automatically
 enable TLS connections in the PostgreSQL cluster that is deployed. These flags
 should reference the CA Secret and the TLS key pair Secret, respectively.</p>
@@ -1987,8 +1987,8 @@ replicas that also requires TLS for any connection:</p>
 
 <pre><code>pgo create cluster hippo \
   --tls-only \
-  --server-ca-secret=hacluster-tls-keypair \
-  --server-tls-secret=postgresql-ca \
+  --server-ca-secret=postgresql-ca \
+  --server-tls-secret=hacluster-tls-keypair \
   --replication-tls-secret=hacluster-tls-replication-keypair \
   --replica-count=2
 </code></pre>

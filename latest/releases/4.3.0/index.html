@@ -1343,16 +1343,16 @@ kubectl create secret tls hippo-tls-keypair \
 <p>From there, one can create a PostgreSQL cluster that supports TLS with the following command:</p>
 
 <pre><code>pgo create cluster hippo-tls \
-  --server-ca-secret=hippo-tls-keypair \
-  --server-tls-secret=postgresql-ca
+  --server-ca-secret=postgresql-ca \
+  --server-tls-secret=hippo-tls-keypair
 </code></pre>
 
 <p>To create a PostgreSQL cluster that <strong>only</strong> accepts TLS connections and rejects any connection attempts made over an insecure channel, you can use the <code>--tls-only</code> flag on cluster creation, e.g.:</p>
 
 <pre><code>pgo create cluster hippo-tls \
   --tls-only \
-  --server-ca-secret=hippo-tls-keypair \
-  --server-tls-secret=postgresql-ca
+  --server-ca-secret=postgresql-ca \
+  --server-tls-secret=hippo-tls-keypair
 </code></pre>
 
 <h3 id="external-wal-volume">External WAL Volume</h3>
