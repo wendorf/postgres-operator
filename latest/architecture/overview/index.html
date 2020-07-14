@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Overview :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Overview :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/latest/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -1095,7 +1100,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/architecture/overview.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/architecture/overview.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1168,8 +1173,8 @@ how to maintain a high-availability cluster, etc.</li>
 replicas within a PostgreSQL cluster. This includes things like the number of
 replicas, what storage and resource classes to use, special affinity rules, etc.</li>
 <li><code>pgtasks.crunchydata.com</code>: A general purpose CRD that accepts a type of task
-that is needed to run against a cluster (e.g. take a backup, perform a clone)
-and tracks the state of said task through its workflow.</li>
+that is needed to run against a cluster (e.g. take a backup) and tracks the
+state of said task through its workflow.</li>
 <li><code>pgpolicies.crunchydata.com</code>: Stores a reference to a SQL file that can be
 executed against a PostgreSQL cluster. In the past, this was used to manage RLS
 policies on PostgreSQL clusters.</li>
@@ -1199,7 +1204,7 @@ schedule backups in a production environment!)</li>
 <li><code>event</code> (image: pgo-event, optional) - A container that provides an interface
 to the <code>nsq</code> message queue and transmits information about lifecycle events that
 occur within the PostgreSQL Operator (e.g. a cluster is created, a backup is
-taken, a clone fails to create)</li>
+taken, etc.)</li>
 </ul>
 
 <p>The main purpose of the PostgreSQL Operator is to create and update information

@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Automated PostgreSQL Operator Upgrade - Operator 4.1&#43; :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Automated PostgreSQL Operator Upgrade - Operator 4.1&#43; :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/latest/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -1086,7 +1091,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Upgrade/automatedupgrade.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/Upgrade/automatedupgrade.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1200,7 +1205,7 @@ export EXCLUDE_OS_TRUST=false
 
 <p>Then, for either 4.1.X or 4.2.X,</p>
 
-<p>Update the <code>PGO_VERSION</code> variable to <code>Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/Upgrade/automatedupgrade.md:75:39&#34;[0m</code></p>
+<p>Update the <code>PGO_VERSION</code> variable to <code>4.4.0-beta.2</code></p>
 
 <p>Finally, source this file with</p>
 
@@ -1233,10 +1238,19 @@ To help ensure that needed resources are not inadvertently deleted during an upg
 
 <p>The automated upgrade process provides a mechanism where, instead of being deleted, the existing PostgreSQL clusters will be left in place during the PostgreSQL Operator upgrade. While normal Operator functionality will be restricted on these existing clusters until they are upgraded to the currently installed PostgreSQL Operator version, the pods, services, etc will still be in place and accessible via other methods (e.g. kubectl, service IP, etc).</p>
 
-<p>To upgrade a particular cluster, use</p>
+<p>To upgrade a PostgreSQL cluster using the standard (<code>crunchy-postgres-ha</code>) image, you can run the following command:</p>
 
 <pre><code>pgo upgrade mycluster
 </code></pre>
+
+<p>If you are using the PostGIS-enabled image (i.e. <code>crunchy-postgres-gis-ha</code>) or any other custom images, you will need to add the <code>--ccp-image-tag</code>:</p>
+
+<pre><code>pgo upgrade --ccp-image-tag=centos7-12.3-3.0-4.4.0-beta.2 mygiscluster
+</code></pre>
+
+<p>Where <code>12.3</code> is the PostgreSQL version, <code>3.0</code> is the PostGIS version and <code>4.4.0-beta.2</code> is the PostgreSQL Operator version.
+Please note, no tag validation will be performed and additional steps may be required to upgrade your PostGIS extension implementation. For more information on PostGIS upgrade considerations, please see
+<a href="https://access.crunchydata.com/documentation/postgis/latest/postgis_installation.html#upgrading">PostGIS Upgrade Documentation</a>.</p>
 
 <p>This will follow a similar process to the documented manual process, where the pods, deployments, replicasets, pgtasks and jobs are deleted, the cluster&rsquo;s replicas are scaled down and replica PVCs deleted, but the primary PVC and backrest-repo PVC are left in place. Existing services for the primary, replica and backrest-shared-repo are also kept and will be updated to the requirements of the current version. Configmaps and secrets are kept except where deletion is required. For a cluster &lsquo;mycluster&rsquo;, the following configmaps will be deleted (if they exist) and recreated:</p>
 

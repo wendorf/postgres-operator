@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Disaster Recovery :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Disaster Recovery :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/latest/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -1095,7 +1100,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/architecture/disaster-recovery.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/architecture/disaster-recovery.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1219,18 +1224,92 @@ the last 7 backups:</p>
 <h2 id="restores">Restores</h2>
 
 <p>The PostgreSQL Operator supports the ability to perform a full restore on a
-PostgreSQL cluster as well as a point-in-time-recovery using the <code>pgo restore</code>
-command. Note that both of these options are <strong>destructive</strong> to the existing
-PostgreSQL cluster; to &ldquo;restore&rdquo; the PostgreSQL cluster to a new deployment,
-please see the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks/#clone-a-postgresql-cluster">Clone</a> section.</p>
+PostgreSQL cluster as well as a point-in-time-recovery. There are two types of
+ways to restore a cluster:</p>
 
-<p>The <code>pgo restore</code> command lets you specify the point at which you want to
-restore your database using the <code>--pitr-target</code> flag with the <code>pgo restore</code>
-command.</p>
+<ul>
+<li>Restore to a new cluster using the <code>--restore-from</code> flag in the
+<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
+command.</li>
+<li>Restore in-place using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restore/"><code>pgo restore</code></a>
+command. Note that this is <strong>destructive</strong>.</li>
+</ul>
 
 <p><strong>NOTE</strong>: Ensure you are backing up your PostgreSQL cluster regularly, as this
 will help expedite your restore times. The next section will cover scheduling
 regular backups.</p>
+
+<p>The following explains how to perform restores based on the restoration method
+you chose.</p>
+
+<h3 id="restore-to-a-new-cluster">Restore to a New Cluster</h3>
+
+<p>Restoring to a new PostgreSQL cluster allows one to take a backup and create a
+new PostgreSQL cluster that can run alongside an existing PostgreSQL cluster.
+There are several scenarios where using this technique is helpful:</p>
+
+<ul>
+<li>Creating a copy of a PostgreSQL cluster that can be used for other purposes.
+Another way of putting this is &ldquo;creating a clone.&rdquo;</li>
+<li>Restore to a point-in-time and inspect the state of the data without affecting
+the current cluster</li>
+</ul>
+
+<p>and more.</p>
+
+<p>Restoring to a new cluster can be accomplished using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
+command with several flags:</p>
+
+<ul>
+<li><code>--restore-from</code>: specifies the name of a PostgreSQL cluster (either one that
+is active, or a former cluster whose pgBackRest repository still exists) to
+restore from.</li>
+<li><code>--restore-opts</code>: used to specify additional options, similar to the ones that
+are passed into <a href="https://pgbackrest.org/command.html#command-restore"><code>pgbackrest restore</code></a>.</li>
+</ul>
+
+<p>One can copy an entire PostgreSQL cluster into a new cluster with a command as
+simple as the one below:</p>
+
+<pre><code>pgo create cluster newcluster --restore-from oldcluster
+</code></pre>
+
+<p>To perform a point-in-time-recovery, you have to pass in the pgBackRest <code>--type</code>
+and <code>--target</code> options, where <code>--type</code> indicates the type of recovery to
+perform, and <code>--target</code> indicates the point in time to recover to:</p>
+
+<pre><code>pgo create cluster newcluster \
+  --restore-from oldcluster \
+  --restore-opts &quot;--type=time --target='2019-12-31 11:59:59.999999+00'&quot;
+</code></pre>
+
+<p>Note that when using this method, the PostgreSQL Operator can only restore one
+cluster from each pgBackRest repository at a time. Using the above example, one
+can only perform one restore from <code>oldcluster</code> at a given time.</p>
+
+<p>When using the restore to a new cluster method, the PostgreSQL Operator takes
+the following actions:</p>
+
+<ul>
+<li>After running the normal cluster creation tasks, the PostgreSQL Operator
+creates a &ldquo;bootstrap&rdquo; job that performs a pgBackRest restore to the newly
+created PVC.</li>
+<li>The PostgreSQL Operator kicks off the new PostgreSQL cluster, which enters
+into recovery mode until it has recovered to a specified point-in-time or
+finishes replaying all available write-ahead logs.</li>
+<li>When this is done, the PostgreSQL cluster performs its regular operations when
+starting up.</li>
+</ul>
+
+<h3 id="restore-in-place">Restore in-place</h3>
+
+<p>Restoring a PostgreSQL cluster in-place is a <strong>destructive</strong> action that will
+perform a recovery on your existing data directory. This is accomplished using
+the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restore/"><code>pgo restore</code></a>
+command.</p>
+
+<p><code>pgo restore</code> lets you specify the point at which you want to restore your
+database using the <code>--pitr-target</code> flag.</p>
 
 <p>When the PostgreSQL Operator issues a restore, the following actions are taken
 on the cluster:</p>

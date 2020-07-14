@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Using Custom Resources :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Using Custom Resources :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/latest/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -1081,7 +1086,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/custom-resources/_index.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/custom-resources/_index.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1166,8 +1171,8 @@ how to maintain a high-availability cluster, etc.</li>
 replicas within a PostgreSQL cluster. This includes things like the number of
 replicas, what storage and resource classes to use, special affinity rules, etc.</li>
 <li><code>pgtasks.crunchydata.com</code>: A general purpose CRD that accepts a type of task
-that is needed to run against a cluster (e.g. take a backup, perform a clone)
-and tracks the state of said task through its workflow.</li>
+that is needed to run against a cluster (e.g. take a backup) and tracks the
+state of said task through its workflow.</li>
 <li><code>pgpolicies.crunchydata.com</code>: Stores a reference to a SQL file that can be
 executed against a PostgreSQL cluster. In the past, this was used to manage RLS
 policies on PostgreSQL clusters.</li>
@@ -1269,7 +1274,7 @@ make changes, as described below.</p>
 <tr>
 <td>CCPImageTag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>Param &#34;centosBase&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:90:84&#34;[0m-Param &#34;postgresVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:90:109&#34;[0m-Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:90:139&#34;[0m</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos7-12.3-4.4.0-beta.2</code>.</td>
 </tr>
 
 <tr>
@@ -1754,30 +1759,31 @@ environment requires it, you can also use RSA keys.</p>
 
 <p>In your working directory, run the following commands:</p>
 
-<pre><code># this variable is the name of the cluster being created
+<pre style="overflow-x: auto; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;">
+# this variable is the name of the cluster being created
 export pgo_cluster_name=hippo
 # this variable is the namespace the cluster is being deployed into
 export cluster_namespace=pgo
 
 # generate a SSH public/private keypair for use by pgBackRest
-ssh-keygen -t ed25519 -N '' -f &quot;${pgo_cluster_name}-key&quot;
+ssh-keygen -t ed25519 -N '' -f "${pgo_cluster_name}-key"
 
 # base64 encoded the keys for the generation of the Kubernetes secret, and place
 # them into variables temporarily
-public_key_temp=$(cat &quot;${pgo_cluster_name}-key.pub&quot; | base64)
-private_key_temp=$(cat &quot;${pgo_cluster_name}-key&quot; | base64)
-export pgbackrest_public_key=&quot;${public_key_temp//[$'\n']}&quot; pgbackrest_private_key=&quot;${private_key_temp//[$'\n']}&quot;
+public_key_temp=$(cat "${pgo_cluster_name}-key.pub" | base64)
+private_key_temp=$(cat "${pgo_cluster_name}-key" | base64)
+export pgbackrest_public_key="${public_key_temp//[$'\n']}" pgbackrest_private_key="${private_key_temp//[$'\n']}"
 
 # create the backrest-repo-config example file and substitute in the newly
 # created keys
-cat &lt;&lt;-EOF &gt; &quot;${pgo_cluster_name}-backrest-repo-config.yaml&quot;
+cat <<-EOF > "${pgo_cluster_name}-backrest-repo-config.yaml"
 apiVersion: v1
 kind: Secret
 type: Opaque
 metadata:
   labels:
     pg-cluster: ${pgo_cluster_name}
-    pgo-backrest-repo: &quot;true&quot;
+    pgo-backrest-repo: "true"
   name: ${pgo_cluster_name}-backrest-repo-config
   namespace: ${cluster_namespace}
 data:
@@ -1792,8 +1798,8 @@ EOF
 unset pgbackrest_public_key pgbackrest_private_key
 
 # create the pgBackRest secret
-kubectl apply -f &quot;${pgo_cluster_name}-backrest-repo-config.yaml&quot;
-</code></pre>
+kubectl apply -f "${pgo_cluster_name}-backrest-repo-config.yaml"
+</pre>
 
 <h4 id="step-2-creating-the-postgresql-user-secrets">Step 2: Creating the PostgreSQL User Secrets</h4>
 
@@ -1865,7 +1871,7 @@ metadata:
     pg-cluster: ${pgo_cluster_name}
     pg-pod-anti-affinity: &quot;&quot;
     pgo-backrest: &quot;true&quot;
-    pgo-version: Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:358:18&#34;[0m
+    pgo-version: 4.4.0-beta.2
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1905,7 +1911,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: Param &#34;centosBase&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:398:16&#34;[0m-Param &#34;postgresVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:398:41&#34;[0m-Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:398:71&#34;[0m
+  ccpimagetag: centos7-12.3-4.4.0-beta.2
   clustername: ${pgo_cluster_name}
   customconfig: &quot;&quot;
   database: ${pgo_cluster_name}
@@ -1942,7 +1948,7 @@ spec:
   userlabels:
     crunchy_collect: &quot;false&quot;
     pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:435:18&#34;[0m
+    pgo-version: 4.4.0-beta.2
   usersecretname: ${pgo_cluster_name}-hippo-secret
 EOF
 
@@ -2038,7 +2044,7 @@ spec:
     NodeLabelValue: &quot;&quot;
     crunchy_collect: &quot;false&quot;
     pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/custom-resources/_index.md:532:18&#34;[0m
+    pgo-version: 4.4.0-beta.2
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;

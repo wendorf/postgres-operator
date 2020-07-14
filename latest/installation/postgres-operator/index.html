@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Install the PostgreSQL Operator :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Install the PostgreSQL Operator :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/latest/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -1089,7 +1094,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/installation/postgres-operator.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/installation/postgres-operator.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1141,7 +1146,7 @@ for you, you can take a chance by running the manifest directly from the
 repository:</p>
 
 <pre><code>kubectl create namespace pgo
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:18:83&#34;[0m/installers/kubectl/postgres-operator.yml
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml
 </code></pre>
 
 <p>However, we still advise that you read onward to see how to properly configure
@@ -1163,7 +1168,7 @@ handles a variety of lifecycle actions for the PostgreSQL Operator, including:</
 and takes care of setting up all of the objects required to run the PostgreSQL
 Operator.</p>
 
-<p>The installation manifest, called <a href="https://github.com/CrunchyData/postgres-operator/blob/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:38:117&#34;[0m/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yaml</code></a>, is available in the <a href="https://github.com/CrunchyData/postgres-operator/blob/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:38:310&#34;[0m/installers/kubectl/postgres-operator.yml"><code>installers/kubectl/postgres-operator.yml</code></a>
+<p>The installation manifest, called <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yaml</code></a>, is available in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml"><code>installers/kubectl/postgres-operator.yml</code></a>
 path in the PostgreSQL Operator repository.</p>
 
 <h2 id="requirements">Requirements</h2>
@@ -1182,9 +1187,9 @@ permissions. This is required to create the <a href="https://kubernetes.io/docs/
 that power the PostgreSQL Operator. While the PostgreSQL Operator itself can be
 scoped to a specific namespace, you will need to have <code>cluster-admin</code> for the
 initial deployment, or privileges that allow you to install Custom Resource
-Definitions. The required list of privileges are available in the <a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:58:156&#34;[0m/installers/kubectl/postgres-operator.yml">postgres-operator.yml</a> file:</p>
+Definitions. The required list of privileges are available in the <a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml">postgres-operator.yml</a> file:</p>
 
-<p><a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:60:204&#34;[0m/installers/kubectl/postgres-operator.yml">https://raw.githubusercontent.com/CrunchyData/postgres-operator/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:60:67&#34;[0m/installers/kubectl/postgres-operator.yml</a></p>
+<p><a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml">https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml</a></p>
 
 <p>If you have already configured the ServiceAccount and ClusterRoleBinding for the
 installation process (e.g. from a previous installation), then you can remove
@@ -1248,7 +1253,7 @@ PostgreSQL Operator cannot create the RBAC itself.</p></li>
 <h2 id="configuration-postgres-operator-yml">Configuration - <code>postgres-operator.yml</code></h2>
 
 <p>The <code>postgres-operator.yml</code> file contains all of the configuration parameters
-for deploying the PostgreSQL Operator. The <a href="https://github.com/CrunchyData/postgres-operator/blob/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:123:114&#34;[0m/installers/kubectl/postgres-operator.yml">example file</a>
+for deploying the PostgreSQL Operator. The <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml">example file</a>
 contains defaults that should work in most Kubernetes environments, but it may
 require some customization.</p>
 
@@ -1368,8 +1373,8 @@ please see <a href="https://crunchydata.github.io/postgres-operator/latest/insta
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:272:20&#34;[0m
-pgo-apiserver version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/installation/postgres-operator.md:273:23&#34;[0m
+<pre><code>pgo client version 4.4.0-beta.2
+pgo-apiserver version 4.4.0-beta.2
 </code></pre>
 
 <h2 id="installing-metrics-infrastructure">Installing Metrics Infrastructure</h2>

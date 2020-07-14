@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Quickstart :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Quickstart :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/latest/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -1081,7 +1086,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/quickstart/_index.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/quickstart/_index.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1146,7 +1151,7 @@
 <p>If your environment is set up to use hostpath storage (found in things like <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">minikube</a> or <a href="https://developers.redhat.com/products/codeready-containers/overview">OpenShift Code Ready Containers</a>, the following command could work for you:</p>
 
 <pre><code>kubectl create namespace pgo
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:30:83&#34;[0m/installers/kubectl/postgres-operator.yml
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml
 </code></pre>
 
 <p>If not, please read onward: you can still get up and running fairly quickly with just a little bit of configuration.</p>
@@ -1157,12 +1162,12 @@ kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator
 
 <p>You will need to download the PostgreSQL Operator Installer manifest to your environment, which you can do with the following command:</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:42:71&#34;[0m/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
 </code></pre>
 
 <p>If you wish to download a specific version of the installer, you can substitute <code>master</code> with the version of the tag, i.e.</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:48:71&#34;[0m/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.2/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
 </code></pre>
 
 <h3 id="configure-the-postgresql-operator-installer">Configure the PostgreSQL Operator Installer</h3>
@@ -1195,7 +1200,7 @@ kubectl apply -f postgres-operator.yml
 
 <p>While the installation is occurring, download the <code>pgo</code> client set up script. This will help set up your local environment for using the PostgreSQL Operator:</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/vParam &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:84:71&#34;[0m/installers/kubectl/client-setup.sh &gt; client-setup.sh
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0-beta.2/installers/kubectl/client-setup.sh &gt; client-setup.sh
 chmod +x client-setup.sh
 </code></pre>
 
@@ -1258,8 +1263,8 @@ postgres-operator-56d6ccb97-tmz7m   4/4     Running   0          2m
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:170:20&#34;[0m
-pgo-apiserver version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:171:23&#34;[0m
+<pre><code>pgo client version 4.4.0-beta.2
+pgo-apiserver version 4.4.0-beta.2
 </code></pre>
 
 <h2 id="step-4-have-some-fun-create-a-postgresql-cluster">Step 4: Have Some Fun - Create a PostgreSQL Cluster</h2>
@@ -1373,7 +1378,7 @@ kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><sp
 
 <p>The <code>pgo</code> client can be downloaded from GitHub <a href="https://github.com/crunchydata/postgres-operator/releases">Releases</a> (subscribers can download it from the <a href="https://access.crunchydata.com">Crunchy Data Customer Portal</a>).</p>
 
-<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:321:154&#34;[0m of the PostgreSQL Operator, you must use the <code>pgo</code> for Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:321:239&#34;[0m.</p>
+<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version 4.4.0-beta.2 of the PostgreSQL Operator, you must use the <code>pgo</code> for 4.4.0-beta.2.</p>
 
 <p>Once you have download the <code>pgo</code> client, change the permissions on the file to be executable if need be as shown below:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod +x pgo</code></pre></div>
@@ -1387,8 +1392,8 @@ kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><sp
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:348:20&#34;[0m
-pgo-apiserver version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/quickstart/_index.md:349:23&#34;[0m
+<pre><code>pgo client version 4.4.0-beta.2
+pgo-apiserver version 4.4.0-beta.2
 </code></pre>
 
 <h3 id="step-7-create-a-namespace">Step 7: Create a Namespace</h3>

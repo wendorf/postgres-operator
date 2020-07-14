@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Common pgo Client Tasks :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Common pgo Client Tasks :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/latest/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -1086,7 +1091,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/pgo-client/common-tasks.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/pgo-client/common-tasks.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1195,8 +1200,8 @@ command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>which, if working, will yield results similar to:</p>
 
-<pre><code>pgo client version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:87:20&#34;[0m
-pgo-apiserver version Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:88:23&#34;[0m
+<pre><code>pgo client version 4.4.0-beta.2
+pgo-apiserver version 4.4.0-beta.2
 </code></pre>
 
 <h3 id="inspecting-the-postgresql-operator-configuration">Inspecting the PostgreSQL Operator Configuration</h3>
@@ -1212,7 +1217,7 @@ deployed by default, which storage classes are being used, etc.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">BasicAuth<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
 Cluster<span style="color:#111">:</span>
   CCPImagePrefix<span style="color:#111">:</span> crunchydata
-  CCPImageTag<span style="color:#111">:</span> Param &#34;centosBase&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:110:16&#34;[0m-Param &#34;postgresVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:110:41&#34;[0m-Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:110:71&#34;[0m
+  CCPImageTag<span style="color:#111">:</span> centos7-12.3-4.4.0-beta.2
   Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Metrics<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   Badger<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
@@ -1241,7 +1246,7 @@ Cluster<span style="color:#111">:</span>
 Pgo<span style="color:#111">:</span>
   Audit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PGOImagePrefix<span style="color:#111">:</span> crunchydata
-  PGOImageTag<span style="color:#111">:</span> Param &#34;centosBase&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:139:16&#34;[0m-Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:139:41&#34;[0m
+  PGOImageTag<span style="color:#111">:</span> centos7-4.4.0-beta.2
 PrimaryStorage<span style="color:#111">:</span> nfsstorage
 BackupStorage<span style="color:#111">:</span> nfsstorage
 ReplicaStorage<span style="color:#111">:</span> nfsstorage
@@ -1278,9 +1283,9 @@ Claims:                  8
 Total Volume Size:       8Gi       
 
 Database Images:
-                         4	crunchydata/crunchy-postgres-ha:Param &#34;centosBase&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:181:60&#34;[0m-Param &#34;postgresVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:181:85&#34;[0m-Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:181:115&#34;[0m
-                         4	crunchydata/pgo-backrest-repo:Param &#34;centosBase&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:182:58&#34;[0m-Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:182:83&#34;[0m
-                         8	crunchydata/pgo-backrest:Param &#34;centosBase&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:183:53&#34;[0m-Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:183:78&#34;[0m
+                         4	crunchydata/crunchy-postgres-ha:centos7-12.3-4.4.0-beta.2
+                         4	crunchydata/pgo-backrest-repo:centos7-4.4.0-beta.2
+                         8	crunchydata/pgo-backrest:centos7-4.4.0-beta.2
 
 Databases Not Ready:
 
@@ -1291,7 +1296,7 @@ Labels (count &gt; 1): [count] [label]
 	[4]	[pgo-pg-database=true]
 	[4]	[crunchy_collect=false]
 	[4]	[pg-pod-anti-affinity=]
-	[4]	[pgo-version=Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:194:19&#34;[0m]
+	[4]	[pgo-version=4.4.0-beta.2]
 	[4]	[archive-timeout=60]
 	[2]	[pg-cluster=hacluster]
 </code></pre>
@@ -1370,8 +1375,11 @@ gibibytes of memory, you can use the following command:</p>
 <h4 id="create-a-postgresql-cluster-with-postgis">Create a PostgreSQL Cluster with PostGIS</h4>
 
 <p>To create a PostgreSQL cluster that uses the geospatial extension PostGIS, you
-can execute the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hagiscluster --ccp-image<span style="color:#f92672">=</span>crunchy-postgres-gis-ha</code></pre></div>
+can execute the following command, updated with your desired image tag. In the
+example below, the cluster will use PostgreSQL 12.3 and PostGIS 3.0:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hagiscluster <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --ccp-image<span style="color:#f92672">=</span>crunchy-postgres-gis-ha <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --ccp-image-tag<span style="color:#f92672">=</span>centos7-12.3-3.0-4.4.0-beta.2</code></pre></div>
 <h4 id="create-a-postgresql-cluster-with-a-tablespace">Create a PostgreSQL Cluster with a Tablespace</h4>
 
 <p>Tablespaces are a PostgreSQL feature that allows a user to select specific
@@ -1461,7 +1469,7 @@ including the nodes that the pods are assigned to</li>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
 <p>which will yield output similar to:</p>
 
-<pre><code>cluster : hacluster (crunchy-postgres-ha:Param &#34;centosBase&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:423:42&#34;[0m-Param &#34;postgresVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:423:67&#34;[0m-Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:423:97&#34;[0m)
+<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.3-4.4.0-beta.2)
 	pod : hacluster-6dc6cfcfb9-f9knq (Running) on node01 (1/1) (primary)
 	pvc : hacluster
 	resources : CPU Limit= Memory Limit=, CPU Request= Memory Request=
@@ -1469,7 +1477,7 @@ including the nodes that the pods are assigned to</li>
 	deployment : hacluster
 	deployment : hacluster-backrest-shared-repo
 	service : hacluster - ClusterIP (10.102.20.42)
-	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=Param &#34;operatorVersion&#34; not found: [1;36m&#34;/opt/git/priv-all-portal-docs/etl/postgres_operator/dst/content/pgo-client/common-tasks.md:431:217&#34;[0m current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.4.0-beta.2 current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
 </code></pre>
 
 <h3 id="deleting-a-cluster">Deleting a Cluster</h3>
@@ -1623,33 +1631,98 @@ command:</p>
 <h3 id="restore-a-cluster">Restore a Cluster</h3>
 
 <p>The PostgreSQL Operator supports the ability to perform a full restore on a
-PostgreSQL cluster as well as a point-in-time-recovery using the <code>pgo restore</code>
-command. Note that both of these options are <strong>destructive</strong> to the existing
-PostgreSQL cluster; to &ldquo;restore&rdquo; the PostgreSQL cluster to a new deployment,
-please see the <a href="#clone-a-postgresql-cluster">clone</a> section.</p>
+PostgreSQL cluster (i.e. a &ldquo;clone&rdquo; or &ldquo;copy&rdquo;) as well as a
+point-in-time-recovery. There are two types of ways to restore a cluster:</p>
 
-<p>After a restore, there are some cleanup steps you will need to perform. Please
-review the <a href="#post-restore-cleanup">Post Restore Cleanup</a> section.</p>
+<ul>
+<li>Restore to a new cluster using the <code>--restore-from</code> flag in the
+<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
+command. This is effectively a <a href="#clone-a-postgresql-cluster">clone</a> or a copy.</li>
+<li>Restore in-place using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restore/"><code>pgo restore</code></a>
+command. Note that this is <strong>destructive</strong>.</li>
+</ul>
 
-<h4 id="full-restore">Full Restore</h4>
+<p>It is typically better to perform a restore to a new cluster, particularly when
+performing a point-in-time-recovery, as it can allow you to more effectively
+manage your downtime and avoid making undesired changes to your production data.</p>
 
-<p>To perform a full restore of a PostgreSQL cluster, you can execute the following
-command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster</code></pre></div>
-<p>If you want your PostgreSQL cluster to be restored to a specific node, you can
+<p>Additionally, the &ldquo;restore to a new cluster&rdquo; technique works so long as you have
+a pgBackRest repository available: the pgBackRest repository does not need to be
+attached to an active cluster! For example, if a cluster named <code>hippo</code> was
+deleted as such:</p>
+
+<pre><code>pgo delete cluster hippo --keep-backups
+</code></pre>
+
+<p>you can create a new cluster from the backups like so:</p>
+
+<pre><code>pgo create cluster datalake --restore-from=hippo
+</code></pre>
+
+<p>Below provides guidance on how to perform a restore to a new PostgreSQL cluster
+both as a full copy and to a specific point in time. Additionally, it also
+shows how to restore in place to a specific point in time.</p>
+
+<h4 id="restore-to-a-new-cluster-aka-copy-or-clone">Restore to a New Cluster (aka &ldquo;copy&rdquo; or &ldquo;clone&rdquo;)</h4>
+
+<p>Restoring to a new PostgreSQL cluster allows one to take a backup and create a
+new PostgreSQL cluster that can run alongside an existing PostgreSQL cluster.
+There are several scenarios where using this technique is helpful:</p>
+
+<ul>
+<li>Creating a copy of a PostgreSQL cluster that can be used for other purposes.
+Another way of putting this is &ldquo;creating a clone.&rdquo;</li>
+<li>Restore to a point-in-time and inspect the state of the data without affecting
+the current cluster</li>
+</ul>
+
+<p>and more.</p>
+
+<h5 id="full-restore">Full Restore</h5>
+
+<p>To create a new PostgreSQL cluster from a backup and restore it fully, you can
 execute the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster --node-label<span style="color:#f92672">=</span>failure-domain.beta.kubernetes.io/zone<span style="color:#f92672">=</span>us-central1-a</code></pre></div>
-<p>There are very few reasons why you will want to execute a full restore. If you
-want to make a copy of your PostgreSQL cluster, please use
-<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone"><code>pgo clone</code></a>.</p>
 
-<h4 id="point-in-time-recovery-pitr">Point-in-time-Recovery (PITR)</h4>
+<pre><code>pgo create cluster newcluster --restore-from=oldcluster
+</code></pre>
+
+<h5 id="point-in-time-recovery-pitr">Point-in-time-Recovery (PITR)</h5>
+
+<p>To create a new PostgreSQL cluster and restore it to specific point-in-time
+(e.g. before a key table was dropped), you can use the following command,
+substituting the time that you wish to restore to:</p>
+
+<pre><code>pgo create cluster newcluster \
+  --restore-from oldcluster \
+  --restore-opts &quot;--type=time --target='2019-12-31 11:59:59.999999+00'&quot;
+</code></pre>
+
+<p>When the restore is complete, the cluster is immediately available for reads and
+writes. To inspect the data before allowing connections, add pgBackRest&rsquo;s
+<code>--target-action=pause</code> option to the <code>--restore-opts</code> parameter.</p>
+
+<p>The PostgreSQL Operator supports the full set of pgBackRest restore options,
+which can be passed into the <code>--backup-opts</code> parameter. For more information,
+please review the <a href="https://pgbackrest.org/command.html#command-restore">pgBackRest restore options</a></p>
+
+<h4 id="restore-in-place">Restore in-place</h4>
+
+<p>Restoring a PostgreSQL cluster in-place is a <strong>destructive</strong> action that will
+perform a recovery on your existing data directory. This is accomplished using
+the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restore/"><code>pgo restore</code></a>
+command. The most common scenario is to restore the database to a specific point
+in time.</p>
+
+<h5 id="point-in-time-recovery-pitr-1">Point-in-time-Recovery (PITR)</h5>
 
 <p>The more likely scenario when performing a PostgreSQL cluster restore is to
 recover to a particular point-in-time (e.g. before a key table was dropped). For
-example, to restore a cluster to December 23, 2019 at 8:00am:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster --pitr-target<span style="color:#f92672">=</span><span style="color:#d88200">&#34;2019-12-23 08:00:00.000000+00&#34;</span> <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=time&#34;</span></code></pre></div>
+example, to restore a cluster to December 31, 2019 at 11:59pm:</p>
+
+<pre><code>pgo restore hacluster --pitr-target=&quot;2019-12-31 11:59:59.999999+00&quot; \
+  --backup-opts=&quot;--type=time&quot;
+</code></pre>
+
 <p>When the restore is complete, the cluster is immediately available for reads and
 writes. To inspect the data before allowing connections, add pgBackRest&rsquo;s
 <code>--target-action=pause</code> option to the <code>--backup-opts</code> parameter.</p>
@@ -1658,12 +1731,13 @@ writes. To inspect the data before allowing connections, add pgBackRest&rsquo;s
 which can be passed into the <code>--backup-opts</code> parameter. For more information,
 please review the <a href="https://pgbackrest.org/command.html#command-restore">pgBackRest restore options</a></p>
 
-<h4 id="post-restore-cleanup">Post Restore Cleanup</h4>
+<p>Using this technique, after a restore is complete, you will need to re-enable
+high availability on the PostgreSQL cluster manually. You can re-enable high
+availability by executing the following command:</p>
 
-<p>After a restore is complete, you will need to re-enable high-availability on a
-PostgreSQL cluster manually. You can re-enable high-availability by executing
-the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo update cluster hacluster --autofail<span style="color:#f92672">=</span>true</code></pre></div>
+<pre><code>pgo update cluster hacluster --autofail=true
+</code></pre>
+
 <h3 id="logical-backups-pg-dump-pg-dumpall">Logical Backups (<code>pg_dump</code> / <code>pg_dumpall</code>)</h3>
 
 <p>The PostgreSQL Operator supports taking logical backups with <code>pg_dump</code> and
@@ -1818,24 +1892,38 @@ section of the documentation.</p>
 <h2 id="clone-a-postgresql-cluster">Clone a PostgreSQL Cluster</h2>
 
 <p>You can create a copy of an existing PostgreSQL cluster in a new PostgreSQL
-cluster by using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/"><code>pgo clone</code></a> command.
-The command copies the pgBackRest repository from the existing cluster and
-creates a new, single instance primary as its own cluster. To
-create the new, single instance, copy of a PostgreSQL cluster, you can execute
-the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo clone hacluster newhacluster</code></pre></div>
+cluster by using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
+command with the <code>--restore-from</code> flag (and, if needed, <code>--restore-opts</code>).
+The command copies the pgBackRest repository from either an active PostgreSQL
+cluster, or a pgBackRest repository that exists from a former cluster that was
+deleted using <code>pgo delete cluster --keep-backups</code>.</p>
+
+<p>You can clone a PostgreSQL cluster by running the following command:</p>
+
+<pre><code>pgo clone hacluster newhacluster
+</code></pre>
+
+<p>By leveraging <code>pgo create cluster</code>, you are able to copy the data from a
+PostgreSQL cluster while creating the topology of a new cluster the way you want
+to. For instance, if you want to copy data from an existing cluster that does
+not have metrics to a new cluster that does, you can accomplish that with the
+following command:</p>
+
+<pre><code>pgo create cluster newcluster --restore-from=oldcluster --metrics
+</code></pre>
+
 <h3 id="clone-a-postgresql-cluster-to-different-pvc-size">Clone a PostgreSQL Cluster to Different PVC Size</h3>
 
 <p>You can have a cloned PostgreSQL cluster use a different PVC size, which is
 useful when moving your PostgreSQL cluster to a larger PVC. For example, to
 clone a PostgreSQL cluster to a 256GiB PVC, you can execute the following
 command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo clone hacluster newhacluster --pvc-size<span style="color:#f92672">=</span>256Gi</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster bighippo --restore-from<span style="color:#f92672">=</span>hippo  --pvc-size<span style="color:#f92672">=</span>256Gi</code></pre></div>
 <p>You can also have the cloned PostgreSQL cluster use a larger pgBackRest
 backup repository by setting its PVC size. For example, to have a cloned
 PostgreSQL cluster use a 1TiB pgBackRest repository, you can execute the
 following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo clone hacluster newhacluster --pgbackrest-pvc-size<span style="color:#f92672">=</span>1Ti</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster bighippo --restore-from<span style="color:#f92672">=</span>hippo --pgbackrest-pvc-size<span style="color:#f92672">=</span>1Ti</code></pre></div>
 <h2 id="enable-tls">Enable TLS</h2>
 
 <p>TLS allows secure TCP connections to PostgreSQL, and the PostgreSQL Operator
@@ -2000,7 +2088,7 @@ PostgreSQL instances (i.e. certificate-based authentication with SSL mode of
 <code>verify-full</code>), you will need to create a
 <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">PostgreSQL custom configuration</a>.</p>
 
-<h2 id="custom-postgresql-configuration-hahahugoshortcode-s22-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL Configuration</a></h2>
+<h2 id="custom-postgresql-configuration-hahahugoshortcode-s32-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL Configuration</a></h2>
 
 <p>Customizing PostgreSQL configuration is currently not subject to the <code>pgo</code>
 client, but given it is a common question, we thought it may be helpful to link
