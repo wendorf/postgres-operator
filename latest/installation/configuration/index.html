@@ -1265,7 +1265,7 @@ Operator.</p>
 
 <tr>
 <td><code>ccp_image_tag</code></td>
-<td>centos7-12.3-4.4.0-rc.1</td>
+<td>centos7-12.3-4.4.0</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag (version) used when creating containers from Crunchy Container Suite.</td>
 </tr>
@@ -1537,8 +1537,15 @@ Operator.</p>
 </tr>
 
 <tr>
+<td><code>pgo_client_install</code></td>
+<td>true</td>
+<td></td>
+<td>Enable to download the <code>pgo</code> client binary as part of the Ansible install</td>
+</tr>
+
+<tr>
 <td><code>pgo_client_version</code></td>
-<td>4.4.0-rc.1</td>
+<td>4.4.0</td>
 <td><strong>Required</strong></td>
 <td></td>
 </tr>
@@ -1587,7 +1594,7 @@ Operator.</p>
 
 <tr>
 <td><code>pgo_image_tag</code></td>
-<td>centos7-4.4.0-rc.1</td>
+<td>centos7-4.4.0</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag used when creating containers for the Crunchy PostgreSQL Operator (apiserver, operator, scheduler..etc)</td>
 </tr>

@@ -1147,7 +1147,7 @@
     
     
 
-<p>Crunchy Data announces the release of the PostgreSQL Operator 4.4.0 on July DD, 2020.</p>
+<p>Crunchy Data announces the release of the PostgreSQL Operator 4.4.0 on July 17, 2020.</p>
 
 <p>The PostgreSQL Operator is released in conjunction with the <a href="https://github.com/CrunchyData/crunchy-containers/">Crunchy Container Suite</a>.</p>
 
@@ -1267,6 +1267,7 @@
 <li>Bring up the correct number of pgBouncer replicas when <code>pgo update cluster --startup</code> is issued.</li>
 <li>Fixed issue where <code>pgo scale</code> would not work after <code>pgo update cluster --shutdown</code> and <code>pgo update cluster --startup</code> were run.</li>
 <li>Ensure <code>pgo scaledown</code> deletes external WAL volumes from the replica that is removed.</li>
+<li>Fix for PostgreSQL cluster startup logic when performing a restore.</li>
 <li>Several fixes for selecting default storage configurations and sizes when using the <code>pgo-deployer</code> container. These include #1, #4, and #8.</li>
 <li>Do not consider non-running Pods as primary Pods when checking for multiple primaries (Reported by @djcooklup).</li>
 <li>Fix race condition that could occur while <code>pgo upgrade</code> was running while a HA configuration map attempted to sync. (Reported by Paul Heinen @v3nturetheworld).</li>
