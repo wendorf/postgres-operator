@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Installing Metrics Infrastructure :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Installing Metrics Infrastructure :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/stable/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -344,6 +349,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/">
             Bash Scripts
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/">
+            Helm Chart
           </a>
         </div>
     </li>
@@ -803,6 +815,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/custom-resources/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/custom-resources/">Using Custom Resources</a>
+
+      </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/security/" class="dd-item haschildren
         ">
       <div>
@@ -946,6 +965,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/">
+            4.4.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/">
@@ -1056,10 +1082,13 @@
       <option value="/installation/other/ansible/uninstalling-metrics/" >--- Uninstalling Metrics Stack</option>
   
       <option value="/installation/other/bash/" >-- Bash Scripts</option>
+      <option value="/installation/other/helm/" >-- Helm Chart</option>
   
   
     <option value="/pgo-client/" >
    Using the pgo Client</option>
+    <option value="/custom-resources/" >
+   Using Custom Resources</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1088,7 +1117,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/installation/other/ansible/installing-metrics.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/installation/other/ansible/installing-metrics.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1155,7 +1184,7 @@ using the provided Ansible roles.</p>
 <p>The following assumes the proper <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/prerequisites/">prerequisites are satisfied</a>
 we can now install the PostgreSQL Operator.</p>
 
-<p>At a minimum, the following inventory variables should be configured to install the
+<p>At a minimum, the following variables should be configured to install the
 metrics infrastructure:</p>
 
 <table>
@@ -1291,11 +1320,11 @@ metrics infrastructure:</p>
 </table>
 
 <div class="notices tip" >Administrators can choose to install Grafana, Prometheus or both by configuring the
-<code>grafana_install</code> and <code>prometheus_install</code> variables in the inventory files.</div>
+<code>grafana_install</code> and <code>prometheus_install</code> variables in the <code>values.yaml</code> file.</div>
 
 <p>The following commands should be run in the directory where the Crunchy PostgreSQL Operator
 playbooks are located.  See the <code>ansible</code> directory in the Crunchy PostgreSQL Operator
-project for the inventory file, main playbook and ansible roles.</p>
+project for the inventory file, values file, main playbook and ansible roles.</p>
 
 <div class="notices tip" >At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.
 For more information on storage classes see the <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">official Kubernetes documentation</a>.</div>
@@ -1304,23 +1333,17 @@ For more information on storage classes see the <a href="https://kubernetes.io/d
 
 <p>On a Linux host with Ansible installed we can run the following command to install
 the Metrics stack:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install-metrics main.yml</code></pre></div>
-<p>If the Crunchy PostgreSQL Operator playbooks were installed using <code>yum</code>, use the
-following commands:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">ANSIBLE_ROLES_PATH</span><span style="color:#f92672">=</span>/usr/share/ansible/roles/crunchydata
-
-ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install-metrics --ask-become-pass <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>    /usr/share/ansible/postgres-operator/playbooks/main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>install-metrics main.yml</code></pre></div>
 <h2 id="installing-on-macos">Installing on macOS</h2>
 
 <p>On a macOS host with Ansible installed we can run the following command to install
 the Metrics stack:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install-metrics main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>install-metrics main.yml</code></pre></div>
 <h2 id="installing-on-windows">Installing on Windows</h2>
 
 <p>On a Windows host with the Ubuntu subsystem we can run the following commands to install
 the Metrics stack:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install-metrics main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory.yaml --tags<span style="color:#f92672">=</span>install-metrics main.yml</code></pre></div>
 <h2 id="verifying-the-installation">Verifying the Installation</h2>
 
 <p>This may take a few minutes to deploy.  To check the status of the deployment run

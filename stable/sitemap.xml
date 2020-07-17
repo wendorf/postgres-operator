@@ -119,11 +119,19 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/custom-resources/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/security/</loc>
   </url>
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/advanced/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/</loc>
   </url>
   
   <url>
@@ -184,6 +192,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/architecture/disaster-recovery/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/</loc>
   </url>
   
   <url>

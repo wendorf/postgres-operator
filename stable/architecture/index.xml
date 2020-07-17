@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Architecture on Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Architecture on Crunchy PostgreSQL Operator Documentation</title>
     <link>https://crunchydata.github.io/postgres-operator/stable/architecture/</link>
-    <description>Recent content in Architecture on Crunchy Data PostgreSQL Operator Documentation</description>
+    <description>Recent content in Architecture on Crunchy PostgreSQL Operator Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     

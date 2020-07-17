@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Configuration on Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Configuration on Crunchy PostgreSQL Operator Documentation</title>
     <link>https://crunchydata.github.io/postgres-operator/stable/configuration/</link>
-    <description>Recent content in Configuration on Crunchy Data PostgreSQL Operator Documentation</description>
+    <description>Recent content in Configuration on Crunchy PostgreSQL Operator Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.3.2 4.3.2 12.3 2.25     11.8 2.25     10.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.4.0 4.4.0 12.3 2.27     11.8 2.27     10.</description>
     </item>
     
     <item>

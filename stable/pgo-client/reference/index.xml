@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>pgo Client Reference on Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>pgo Client Reference on Crunchy PostgreSQL Operator Documentation</title>
     <link>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/</link>
-    <description>Recent content in pgo Client Reference on Crunchy Data PostgreSQL Operator Documentation</description>
+    <description>Recent content in pgo Client Reference on Crunchy PostgreSQL Operator Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -30,7 +30,7 @@ pgo apply mypolicy1 --selector=name=mycluster pgo apply mypolicy1 --selector=som
       <description>pgo backup Perform a Backup
 Synopsis BACKUP performs a Backup, for example:
 pgo backup mycluster
-pgo backup [flags]  Options  --backup-opts string The options to pass into pgbackrest. --backup-type string The backup type to perform. Default is pgbackrest. Valid backup types are pgbackrest and pgdump. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup --pgbackrest-storage-type string The type of storage to use when scheduling pgBackRest backups. Either &amp;quot;local&amp;quot;, &amp;quot;s3&amp;quot; or both, comma separated.</description>
+pgo backup [flags]  Options  --backup-opts string The options to pass into pgbackrest. --backup-type string The backup type to perform. Default is pgbackrest. Valid backup types are pgbackrest and pgdump. (default &amp;quot;pgbackrest&amp;quot;) -d, --database string The name of the database pgdump will backup. (default &amp;quot;postgres&amp;quot;) -h, --help help for backup --pgbackrest-storage-type string The type of storage to use when scheduling pgBackRest backups.</description>
     </item>
     
     <item>
@@ -670,7 +670,7 @@ pgo upgrade mycluster Upgrades the cluster for use with the upgraded Postgres Op
       <guid>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_version/</guid>
       <description>pgo version Print version information for the PostgreSQL Operator
 Synopsis VERSION allows you to print version information for the postgres-operator. For example:
-pgo version  pgo version [flags]  Options  -h, --help help for version  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
+pgo version  pgo version [flags]  Options  --client Only return the version of the pgo client. This does not make a call to the API server. -h, --help help for version  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>

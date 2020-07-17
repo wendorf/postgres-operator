@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Tablespaces :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Tablespaces :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/stable/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -342,6 +347,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/">
             Bash Scripts
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/">
+            Helm Chart
           </a>
         </div>
     </li>
@@ -801,6 +813,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/custom-resources/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/custom-resources/">Using Custom Resources</a>
+
+      </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/security/" class="dd-item haschildren
         ">
       <div>
@@ -944,6 +963,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/">
+            4.4.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/">
@@ -1051,6 +1077,8 @@
    Installation</option>
     <option value="/pgo-client/" >
    Using the pgo Client</option>
+    <option value="/custom-resources/" >
+   Using Custom Resources</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1079,7 +1107,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/architecture/tablespaces.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/architecture/tablespaces.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1191,7 +1219,7 @@ different lifecycle events that occur on a PostgreSQL cluster, including:</p>
 and is available after a downtime event</li>
 <li>Disaster Recovery: Tablespaces are backed up and are properly restored during
 a recovery</li>
-<li>Clone: Tablespaces are created in any cloned cluster</li>
+<li>Clone: Tablespaces are created in any cloned or restored cluster</li>
 <li>Deprovisioining: Tablespaces are deleted when a PostgreSQL instance or cluster
 is deleted</li>
 </ul>
@@ -1233,6 +1261,71 @@ PVC to a Kubernetes Deployment causes the Pods in the deployment to restart.</p>
 
 <p>When the operation completes, the tablespace will be set up and accessible to
 use within the PostgreSQL cluster.</p>
+
+<h2 id="removing-tablespaces">Removing Tablespaces</h2>
+
+<p>Removing a tablespace is a nontrivial operation. PostgreSQL does not provide a
+<code>DROP TABLESPACE .. CASCADE</code> command that would drop any associated objects with
+a tablespace. Additionally, the PostgreSQL documentation covering the
+<a href="https://www.postgresql.org/docs/current/sql-droptablespace.html"><code>DROP TABLESPACE</code></a>
+command goes on to note:</p>
+
+<blockquote>
+<p>A tablespace can only be dropped by its owner or a superuser. The tablespace
+must be empty of all database objects before it can be dropped. It is possible
+that objects in other databases might still reside in the tablespace even if
+no objects in the current database are using the tablespace. Also, if the
+tablespace is listed in the temp_tablespaces setting of any active session,
+the DROP might fail due to temporary files residing in the tablespace.</p>
+</blockquote>
+
+<p>Because of this, and to avoid a situation where a PostgreSQL cluster is left in
+an inconsistent state due to trying to remove a tablespace, the PostgreSQL
+Operator does not provide any means to remove tablespaces automatically. If you
+do need to remove a tablespace from a PostgreSQL deployment, we recommend
+following this procedure:</p>
+
+<ol>
+<li>As a database administrator:
+
+<ol>
+<li>Log into the primary instance of your cluster.</li>
+<li>Drop any objects that reside within the tablespace you wish to delete.
+These can be tables, indexes, and even databases themselves</li>
+<li>When you believe you have deleted all objects that depend on the tablespace
+you wish to remove, you can delete this tablespace from the PostgreSQL cluster
+using the <code>DROP TABLESPACE</code> command.</li>
+</ol></li>
+
+<li><p>As a Kubernetes user who can modify Deployments and edit an entry in the
+pgclusters.crunchydata.com CRD in the Namespace that the PostgreSQL cluster is
+in:</p>
+
+<ol>
+<li>For each Deployment that represents a PostgreSQL instance in the cluster
+(i.e. <code>kubectl -n &lt;TARGET_NAMESPACE&gt; get deployments --selector=pgo-pg-database=true,pg-cluster=&lt;CLUSTER_NAME&gt;</code>),
+edit the Deployment and remove the Volume and VolumeMount entry for the
+tablespace. If the tablespace is called <code>hippo-ts</code>, the Volume entry will look
+like:
+```yaml</li>
+
+<li><p>name: tablespace-hippo-ts
+persistentVolumeClaim:
+claimName: <INSTANCE_NAME>-tablespace-hippo-ts</p>
+
+<pre><code>and the VolumeMount entry will look like:
+```yaml
+- mountPath: /tablespaces/hippo-ts
+name: tablespace-hippo-ts
+</code></pre></li>
+
+<li><p>Modify the CR entry for the PostgreSQL cluster and remove the
+<code>tablespaceMounts</code> entry. If your PostgreSQL cluster is called <code>hippo</code>, then
+the name of the CR entry is also called <code>hippo</code>. If your tablespace is called
+<code>hippo-ts</code>, then you would remove the YAML stanza called <code>hippo-ts</code> from the
+<code>tablespaceMounts</code> entry.</p></li>
+</ol></li>
+</ol>
 
 <h2 id="more-information">More Information</h2>
 

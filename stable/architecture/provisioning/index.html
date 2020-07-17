@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Provisioning :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Provisioning :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/stable/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -342,6 +347,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/">
             Bash Scripts
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/">
+            Helm Chart
           </a>
         </div>
     </li>
@@ -801,6 +813,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/custom-resources/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/custom-resources/">Using Custom Resources</a>
+
+      </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/security/" class="dd-item haschildren
         ">
       <div>
@@ -944,6 +963,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/">
+            4.4.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/">
@@ -1051,6 +1077,8 @@
    Installation</option>
     <option value="/pgo-client/" >
    Using the pgo Client</option>
+    <option value="/custom-resources/" >
+   Using Custom Resources</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1079,7 +1107,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/architecture/provisioning.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/architecture/provisioning.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1258,6 +1286,41 @@ within a cluster.</p>
 <p>For more information on how this works and what configuration settings are
 editable, please visit the &ldquo;<a href="https://crunchydata.github.io/postgres-operator/stable/advanced/custom-configuration/">Custom PostgreSQL configuration</a>&ldquo;
 section of the documentation.</p>
+
+<h2 id="provisioning-using-a-backup-from-an-another-postgresql-cluster">Provisioning Using a Backup from an Another PostgreSQL Cluster</h2>
+
+<p>When provisioning a new PostgreSQL cluster, it is possible to bootstrap the cluster using an
+existing backup from either another PostgreSQL cluster that is currently running, or from a
+PostgreSQL cluster that no longer exists (specifically a cluster that was deleted using the
+ <code>keep-backups</code> option, as discussed in section <a href="#deprovisioning">Deprovisioning</a> below).  This
+is specifically accomplished by performing a <code>pgbackrest restore</code>  during cluster initialization
+in order to populate the initial <code>PGDATA</code> directory for the new cluster using the contents of a
+backup from another cluster.</p>
+
+<p>To leverage this capability, the name of the cluster containing the backup that should be utilzed
+when restoring simply needs to be specified using the <code>restore-from</code>  option when creating a new
+cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster mycluster2 --restore-from<span style="color:#f92672">=</span>mycluster1</code></pre></div>
+<p>By default, pgBackRest will restore the latest backup available in the repository, and will replay
+all available WAL archives.  However, additional pgBackRest options can be specified using the
+<code>restore-opts</code> option, which allows the restore command to be further tailored and customized.  For
+instance, the following demonstrates how a point-in-time restore can be utilized when creating a
+new cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster mycluster2 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-from<span style="color:#f92672">=</span>mycluster1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=time --target=&#39;2020-07-02 20:19:36.13557+00&#39;&#34;</span></code></pre></div>
+<p>Additionally, if bootstrapping from a cluster the utilizes AWS S3 storage with pgBackRest (or a
+cluster that utilized AWS S3 storage in the case of a former cluster), you can also also specify
+<code>s3</code> as the repository type in order to restore from a backup stored in an S3 storage bucket:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster mycluster2 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-from<span style="color:#f92672">=</span>mycluster1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --restore-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--repo-type=s3&#34;</span></code></pre></div>
+<p>When restoring from a cluster that is currently running, the new cluster will simply connect to
+the existing pgBackRest repository host for that cluster in order to perform the pgBackRest
+restore.  If restoring from a former cluster that has since been deleted, a new pgBackRest
+repository host will be deployed for the sole purpose of bootstrapping the new cluster, and will
+then be destroyed once the restore is complete.  Also, please note that it is only possible for
+one cluster to bootstrap from another cluster (whether running or not) at any given time.</p>
 
 <h2 id="deprovisioning">Deprovisioning</h2>
 

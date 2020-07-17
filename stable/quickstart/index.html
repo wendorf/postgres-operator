@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Quickstart :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Quickstart :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/stable/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -341,6 +346,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/">
             Bash Scripts
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/">
+            Helm Chart
           </a>
         </div>
     </li>
@@ -800,6 +812,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/custom-resources/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/custom-resources/">Using Custom Resources</a>
+
+      </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/security/" class="dd-item haschildren
         ">
       <div>
@@ -943,6 +962,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/">
+            4.4.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/">
@@ -1037,6 +1063,8 @@
    Installation</option>
     <option value="/pgo-client/" >
    Using the pgo Client</option>
+    <option value="/custom-resources/" >
+   Using Custom Resources</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1065,7 +1093,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/quickstart/_index.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/quickstart/_index.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1130,7 +1158,7 @@
 <p>If your environment is set up to use hostpath storage (found in things like <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">minikube</a> or <a href="https://developers.redhat.com/products/codeready-containers/overview">OpenShift Code Ready Containers</a>, the following command could work for you:</p>
 
 <pre><code>kubectl create namespace pgo
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0/installers/kubectl/postgres-operator.yml
 </code></pre>
 
 <p>If not, please read onward: you can still get up and running fairly quickly with just a little bit of configuration.</p>
@@ -1141,33 +1169,31 @@ kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator
 
 <p>You will need to download the PostgreSQL Operator Installer manifest to your environment, which you can do with the following command:</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
 </code></pre>
 
 <p>If you wish to download a specific version of the installer, you can substitute <code>master</code> with the version of the tag, i.e.</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
 </code></pre>
 
 <h3 id="configure-the-postgresql-operator-installer">Configure the PostgreSQL Operator Installer</h3>
 
 <p>There are many <a href="https://crunchydata.github.io/postgres-operator/stable/installation/configuration/">configuration parameters</a> to help you fine tune your installation, but there are a few that you may want to change to get the PostgreSQL Operator to run in your environment. Open up the <code>postgres-operator.yml</code> file and edit a few variables.</p>
 
-<p>Find the <code>PGO_ADMIN_PASSWORD</code> variable. This is the password you will use with the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/"><code>pgo</code> client</a> to manage your PostgreSQL clusters. The default is <code>password</code>, but you can change it to something like <code>hippo-elephant</code>.</p>
+<p>Find the <code>pgo_admin_password</code> variable. This is the password you will use with the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/"><code>pgo</code> client</a> to manage your PostgreSQL clusters. The default is <code>password</code>, but you can change it to something like <code>hippo-elephant</code>.</p>
 
-<p>You will need also need to set the storage default storage classes that you would like the PostgreSQL Operator to use. These variables are called <code>PRIMARY_STORAGE</code>, <code>REPLICA_STORAGE</code>, <code>BACKUP_STORAGE</code>, and <code>BACKREST_STORAGE</code>. There are several storage configurations listed out in the configuration file under the heading <code>STORAGE[1-9]_TYPE</code>. Find the one that you want to use, and set it to that value.</p>
+<p>You will also need to set the storage default storage classes that you would like the PostgreSQL Operator to use. These variables are called <code>primary_storage</code>, <code>replica_storage</code>, <code>backup_storage</code>, and <code>backrest_storage</code>. There are several storage configurations listed out in the configuration file under the heading <code>storage[1-9]_name</code>. Find the one that you want to use, and set it to that value.</p>
 
 <p>For example, if your Kubernetes environment is using NFS storage, you would set these variables to the following:</p>
 
-<pre><code>- name: BACKREST_STORAGE
-  value: &quot;nfsstorage&quot;
-- name: BACKUP_STORAGE
-  value: &quot;nfsstorage&quot;
-- name: PRIMARY_STORAGE
-  value: &quot;nfsstorage&quot;
-- name: REPLICA_STORAGE
-  value: &quot;nfsstorage&quot;
+<pre><code>backrest_storage: &quot;nfsstorage&quot;
+backup_storage: &quot;nfsstorage&quot;
+primary_storage: &quot;nfsstorage&quot;
+replica_storage: &quot;nfsstorage&quot;
 </code></pre>
+
+<p>If you are using either Openshift or CodeReady Containers, you will need to set <code>disable_fsgroup</code> to &lsquo;true&rsquo; in order to deploy the PostgreSQL Operator in OpenShift environments that have the typical restricted Security Context Constraints.</p>
 
 <p>For a full list of available storage types that can be used with this installation method, please review the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/configuration/">configuration parameters</a>.</p>
 
@@ -1183,7 +1209,7 @@ kubectl apply -f postgres-operator.yml
 
 <p>While the installation is occurring, download the <code>pgo</code> client set up script. This will help set up your local environment for using the PostgreSQL Operator:</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.3.2/installers/kubectl/client-setup.sh &gt; client-setup.sh
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0/installers/kubectl/client-setup.sh &gt; client-setup.sh
 chmod +x client-setup.sh
 </code></pre>
 
@@ -1197,7 +1223,7 @@ chmod +x client-setup.sh
 <pre><code>export PGOUSER=&quot;${HOME?}/.pgo/pgo/pgouser&quot;
 export PGO_CA_CERT=&quot;${HOME?}/.pgo/pgo/client.crt&quot;
 export PGO_CLIENT_CERT=&quot;${HOME?}/.pgo/pgo/client.crt&quot;
-export PGO_CLIENT_KEY=&quot;${HOME?}/.pgo/pgo/client.pem&quot;
+export PGO_CLIENT_KEY=&quot;${HOME?}/.pgo/pgo/client.key&quot;
 export PGO_APISERVER_URL='https://127.0.0.1:8443'
 export PGO_NAMESPACE=pgo
 </code></pre>
@@ -1208,7 +1234,7 @@ export PGO_NAMESPACE=pgo
 export PGOUSER=&quot;${HOME?}/.pgo/pgo/pgouser&quot;
 export PGO_CA_CERT=&quot;${HOME?}/.pgo/pgo/client.crt&quot;
 export PGO_CLIENT_CERT=&quot;${HOME?}/.pgo/pgo/client.crt&quot;
-export PGO_CLIENT_KEY=&quot;${HOME?}/.pgo/pgo/client.pem&quot;
+export PGO_CLIENT_KEY=&quot;${HOME?}/.pgo/pgo/client.key&quot;
 export PGO_APISERVER_URL='https://127.0.0.1:8443'
 export PGO_NAMESPACE=pgo
 EOF
@@ -1246,8 +1272,8 @@ postgres-operator-56d6ccb97-tmz7m   4/4     Running   0          2m
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.3.2
-pgo-apiserver version 4.3.2
+<pre><code>pgo client version 4.4.0
+pgo-apiserver version 4.4.0
 </code></pre>
 
 <h2 id="step-4-have-some-fun-create-a-postgresql-cluster">Step 4: Have Some Fun - Create a PostgreSQL Cluster</h2>
@@ -1361,7 +1387,7 @@ kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><sp
 
 <p>The <code>pgo</code> client can be downloaded from GitHub <a href="https://github.com/crunchydata/postgres-operator/releases">Releases</a> (subscribers can download it from the <a href="https://access.crunchydata.com">Crunchy Data Customer Portal</a>).</p>
 
-<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version 4.3.2 of the PostgreSQL Operator, you must use the <code>pgo</code> for 4.3.2.</p>
+<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version 4.4.0 of the PostgreSQL Operator, you must use the <code>pgo</code> for 4.4.0.</p>
 
 <p>Once you have download the <code>pgo</code> client, change the permissions on the file to be executable if need be as shown below:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod +x pgo</code></pre></div>
@@ -1375,8 +1401,8 @@ kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><sp
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.3.2
-pgo-apiserver version 4.3.2
+<pre><code>pgo client version 4.4.0
+pgo-apiserver version 4.4.0
 </code></pre>
 
 <h3 id="step-7-create-a-namespace">Step 7: Create a Namespace</h3>

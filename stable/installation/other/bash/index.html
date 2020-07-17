@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Bash Scripts :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Bash Scripts :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/stable/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -343,6 +348,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/">
             Bash Scripts
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/">
+            Helm Chart
           </a>
         </div>
     </li>
@@ -802,6 +814,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/custom-resources/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/custom-resources/">Using Custom Resources</a>
+
+      </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/security/" class="dd-item haschildren
         ">
       <div>
@@ -945,6 +964,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/">
+            4.4.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/">
@@ -1047,10 +1073,13 @@
   -- 
    Ansible</option>
       <option value="/installation/other/bash/"  selected>-- Bash Scripts</option>
+      <option value="/installation/other/helm/" >-- Helm Chart</option>
   
   
     <option value="/pgo-client/" >
    Using the pgo Client</option>
+    <option value="/custom-resources/" >
+   Using Custom Resources</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1079,7 +1108,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/installation/other/bash.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/installation/other/bash.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1156,7 +1185,7 @@
 cd $HOME/odev/src/github.com/crunchydata
 git clone https://github.com/CrunchyData/postgres-operator.git
 cd postgres-operator
-git checkout v4.3.2
+git checkout v4.4.0
 </code></pre>
 
 <p>This creates a directory structure under your HOME directory name <em>odev</em> and clones the current Operator version to that structure.</p>
@@ -1168,13 +1197,6 @@ git checkout v4.3.2
 <pre><code>cat $HOME/odev/src/github.com/crunchydata/postgres-operator/examples/envs.sh &gt;&gt; $HOME/.bashrc
 source $HOME/.bashrc
 </code></pre>
-
-<p>For various scripts used by the Operator, the <em>expenv</em> utility is required, download this utility from the Github Releases page, and place it into your PATH (e.g. $HOME/odev/bin).
-<div class="notices tip" ><p>There is also a Makefile target that includes is <em>expenv</em> and several other dependencies that are only needed if you plan on building from source:</p></p>
-
-<p><pre><code>make setup
-</code></pre>
-</div></p>
 
 <h2 id="default-installation-namespace-creation">Default Installation - Namespace Creation</h2>
 
@@ -1429,7 +1451,7 @@ postgres-operator-79bf94c658-zczf6   3/3       Running   0          47s
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/uninstalling-metrics/" title="Uninstalling Metrics Stack"> <i class="fa fa-chevron-left"></i><label>Uninstalling Metrics Stack</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/" title="Using the pgo Client" style="margin-right: 0px;"><label>Using the pgo Client</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/" title="Helm Chart" style="margin-right: 0px;"><label>Helm Chart</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

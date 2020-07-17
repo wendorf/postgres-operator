@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Namespace Management :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Namespace Management :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -41,6 +41,11 @@
   <ul class="navbar-nav mr-auto"></ul>
   <span class="navbar-text">
       <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://crunchydata.github.io/postgres-operator/stable/" target="_blank" rel="noopener">
+                    <label>Overview</label>
+                  </a>
+              </li>
               <li class="" role="">
                   <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
@@ -80,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -342,6 +347,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/">
             Bash Scripts
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/">
+            Helm Chart
           </a>
         </div>
     </li>
@@ -801,6 +813,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/custom-resources/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/stable/custom-resources/">Using Custom Resources</a>
+
+      </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/security/" class="dd-item haschildren
         ">
       <div>
@@ -944,6 +963,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/">
+            4.4.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.2/">
@@ -1051,6 +1077,8 @@
    Installation</option>
     <option value="/pgo-client/" >
    Using the pgo Client</option>
+    <option value="/custom-resources/" >
+   Using Custom Resources</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/advanced/" >
@@ -1079,7 +1107,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/architecture/namespace.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/master/docs/content/architecture/namespace.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1138,28 +1166,24 @@ deploy the PostgreSQL Operator.</p>
 <h2 id="namespace-operating-modes">Namespace Operating Modes</h2>
 
 <p>The PostgreSQL Operator can be run with various Namespace Operating Modes, with each mode
-determining whether or not certain namespaces capabilities are enabled for the Operator
+determining whether or not certain namespace capabilities are enabled for the PostgreSQL Operator
 installation. When the PostgreSQL Operator is run, the Kubernetes environment is inspected to
 determine what cluster roles are currently assigned to the <code>pgo-operator</code> <code>ServiceAccount</code>
 (i.e. the <code>ServiceAccount</code> running the Pod the PostgreSQL Operator is deployed within).  Based
 on the <code>ClusterRoles</code> identified, one of the namespace operating modes described below will be
-enabled for the Operator installation.  Please consult the installation guides for the various
-installation methods available to determine the settings required to install the <code>ClusterRoles</code>
-required for each mode.</p>
+enabled for the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/">PostgreSQL Operator Installation</a>. Please consult
+the <a href="(https://crunchydata.github.io/postgres-operator/stable/installation/)">installation</a> section for more information on the available
+settings.</p>
 
 <h3 id="dynamic"><code>dynamic</code></h3>
 
 <p>Enables full dynamic namespace capabilities, in which the Operator can create, delete and update
-any namespaces within the Kubernetes cluster, while then also having the ability to create the
-<code>Roles</code>, <code>RoleBindings</code> and <code>ServiceAccounts</code> within those namespaces as required for the Operator
-to create PostgreSQL clusters.  Additionally, while  in this mode the Operator can listen for
-namespace events (e.g. namespace additions, updates and deletions), and then create or remove
-controllers for various namespaces as those namespaces are added or removed from the Kubernetes
-cluster and/or Operator install.  The mode therefore allows the Operator to dynamically respond
-to namespace events in the cluster, and then interact with those namespaces as required to manage
-PostgreSQL clusters within them.</p>
+any namespaces within a Kubernetes cluster.  With <code>dynamic</code> mode enabled, the PostgreSQL Operator
+can respond to namespace events in a Kubernetes cluster, such as when a namespace is created, and
+take an appropriate action, such as adding the PostgreSQL Operator controllers for the newly
+created namespace.</p>
 
-<p>The following represents the <code>ClusterRole</code> required for the <code>dynamic</code> mode to be enabled:</p>
+<p>The following defines the namespace permissions required for the <code>dynamic</code> mode to be enabled:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 kind<span style="color:#111">:</span> ClusterRole
 apiVersion<span style="color:#111">:</span> rbac.authorization.k8s.io/v1
@@ -1176,44 +1200,15 @@ rules<span style="color:#111">:</span>
       - watch
       - create
       - update
-      - delete
-  - apiGroups<span style="color:#111">:</span>
-      - <span style="color:#d88200">&#39;&#39;</span>
-    resources<span style="color:#111">:</span>
-      - serviceaccounts
-    verbs<span style="color:#111">:</span>
-    - get
-    - create
-    - delete
-  - apiGroups<span style="color:#111">:</span>
-      - rbac.authorization.k8s.io
-    resources<span style="color:#111">:</span>
-      - roles
-    verbs<span style="color:#111">:</span>
-      - get
-      - create
-      - delete
-      - bind
-      - escalate
-  - apiGroups<span style="color:#111">:</span>
-      - rbac.authorization.k8s.io
-    resources<span style="color:#111">:</span>
-      - rolebindings
-    verbs<span style="color:#111">:</span>
-      - get
-      - create
       - delete</code></pre></div>
 <h3 id="readonly"><code>readonly</code></h3>
 
-<p>In this mode the PostgreSQL Operator is still able to listen for  namespace events within the
-Kubernetetes cluster, and then create and run and/or remove controllers as namespaces are added,
-updated and deleted.  However, while in this mode the Operator is unable to create, delete or
-update namespaces itself, nor can it create the RBAC it requires in any of those namespaces to
-create PostgreSQL clusters.  Therefore, while in a <code>readonly</code> mode namespaces must be
-preconfigured with the proper RBAC, since the Operator cannot create the RBAC itself (unless
-it has permission to do so in its ServiceAccount, as described further on in this document).</p>
+<p>In <code>readonly</code> mode, the PostgreSQL Operator is still able to listen to namespace events within a
+Kubernetes cluster, but it can no longer modify (create, update, delete) namespaces. For example,
+if a Kubernetes administrator creates a namespace, the PostgreSQL Operator can respond and create
+controllers for that namespace.</p>
 
-<p>The following represents the <code>ClusterRole</code> required for the <code>readonly</code> mode to be enabled:</p>
+<p>The following defines the namespace permissions required for the <code>readonly</code> mode to be enabled:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">kind<span style="color:#111">:</span> ClusterRole
 apiVersion<span style="color:#111">:</span> rbac.authorization.k8s.io/v1
 metadata<span style="color:#111">:</span>
@@ -1229,161 +1224,320 @@ rules<span style="color:#111">:</span>
       - watch</code></pre></div>
 <h3 id="disabled"><code>disabled</code></h3>
 
-<p>Disables namespace capabilities within the Operator altogether.  While in this mode the Operator
-will simply attempt to work with the target namespaces specified during installation.  If no
-target namespaces are specified, then the Operator will be configured to work within the namespace
-in which it is deployed.  As with <code>readonly</code>, while in this mode namespaces must be pre-configured
-with the proper RBAC, since the Operator cannot create the RBAC itself.  Additionally, in the event
-that target namespaces are deleted or the required RBAC within those namespaces are modified, the
-Operator will need to be re-deployed to ensure it no longer attempts to listen for events in those
-namespaces (specifically because while in this mode, the Operator is unable to listen for namespace
-events, and therefore cannot detect whether to watch or stop watching namespaces as they are added
-and/or removed).</p>
+<p><code>disabled</code> mode disables namespace capabilities namespace capabilities within the PostgreSQL
+Operator altogether.  While in this mode the PostgreSQL Operator will simply attempt to work with
+the target namespaces specified during installation.  If no target namespaces are specified, then
+the Operator will be configured to work within the namespace in which it is deployed.  Since the
+Operator is unable to dynamically respond to namespace events in  the cluster, in the event that
+target namespaces are deleted or new target namespaces need to be added, the PostgreSQL Operator
+will need to be re-deployed.</p>
 
-<p>Mode <code>disabled</code> is enabled when no <code>ClusterRoles</code> have been installed.</p>
+<p>Please note that it is important to redeploy the PostgreSQL Operator following the deletion of a
+target namespace to ensure it no longer attempts to listen for events in that namespace.</p>
 
-<h2 id="dynamic-rbac-creation-for-readonly-and-disabled-namespace-operating-modes">Dynamic RBAC Creation for <code>readonly</code> and <code>disabled</code> Namespace Operating Modes</h2>
+<p>The <code>disabled</code> mode is enabled the when the PostgreSQL Operator has not been assigned namespace
+permissions.</p>
 
-<p><em>Please note that this section is only applicable when using the <code>readonly</code> or <code>disabled</code> namespace
-operating modes.</em></p>
+<h2 id="rbac-reconciliation">RBAC Reconciliation</h2>
 
-<p>As described in the Namespace Operating Mode section above, when using either the <code>readonly</code> or
-<code>disabled</code> operating modes, all target name namespaces must be pre-configured with the proper RBAC
-(ServiceAccounts, Roles and RoleBindings) as required for the PostgreSQL Operator to create PostgreSQL
-clusters within those namespaces.  However,  this can done in one of the following two ways:</p>
+<p>By default, the PostgreSQL Operator will attempt to reconcile RBAC resources (ServiceAccounts,
+Roles and RoleBindings) within each namespace configured for the PostgreSQL Operator installation.
+This allows the PostgreSQL Operator to create, update and delete the various RBAC resources it
+requires in order to properly create and manage PostgreSQL clusters within each targeted namespace
+(this includes self-healing RBAC resources as needed if removed and/or misconfigured).</p>
 
-<ol>
-<li><p>Assign the <code>postgres-operator</code> ServiceAccount the permissions required to create the RBAC it requires
-within the namespace to create PostgreSQL clusters.  This is specifically be done by creating the following
-Role and RoleBinding within the target namespace:</p>
+<p>In order for RBAC reconciliation to function properly, the PostgreSQL Operator ServiceAccount must
+be assigned a certain set of permissions.  While the PostgreSQL Operator is not concerned with
+exactly how it has been assigned the permissions required to reconcile RBAC in each target
+namespace, the various <a href="https://crunchydata.github.io/postgres-operator/stable/installation/">installation methods</a> supported by the
+PostgreSQL Operator install a recommended set permissions based on the specific Namespace Operating
+Mode enabled (see section <a href="#namespace-operating-modes">Namespace Operating Modes</a>
+above for more information regarding the various Namespace Operating Modes available).</p>
 
-<h2 id="yaml">```yaml</h2>
+<p>The following section defines the recommended set of permissions that should be assigned to the
+PostgreSQL Operator ServiceAccount in order to ensure proper RBAC reconciliation based on the
+specific Namespace Operating Mode enabled.  Please note that each PostgreSQL Operator installation
+method handles the initial configuration and setup of the permissions shown below based on the
+Namespace Operating Mode configured during installation.</p>
 
-<p>kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: pgo-local-ns
-  namespace: <target-namespace>
-rules:</p>
+<h3 id="dynamic-namespace-operating-mode"><code>dynamic</code> Namespace Operating Mode</h3>
 
-<ul>
-<li>apiGroups:
+<p>When using the <code>dynamic</code> Namespace Operating Mode, it is recommended that the PostgreSQL Operator
+ServiceAccount be granted permissions to manage RBAC inside any namespace in the Kubernetes cluster
+via a ClusterRole.  This allows for a fully-hands off approach to managing RBAC within each
+targeted namespace space.  In other words, as namespaces are added and removed post-installation of
+the PostgreSQL Operator (e.g. using <code>pgo create namespace</code> or <code>pgo delete namespace</code>), the Operator
+is able to automatically reconcile RBAC in those namespaces without the need for any external
+administrative action and/or resource creation.</p>
 
-<ul>
-<li>&ldquo;
-resources:</li>
-<li>serviceaccounts
-verbs:</li>
-<li>get</li>
-<li>create</li>
-<li>delete</li>
-</ul></li>
-<li>apiGroups:
+<p>The following defines ClusterRole permissions that are assigned to the PostgreSQL Operator
+ServiceAccount via the various Operator installation methods when the <code>dynamic</code> Namespace Operating
+Mode is configured:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+kind<span style="color:#111">:</span> ClusterRole
+apiVersion<span style="color:#111">:</span> rbac.authorization.k8s.io/v1
+metadata<span style="color:#111">:</span>
+  name<span style="color:#111">:</span> pgo-cluster-role
+rules<span style="color:#111">:</span>
+  - apiGroups<span style="color:#111">:</span>
+      - <span style="color:#d88200">&#39;&#39;</span>
+    resources<span style="color:#111">:</span>
+      - serviceaccounts
+    verbs<span style="color:#111">:</span>
+      - get
+      - create
+      - update
+      - delete
+  - apiGroups<span style="color:#111">:</span>
+      - rbac.authorization.k8s.io
+    resources<span style="color:#111">:</span>
+      - roles
+      - rolebindings
+    verbs<span style="color:#111">:</span>
+      - get
+      - create
+      - update
+      - delete
+  - apiGroups<span style="color:#111">:</span>
+      - <span style="color:#d88200">&#39;&#39;</span>
+    resources<span style="color:#111">:</span>
+      - configmaps
+      - endpoints
+      - pods
+      - pods/exec
+      - pods/log
+      - replicasets
+      - secrets
+      - services
+      - persistentvolumeclaims
+    verbs<span style="color:#111">:</span>
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - update
+      - delete
+      - deletecollection
+  - apiGroups<span style="color:#111">:</span>
+      - apps
+    resources<span style="color:#111">:</span>
+      - deployments
+    verbs<span style="color:#111">:</span>
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - update
+      - delete
+      - deletecollection
+  - apiGroups<span style="color:#111">:</span>
+      - batch
+    resources<span style="color:#111">:</span>
+      - jobs
+    verbs<span style="color:#111">:</span>
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - update
+      - delete
+      - deletecollection
+  - apiGroups<span style="color:#111">:</span>
+      - crunchydata.com
+    resources<span style="color:#111">:</span>
+      - pgclusters
+      - pgpolicies
+      - pgreplicas
+      - pgtasks
+    verbs<span style="color:#111">:</span>
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - update
+      - delete
+      - deletecollection</code></pre></div>
+<h3 id="readonly-disabled-namespace-operating-modes"><code>readonly</code> &amp; <code>disabled</code> Namespace Operating Modes</h3>
 
-<ul>
-<li>rbac.authorization.k8s.io
-resources:</li>
-<li>roles</li>
-<li>rolebindings
-verbs:</li>
-<li>get</li>
-<li>create</li>
-<li>delete</li>
-<li>bind</li>
-<li>escalate
-&mdash;
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-name: pgo-local-ns
-namespace: $TARGET_NAMESPACE
-roleRef:
-apiGroup: rbac.authorization.k8s.io
-kind: Role
-name: pgo-local-ns
-subjects:</li>
-</ul></li>
+<p>When using the <code>readonly</code> or <code>disabled</code> Namespace Operating Modes, it is recommended that the
+PostgreSQL Operator ServiceAccount be granted permissions to manage RBAC inside of any configured
+namespaces using local Roles within each targeted namespace.  This means that as new namespaces
+are added and removed post-installation of the PostgreSQL Operator, an administrator must manually
+assign the PostgreSQL Operator ServiceAccount the permissions it requires within each target
+namespace in order to successfully reconcile RBAC within those namespaces.</p>
 
-<li><p>kind: ServiceAccount
-name: postgres-operator
-namespace: <postgresql-operator-namespace></p>
+<p>The following defines the permissions that are assigned to the PostgreSQL Operator ServiceAccount
+in each configured namespace via the various Operator installation methods when the <code>readonly</code> or
+<code>disabled</code> Namespace Operating Modes are configured:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+kind<span style="color:#111">:</span> Role
+apiVersion<span style="color:#111">:</span> rbac.authorization.k8s.io/v1
+metadata<span style="color:#111">:</span>
+  name<span style="color:#111">:</span> pgo-local-ns
+  namespace<span style="color:#111">:</span> targetnamespace
+rules<span style="color:#111">:</span>
+  - apiGroups<span style="color:#111">:</span>
+      - <span style="color:#d88200">&#39;&#39;</span>
+    resources<span style="color:#111">:</span>
+      - serviceaccounts
+    verbs<span style="color:#111">:</span>
+      - get
+      - create
+      - update
+      - delete
+  - apiGroups<span style="color:#111">:</span>
+      - rbac.authorization.k8s.io
+    resources<span style="color:#111">:</span>
+      - roles
+      - rolebindings
+    verbs<span style="color:#111">:</span>
+      - get
+      - create
+      - update
+      - delete
+---
+apiVersion<span style="color:#111">:</span> rbac.authorization.k8s.io/v1
+kind<span style="color:#111">:</span> Role
+metadata<span style="color:#111">:</span>
+  name<span style="color:#111">:</span> pgo-target-role
+  namespace<span style="color:#111">:</span> targetnamespace
+rules<span style="color:#111">:</span>
+- apiGroups<span style="color:#111">:</span>
+    - <span style="color:#d88200">&#39;&#39;</span>
+  resources<span style="color:#111">:</span>
+    - configmaps
+    - endpoints
+    - pods
+    - pods/exec
+    - pods/log
+    - replicasets
+    - secrets
+    - services
+    - persistentvolumeclaims
+  verbs<span style="color:#111">:</span>
+    - get
+    - list
+    - watch
+    - create
+    - patch
+    - update
+    - delete
+    - deletecollection
+- apiGroups<span style="color:#111">:</span>
+    - apps
+  resources<span style="color:#111">:</span>
+    - deployments
+  verbs<span style="color:#111">:</span>
+    - get
+    - list
+    - watch
+    - create
+    - patch
+    - update
+    - delete
+    - deletecollection
+- apiGroups<span style="color:#111">:</span>
+    - batch
+  resources<span style="color:#111">:</span>
+    - jobs
+  verbs<span style="color:#111">:</span>
+    - get
+    - list
+    - watch
+    - create
+    - patch
+    - update
+    - delete
+    - deletecollection
+- apiGroups<span style="color:#111">:</span>
+    - crunchydata.com
+  resources<span style="color:#111">:</span>
+    - pgclusters
+    - pgpolicies
+    - pgtasks
+    - pgreplicas
+  verbs<span style="color:#111">:</span>
+    - get
+    - list
+    - watch
+    - create
+    - patch
+    - update
+    - delete
+    - deletecollection</code></pre></div>
+<h3 id="disabling-rbac-reconciliation">Disabling RBAC Reconciliation</h3>
 
-<pre><code>
-When the PostgreSQL Operator detects that it has the permissions defined in the `pgo-local-ns`
-during initialization, it will create any RBAC it requires within that namespace  (recreating 
-it if it already exists).  And if using the `readonly` namespace operating mode, the operator
-will also create/recreate the RBAC for a namespace when it detects that a new target namespace
-has been created.
+<p>In the event that the reconciliation behavior discussed above is not desired, it can be fully
+disabled by setting <code>DisableReconcileRBAC</code> to <code>true</code> in the <code>pgo.yaml</code> configuration file.  When
+reconciliation is disabled using this setting, the PostgreSQL Operator will not attempt to
+reconcile RBAC in any configured namespace.  As a result, any RBAC required by the PostreSQL
+Operator a targeted namespace must be manually created by an administrator.</p>
 
-2. Manually create the ServiceAccounts, Roles and RoleBindings required for the Operator to create PostgreSQL clusters in a target namespace.
+<p>Please see the the
+<a href="https://crunchydata.github.io/postgres-operator/stable/configuration/pgo-yaml-configuration/"><code>pgo.yaml</code> configuration guide</a>, as well
+as the documentation for the various <a href="https://crunchydata.github.io/postgres-operator/stable/installation/">installation methods</a>
+supported by the PostgreSQL Operator, for guidance on how to properly configure this setting and
+therefore disable RBAC reconciliation.</p>
 
-All installation methods provided for installing the PostgreSQL Operator include configuration settings for determining whether or not
-the PostgreSQL Operator is assigned the permissions needed to dynamically create RBAC within a target namespace.  Therefore, when using the
-`readonly` and `disabled` namespace operating modes, please consult the proper installation guide for guidance on the proper configuration
-settings.
+<h2 id="namespace-deployment-patterns">Namespace Deployment Patterns</h2>
 
-## Namespace Deployment Patterns
+<p>There are several different ways the PostgreSQL Operator can be deployed in
+Kubernetes clusters with respect to Namespaces.</p>
 
-There are several different ways the PostgreSQL Operator can be deployed in
-Kubernetes clusters with respect to Namespaces.
+<h3 id="one-namespace-postgresql-operator-postgresql-clusters">One Namespace: PostgreSQL Operator + PostgreSQL Clusters</h3>
 
-### One Namespace: PostgreSQL Operator + PostgreSQL Clusters
+<p><img src="https://crunchydata.github.io/postgres-operator/stable/images/namespace-own.png" alt="PostgreSQL Operator Own Namespace Deployment" /></p>
 
-![PostgreSQL Operator Own Namespace Deployment](/images/namespace-own.png)
-
-This patterns is great for testing out the PostgreSQL Operator in development
+<p>This patterns is great for testing out the PostgreSQL Operator in development
 environments, and can also be used to keep your entire PostgreSQL workload
-within a single Kubernetes Namespace.
+within a single Kubernetes Namespace.</p>
 
-This can be set up with the `disabled` Namespace mode.
+<p>This can be set up with the <code>disabled</code> Namespace mode.</p>
 
-### Single Tenant: PostgreSQL Operator Separate from PostgreSQL Clusters
+<h3 id="single-tenant-postgresql-operator-separate-from-postgresql-clusters">Single Tenant: PostgreSQL Operator Separate from PostgreSQL Clusters</h3>
 
-![PostgreSQL Operator Single Namespace Deployment](/images/namespace-single.png)
+<p><img src="https://crunchydata.github.io/postgres-operator/stable/images/namespace-single.png" alt="PostgreSQL Operator Single Namespace Deployment" /></p>
 
-The PostgreSQL Operator can be deployed into its own namespace and manage
-PostgreSQL clusters in a separate namespace.
+<p>The PostgreSQL Operator can be deployed into its own namespace and manage
+PostgreSQL clusters in a separate namespace.</p>
 
-This can be set up with either the `readonly` or `dynamic` Namespace modes.
+<p>This can be set up with either the <code>readonly</code> or <code>dynamic</code> Namespace modes.</p>
 
-### Multi Tenant: PostgreSQL Operator Managing PostgreSQL Clusters in Multiple Namespaces
+<h3 id="multi-tenant-postgresql-operator-managing-postgresql-clusters-in-multiple-namespaces">Multi Tenant: PostgreSQL Operator Managing PostgreSQL Clusters in Multiple Namespaces</h3>
 
-![PostgreSQL Operator Multi Namespace Deployment](/images/namespace-multi.png)
+<p><img src="https://crunchydata.github.io/postgres-operator/stable/images/namespace-multi.png" alt="PostgreSQL Operator Multi Namespace Deployment" /></p>
 
-The PostgreSQL Operator can manage PostgreSQL clusters across multiple
-namespaces which allows for multi-tenancy.
+<p>The PostgreSQL Operator can manage PostgreSQL clusters across multiple
+namespaces which allows for multi-tenancy.</p>
 
-This can be set up with either the `readonly` or `dynamic` Namespace modes.
+<p>This can be set up with either the <code>readonly</code> or <code>dynamic</code> Namespace modes.</p>
 
-## [`pgo` client](/pgo-client/) and Namespaces
+<h2 id="pgo-client-hahahugoshortcode-s6-hbhb-and-namespaces"><a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/"><code>pgo</code> client</a> and Namespaces</h2>
 
-The [`pgo` client](/pgo-client/) needs to be aware of
+<p>The <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/"><code>pgo</code> client</a> needs to be aware of
 the Kubernetes Namespaces it is issuing commands to. This can be accomplish with
-the `-n` flag that is available on most PostgreSQL Operator commands. For
-example, to create a PostgreSQL cluster called `hippo` in the `pgo` namespace,
-you would execute the following command:
+the <code>-n</code> flag that is available on most PostgreSQL Operator commands. For
+example, to create a PostgreSQL cluster called <code>hippo</code> in the <code>pgo</code> namespace,
+you would execute the following command:</p>
 
-</code></pre></li>
-</ul></li>
-</ol>
-
-<p>pgo create cluster -n pgo hippo</p>
-
-<pre><code>
-For convenience, you can set the `PGO_NAMESPACE` environmental variable to
-automatically use the desired namespace with the commands.
-
-For example, to create a cluster named `hippo` in the `pgo` namespace, you could
-do the following
-
+<pre><code>pgo create cluster -n pgo hippo
 </code></pre>
 
-<h1 id="this-export-only-needs-to-be-run-once-per-session">this export only needs to be run once per session</h1>
+<p>For convenience, you can set the <code>PGO_NAMESPACE</code> environmental variable to
+automatically use the desired namespace with the commands.</p>
 
-<p>export PGO_NAMESPACE=pgo</p>
+<p>For example, to create a cluster named <code>hippo</code> in the <code>pgo</code> namespace, you could
+do the following</p>
 
-<p>pgo create cluster hippo
-```</p>
+<pre><code># this export only needs to be run once per session
+export PGO_NAMESPACE=pgo
+
+pgo create cluster hippo
+</code></pre>
 
 
 
