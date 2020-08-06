@@ -31,7 +31,7 @@ username:password:pgoadmin: pgouser1:password:pgoadmin:pgouser1 pgouser2:passwor
 https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0/installers/kubectl/postgres-operator.yml
 The first step is to install the PostgreSQL Operator RBAC configuration. This can be accomplished by running:
 make installrbac  This script will install the PostreSQL Operator Custom Resource Definitions, CRD’s and creates the following RBAC resources on your Kubernetes cluster:
-   Setting Definition     Custom Resource Definitions (crd.</description>
+   Setting Definition     Custom Resource Definitions pgclusters    pgpolicies    pgreplicas    pgtasks    pgupgrades   Cluster Roles (cluster-roles.</description>
     </item>
     
     <item>
