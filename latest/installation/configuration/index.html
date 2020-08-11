@@ -313,13 +313,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/">
-            Installing Metrics Infrastructure
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/">
@@ -331,13 +324,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-operator/">
             Uninstalling PostgreSQL Operator
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/">
-            Uninstalling Metrics Stack
           </a>
         </div>
     </li>
@@ -356,6 +342,89 @@
             Helm Chart
           </a>
         </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/">PostgreSQL Operator Monitoring</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-prerequisites/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-prerequisites/">
+            Monitoring Prerequisites
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/">
+            Install PostgreSQL Operator Monitoring
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/">
+            Monitoring Configuration Reference
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/">Other Methods</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/">Ansible</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/metrics-prerequisites/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/metrics-prerequisites/">
+            Metrics Prerequisites
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/installing-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/installing-metrics/">
+            Installing the Monitoring Infrastructure
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/updating-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/updating-metrics/">
+            Updating the Monitoring Infrastructure
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/uninstalling-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/uninstalling-metrics/">
+            Uninstalling the Monitoring Infrastructure
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/helm-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/helm-metrics/">
+            Monitoring Helm Chart
+          </a>
+        </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -1068,6 +1137,9 @@
     <option value="/installation/other/" >
   - 
    Other Methods</option>
+    <option value="/installation/metrics/" >
+  - 
+   PostgreSQL Operator Monitoring</option>
   
     <option value="/pgo-client/" >
    Using the pgo Client</option>
@@ -1348,13 +1420,6 @@ Operator.</p>
 </tr>
 
 <tr>
-<td><code>delete_metrics_namespace</code></td>
-<td>false</td>
-<td></td>
-<td>Set to configure whether or not the metrics namespace (defined using variable <code>metrics_namespace</code>) is deleted when uninstalling the metrics infrastructure.</td>
-</tr>
-
-<tr>
 <td><code>delete_operator_namespace</code></td>
 <td>false</td>
 <td></td>
@@ -1390,66 +1455,10 @@ Operator.</p>
 </tr>
 
 <tr>
-<td><code>grafana_admin_password</code></td>
-<td></td>
-<td></td>
-<td>Set to configure the login password for the Grafana administrator.</td>
-</tr>
-
-<tr>
-<td><code>grafana_admin_username</code></td>
-<td>admin</td>
-<td></td>
-<td>Set to configure the login username for the Grafana administrator.</td>
-</tr>
-
-<tr>
-<td><code>grafana_install</code></td>
-<td>false</td>
-<td></td>
-<td>Set to true to install Crunchy Grafana to visualize metrics.</td>
-</tr>
-
-<tr>
-<td><code>grafana_storage_access_mode</code></td>
-<td>ReadWriteOnce</td>
-<td></td>
-<td>Set to the access mode used by the configured storage class for Grafana persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>grafana_storage_class_name</code></td>
-<td>fast</td>
-<td></td>
-<td>Set to the name of the storage class used when creating Grafana persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>grafana_supplemental_groups</code></td>
-<td>65534</td>
-<td></td>
-<td>Set to configure any supplemental groups that should be added to security contexts for Grafana.</td>
-</tr>
-
-<tr>
-<td><code>grafana_volume_size</code></td>
-<td>1G</td>
-<td></td>
-<td>Set to the size of persistent volume to create for Grafana.</td>
-</tr>
-
-<tr>
 <td><code>metrics</code></td>
 <td>false</td>
 <td><strong>Required</strong></td>
 <td>Set to true enable performance metrics on all newly created clusters. This can be disabled by the client.</td>
-</tr>
-
-<tr>
-<td><code>metrics_namespace</code></td>
-<td>pgo</td>
-<td></td>
-<td>Namespace in which the <code>metrics</code> deployments with be run.</td>
 </tr>
 
 <tr>
@@ -1632,41 +1641,6 @@ Operator.</p>
 <td>false</td>
 <td></td>
 <td>Set to configure Operator to verify TLS certificates.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_install</code></td>
-<td>false</td>
-<td></td>
-<td>Set to true to install Crunchy Grafana to visualize metrics.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_storage_access_mode</code></td>
-<td>ReadWriteOnce</td>
-<td></td>
-<td>Set to the access mode used by the configured storage class for Prometheus persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_storage_class_name</code></td>
-<td>fast</td>
-<td></td>
-<td>Set to the name of the storage class used when creating Prometheus persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_supplemental_groups</code></td>
-<td>65534</td>
-<td></td>
-<td>Set to configure any supplemental groups that should be added to security contexts for Prometheus.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_volume_size</code></td>
-<td>1G</td>
-<td></td>
-<td>Set to the size of persistent volume to create for Prometheus.</td>
 </tr>
 
 <tr>

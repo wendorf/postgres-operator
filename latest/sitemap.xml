@@ -51,6 +51,18 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/metrics-prerequisites/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-prerequisites/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/</loc>
   </url>
   
@@ -71,6 +83,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</loc>
   </url>
   
@@ -79,11 +95,15 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/helm-metrics/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-operator/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/installing-metrics/</loc>
   </url>
   
   <url>
@@ -95,7 +115,15 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/updating-metrics/</loc>
   </url>
   
   <url>
@@ -111,7 +139,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/uninstalling-metrics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/</loc>
   </url>
   
   <url>
@@ -120,6 +152,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/custom-resources/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/</loc>
   </url>
   
   <url>
@@ -167,7 +203,7 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/</loc>
   </url>
   
   <url>

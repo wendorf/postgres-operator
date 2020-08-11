@@ -139,6 +139,27 @@ Adjust the default keys to meet your security requirements using your own keys. 
     </item>
     
     <item>
+      <title>Metrics Prerequisites</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/metrics-prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/metrics-prerequisites/</guid>
+      <description>Prerequisites The following is required prior to installing the Crunchy PostgreSQL Operator Monitoring infrastructure using Ansible:
+ postgres-operator playbooks source code for the target version Ansible 2.9.0+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.11+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
+    </item>
+    
+    <item>
+      <title>Monitoring Prerequisites</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-prerequisites/</guid>
+      <description>Prerequisites The following is required prior to installing PostgreSQL Operator Monitoring.
+Environment PostgreSQL Operator Monitoring is tested in the following environments:
+ Kubernetes v1.13+ Red Hat OpenShift v3.11+ Red Hat OpenShift v4.3+ VMWare Enterprise PKS 1.3+  Application Ports The PostgreSQL Operator Monitoring installer deploys different services as needed to support PostgreSQL Operator Monitoring collection and monitoring. Below is a list of the applications and their default Service ports.</description>
+    </item>
+    
+    <item>
       <title>Prerequisites</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/prerequisites/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -171,6 +192,17 @@ The below guide covers many of the common operations that are required when mana
     </item>
     
     <item>
+      <title>Install PostgreSQL Operator Monitoring</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/</guid>
+      <description>PostgreSQL Operator Monitoring Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the metrics manifest directly from the repository:
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0/installers/metrics/kubectl/postgres-operator-metrics.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator Monitoring infrastructure.
+Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator Monitoring infrastructure, including:</description>
+    </item>
+    
+    <item>
       <title>Install the PostgreSQL Operator</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -194,6 +226,16 @@ When installing the Google Cloud SDK on the Windows Ubuntu Subsystem, run the fo
     </item>
     
     <item>
+      <title>Monitoring Helm Chart</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/helm-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/helm-metrics/</guid>
+      <description>The PostgreSQL Operator Monitoring Helm Chart Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator Monitoring infrastructure, including:
+ Installation Upgrading Uninstallation  After configuring the values.yaml file with you configuration options, the installer will be run using the helm command line tool and takes care of setting up all of the objects required to run the PostgreSQL Operator.</description>
+    </item>
+    
+    <item>
       <title>Installing PostgreSQL Operator</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-operator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -205,13 +247,12 @@ Installing on Linux On a Linux host with Ansible installed we can run the follow
     </item>
     
     <item>
-      <title>Installing Metrics Infrastructure</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/</link>
+      <title>Installing the Monitoring Infrastructure</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/installing-metrics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/</guid>
-      <description>Installing PostgreSQL clusters created by the Crunchy PostgreSQL Operator can optionally be configured to serve performance metrics via Prometheus Exporters. The metric exporters included in the database pod serve realtime metrics for the database container. In order to store and view this data, Grafana and Prometheus are required. The Crunchy PostgreSQL Operator does not create this infrastructure, however, they can be installed using the provided Ansible roles.
-Prerequisites The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.</description>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/installing-metrics/</guid>
+      <description>Installing the Monitoring Infrastructure PostgreSQL clusters created by the Crunchy PostgreSQL Operator can optionally be configured to serve performance metrics via Prometheus Exporters. The metric exporters included in the database pod serve realtime metrics for the database container. In order to store and view this data, Grafana and Prometheus are required. The Crunchy PostgreSQL Operator does not create this infrastructure, however, they can be installed using the provided Ansible roles.</description>
     </item>
     
     <item>
@@ -226,6 +267,17 @@ Prerequisites  For Kubernetes deployments: kubectl configured to communicate wit
     </item>
     
     <item>
+      <title>Monitoring Configuration Reference</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/</guid>
+      <description>PostgreSQL Operator Monitoring Installer Configuration When installing the PostgreSQL Operator Monitoring infrastructure you have various configuration options available, which are defined below.
+General Configuration These variables affect the general configuration of PostgreSQL Operator Monitoring.
+   Name Default Required Description     create_rbac true Required Set to true if the installer should create the RBAC resources required to run the PostgreSQL Operator Monitoring infrastructure.   db_port 5432 Required Set to configure the PostgreSQL port used by all PostgreSQL clusters.</description>
+    </item>
+    
+    <item>
       <title>Updating PostgreSQL Operator</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -233,6 +285,16 @@ Prerequisites  For Kubernetes deployments: kubectl configured to communicate wit
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/</guid>
       <description>Updating Updating the Crunchy PostgreSQL Operator is essential to the lifecycle management of the service. Using the update flag will:
  Update and redeploy the operator deployment Recreate configuration maps used by operator Remove any deprecated objects Allow administrators to change settings configured in the values.yaml Reinstall the pgo client if a new version is specified  The following assumes the proper prerequisites are satisfied we can now update the PostgreSQL Operator.</description>
+    </item>
+    
+    <item>
+      <title>Updating the Monitoring Infrastructure</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/updating-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/updating-metrics/</guid>
+      <description>Updating the Monitoring Infrastructure Updating the PostgreSQL Operator Monitoring infrastrcutre is essential to the lifecycle management of the service. Using the update-metrics flag will:
+ Update and redeploy the monitoring infrastructure deployments Recreate configuration maps and/or secrets used by the monitoring infrastructure Remove any deprecated objects Allow administrators to change settings configured in the values.yaml  The following assumes the proper prerequisites are satisfied we can now update the PostgreSQL Operator.</description>
     </item>
     
     <item>
@@ -259,13 +321,13 @@ ansible-playbook -i /path/to/inventory.yaml --tags=uninstall --ask-become-pass m
     </item>
     
     <item>
-      <title>Uninstalling Metrics Stack</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/</link>
+      <title>Uninstalling the Monitoring Infrastructure</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/uninstalling-metrics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/</guid>
-      <description>Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator Metrics Infrastructure.
-First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/uninstalling-metrics/</guid>
+      <description>Uninstalling the Monitoring Infrastructure The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator Monitoring infrastructure.
+First, it is recommended to use the playbooks tagged with the same version of the Metrics infratructure currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
 ansible-playbook -i /path/to/inventory.yaml --tags=uninstall-metrics main.</description>
     </item>

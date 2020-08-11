@@ -313,13 +313,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/">
-            Installing Metrics Infrastructure
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/updating-operator/">
@@ -331,13 +324,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-operator/">
             Uninstalling PostgreSQL Operator
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/uninstalling-metrics/">
-            Uninstalling Metrics Stack
           </a>
         </div>
     </li>
@@ -356,6 +342,89 @@
             Helm Chart
           </a>
         </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/">PostgreSQL Operator Monitoring</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-prerequisites/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-prerequisites/">
+            Monitoring Prerequisites
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/">
+            Install PostgreSQL Operator Monitoring
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/">
+            Monitoring Configuration Reference
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/">Other Methods</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/">Ansible</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/metrics-prerequisites/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/metrics-prerequisites/">
+            Metrics Prerequisites
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/installing-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/installing-metrics/">
+            Installing the Monitoring Infrastructure
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/updating-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/updating-metrics/">
+            Updating the Monitoring Infrastructure
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/uninstalling-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/ansible/uninstalling-metrics/">
+            Uninstalling the Monitoring Infrastructure
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/helm-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/other/helm-metrics/">
+            Monitoring Helm Chart
+          </a>
+        </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -1068,6 +1137,9 @@
     <option value="/installation/other/" >
   - 
    Other Methods</option>
+    <option value="/installation/metrics/" >
+  - 
+   PostgreSQL Operator Monitoring</option>
   
     <option value="/pgo-client/" >
    Using the pgo Client</option>
@@ -1390,48 +1462,17 @@ please see <a href="https://crunchydata.github.io/postgres-operator/latest/insta
 pgo-apiserver version 4.4.0
 </code></pre>
 
-<h2 id="installing-metrics-infrastructure">Installing Metrics Infrastructure</h2>
-
-<p>The <code>pgo-deployer</code> image can be used to deploy Grafana and Prometheus alongside
-the PostgreSQL Operator. The settings outlined in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/other/ansible/installing-metrics/">Installing-metrics</a>
-seciton of the documentation can be defined in your <code>values.yaml</code> configmap.
-Once you have updated the relevant metrics options you can update the
-<code>DEPLOY_ACTION</code> of the job manifest. By updating the environment variable to
-include <code>install-metrics</code> the installer will use the metrics settings when
-deploying.</p>
-
-<h3 id="installing">Installing</h3>
-
-<p>The following can be used to install the PostgreSQL Operator and metrics
-infrastructure at the same time.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">env<span style="color:#111">:</span>
-  - name<span style="color:#111">:</span> DEPLOY_ACTION
-    value<span style="color:#111">:</span> install<span style="color:#111">,</span>install-metrics</code></pre></div>
-<h3 id="uninstalling">Uninstalling</h3>
-
-<p>The following can be used to uninstall the PostgreSQL Operator and metrics
-infrastructure at the same time.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">env<span style="color:#111">:</span>
-  - name<span style="color:#111">:</span> DEPLOY_ACTION
-    value<span style="color:#111">:</span> uninstall<span style="color:#111">,</span>uninstall-metrics</code></pre></div>
-<h3 id="updating-previous-deployment">Updating Previous Deployment</h3>
-
-<p>If you have previously deployed the PostgreSQL Operator, you can install or
-uninstall the metrics infrastructure separately using these settings:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># Install</span>
-env<span style="color:#111">:</span>
-  - name<span style="color:#111">:</span> DEPLOY_ACTION
-    value<span style="color:#111">:</span> install-metrics
-<span style="color:#75715e"># Uninstall</span>
-env<span style="color:#111">:</span>
-  - name<span style="color:#111">:</span> DEPLOY_ACTION
-    value<span style="color:#111">:</span> uninstall-metrics</code></pre></div>
 <h2 id="post-installation">Post-Installation</h2>
 
 <p>To clean up the installer artifacts, you can simply run:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl delete -f /path/to/postgres-operator.yml</code></pre></div>
 <p>Note that if you still have the ServiceAccount and ClusterRoleBinding in there,
 you will need to have elevated privileges.</p>
+
+<h2 id="installing-the-postgresql-operator-monitoring-infrastructure">Installing the PostgreSQL Operator Monitoring Infrastructure</h2>
+
+<p>Please see the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/">PostgreSQL Operator Monitoring installation section</a>
+for instructions on how to install the PostgreSQL Operator Monitoring infrastructure.</p>
 
 
 
