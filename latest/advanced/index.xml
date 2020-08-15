@@ -11,6 +11,17 @@
     
     
     <item>
+      <title>Crunchy Postgres Exporter</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/advanced/crunchy-postgres-exporter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/advanced/crunchy-postgres-exporter/</guid>
+      <description>The crunchy-postgres-exporter container provides real time metrics about the PostgreSQL database via an API. These metrics are scraped and stored by a Prometheus time-series database and are then graphed and visualized through the open source data visualizer Grafana.
+The crunchy-postgres-exporter container uses pgMonitor for advanced metric collection. It is required that the crunchy-postgres-ha container has the PGMONITOR_PASSWORD environment variable to create the appropriate user (ccp_monitoring) to collect metrics.
+Custom queries to collect metrics can be specified by the user.</description>
+    </item>
+    
+    <item>
       <title>Custom Configuration</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

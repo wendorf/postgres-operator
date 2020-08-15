@@ -926,6 +926,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/crunchy-postgres-exporter/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/crunchy-postgres-exporter/">
+            Crunchy Postgres Exporter
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">
@@ -1239,7 +1246,7 @@
 
 <tr>
 <td>CCPImageTag</td>
-<td>newly created containers will be based on this image version (e.g. centos7-12.3-4.4.0), unless you override it using the &ndash;ccp-image-tag command line flag</td>
+<td>newly created containers will be based on this image version (e.g. centos7-12.4-4.4.1), unless you override it using the &ndash;ccp-image-tag command line flag</td>
 </tr>
 
 <tr>
@@ -1279,7 +1286,7 @@
 
 <tr>
 <td>Metrics</td>
-<td>boolean, if set to true will cause each new cluster to include crunchy-collect as a sidecar container for metrics collection, if set to false (default), users can still add metrics on a cluster-by-cluster basis using the pgo command flag &ndash;metrics</td>
+<td>boolean, if set to true will cause each new cluster to include crunchy-postgres-exporter as a sidecar container for metrics collection, if set to false (default), users can still add metrics on a cluster-by-cluster basis using the pgo command flag &ndash;metrics</td>
 </tr>
 
 <tr>

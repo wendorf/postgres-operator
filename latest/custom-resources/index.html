@@ -925,6 +925,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/crunchy-postgres-exporter/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/crunchy-postgres-exporter/">
+            Crunchy Postgres Exporter
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">
@@ -1350,13 +1357,13 @@ make changes, as described below.</p>
 <tr>
 <td>CCPImageTag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos7-12.3-4.4.0</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos7-12.4-4.4.1</code>.</td>
 </tr>
 
 <tr>
 <td>CollectSecretName</td>
 <td><code>create</code></td>
-<td>An optional attribute unless <code>crunchy_collect</code> is specified in the <code>UserLabels</code>; contains the name of a Kubernetes Secret that contains the credentials for a PostgreSQL user that is used for metrics collection, and is created when the PostgreSQL cluster is first bootstrapped. For more information, please see <code>User Secret Specification</code>.</td>
+<td>An optional attribute unless <code>crunchy-postgres-exporter</code> is specified in the <code>UserLabels</code>; contains the name of a Kubernetes Secret that contains the credentials for a PostgreSQL user that is used for metrics collection, and is created when the PostgreSQL cluster is first bootstrapped. For more information, please see <code>User Secret Specification</code>.</td>
 </tr>
 
 <tr>
@@ -1380,7 +1387,7 @@ make changes, as described below.</p>
 <tr>
 <td>ExporterPort</td>
 <td><code>create</code></td>
-<td>If the <code>&quot;crunchy_collect&quot;</code> label is set in <code>UserLabels</code>, then this specifies the port that the metrics sidecar runs on (e.g. <code>9187</code>)</td>
+<td>If the <code>&quot;crunchy-postgres-exporter&quot;</code> label is set in <code>UserLabels</code>, then this specifies the port that the metrics sidecar runs on (e.g. <code>9187</code>)</td>
 </tr>
 
 <tr>
@@ -1494,7 +1501,7 @@ make changes, as described below.</p>
 <tr>
 <td>UserLabels</td>
 <td><code>create</code></td>
-<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; for things that really should be modeled in the CRD. These values do get copied to the actually CR labels. If you want to set up metrics collection or pgBadger, you would specify <code>&quot;crunchy_collect&quot;: &quot;true&quot;</code> and <code>&quot;crunchy-pgbadger&quot;: &quot;true&quot;</code> here, respectively. However, this structure does need to be set, so just follow whatever is in the example.</td>
+<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; for things that really should be modeled in the CRD. These values do get copied to the actually CR labels. If you want to set up metrics collection or pgBadger, you would specify <code>&quot;crunchy-postgres-exporter&quot;: &quot;true&quot;</code> and <code>&quot;crunchy-pgbadger&quot;: &quot;true&quot;</code> here, respectively. However, this structure does need to be set, so just follow whatever is in the example.</td>
 </tr>
 
 <tr>
@@ -1790,7 +1797,7 @@ cluster. All of the attributes only affect the replica when it is created.</p>
 <tr>
 <td>UserLabels</td>
 <td><code>create</code></td>
-<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; for things that really should be modeled in the CRD. These values do get copied to the actually CR labels. If you want to set up metrics collection, you would specify <code>&quot;crunchy_collect&quot;: &quot;true&quot;</code> here. This also allows for node selector pinning using <code>NodeLabelKey</code> and <code>NodeLabelValue</code>. However, this structure does need to be set, so just follow whatever is in the example.</td>
+<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; for things that really should be modeled in the CRD. These values do get copied to the actually CR labels. If you want to set up metrics collection, you would specify <code>&quot;crunchy-postgres-exporter&quot;: &quot;true&quot;</code> here. This also allows for node selector pinning using <code>NodeLabelKey</code> and <code>NodeLabelValue</code>. However, this structure does need to be set, so just follow whatever is in the example.</td>
 </tr>
 </tbody>
 </table>
@@ -1947,13 +1954,13 @@ metadata:
     autofail: &quot;true&quot;
     crunchy-pgbadger: &quot;false&quot;
     crunchy-pgha-scope: ${pgo_cluster_name}
-    crunchy_collect: &quot;false&quot;
+    crunchy-postgres-exporter: &quot;false&quot;
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
     pg-pod-anti-affinity: &quot;&quot;
     pgo-backrest: &quot;true&quot;
-    pgo-version: 4.4.0
+    pgo-version: 4.4.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1993,7 +2000,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos7-12.3-4.4.0
+  ccpimagetag: centos7-12.4-4.4.1
   clustername: ${pgo_cluster_name}
   customconfig: &quot;&quot;
   database: ${pgo_cluster_name}
@@ -2028,9 +2035,9 @@ spec:
   tlsOnly: false
   user: hippo
   userlabels:
-    crunchy_collect: &quot;false&quot;
+    crunchy-postgres-exporter: &quot;false&quot;
     pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: 4.4.0
+    pgo-version: 4.4.1
   usersecretname: ${pgo_cluster_name}-hippo-secret
 EOF
 
@@ -2124,9 +2131,9 @@ spec:
   userlabels:
     NodeLabelKey: &quot;&quot;
     NodeLabelValue: &quot;&quot;
-    crunchy_collect: &quot;false&quot;
+    crunchy-postgres-exporter: &quot;false&quot;
     pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: 4.4.0
+    pgo-version: 4.4.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;

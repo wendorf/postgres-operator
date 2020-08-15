@@ -28,7 +28,7 @@ Environment PostgreSQL Operator Monitoring is tested in the following environmen
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/</guid>
       <description>PostgreSQL Operator Monitoring Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the metrics manifest directly from the repository:
-kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.0/installers/metrics/kubectl/postgres-operator-metrics.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator Monitoring infrastructure.
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.1/installers/metrics/kubectl/postgres-operator-metrics.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator Monitoring infrastructure.
 Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator Monitoring infrastructure, including:</description>
     </item>
     

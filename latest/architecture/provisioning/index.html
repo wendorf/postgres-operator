@@ -926,6 +926,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/crunchy-postgres-exporter/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/crunchy-postgres-exporter/">
+            Crunchy Postgres Exporter
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">
@@ -1290,7 +1297,7 @@ all of the replicas. Additionally, if the connection pooler pgBouncer is
 deployed with this cluster, it will also have a service as well.</p>
 
 <p>An optional monitoring sidecar can be deployed as well. The sidecar, called
-<code>collect</code>, uses the <code>crunchy-collect</code> container that is a part of pgMonitor and
+<code>exporter</code>, uses the <code>crunchy-postgres-exporter</code> container that is a part of pgMonitor and
 scrapes key health metrics into a Prometheus instance. See Monitoring for more
 information on how this works.</p>
 
@@ -1326,7 +1333,7 @@ time. This allows it to catch up to the current primary.</li>
 <li>Once the replica has recovered, it joins the primary as a streaming replica!</li>
 </ul>
 
-<p>If pgMonitor is enabled, a <code>collect</code> sidecar is also added to the replica
+<p>If pgMonitor is enabled, an <code>exporter</code> sidecar is also added to the replica
 Deployment.</p>
 
 <p>Scaling down works in the opposite way:</p>

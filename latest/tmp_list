@@ -51,6 +51,7 @@ content/Security/api-encryption-configuration.md
 content/Security/configure-postgres-operator-rbac.md
 content/Security/install-postgres-operator-rbac.md
 content/advanced/_index.md
+content/advanced/crunchy-postgres-exporter.md
 content/advanced/custom-configuration.md
 content/advanced/direct-api-calls.md
 content/advanced/multi-zone-design-considerations.md
