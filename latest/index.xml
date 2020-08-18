@@ -344,6 +344,18 @@ ansible-playbook -i /path/to/inventory.yaml --tags=uninstall-metrics main.</desc
     </item>
     
     <item>
+      <title>4.4.1</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/</guid>
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.4.1 on August 17, 2020.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+The PostgreSQL Operator 4.4.1 release includes the following software versions upgrades:
+ The PostgreSQL containers now use versions 12.4, 11.9, 10.14, 9.6.19, and 9.5.23  PostgreSQL Operator is tested with Kubernetes 1.13 - 1.18, OpenShift 3.11+, OpenShift 4.3+, Google Kubernetes Engine (GKE), and VMware Enterprise PKS 1.</description>
+    </item>
+    
+    <item>
       <title>4.4.0</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.4.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -363,6 +375,18 @@ The PostgreSQL Operator 4.4.0 release includes the following software versions u
       <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/automatedupgrade/</guid>
       <description>Automated PostgreSQL Operator Upgrade Procedure The automated upgrade to a new release of the PostgreSQL Operator comprises two main steps:
  Upgrading the PostgreSQL Operator itself Upgrading the existing PostgreSQL Clusters to the new release  The first step will result in an upgraded PostgreSQL Operator that is able to create and manage new clusters as expected, but will be unable to manage existing clusters until they have been upgraded.</description>
+    </item>
+    
+    <item>
+      <title>4.3.3</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.3.3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.3.3/</guid>
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.3.3 on August 17, 2020.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+The PostgreSQL Operator 4.3.3 release includes the following software versions upgrades:
+ The PostgreSQL containers now use versions 12.4, 11.9, 10.14, 9.6.19, and 9.5.23 pgBouncer is now at version 1.14.  PostgreSQL Operator is tested with Kubernetes 1.13 - 1.18, OpenShift 3.11+, OpenShift 4.</description>
     </item>
     
     <item>
