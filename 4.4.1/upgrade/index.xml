@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Upgrade on Crunchy PostgreSQL Operator Documentation</title>
+    <link>https://crunchydata.github.io/postgres-operator/4.4.1/upgrade/</link>
+    <description>Recent content in Upgrade on Crunchy PostgreSQL Operator Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://crunchydata.github.io/postgres-operator/4.4.1/upgrade/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Automated PostgreSQL Operator Upgrade - Operator 4.1&#43;</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.4.1/upgrade/automatedupgrade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.4.1/upgrade/automatedupgrade/</guid>
+      <description>Automated PostgreSQL Operator Upgrade Procedure The automated upgrade to a new release of the PostgreSQL Operator comprises two main steps:
+ Upgrading the PostgreSQL Operator itself Upgrading the existing PostgreSQL Clusters to the new release  The first step will result in an upgraded PostgreSQL Operator that is able to create and manage new clusters as expected, but will be unable to manage existing clusters until they have been upgraded.</description>
+    </item>
+    
+  </channel>
+</rss>

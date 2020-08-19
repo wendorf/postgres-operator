@@ -962,10 +962,24 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.1/">
+            4.4.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/">
             4.4.0
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.3/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.3/">
+            4.3.3
           </a>
         </div>
     </li>
@@ -1281,7 +1295,7 @@ make changes, as described below.</p>
 <tr>
 <td>CCPImageTag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos7-12.3-4.4.0</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos7-12.4-4.4.1</code>.</td>
 </tr>
 
 <tr>
@@ -1783,6 +1797,12 @@ export pgbackrest_public_key="${public_key_temp//[$'\n']}" pgbackrest_private_ke
 
 # create the backrest-repo-config example file and substitute in the newly
 # created keys
+#
+# (Note: that the "config" / "sshd_config" entries contain configuration to
+# ensure that PostgreSQL instances are able to communicate with the pgBackRest
+# repository, which houses backups and archives, and vice versa. Most of the
+# settings follow the sshd defaults, with a few overrides. Edit at your own
+# discretion.)
 cat <<-EOF > "${pgo_cluster_name}-backrest-repo-config.yaml"
 apiVersion: v1
 kind: Secret
@@ -1878,7 +1898,7 @@ metadata:
     pg-cluster: ${pgo_cluster_name}
     pg-pod-anti-affinity: &quot;&quot;
     pgo-backrest: &quot;true&quot;
-    pgo-version: 4.4.0
+    pgo-version: 4.4.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1918,7 +1938,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos7-12.3-4.4.0
+  ccpimagetag: centos7-12.4-4.4.1
   clustername: ${pgo_cluster_name}
   customconfig: &quot;&quot;
   database: ${pgo_cluster_name}
@@ -1955,7 +1975,7 @@ spec:
   userlabels:
     crunchy_collect: &quot;false&quot;
     pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: 4.4.0
+    pgo-version: 4.4.1
   usersecretname: ${pgo_cluster_name}-hippo-secret
 EOF
 
@@ -2051,7 +2071,7 @@ spec:
     NodeLabelValue: &quot;&quot;
     crunchy_collect: &quot;false&quot;
     pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: 4.4.0
+    pgo-version: 4.4.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;

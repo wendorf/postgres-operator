@@ -131,6 +131,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.4.1/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/</loc>
   </url>
   
@@ -144,6 +148,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/contributing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.3.3/</loc>
   </url>
   
   <url>

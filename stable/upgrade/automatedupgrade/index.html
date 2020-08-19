@@ -963,10 +963,24 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.1/">
+            4.4.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.4.0/">
             4.4.0
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.3/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.3.3/">
+            4.3.3
           </a>
         </div>
     </li>
@@ -1176,15 +1190,31 @@
 
 <h5 id="note-as-with-any-upgrade-procedure-it-is-strongly-recommended-that-a-full-logical-backup-is-taken-before-any-upgrade-procedure-is-started-please-see-the-logical-backups-pgo-client-common-tasks-logical-backups-pg-dump-pg-dumpall-section-of-the-common-tasks-page-for-more-information">NOTE: As with any upgrade procedure, it is strongly recommended that a full logical backup is taken before any upgrade procedure is started. Please see the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/common-tasks#logical-backups-pg_dump--pg_dumpall">Logical Backups</a> section of the Common Tasks page for more information.</h5>
 
-<h3 id="automated-upgrade-when-using-an-ansible-installation-of-the-postgresql-operator">Automated Upgrade when using an Ansible installation of the PostgreSQL Operator</h3>
+<h3 id="automated-upgrade-when-using-the-postgresql-operator-installer-pgo-deployer-helm-or-ansible">Automated Upgrade when using the PostgreSQL Operator Installer (<code>pgo-deployer</code>), Helm or Ansible</h3>
 
-<p>For existing PostgreSQL Operator deployments that were installed using Ansible, the upgrade process is straightforward.</p>
+<p>For all existing PostgreSQL Operator deployments that were installed using the Ansible installation method, the PostgreSQL Operator Installer or the Helm Chart Installation of the PostgreSQL Operator, the upgrade process is straightforward.</p>
 
-<p>First, you will copy your existing inventory file as a backup for your existing settings. You will reference these settings, but you will need to use the updated version of the inventory file for the current version of PostgreSQL Operator.</p>
+<p>First, you will copy your existing configuration file (whether inventory, postgres-operator.yml, values.yaml, etc, depending on method and version) as a backup for your existing settings. You will reference these settings, but you will need to use the updated version of this file for the current version of PostgreSQL Operator.</p>
 
-<p>Once you&rsquo;ve checked out the appropriate release tag, please follow the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/updating-operator/">Update Instructions</a>, being sure to update the new inventory file with your required settings. Please keep the above <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade#considerations">Considerations</a> in mind, particularly with regard to the version and storage requirements listed.</p>
+<p>In all three cases, you will need to use the relevant update functionality available with your chosen installation method. For all three options, please keep the above <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade#considerations">Considerations</a> in mind, particularly with regard to the version and storage requirements listed.</p>
 
-<p>Once the update is complete, you should now see the PostgreSQL Operator pods are up and ready. It is strongly recommended that you create a test cluster to validate proper functionality before moving on to the <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade#postgresql-operator-automated-cluster-upgrade">Automated Cluster Upgrade</a> section below.</p>
+<h4 id="postgresql-operator-installer">PostgreSQL Operator Installer</h4>
+
+<p>For existing PostgreSQL Operator deployments that were installed using the PostgreSQL Operator Installer, you will check out the appropriate release tag and update your the new configuration files. After this, you will need to update your Operator installation using the <code>DEPLOY_ACTION</code> method described in the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator#configuring-to-update-and-uninstall">Configuring to Update and Uninstall</a> section of the documentation.</p>
+
+<p>Please note, you will need to ensure that you have executed the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator#post-installation">post-installation cleanup</a> between each <code>DEPLOY_ACTION</code> activity.</p>
+
+<h4 id="helm">Helm</h4>
+
+<p>For existing PostgreSQL Operator deployments that were installed using the Helm installer, you will check out the appropriate release tag and update your the new configuration files. Then you will need to use the <code>helm upgrade</code> command as described in the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/helm#upgrade">Helm Upgrade</a> section of the Helm installation documentation.</p>
+
+<h4 id="ansible">Ansible</h4>
+
+<p>For existing PostgreSQL Operator deployments that were installed using Ansible, you will first need to check out the appropriate release tag of the Operator. Then please follow the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/updating-operator/">Update Instructions</a>, being sure to update the new inventory file with your required settings.</p>
+
+<h4 id="wrapping-up-the-postgresql-operator-upgrade">Wrapping Up the PostgreSQL Operator Upgrade</h4>
+
+<p>Once the upgrade is complete, you should now see the PostgreSQL Operator pods are up and ready. It is strongly recommended that you create a test cluster to validate proper functionality before moving on to the <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/automatedupgrade#postgresql-operator-automated-cluster-upgrade">Automated Cluster Upgrade</a> section below.</p>
 
 <h3 id="automated-upgrade-when-using-a-bash-installation-of-the-postgresql-operator">Automated Upgrade when using a Bash installation of the PostgreSQL Operator</h3>
 
@@ -1212,7 +1242,7 @@ export EXCLUDE_OS_TRUST=false
 
 <p>Then, for either 4.1.X or 4.2.X,</p>
 
-<p>Update the <code>PGO_VERSION</code> variable to <code>4.4.0</code></p>
+<p>Update the <code>PGO_VERSION</code> variable to <code>4.4.1</code></p>
 
 <p>Finally, source this file with</p>
 
@@ -1252,10 +1282,10 @@ To help ensure that needed resources are not inadvertently deleted during an upg
 
 <p>If you are using the PostGIS-enabled image (i.e. <code>crunchy-postgres-gis-ha</code>) or any other custom images, you will need to add the <code>--ccp-image-tag</code>:</p>
 
-<pre><code>pgo upgrade --ccp-image-tag=centos7-12.3-3.0-4.4.0 mygiscluster
+<pre><code>pgo upgrade --ccp-image-tag=centos7-12.4-3.0-4.4.1 mygiscluster
 </code></pre>
 
-<p>Where <code>12.3</code> is the PostgreSQL version, <code>3.0</code> is the PostGIS version and <code>4.4.0</code> is the PostgreSQL Operator version.
+<p>Where <code>12.4</code> is the PostgreSQL version, <code>3.0</code> is the PostGIS version and <code>4.4.1</code> is the PostgreSQL Operator version.
 Please note, no tag validation will be performed and additional steps may be required to upgrade your PostGIS extension implementation. For more information on PostGIS upgrade considerations, please see
 <a href="https://access.crunchydata.com/documentation/postgis/latest/postgis_installation.html#upgrading">PostGIS Upgrade Documentation</a>.</p>
 
