@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other Methods on Crunchy PostgreSQL Operator Documentation</title>
+    <link>https://crunchydata.github.io/postgres-operator/4.3.3/installation/other/</link>
+    <description>Recent content in Other Methods on Crunchy PostgreSQL Operator Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://crunchydata.github.io/postgres-operator/4.3.3/installation/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bash Scripts</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.3.3/installation/other/bash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.3.3/installation/other/bash/</guid>
+      <description>A full installation of the Operator includes the following steps:
+ create a project structure configure your environment variables configure Operator templates create security resources deploy the operator install pgo CLI (end user command tool)  Operator end-users are only required to install the pgo CLI client on their host and can skip the server-side installation steps. pgo CLI clients are provided for Linux, Mac, and Windows clients.
+The Operator can be deployed by multiple methods including:</description>
+    </item>
+    
+  </channel>
+</rss>
