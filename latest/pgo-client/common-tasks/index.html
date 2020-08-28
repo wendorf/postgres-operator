@@ -654,13 +654,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/">
-            pgo load
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/">
@@ -2373,6 +2366,99 @@ using the <code>--selector</code> flag on the <code>pgo label</code> command. Fo
 label with a key/value pair of <code>env=production</code> to clusters that have a label
 key/value pair of <code>app=payment</code>, you could execute the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo label --selector<span style="color:#f92672">=</span><span style="color:#111">app</span><span style="color:#f92672">=</span>payment --label<span style="color:#f92672">=</span><span style="color:#111">env</span><span style="color:#f92672">=</span>production</code></pre></div>
+<h2 id="custom-annotations">Custom Annotations</h2>
+
+<p>There are a variety of reasons why one may want to add additional
+<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/">Annotations</a>
+to the Deployments, and by extension Pods, managed by the PostgreSQL Operator:</p>
+
+<ul>
+<li>External applications that extend functionality via details in an annotation</li>
+<li>Tracking purposes for an internal application</li>
+</ul>
+
+<p>etc.</p>
+
+<p>As such the <code>pgo</code> client allows you to manage your own custom annotations on the
+Operator. There are four different ways to add annotations:</p>
+
+<ul>
+<li>On PostgreSQL instances</li>
+<li>On pgBackRest instances</li>
+<li>On pgBouncer instances</li>
+<li>On all of the above</li>
+</ul>
+
+<p>The custom annotation feature follows the same syntax as Kubernetes for adding
+and removing annotations, e.g.:</p>
+
+<p><code>--annotation=name=value</code></p>
+
+<p>would add an annotation called <code>name</code> with a value of <code>value</code>, and:</p>
+
+<p><code>--annotation=name-</code></p>
+
+<p>would remove an annotation called <code>name</code></p>
+
+<h3 id="adding-an-annotation">Adding an Annotation</h3>
+
+<p>There are two ways to add an Annotation during the lifecycle of a PostgreSQL
+cluster:</p>
+
+<ul>
+<li>Cluster creation: (<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>)</li>
+<li>Updating a cluster: (<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a>)</li>
+</ul>
+
+<p>There are several flags available for managing Annotations, i.e.:</p>
+
+<ul>
+<li><code>--annotation</code>: adds an Annotation to all managed Deployments (PostgreSQL, pgBackRest, pgBouncer)</li>
+<li><code>--annotation-postgres</code>: adds an Annotation only to PostgreSQL Deployments</li>
+<li><code>--annotation-pgbackrest</code>: adds an Annotation only to pgBackrest Deployments</li>
+<li><code>--annotation-pgbouncer</code>: adds an Annotation only to pgBouncer Deployments</li>
+</ul>
+
+<p>To add an Annotation with key <code>hippo</code> and value <code>awesome</code> to all of the managed
+Deployments when creating a cluster, you would run the following command:</p>
+
+<p><code>pgo create cluster hippo --annotation=hippo=awesome</code></p>
+
+<p>To add an Annotation with key <code>elephant</code> and value <code>cool</code> to only the PostgreSQL
+Deployments when creating a cluster, you would run the following command:</p>
+
+<p><code>pgo create cluster hippo --annotation-postgres=elephant=cool</code></p>
+
+<p>To add an Annotation to all the managed Deployments in an existing cluster, you
+can use the <code>pgo update cluster</code> command:</p>
+
+<p><code>pgo update cluster hippo --annotation=zebra=nice</code></p>
+
+<h3 id="adding-multiple-annotations">Adding Multiple Annotations</h3>
+
+<p>There are two syntaxes you could use to add multiple Annotations to a cluster:</p>
+
+<p><code>pgo create cluster hippo --annotation=hippo=awesome,elephant=cool</code></p>
+
+<p>or</p>
+
+<p><code>pgo create cluster hippo --annotation=hippo=awesome --annotation=elephant=cool</code></p>
+
+<h3 id="updating-annotations">Updating Annotations</h3>
+
+<p>To update an Annotation, you can use the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a>
+command and reference the original Annotation key. For intance, if I wanted to
+update the <code>hippo</code> annotation to be <code>rad</code>:</p>
+
+<p><code>pgo update cluster hippo --annotation=hippo=rad</code></p>
+
+<h3 id="removing-annotations">Removing Annotations</h3>
+
+<p>To remove an Annotation, you need to add a <code>-</code> to the end of the Annotation
+name. For example, to remove the <code>hippo</code> annotation:</p>
+
+<p><code>pgo update cluster hippo --annotation=hippo-</code></p>
+
 <h2 id="policy-management">Policy Management</h2>
 
 <h3 id="create-a-policy">Create a Policy</h3>

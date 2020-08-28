@@ -40,7 +40,7 @@ Overview The PostgreSQL Operator comes with a container called pgo-deployer whic
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/</guid>
       <description>PostgreSQL Operator Monitoring Installer Configuration When installing the PostgreSQL Operator Monitoring infrastructure you have various configuration options available, which are defined below.
 General Configuration These variables affect the general configuration of PostgreSQL Operator Monitoring.
-   Name Default Required Description     create_rbac true Required Set to true if the installer should create the RBAC resources required to run the PostgreSQL Operator Monitoring infrastructure.   db_port 5432 Required Set to configure the PostgreSQL port used by all PostgreSQL clusters.</description>
+   Name Default Required Description     alertmanager_log_level info  Set the log level for Alertmanager logging.   alertmanager_service_type ClusterIP Required How to expose the Alertmanager service.   alertmanager_storage_access_mode ReadWriteOnce Required Set to the access mode used by the configured storage class for Alertmanager persistent volumes.</description>
     </item>
     
   </channel>

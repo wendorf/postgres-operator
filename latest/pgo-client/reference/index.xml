@@ -74,7 +74,7 @@ pgo create [flags]  Options  -h, --help help for create  Options inherited from 
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/</guid>
       <description>pgo create cluster Create a PostgreSQL cluster
 Synopsis Create a PostgreSQL cluster consisting of a primary and a number of replica backends. For example:
-pgo create cluster mycluster  pgo create cluster [flags]  Options  --ccp-image string The CCPImage name to use for cluster creation. If specified, overrides the value crunchy-postgres. --ccp-image-prefix string The CCPImagePrefix to use for cluster creation. If specified, overrides the global configuration. -c, --ccp-image-tag string The CCPImageTag to use for cluster creation.</description>
+pgo create cluster mycluster  pgo create cluster [flags]  Options  --annotation strings Add an Annotation to all of the managed deployments (PostgreSQL, pgBackRest, pgBouncer) The format to add an annotation is &amp;quot;name=value&amp;quot; The format to remove an annotation is &amp;quot;name-&amp;quot; For example, to add two annotations: &amp;quot;--annotation=hippo=awesome,elephant=cool&amp;quot; --annotation-pgbackrest strings Add an Annotation specifically to pgBackRest deployments The format to add an annotation is &amp;quot;name=value&amp;quot; The format to remove an annotation is &amp;quot;name-&amp;quot; --annotation-pgbouncer strings Add an Annotation specifically to pgBouncer deployments The format to add an annotation is &amp;quot;name=value&amp;quot; The format to remove an annotation is &amp;quot;name-&amp;quot; --annotation-postgres strings Add an Annotation specifically to PostgreSQL deployments The format to add an annotation is &amp;quot;name=value&amp;quot; The format to remove an annotation is &amp;quot;name-&amp;quot; --ccp-image string The CCPImage name to use for cluster creation.</description>
     </item>
     
     <item>
@@ -331,17 +331,6 @@ pgo label mycluster yourcluster --label=environment=prod pgo label all --label=e
     </item>
     
     <item>
-      <title>pgo load</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/</guid>
-      <description>pgo load Perform a data load
-Synopsis LOAD performs a load. For example:
-pgo load --load-config=./load.json --selector=project=xray  pgo load [flags]  Options  -h, --help help for load --load-config string The load configuration to use that defines the load job. --policies string The policies to apply before loading a file, comma separated. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
-    </item>
-    
-    <item>
       <title>pgo reload</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -591,7 +580,7 @@ pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/</guid>
       <description>pgo update cluster Update a PostgreSQL cluster
 Synopsis Update a PostgreSQL cluster. For example:
-pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --disable-autofail pgo update cluster --selector=name=mycluster --disable-autofail pgo update cluster --all --enable-autofail  pgo update cluster [flags]  Options  --all all resources. --cpu string Set the number of millicores to request for the CPU, e.g. &amp;quot;100m&amp;quot; or &amp;quot;0.1&amp;quot;. --cpu-limit string Set the number of millicores to limit for the CPU, e.</description>
+pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --disable-autofail pgo update cluster --selector=name=mycluster --disable-autofail pgo update cluster --all --enable-autofail  pgo update cluster [flags]  Options  --all all resources. --annotation strings Add an Annotation to all of the managed deployments (PostgreSQL, pgBackRest, pgBouncer) The format to add an annotation is &amp;quot;name=value&amp;quot; The format to remove an annotation is &amp;quot;name-&amp;quot; For example, to add two annotations: &amp;quot;--annotation=hippo=awesome,elephant=cool&amp;quot; --annotation-pgbackrest strings Add an Annotation specifically to pgBackRest deployments The format to add an annotation is &amp;quot;name=value&amp;quot; The format to remove an annotation is &amp;quot;name-&amp;quot; --annotation-pgbouncer strings Add an Annotation specifically to pgBouncer deployments The format to add an annotation is &amp;quot;name=value&amp;quot; The format to remove an annotation is &amp;quot;name-&amp;quot; --annotation-postgres strings Add an Annotation specifically to PostgreSQL deploymentsThe format to add an annotation is &amp;quot;name=value&amp;quot; The format to remove an annotation is &amp;quot;name-&amp;quot; --cpu string Set the number of millicores to request for the CPU, e.</description>
     </item>
     
     <item>

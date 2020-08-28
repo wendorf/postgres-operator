@@ -657,13 +657,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/">
-            pgo load
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/">
@@ -1317,6 +1310,17 @@ kubectl get pods -n &lt;metrics_namespace&gt;
 <span style="color:#75715e"># OpenShift</span>
 oc get deployments -n &lt;metrics_namespace&gt;
 oc get pods -n &lt;metrics_namespace&gt;</code></pre></div>
+<h2 id="verify-alertmanager">Verify Alertmanager</h2>
+
+<p>In a separate terminal we need to setup a port forward to the Crunchy Alertmanager deployment
+to ensure connection can be made outside of the cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If deployed to Kubernetes</span>
+kubectl port-forward -n &lt;METRICS_NAMESPACE&gt; svc/crunchy-alertmanager  <span style="color:#ae81ff">9093</span>:9093
+
+<span style="color:#75715e"># If deployed to OpenShift</span>
+oc port-forward -n &lt;METRICS_NAMESPACE&gt; svc/crunchy-alertmanager <span style="color:#ae81ff">9093</span>:9093</code></pre></div>
+<p>In a browser navigate to <code>http://127.0.0.1:9093</code> to access the Alertmanager dashboard.</p>
+
 <h2 id="verify-grafana">Verify Grafana</h2>
 
 <p>In a separate terminal we need to setup a port forward to the Crunchy Grafana deployment

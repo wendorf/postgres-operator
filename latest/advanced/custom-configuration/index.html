@@ -653,13 +653,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/">
-            pgo load
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/">
@@ -1505,6 +1498,24 @@ causing that specific configuration to be refreshed with a fresh copy of
 the DCS configuration settings for <code>mycluster</code>:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl patch configmap mycluster-pgha-config <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --type<span style="color:#f92672">=</span><span style="color:#d88200">&#39;json&#39;</span> -p<span style="color:#f92672">=</span><span style="color:#d88200">&#39;[{&#34;op&#34;: &#34;remove&#34;, &#34;path&#34;: &#34;/data/mycluster-dcs-config&#34;}]&#39;</span></code></pre></div>
+<h2 id="custom-pgbackrest-configuration">Custom pgBackRest Configuration</h2>
+
+<p>Users can configure pgBackRest by passing the name of an existing ConfigMap to
+the <code>--pgbackrest-custom-config</code> flag when creating a PostgreSQL cluster. The
+entire contents of that ConfigMap appear as files in pgBackRest&rsquo;s
+<a href="https://pgbackrest.org/user-guide.html"><code>config-include-path</code> directory</a>.</p>
+
+<p>Regardless of the flags passed at creation, every PostgreSQL cluster is
+automatically configured to read from a ConfigMap named
+<code>&lt;clusterName&gt;-config-backrest</code> and a Secret named
+<code>&lt;clusterName&gt;-config-backrest</code>. These objects can be populated either before
+or <em>after</em> a PostgreSQL cluster is created. The entire contents of each appear
+as files in pgBackRest&rsquo;s <code>config-include-path</code> directory.</p>
+
+<p>Though the above is very flexible, not all pgBackRest settings can be managed
+this way. There are a few that are always overridden by the PostgreSQL Operator
+(the path to the PostgreSQL data directory, for example).</p>
+
 
 
     

@@ -655,13 +655,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_load/">
-            pgo load
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_reload/">
@@ -1271,6 +1264,48 @@ are defined below.</p>
 
 <tbody>
 <tr>
+<td><code>alertmanager_log_level</code></td>
+<td>info</td>
+<td></td>
+<td>Set the log level for Alertmanager logging.</td>
+</tr>
+
+<tr>
+<td><code>alertmanager_service_type</code></td>
+<td>ClusterIP</td>
+<td><strong>Required</strong></td>
+<td>How to <a href="https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types">expose</a> the Alertmanager service.</td>
+</tr>
+
+<tr>
+<td><code>alertmanager_storage_access_mode</code></td>
+<td>ReadWriteOnce</td>
+<td><strong>Required</strong></td>
+<td>Set to the access mode used by the configured storage class for Alertmanager persistent volumes.</td>
+</tr>
+
+<tr>
+<td><code>alertmanager_storage_class_name</code></td>
+<td>fast</td>
+<td></td>
+<td>Set to the name of the storage class used when creating Alertmanager persistent volumes.  Omit if not using storage classes.</td>
+</tr>
+
+<tr>
+<td><code>alertmanager_supplemental_groups</code></td>
+<td>65534</td>
+<td></td>
+<td>Set to configure any supplemental groups that should be added to security contexts for Alertrmanager.</td>
+</tr>
+
+<tr>
+<td><code>alertmanager_volume_size</code></td>
+<td>1Gi</td>
+<td><strong>Required</strong></td>
+<td>Set to the size of persistent volume to create for Alertmanager.</td>
+</tr>
+
+<tr>
 <td><code>create_rbac</code></td>
 <td>true</td>
 <td><strong>Required</strong></td>
@@ -1323,7 +1358,7 @@ are defined below.</p>
 <td><code>grafana_service_type</code></td>
 <td>ClusterIP</td>
 <td><strong>Required</strong></td>
-<td>The service type to use for the Grafana service.</td>
+<td>How to <a href="https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types">expose</a> the Grafana service.</td>
 </tr>
 
 <tr>
@@ -1349,7 +1384,7 @@ are defined below.</p>
 
 <tr>
 <td><code>grafana_volume_size</code></td>
-<td>1G</td>
+<td>1Gi</td>
 <td><strong>Required</strong></td>
 <td>Set to the size of persistent volume to create for Grafana.</td>
 </tr>
@@ -1393,7 +1428,7 @@ are defined below.</p>
 <td><code>prometheus_service_type</code></td>
 <td>true</td>
 <td><strong>Required</strong></td>
-<td>The service type to use for the Prometheus service.</td>
+<td>How to <a href="https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types">expose</a> the Prometheus service.</td>
 </tr>
 
 <tr>
@@ -1419,7 +1454,7 @@ are defined below.</p>
 
 <tr>
 <td><code>prometheus_volume_size</code></td>
-<td>1G</td>
+<td>1Gi</td>
 <td><strong>Required</strong></td>
 <td>Set to the size of persistent volume to create for Prometheus.</td>
 </tr>
@@ -1429,7 +1464,7 @@ are defined below.</p>
 <h2 id="custom-configuration">Custom Configuration</h2>
 
 <p>When installing the PostgreSQL Operator Monitoring infrastructure, it is possible to further customize
-the various Deployments included (e.g. Grafana and/or Prometheus) using custom configuration files.
+the various Deployments included (e.g. Alertmanager, Grafana, and/or Prometheus) using custom configuration files.
 Specifically, by pointing the PostgreSQL Operator Monitoring installer to one or more ConfigMaps
 containing any desired custom configuration settings, those settings will then be applied during
 configuration and installation of the PostgreSQL Operator Monitoring infrastructure.</p>
@@ -1448,10 +1483,17 @@ configuration and installation of the PostgreSQL Operator Monitoring infrastruct
 
 <tbody>
 <tr>
-<td><code>prometheus_custom_configmap</code></td>
-<td>crunchy-prometheus</td>
+<td><code>alertmanager_custom_config</code></td>
+<td>alertmanager-config</td>
 <td></td>
-<td>The name of a ConfigMap containing a custom <code>prometheus.yml</code> configuration file.</td>
+<td>The name of a ConfigMap containing a custom <code>alertmanager.yml</code> configuration file.</td>
+</tr>
+
+<tr>
+<td><code>alertmanager_custom_rules_config</code></td>
+<td>alertmanager-rules-config</td>
+<td></td>
+<td>The name of a ConfigMap container custom alerting rules for Prometheus.</td>
 </tr>
 
 <tr>
@@ -1467,11 +1509,31 @@ configuration and installation of the PostgreSQL Operator Monitoring infrastruct
 <td></td>
 <td>The name of a ConfigMap containing custom Grafana dashboards.</td>
 </tr>
+
+<tr>
+<td><code>prometheus_custom_configmap</code></td>
+<td>crunchy-prometheus</td>
+<td></td>
+<td>The name of a ConfigMap containing a custom <code>prometheus.yml</code> configuration file.</td>
+</tr>
 </tbody>
 </table>
 
 <p><em>Please note that when using custom ConfigMaps per the above configuration settings, any defaults
 for the specific configuration being customized are no longer applied.</em></p>
+
+<h2 id="using-alertmanager">Using Alertmanager</h2>
+
+<p>The Alertmanager deployment requires a custom configuration file to configure reciever
+integrations that are supported by Prometheus Alertmanager. The installer will create
+a configmap containing an example Alertmanager configuration file created by
+the pgMonitor project, this file can be found in the <a href="https://github.com/CrunchyData/pgmonitor/blob/master/prometheus/crunchy-alertmanager.yml">pgMonitor</a>
+repository. This example file, along with the <a href="https://prometheus.io/docs/alerting/latest/configuration/">Alertmanager configuration docs</a>,
+will help you to configure alerting for you specific use cases.</p>
+
+<div class="notices tip" >Alertmanager cannot be installed without also deploying the Crunchy Prometheus deployment.
+Once both are deployed, Prometheus is automatically configured to send alerts to
+the Alertmanager.</div>
 
 <h2 id="using-redhat-certified-containers-custom-images">Using RedHat Certified Containers &amp; Custom Images</h2>
 
@@ -1481,6 +1543,7 @@ Prometheus containers that are publically available on <a href="https://hub.dock
 <ul>
 <li><a href="https://hub.docker.com/r/grafana/grafana">https://hub.docker.com/r/grafana/grafana</a></li>
 <li><a href="https://hub.docker.com/r/prom/prometheus">https://hub.docker.com/r/prom/prometheus</a></li>
+<li><a href="https://hub.docker.com/r/prom/alertmanager">https://hub.docker.com/r/prom/alertmanager</a></li>
 </ul>
 
 <p>However, if RedHat certified containers are needed, the following certified images have also
@@ -1490,6 +1553,7 @@ utilized instead:</p>
 <ul>
 <li><a href="https://catalog.redhat.com/software/containers/openshift4/ose-grafana/5cdc17d55a13467289f58321">https://catalog.redhat.com/software/containers/openshift4/ose-grafana/5cdc17d55a13467289f58321</a></li>
 <li><a href="https://catalog.redhat.com/software/containers/openshift4/ose-prometheus/5cdc1e585a13467289f5841a">https://catalog.redhat.com/software/containers/openshift4/ose-prometheus/5cdc1e585a13467289f5841a</a></li>
+<li><a href="https://catalog.redhat.com/software/containers/openshift4/ose-prometheus-alertmanager/5cdc1cfbbed8bd5717d60b17">https://catalog.redhat.com/software/containers/openshift4/ose-prometheus-alertmanager/5cdc1cfbbed8bd5717d60b17</a></li>
 </ul>
 
 <p>The following configuration settings can be applied to properly configure the image prefix, name
@@ -1506,6 +1570,27 @@ and tag as needed to use the RedHat certified containers:</p>
 </thead>
 
 <tbody>
+<tr>
+<td><code>alertmanager_image_prefix</code></td>
+<td>prom</td>
+<td><strong>Required</strong></td>
+<td>Configure the image prefix to use for the Alertmanager container.</td>
+</tr>
+
+<tr>
+<td><code>alertmanager_image_name</code></td>
+<td>alertmanager</td>
+<td><strong>Required</strong></td>
+<td>Configure the image name to use for the Alertmanager container.</td>
+</tr>
+
+<tr>
+<td><code>alertmanager_image_tag</code></td>
+<td>v0.21.0</td>
+<td><strong>Required</strong></td>
+<td>Configures the image tag to use for the Alertmanager container.</td>
+</tr>
+
 <tr>
 <td><code>grafana_image_prefix</code></td>
 <td>grafana</td>
