@@ -1404,9 +1404,21 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
+<td>ExporterLimits</td>
+<td><code>create</code>, <code>update</code></td>
+<td>Specify the container resource limits that the <code>crunchy-postgres-exporter</code> sidecar uses when it is deployed with a PostgreSQL instance. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource limits</a>.</td>
+</tr>
+
+<tr>
 <td>ExporterPort</td>
 <td><code>create</code></td>
 <td>If the <code>&quot;crunchy-postgres-exporter&quot;</code> label is set in <code>UserLabels</code>, then this specifies the port that the metrics sidecar runs on (e.g. <code>9187</code>)</td>
+</tr>
+
+<tr>
+<td>ExporterResources</td>
+<td><code>create</code>, <code>update</code></td>
+<td>Specify the container resource requests that the <code>crunchy-postgres-exporter</code> sidecar uses when it is deployed with a PostgreSQL instance. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource requests</a>.</td>
 </tr>
 
 <tr>
