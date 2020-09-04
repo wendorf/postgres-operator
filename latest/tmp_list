@@ -4,6 +4,7 @@ content/architecture/_index.md
 content/architecture/overview.md
 content/architecture/provisioning.md
 content/architecture/disaster-recovery.md
+content/architecture/monitoring.md
 content/architecture/namespace.md
 content/architecture/eventing.md
 content/architecture/postgres-operator-containers-overview.md
@@ -57,6 +58,7 @@ content/advanced/direct-api-calls.md
 content/advanced/multi-zone-design-considerations.md
 content/Upgrade/_index.md
 content/Upgrade/automatedupgrade.md
+content/Upgrade/metrics.md
 content/Upgrade/manual/_index.md
 content/Upgrade/manual/upgrade35.md
 content/Upgrade/manual/upgrade4.md

@@ -426,6 +426,15 @@ The PostgreSQL Operator 4.3.0 release includes the following software versions u
     </item>
     
     <item>
+      <title>Monitoring Upgrade Guidance</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/upgrade/metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/metrics/</guid>
+      <description>Upgrade Guidance for PostgreSQL Operator Monitoring Migration to Upstream Containers The Crunchy PostgreSQL Monitoring infrastructure now uses upstream Prometheus and Grafana containers. By default the installers will deploy the monitoring infrastructure using images from Docker Hub but can easily be updated to point to a Red Hat certified container repository. The Red Hat certified image catalog can be found here and the Docker Hub images can be found at the following links:</description>
+    </item>
+    
+    <item>
       <title>Overview</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/architecture/overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -567,6 +576,16 @@ The Postgres Operator 4.1.1 release includes the following software versions upg
 In addition to new features, such as dynamic namespace manage by the Operator and the ability to subscribe to a stream of lifecycle events that occur with PostgreSQL clusters, this release adds many new features and bug fixes.
 The Postgres Operator 4.1 release also includes the following software versions upgrades:
  The PostgreSQL now uses versions 11.</description>
+    </item>
+    
+    <item>
+      <title>Monitoring</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/</guid>
+      <description>While having high availability and disaster recovery systems in place helps in the event of something going wrong with your PostgreSQL cluster, monitoring helps you anticipate problems before they happen. Additionally, monitoring can help you diagnose and resolve additional issues that may not result in downtime, but cause degraded performance.
+There are many different ways to monitor systems within Kubernetes, including tools that come with Kubernetes itself. This is by no means to be a comprehensive on how to monitor everything in Kubernetes, but rather what the PostgreSQL Operator provides to give you an [out-of-the-box monitoring solution]((/installation/metrics/).</description>
     </item>
     
     <item>
