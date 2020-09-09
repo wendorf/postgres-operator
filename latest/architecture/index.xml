@@ -48,7 +48,7 @@ The PostgreSQL Operator uses the open source pgBackRest backup and restore utili
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/</guid>
       <description>While having high availability and disaster recovery systems in place helps in the event of something going wrong with your PostgreSQL cluster, monitoring helps you anticipate problems before they happen. Additionally, monitoring can help you diagnose and resolve additional issues that may not result in downtime, but cause degraded performance.
-There are many different ways to monitor systems within Kubernetes, including tools that come with Kubernetes itself. This is by no means to be a comprehensive on how to monitor everything in Kubernetes, but rather what the PostgreSQL Operator provides to give you an [out-of-the-box monitoring solution]((/installation/metrics/).</description>
+There are many different ways to monitor systems within Kubernetes, including tools that come with Kubernetes itself. This is by no means to be a comprehensive on how to monitor everything in Kubernetes, but rather what the PostgreSQL Operator provides to give you an out-of-the-box monitoring solution.</description>
     </item>
     
     <item>

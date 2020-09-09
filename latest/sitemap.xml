@@ -167,6 +167,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/advanced/</loc>
   </url>
   
@@ -232,6 +236,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/releases/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/support/</loc>
   </url>
   
   <url>

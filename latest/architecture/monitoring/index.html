@@ -1046,6 +1046,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
+            4.5.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/">
@@ -1132,6 +1139,13 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/support/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/support/">Support</a>
+
+      </div>
+    </li>
 
 
 
@@ -1187,6 +1201,8 @@
    Contributing</option>
     <option value="/releases/" >
    Release Notes</option>
+    <option value="/support/" >
+   Support</option>
 
 
 
@@ -1261,7 +1277,7 @@ that may not result in downtime, but cause degraded performance.</p>
 tools that come with Kubernetes itself. This is by no means to be a
 comprehensive on how to monitor everything in Kubernetes, but rather what the
 PostgreSQL Operator provides to give you an
-[out-of-the-box monitoring solution]((/installation/metrics/).</p>
+<a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/">out-of-the-box monitoring solution</a>.</p>
 
 <h2 id="getting-started">Getting Started</h2>
 
@@ -1473,8 +1489,9 @@ Not attending to this can lead to out-of-disk errors.</li>
 ID wraparound. Issues a warning at 50% and goes critical at 75%. It&rsquo;s important
 that you <a href="https://info.crunchydata.com/blog/managing-transaction-id-wraparound-in-postgresql">vacuum your database</a>
 to prevent this.</li>
-<li><code>PGEmergencyVacuum</code>: Indicates that autovacuum is not running, i.e. it&rsquo;s past
-its &ldquo;freeze&rdquo; age.  Issues a warning at 110% and goes critical at 125%.</li>
+<li><code>PGEmergencyVacuum</code>: Indicates that autovacuum is not running or cannot keep
+up with ongoing changes, i.e. it&rsquo;s past its &ldquo;freeze&rdquo; age.  Issues a warning at
+110% and goes critical at 125%.</li>
 <li><code>PGArchiveCommandStatus</code>: Indicates that the archive command, which is used
 to ship WAL archives to pgBackRest, is failing.</li>
 <li><code>PGSequenceExhaustion</code>: Indicates that a sequence is over 75% used.</li>

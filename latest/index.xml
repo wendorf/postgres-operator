@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.4.1 4.4.1 12.4 2.27     11.9 2.27     10.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.5.0 4.5.0 12.4 2.28     11.9 2.27     10.</description>
     </item>
     
     <item>
@@ -344,6 +344,18 @@ ansible-playbook -i /path/to/inventory.yaml --tags=uninstall-metrics main.</desc
     </item>
     
     <item>
+      <title>4.5.0</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</guid>
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.5.0 on September XX, 2020.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+The PostgreSQL Operator 4.5.0 release includes the following software versions upgrades:
+ pgBackRest is now at version 2.28. postgres_exporter is now at version 0.8.0 pgMonitor support is now at 4.4 pgnodemx is now at version 1.0.1  Additionally, PostgreSQL Operator 4.5.0 introduces support for the CentOS 8 and UBI 8 base container images.</description>
+    </item>
+    
+    <item>
       <title>4.4.1</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -585,7 +597,7 @@ The Postgres Operator 4.1 release also includes the following software versions 
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/</guid>
       <description>While having high availability and disaster recovery systems in place helps in the event of something going wrong with your PostgreSQL cluster, monitoring helps you anticipate problems before they happen. Additionally, monitoring can help you diagnose and resolve additional issues that may not result in downtime, but cause degraded performance.
-There are many different ways to monitor systems within Kubernetes, including tools that come with Kubernetes itself. This is by no means to be a comprehensive on how to monitor everything in Kubernetes, but rather what the PostgreSQL Operator provides to give you an [out-of-the-box monitoring solution]((/installation/metrics/).</description>
+There are many different ways to monitor systems within Kubernetes, including tools that come with Kubernetes itself. This is by no means to be a comprehensive on how to monitor everything in Kubernetes, but rather what the PostgreSQL Operator provides to give you an out-of-the-box monitoring solution.</description>
     </item>
     
     <item>
