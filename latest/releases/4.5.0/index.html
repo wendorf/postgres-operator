@@ -1419,6 +1419,7 @@
 <li>This also fixes several bugs that were reported with the <code>pgo restore</code> functionality, some of which are captured further down in these release notes.</li>
 </ul></li>
 <li>The <a href="https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/">Downward API</a> is now available to PostgreSQL instances.</li>
+<li>The <code>pgo df</code> command will round values over 1000 up to the next unit type, e.g. <code>1GiB</code> instead of <code>1024MiB</code>.</li>
 </ul>
 
 <h2 id="fixes">Fixes</h2>
@@ -1429,6 +1430,7 @@
 <li>The pgBackRest URI style defaults to <code>host</code> if it is not set.</li>
 <li>pgBackRest commands can now be executed even if there are multiple pgBackRest Pods available in a Deployment, so long as there is only one &ldquo;running&rdquo; pgBackRest Pod.</li>
 <li>Ensure pgBackRest S3 Secrets can be upgraded from PostgreSQL Operator 4.3.</li>
+<li>Return an error if a cluster is not found when using <code>pgo df</code> instead of timing out.</li>
 <li>pgBadger now has a default memory limit of 64Mi, which should help avoid a visit from the OOM killer.</li>
 <li>Fix <code>pgo label</code> when applying multiple labels at once.</li>
 <li>Fix <code>pgo create pgorole</code> so that the expression <code>--permissions=*</code> works.</li>
