@@ -1271,7 +1271,7 @@
 <p>If your environment is set up to use hostpath storage (found in things like <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">minikube</a> or <a href="https://developers.redhat.com/products/codeready-containers/overview">OpenShift Code Ready Containers</a>, the following command could work for you:</p>
 
 <pre><code>kubectl create namespace pgo
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.1/installers/kubectl/postgres-operator.yml
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-beta.1/installers/kubectl/postgres-operator.yml
 </code></pre>
 
 <p>If not, please read onward: you can still get up and running fairly quickly with just a little bit of configuration.</p>
@@ -1282,12 +1282,12 @@ kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator
 
 <p>You will need to download the PostgreSQL Operator Installer manifest to your environment, which you can do with the following command:</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.1/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-beta.1/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
 </code></pre>
 
 <p>If you wish to download a specific version of the installer, you can substitute <code>master</code> with the version of the tag, i.e.</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.1/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-beta.1/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
 </code></pre>
 
 <h3 id="configure-the-postgresql-operator-installer">Configure the PostgreSQL Operator Installer</h3>
@@ -1322,7 +1322,7 @@ kubectl apply -f postgres-operator.yml
 
 <p>While the installation is occurring, download the <code>pgo</code> client set up script. This will help set up your local environment for using the PostgreSQL Operator:</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.4.1/installers/kubectl/client-setup.sh &gt; client-setup.sh
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-beta.1/installers/kubectl/client-setup.sh &gt; client-setup.sh
 chmod +x client-setup.sh
 </code></pre>
 
@@ -1385,8 +1385,8 @@ postgres-operator-56d6ccb97-tmz7m   4/4     Running   0          2m
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.4.1
-pgo-apiserver version 4.4.1
+<pre><code>pgo client version 4.5.0-beta.1
+pgo-apiserver version 4.5.0-beta.1
 </code></pre>
 
 <h2 id="step-4-have-some-fun-create-a-postgresql-cluster">Step 4: Have Some Fun - Create a PostgreSQL Cluster</h2>
@@ -1500,7 +1500,7 @@ kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><sp
 
 <p>The <code>pgo</code> client can be downloaded from GitHub <a href="https://github.com/crunchydata/postgres-operator/releases">Releases</a> (subscribers can download it from the <a href="https://access.crunchydata.com">Crunchy Data Customer Portal</a>).</p>
 
-<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version 4.4.1 of the PostgreSQL Operator, you must use the <code>pgo</code> for 4.4.1.</p>
+<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version 4.5.0-beta.1 of the PostgreSQL Operator, you must use the <code>pgo</code> for 4.5.0-beta.1.</p>
 
 <p>Once you have download the <code>pgo</code> client, change the permissions on the file to be executable if need be as shown below:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod +x pgo</code></pre></div>
@@ -1514,8 +1514,8 @@ kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><sp
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.4.1
-pgo-apiserver version 4.4.1
+<pre><code>pgo client version 4.5.0-beta.1
+pgo-apiserver version 4.5.0-beta.1
 </code></pre>
 
 <h3 id="step-7-create-a-namespace">Step 7: Create a Namespace</h3>

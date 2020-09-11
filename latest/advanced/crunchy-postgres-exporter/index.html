@@ -2679,7 +2679,7 @@ sum total amount of time individual threads within the monitor.cgroup were throt
 
 <h3>ccp_nodemx_data_disk</h3>
 <h4>SQL Query:</h4>
-SELECT mount_point, fs_type,reads_completed_successfully as reads, sectors_read, writes_completed as writes,sectors_written, total_bytes,available_bytes,total_file_nodes,free_file_nodes FROM monitor.proc_mountinfo() m JOIN monitor.proc_diskstats() d USING (major_number, minor_number) JOIN monitor.fsinfo(m.mount_point) f USING (major_number, minor_number) WHERE m.mount_point like &#39;/pg%&#39; or m.mount_point like &#39;/tablespace%&#39;
+SELECT mount_point,fs_type,total_bytes,available_bytes,total_file_nodes,free_file_nodes FROM monitor.proc_mountinfo() m JOIN monitor.fsinfo(m.mount_point) f USING (major_number, minor_number) WHERE m.mount_point IN (&#39;/pgdata&#39;, &#39;/pgwal&#39;) OR m.mount_point like &#39;/tablespaces/%&#39;
 
 <h4>Metrics:</h4>
 
@@ -2691,26 +2691,6 @@ mount point
 
 <h5>fs_type</h5>
 File system type
-
-
-
-<h5>reads</h5>
-Total reads
-
-
-
-<h5>sectors_read</h5>
-Total sectors read
-
-
-
-<h5>writes</h5>
-Total writes
-
-
-
-<h5>sectors_written</h5>
-Total sectors writen
 
 
 
@@ -2731,6 +2711,28 @@ Total file nodes
 
 <h5>free_file_nodes</h5>
 Available file nodes
+
+
+
+<h3>ccp_nodemx_disk_activity</h3>
+<h4>SQL Query:</h4>
+SELECT mount_point,sectors_read,sectors_written FROM monitor.proc_mountinfo() m JOIN monitor.proc_diskstats() d USING (major_number, minor_number) WHERE m.mount_point IN (&#39;/pgdata&#39;, &#39;/pgwal&#39;) OR m.mount_point like &#39;/tablespaces/%&#39;
+
+<h4>Metrics:</h4>
+
+
+<h5>mount_point</h5>
+mount point
+
+
+
+<h5>sectors_read</h5>
+Total sectors read
+
+
+
+<h5>sectors_written</h5>
+Total sectors writen
 
 
 

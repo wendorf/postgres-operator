@@ -201,7 +201,7 @@ scraping statistics used as part of the monitoring stack.
 warning at 12 hours and goes critical after 24.
 - `PGConnPerc`: Indicates that there are too many connection slots being used.
 Issues a warning at 75% and goes critical above 90%.
-- `PGDBSize`: Indicates that a PostgreSQL database is too large and could be in
+- `PGDiskSize`: Indicates that a PostgreSQL database is too large and could be in
 danger of running out of disk space. Issues a warning at 75% and goes critical
 at 90%.
 - `PGReplicationByteLag`: Indicates that a replica is too far behind a primary
@@ -235,5 +235,5 @@ previous state.
 PostgreSQL instance. This could be a sign of data corruption.
 
 You can modify these alerts as you see fit, and add your own alerts as well!
-Please see the [installation instructions]((({{< relref "installation/metrics/_index.md" >}}))
+Please see the [installation instructions]({{< relref "installation/metrics/_index.md" >}})
 for general setup of the PostgreSQL Operator Monitoring stack.

@@ -1477,7 +1477,7 @@ scraping statistics used as part of the monitoring stack.</li>
 warning at 12 hours and goes critical after 24.</li>
 <li><code>PGConnPerc</code>: Indicates that there are too many connection slots being used.
 Issues a warning at 75% and goes critical above 90%.</li>
-<li><code>PGDBSize</code>: Indicates that a PostgreSQL database is too large and could be in
+<li><code>PGDiskSize</code>: Indicates that a PostgreSQL database is too large and could be in
 danger of running out of disk space. Issues a warning at 75% and goes critical
 at 90%.</li>
 <li><code>PGReplicationByteLag</code>: Indicates that a replica is too far behind a primary
@@ -1514,7 +1514,7 @@ PostgreSQL instance. This could be a sign of data corruption.</li>
 </ul>
 
 <p>You can modify these alerts as you see fit, and add your own alerts as well!
-Please see the [installation instructions](((/installation/metrics/))
+Please see the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/">installation instructions</a>
 for general setup of the PostgreSQL Operator Monitoring stack.</p>
 
 

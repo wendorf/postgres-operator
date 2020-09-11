@@ -1668,27 +1668,6 @@ and tag as needed to use the RedHat certified containers:</p>
 <p>Additionally, these same settings can be utilized as needed to support custom image names,
 tags, and additional container registries.</p>
 
-<h2 id="disabling-default-dashboards">Disabling Default Dashboards</h2>
-
-<p>By default, the following Grafana Dashboards are enabled as provided by the <a href="https://github.com/CrunchyData/pgmonitor">pgmonitor project</a>:</p>
-
-<ul>
-<li>Bloat_Details.json</li>
-<li>CRUD_Details.json</li>
-<li>PGBackrest.json</li>
-<li>PG_Details.json</li>
-<li>PG_Overview.json</li>
-<li>TableSize_Details.json</li>
-</ul>
-
-<p>Using the <code>grafana-dashboard</code> configuration setting, it is possible to customize this list
-of dashboards, and therefore further control which dashboards are loaded into Grafana
-(specifically via the <code>grafana-dashboards</code> ConfigMap) by default.  For instance, the following
-setting can be utilized to enable only a subset of the default dashboards defined above:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">grafana_dashboards<span style="color:#111">:</span>
-  - CRUD_Details.json
-  - PG_Details.json
-  - PG_Overview.json</code></pre></div>
 <h2 id="helm-only-configuration-settings">Helm Only Configuration Settings</h2>
 
 <p>When using Helm, the following settings can be defined to control the image prefix and image tag
@@ -1715,7 +1694,7 @@ PostgreSQL Operator Monitoring infrastructure:</p>
 
 <tr>
 <td><code>pgo_image_tag</code></td>
-<td>centos7-4.4.1</td>
+<td>centos7-4.5.0-beta.1</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag used by the <code>pgo-deployer</code> container</td>
 </tr>
