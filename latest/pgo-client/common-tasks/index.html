@@ -2126,7 +2126,7 @@ remote connections to occur over TLS by using the <code>--tls-only</code> flag.<
 executing the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster-tls-only <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --tls-only <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --server-ca-secret<span style="color:#f92672">=</span>hacluster-tls-keypair --server-tls-secret<span style="color:#f92672">=</span>postgresql-ca</code></pre></div>
+</span><span style="color:#8045ff"></span>  --server-ca-secret<span style="color:#f92672">=</span>postgresql-ca --server-tls-secret<span style="color:#f92672">=</span>hacluster-tls-keypair</code></pre></div>
 <p>If deployed successfully, when you connect to the PostgreSQL cluster, assuming
 your <code>PGSSLMODE</code> is set to <code>prefer</code> or higher, you will see something like this
 in your <code>psql</code> terminal:</p>
