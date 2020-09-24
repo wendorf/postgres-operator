@@ -1876,7 +1876,7 @@ containing the PostgreSQL primary pod that will be using it.</p>
 
 <h3 id="default-storage-configuration-types">Default Storage Configuration Types</h3>
 
-<h4 id="host-path-storage">Host Path Storage</h4>
+<h4 id="default-storageclass">Default StorageClass</h4>
 
 <table>
 <thead>
@@ -1889,12 +1889,12 @@ containing the PostgreSQL primary pod that will be using it.</p>
 <tbody>
 <tr>
 <td>storage1_name</td>
-<td>hostpathstorage</td>
+<td>default</td>
 </tr>
 
 <tr>
 <td>storage1_access_mode</td>
-<td>ReadWriteMany</td>
+<td>ReadWriteOnce</td>
 </tr>
 
 <tr>
@@ -1904,12 +1904,12 @@ containing the PostgreSQL primary pod that will be using it.</p>
 
 <tr>
 <td>storage1_type</td>
-<td>create</td>
+<td>dynamic</td>
 </tr>
 </tbody>
 </table>
 
-<h4 id="replica-storage">Replica Storage</h4>
+<h4 id="host-path-storage">Host Path Storage</h4>
 
 <table>
 <thead>
@@ -1922,7 +1922,7 @@ containing the PostgreSQL primary pod that will be using it.</p>
 <tbody>
 <tr>
 <td>storage2_name</td>
-<td>replicastorage</td>
+<td>hostpathstorage</td>
 </tr>
 
 <tr>
