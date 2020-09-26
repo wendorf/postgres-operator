@@ -215,6 +215,14 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/</loc>
   </url>
   
@@ -247,15 +255,15 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/</loc>
-  </url>
-  
-  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/google-cloud-marketplace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/operator-hub/</loc>
   </url>
   
   <url>

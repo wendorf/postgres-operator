@@ -32,5 +32,28 @@ The Operator can be deployed by multiple methods including:</description>
 The postgres-operator Helm chart is available in the Helm directory in the PostgreSQL Operator repository.</description>
     </item>
     
+    <item>
+      <title>Google Cloud Marketplace</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/google-cloud-marketplace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/google-cloud-marketplace/</guid>
+      <description>The PostgreSQL Operator is installed as part of Crunchy PostgreSQL for GKE that is available in the Google Cloud Marketplace.
+Step 1: Install Install Crunchy PostgreSQL for GKE to a Google Kubernetes Engine cluster using Google Cloud Marketplace.
+Step 2: Verify Installation Install kubectl using the gcloud components command of the Google Cloud SDK or by following the Kubernetes documentation.
+Using the gcloud utility, ensure you are logged into the GKE cluster in which you installed the PostgreSQL Operator, and see that it is running in the namespace in which you installed it.</description>
+    </item>
+    
+    <item>
+      <title>OperatorHub.io</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/operator-hub/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/operator-hub/</guid>
+      <description>If your Kubernetes cluster is already running the Operator Lifecycle Manager, the PostgreSQL Operator can be installed as part of Crunchy PostgreSQL for Kubernetes that is available in OperatorHub.io.
+Before You Begin There are a few manual steps that the cluster administrator must perform prior to installing the PostgreSQL Operator. At the very least, it must be provided with an initial configuration.
+First, make sure OLM and the OperatorHub.io catalog are installed by running kubectl get CatalogSources --all-namespaces.</description>
+    </item>
+    
   </channel>
 </rss>

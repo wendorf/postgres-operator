@@ -27,6 +27,8 @@ content/installation/configuration.md
 content/installation/other/_index.md
 content/installation/other/bash.md
 content/installation/other/helm.md
+content/installation/other/google-cloud-marketplace.md
+content/installation/other/operator-hub.md
 content/installation/other/ansible/_index.md
 content/installation/other/ansible/prerequisites.md
 content/installation/other/ansible/installing-ansible.md
