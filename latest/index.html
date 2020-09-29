@@ -1320,6 +1320,57 @@ library.</p>
 
 <p>The Crunchy PostgreSQL Operator extends Kubernetes to provide a higher-level abstraction for rapid creation and management of PostgreSQL clusters.  The Crunchy PostgreSQL Operator leverages a Kubernetes concept referred to as &ldquo;<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resources</a>” to create several <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions">custom resource definitions (CRDs)</a> that allow for the management of PostgreSQL clusters.</p>
 
+<h1 id="included-components">Included Components</h1>
+
+<p><a href="https://github.com/CrunchyData/crunchy-containers">PostgreSQL containers</a> deployed with the PostgreSQL Operator include the following components:</p>
+
+<ul>
+<li><a href="https://www.postgresql.org">PostgreSQL</a>
+
+<ul>
+<li><a href="https://www.postgresql.org/docs/current/contrib.html">PostgreSQL Contrib Modules</a></li>
+<li><a href="https://www.postgresql.org/docs/current/plpython.html">PL/Python + PL/Python 3</a></li>
+<li><a href="https://www.pgaudit.org/">pgAudit</a></li>
+<li><a href="https://github.com/pgaudit/pgaudit_analyze">pgAudit Analyze</a></li>
+<li><a href="https://github.com/CrunchyData/pgnodemx">pgnodemx</a></li>
+<li><a href="https://github.com/pgaudit/set_user">set_user</a></li>
+<li><a href="https://github.com/eulerto/wal2json">wal2json</a></li>
+</ul></li>
+<li><a href="https://pgbackrest.org/">pgBackRest</a></li>
+<li><a href="http://pgbouncer.github.io/">pgBouncer</a></li>
+<li><a href="https://www.pgadmin.org/">pgAdmin 4</a></li>
+<li><a href="https://github.com/CrunchyData/pgmonitor">pgMonitor</a></li>
+<li><a href="https://patroni.readthedocs.io/">Patroni</a></li>
+<li><a href="https://llvm.org/">LLVM</a> (for <a href="https://www.postgresql.org/docs/current/jit.html">JIT compilation</a>)</li>
+</ul>
+
+<p>In addition to the above, the geospatially enhanced PostgreSQL + PostGIS container adds the following components:</p>
+
+<ul>
+<li><a href="http://postgis.net/">PostGIS</a></li>
+<li><a href="https://pgrouting.org/">pgRouting</a></li>
+<li><a href="https://github.com/postgres-plr/plr">PL/R</a></li>
+</ul>
+
+<p><a href="https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/">PostgreSQL Operator Monitoring</a> uses the following components:</p>
+
+<ul>
+<li><a href="https://github.com/CrunchyData/pgmonitor">pgMonitor</a></li>
+<li><a href="https://github.com/prometheus/prometheus">Prometheus</a></li>
+<li><a href="https://github.com/grafana/grafana">Grafana</a></li>
+<li><a href="https://github.com/prometheus/alertmanager">Alertmanager</a></li>
+</ul>
+
+<p>Additional containers that are not directly integrated with the PostgreSQL Operator but can work alongside it include:</p>
+
+<ul>
+<li><a href="https://access.crunchydata.com/documentation/crunchy-postgres-containers/latest/container-specifications/crunchy-pgpool/">pgPool II</a></li>
+<li><a href="https://access.crunchydata.com/documentation/crunchy-postgres-containers/latest/container-specifications/crunchy-upgrade/">pg_upgrade</a></li>
+<li><a href="https://access.crunchydata.com/documentation/crunchy-postgres-containers/latest/container-specifications/crunchy-pgbench/">pgBench</a></li>
+</ul>
+
+<p>For more information about which versions of the PostgreSQL Operator include which components, please visit the <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">compatibility</a> section of the documentation.</p>
+
 <h1 id="supported-platforms">Supported Platforms</h1>
 
 <p>The Crunchy PostgreSQL Operator is tested on the following Platforms:</p>
