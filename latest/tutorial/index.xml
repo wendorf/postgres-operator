@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorial on Crunchy PostgreSQL Operator Documentation</title>
+    <link>https://crunchydata.github.io/postgres-operator/latest/tutorial/</link>
+    <description>Recent content in Tutorial on Crunchy PostgreSQL Operator Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://crunchydata.github.io/postgres-operator/latest/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting Started</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/</guid>
+      <description>Installation If you have not installed the PostgreSQL Operator yet, we recommend you take a look at our quickstart or the installation sections.
+Customizing an Installation How to customize a PostgreSQL Operator installation is a lengthy topic. The details are covered in the installation section, as well as a list of all the configuration variables available.
+Setup the pgo Client This tutorial will be using the pgo client to interact with the PostgreSQL Operator.</description>
+    </item>
+    
+    <item>
+      <title>Create a Postgres Cluster</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/</guid>
+      <description>If you came here through the quickstart, you may have already created a cluster, in which case, feel free to skip ahead, or read onward for a more in depth look into cluster creation!
+Create a PostgreSQL Cluster Creating a cluster is simple with the pgo create cluster command:
+pgo create cluster hippo  with output similar to:
+created cluster: hippo workflow id: 25c870a0-5d27-42c2-be00-92f0ba8768e7 database name: hippo users: username: testuser password: securerandomlygeneratedpassword  This creates a new PostgreSQL cluster named hippo with a database in it named hippo.</description>
+    </item>
+    
+    <item>
+      <title>Connect to a Postgres Cluster</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/</guid>
+      <description>Naturally, once the PostgreSQL cluster is created, you may want to connect to it. You can get the credentials of the users of the cluster using the pgo show user command, i.e.:
+pgo show user hippo  yields output similar to:
+CLUSTER USERNAME PASSWORD EXPIRES STATUS ERROR ------- -------- -------------------------------- ------- ------ ----- hippo testuser securerandomlygeneratedpassword never ok  If you need to get the password of one of the system or privileged accounts, you will need to use the --show-system-accounts flag, i.</description>
+    </item>
+    
+  </channel>
+</rss>

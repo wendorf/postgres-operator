@@ -110,6 +110,36 @@
 
       </div>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/">Tutorial</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/">
+            Getting Started
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/">
+            Create a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/">
+            Connect to a Postgres Cluster
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
         ">
       <div>
@@ -1060,13 +1090,6 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
-            4.5.0
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/">
@@ -1151,6 +1174,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
+            
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/support/" class="dd-item
@@ -1180,6 +1210,8 @@
           
     <option value="/quickstart/" >
    Quickstart</option>
+    <option value="/tutorial/" >
+   Tutorial</option>
     <option value="/architecture/" >
    Architecture</option>
     <option value="/configuration/" >
@@ -1356,7 +1388,7 @@ export EXCLUDE_OS_TRUST=false
 
 <p>Then, for either 4.1.X or 4.2.X,</p>
 
-<p>Update the <code>PGO_VERSION</code> variable to <code>4.5.0-beta.1</code></p>
+<p>Update the <code>PGO_VERSION</code> variable to <code>4.5.0-rc.1</code></p>
 
 <p>Finally, source this file with</p>
 
@@ -1396,10 +1428,10 @@ To help ensure that needed resources are not inadvertently deleted during an upg
 
 <p>If you are using the PostGIS-enabled image (i.e. <code>crunchy-postgres-gis-ha</code>) or any other custom images, you will need to add the <code>--ccp-image-tag</code>:</p>
 
-<pre><code>pgo upgrade --ccp-image-tag=centos7-12.4-3.0-4.5.0-beta.1 mygiscluster
+<pre><code>pgo upgrade --ccp-image-tag=centos7-12.4-3.0-4.5.0-rc.1 mygiscluster
 </code></pre>
 
-<p>Where <code>12.4</code> is the PostgreSQL version, <code>3.0</code> is the PostGIS version and <code>4.5.0-beta.1</code> is the PostgreSQL Operator version.
+<p>Where <code>12.4</code> is the PostgreSQL version, <code>3.0</code> is the PostGIS version and <code>4.5.0-rc.1</code> is the PostgreSQL Operator version.
 Please note, no tag validation will be performed and additional steps may be required to upgrade your PostGIS extension implementation. For more information on PostGIS upgrade considerations, please see
 <a href="https://access.crunchydata.com/documentation/postgis/latest/postgis_installation.html#upgrading">PostGIS Upgrade Documentation</a>.</p>
 

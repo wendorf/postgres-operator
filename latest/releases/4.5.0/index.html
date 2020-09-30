@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>4.5.0 :: Crunchy PostgreSQL Operator Documentation</title>
+<title> :: Crunchy PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -109,6 +109,36 @@
       <a href="https://crunchydata.github.io/postgres-operator/latest/quickstart/">Quickstart</a>
 
       </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/">Tutorial</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/">
+            Getting Started
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/">
+            Create a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/">
+            Connect to a Postgres Cluster
+          </a>
+        </div>
+    </li>
+        </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
         ">
@@ -1060,13 +1090,6 @@
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item active">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
-            4.5.0
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/">
@@ -1151,6 +1174,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item active">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
+            
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/support/" class="dd-item
@@ -1180,6 +1210,8 @@
           
     <option value="/quickstart/" >
    Quickstart</option>
+    <option value="/tutorial/" >
+   Tutorial</option>
     <option value="/architecture/" >
    Architecture</option>
     <option value="/configuration/" >
@@ -1200,7 +1232,6 @@
    Contributing</option>
     <option value="/releases/" >
    Release Notes</option> 
-      <option value="/releases/4.5.0/"  selected>- 4.5.0</option>
       <option value="/releases/4.4.1/" >- 4.4.1</option>
       <option value="/releases/4.4.0/" >- 4.4.0</option>
       <option value="/releases/4.3.3/" >- 4.3.3</option>
@@ -1213,6 +1244,7 @@
       <option value="/releases/4.1.2/" >- 4.1.2</option>
       <option value="/releases/4.1.1/" >- 4.1.1</option>
       <option value="/releases/4.1.0/" >- 4.1.0</option>
+      <option value="/releases/4.5.0/"  selected>- </option>
   
     <option value="/support/" >
    Support</option>
@@ -1254,7 +1286,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/releases/'>Release Notes</a> > 4.5.0
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/releases/'>Release Notes</a> > 
 
  
 
@@ -1270,7 +1302,7 @@
     
     <div id="body-inner">
 
-    <h1>4.5.0</h1>
+    <h1></h1>
 
     
 
@@ -1284,13 +1316,16 @@
 <p>The PostgreSQL Operator 4.5.0 release includes the following software versions upgrades:</p>
 
 <ul>
+<li>Add support for <a href="https://www.postgresql.org/about/news/2077/">PostgreSQL 13</a>.</li>
 <li><a href="https://pgbackrest.org/">pgBackRest</a> is now at version 2.29.</li>
 <li><a href="https://github.com/wrouesnel/postgres_exporter">postgres_exporter</a> is now at version 0.8.0</li>
 <li><a href="https://github.com/CrunchyData/pgmonitor">pgMonitor</a> support is now at 4.4</li>
 <li><a href="https://github.com/CrunchyData/pgnodemx">pgnodemx</a> is now at version 1.0.1</li>
+<li><a href="https://github.com/eulerto/wal2json">wal2json</a> is now at version 2.3</li>
+<li><a href="https://patroni.readthedocs.io/">Patroni</a> is now at version 2.0.0</li>
 </ul>
 
-<p>Additionally, PostgreSQL Operator 4.5.0 introduces support for the CentOS 8 and UBI 8 base container images. In addition to using the newer operating systems, this enables support for TLS 1.3 when connecting to PostgreSQL. This release also moves to building the containers using <a href="https://buildah.io/">Buildah</a> 1.14.9 and above, and supports Go 1.15.</p>
+<p>Additionally, PostgreSQL Operator 4.5.0 introduces support for the CentOS 8 and UBI 8 base container images. In addition to using the newer operating systems, this enables support for TLS 1.3 when connecting to PostgreSQL. This release also moves to building the containers using <a href="https://buildah.io/">Buildah</a> 1.14.9.</p>
 
 <p>The monitoring stack for the PostgreSQL Operator has shifted to use upstream components as opposed to repackaging them. These are specified as part of the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/installation/postgres-operator/">PostgreSQL Operator Installer</a>. We have tested this release with the following versions of each component:</p>
 
@@ -1300,11 +1335,11 @@
 <li>Alertmanager: 0.21.0</li>
 </ul>
 
-<p>PostgreSQL Operator is tested with Kubernetes 1.15 - 1.18, OpenShift 3.11+, OpenShift 4.4+, Google Kubernetes Engine (GKE), and VMware Enterprise PKS 1.3+.</p>
+<p>PostgreSQL Operator is tested with Kubernetes 1.15 - 1.19, OpenShift 3.11+, OpenShift 4.4+, Google Kubernetes Engine (GKE), Amazon EKS, and VMware Enterprise PKS 1.3+.</p>
 
 <h2 id="major-features">Major Features</h2>
 
-<h3 id="postgresql-operator-monitoring-https-crunchydata-github-io-postgres-operator-latest-architecture-monitoring"><a href="https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/">PostgreSQL Operator Monitoring</a></h3>
+<h3 id="postgresql-operator-monitoring">PostgreSQL Operator Monitoring</h3>
 
 <p><img src="https://crunchydata.github.io/postgres-operator/latest/images/postgresql-monitoring.png" alt="PostgreSQL Operator Monitoring" /></p>
 
@@ -1335,10 +1370,6 @@
 <p>You can find out how to <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/latest/installation/metrics/">install PostgreSQL Operator Monitoring</a> in the installation section:</p>
 
 <p><a href="https://access.crunchydata.com/documentation/postgres-operator/latest/latest/installation/metrics/">https://access.crunchydata.com/documentation/postgres-operator/latest/latest/installation/metrics/</a></p>
-
-<p>More information on how the monitoring systems works is available at:</p>
-
-<p><a href="https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/">https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/</a></p>
 
 <h3 id="customizing-pgbackrest-via-configmap">Customizing pgBackRest via ConfigMap</h3>
 
@@ -1424,6 +1455,7 @@
 <h2 id="changes">Changes</h2>
 
 <ul>
+<li>The PostgreSQL Operator now supports the default storage class that is available within a Kubernetes cluster. The installers are updated to use the default storage class by default.</li>
 <li>The <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/pgo-client/reference/pgo_restore/"><code>pgo restore</code></a> methodology is changed to mirror the approach taken by <code>pgo create cluster --restore-from</code> that was introduced in the previous release. While <code>pgo restore</code> will still perform a <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/architecture/disaster-recovery/#restores">&ldquo;restore in-place&rdquo;</a>,  it will now take the following actions:
 
 <ul>
@@ -1432,7 +1464,9 @@
 <li>Any customizations for the cluster (e.g. custom PostgreSQL configuration) will be available.</li>
 <li>This also fixes several bugs that were reported with the <code>pgo restore</code> functionality, some of which are captured further down in these release notes.</li>
 </ul></li>
+<li>Connections to pgBouncer can now be passed along to the default <code>postgres</code> database. If you have a pre-existing pgBouncer Deployment, the most convenient way to access this functionality is to redeploy pgBouncer for that PostgreSQL cluster (<code>pgo delete pgbouncer</code> + <code>pgo create pgbouncer</code>). Suggested by (@lgarcia11).</li>
 <li>The <a href="https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/">Downward API</a> is now available to PostgreSQL instances.</li>
+<li>The pgBouncer <code>pgbouncer.ini</code> and <code>pg_hba.conf</code> have been moved from the pgBouncer Secret to a ConfigMap whose name follows the pattern <code>&lt;clusterName&gt;-pgbouncer-cm</code>. These are mounted as part of a project volume in conjunction with the current pgBouncer Secret.</li>
 <li>The <code>pgo df</code> command will round values over 1000 up to the next unit type, e.g. <code>1GiB</code> instead of <code>1024MiB</code>.</li>
 </ul>
 
@@ -1441,13 +1475,19 @@
 <ul>
 <li>Ensure that if a PostgreSQL cluster is recreated from a PVC with existing data that it will apply any custom PostgreSQL configuration settings that are specified.</li>
 <li>Fixed issues with PostgreSQL replica Pods not becoming ready after running <code>pgo restore</code>. This fix is a result of the change in methodology for how a restore occurs.</li>
+<li>The <code>pgo scaledown</code> now allows for the removal of replicas that are not actively running.</li>
+<li>The <code>pgo scaledown --query</code> command now shows replicas that may not be in an active state.</li>
 <li>The pgBackRest URI style defaults to <code>host</code> if it is not set.</li>
-<li>pgBackRest commands can now be executed even if there are multiple pgBackRest Pods available in a Deployment, so long as there is only one &ldquo;running&rdquo; pgBackRest Pod.</li>
+<li>pgBackRest commands can now be executed even if there are multiple pgBackRest Pods available in a Deployment, so long as there is only one &ldquo;running&rdquo; pgBackRest Pod. Reported by Rubin Simons (@rubin55).</li>
 <li>Ensure pgBackRest S3 Secrets can be upgraded from PostgreSQL Operator 4.3.</li>
+<li>Ensure pgBouncer Port is derived from the cluster&rsquo;s port, not the Operator configuration defaults.</li>
+<li>External WAL PVCs are only removed for the replica they are targeted for on a scaledown. Reported by (@dakine1111).</li>
 <li>Return an error if a cluster is not found when using <code>pgo df</code> instead of timing out.</li>
 <li>pgBadger now has a default memory limit of 64Mi, which should help avoid a visit from the OOM killer.</li>
+<li>The Postgres Exporter now works if it is deployed in a TLS-only environment, i.e. the <code>--tls-only</code> flag is set. Reported by (@shuhanfan).</li>
 <li>Fix <code>pgo label</code> when applying multiple labels at once.</li>
 <li>Fix <code>pgo create pgorole</code> so that the expression <code>--permissions=*</code> works.</li>
+<li>The <code>operator</code> container will no longer panic if all Deployments are scaled to <code>0</code> without using the <code>pgo update cluster &lt;mycluster&gt; --shutdown</code> command.</li>
 </ul>
 
 
@@ -1455,8 +1495,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/releases/" title="Release Notes"> <i class="fa fa-chevron-left"></i><label>Release Notes</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/" title="4.4.1" style="margin-right: 0px;"><label>4.4.1</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.0/" title="4.1.0"> <i class="fa fa-chevron-left"></i><label>4.1.0</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/support/" title="Support" style="margin-right: 0px;"><label>Support</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

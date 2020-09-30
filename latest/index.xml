@@ -114,7 +114,7 @@ username:password:pgoadmin: pgouser1:password:pgoadmin:pgouser1 pgouser2:passwor
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/security/install-postgres-operator-rbac/</guid>
       <description>Installation of PostgreSQL Operator RBAC For a list of the RBAC required to install the PostgreSQL Operator, please view the postgres-operator.yml file:
-https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-beta.1/installers/kubectl/postgres-operator.yml
+https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-rc.1/installers/kubectl/postgres-operator.yml
 The first step is to install the PostgreSQL Operator RBAC configuration. This can be accomplished by running:
 make installrbac  This script will install the PostreSQL Operator Custom Resource Definitions, CRD’s and creates the following RBAC resources on your Kubernetes cluster:
    Setting Definition     Custom Resource Definitions pgclusters    pgpolicies    pgreplicas    pgtasks    pgupgrades   Cluster Roles (cluster-roles.</description>
@@ -137,7 +137,7 @@ Adjust the default keys to meet your security requirements using your own keys. 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade35/</guid>
-      <description>Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to 4.5.0-beta.1 This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version 4.5.0-beta.1. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
+      <description>Upgrading the Crunchy PostgreSQL Operator from Version 3.5 to 4.5.0-rc.1 This section will outline the procedure to upgrade a given cluster created using PostgreSQL Operator 3.5.x to PostgreSQL Operator version 4.5.0-rc.1. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
     </item>
     
     <item>
@@ -146,7 +146,7 @@ Adjust the default keys to meet your security requirements using your own keys. 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/manual/upgrade4/</guid>
-      <description>Manual PostgreSQL Operator 4 Upgrade Procedure Below are the procedures for upgrading to version 4.5.0-beta.1 of the Crunchy PostgreSQL Operator using the Bash or Ansible installation methods. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably for those upgrading from 4.1 and below, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers.</description>
+      <description>Manual PostgreSQL Operator 4 Upgrade Procedure Below are the procedures for upgrading to version 4.5.0-rc.1 of the Crunchy PostgreSQL Operator using the Bash or Ansible installation methods. This version of the PostgreSQL Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably for those upgrading from 4.1 and below, all PGClusters use the new Crunchy PostgreSQL HA container in place of the previous Crunchy PostgreSQL containers.</description>
     </item>
     
     <item>
@@ -188,8 +188,7 @@ Environment PostgreSQL Operator Monitoring is tested in the following environmen
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/prerequisites/</guid>
       <description>Prerequisites The following is required prior to installing PostgreSQL Operator.
 Environment The PostgreSQL Operator is tested in the following environments:
- Kubernetes v1.13+ Red Hat OpenShift v3.11+ Red Hat OpenShift v4.3+ VMWare Enterprise PKS 1.3+ IBM Cloud Pak Data  IBM Cloud Pak Data If you install the PostgreSQL Operator, which comes with Crunchy PostgreSQL for Kubernetes, on IBM Cloud Pak Data, please note the following additional requirements:
- Cloud Pak Data Version 2.</description>
+ Kubernetes v1.13+ Red Hat OpenShift v3.11+ Red Hat OpenShift v4.4+ Amazon EKS VMWare Enterprise PKS 1.3+ IBM Cloud Pak Data  IBM Cloud Pak Data If you install the PostgreSQL Operator, which comes with Crunchy PostgreSQL for Kubernetes, on IBM Cloud Pak Data, please note the following additional requirements:</description>
     </item>
     
     <item>
@@ -209,7 +208,7 @@ The below guide covers many of the common operations that are required when mana
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/</guid>
       <description>PostgreSQL Operator Monitoring Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the metrics manifest directly from the repository:
-kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-beta.1/installers/metrics/kubectl/postgres-operator-metrics.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator Monitoring infrastructure.
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-rc.1/installers/metrics/kubectl/postgres-operator-metrics.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator Monitoring infrastructure.
 Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator Monitoring infrastructure, including:</description>
     </item>
     
@@ -220,7 +219,7 @@ Overview The PostgreSQL Operator comes with a container called pgo-deployer whic
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</guid>
       <description>The PostgreSQL Operator Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the manifest directly from the repository:
-kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-beta.1/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.5.0-rc.1/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
 Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:</description>
     </item>
     
@@ -344,18 +343,6 @@ ansible-playbook -i /path/to/inventory.yaml --tags=uninstall-metrics main.</desc
     </item>
     
     <item>
-      <title>4.5.0</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</guid>
-      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.5.0 on September XX, 2020.
-The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
-The PostgreSQL Operator 4.5.0 release includes the following software versions upgrades:
- pgBackRest is now at version 2.29. postgres_exporter is now at version 0.8.0 pgMonitor support is now at 4.4 pgnodemx is now at version 1.0.1  Additionally, PostgreSQL Operator 4.5.0 introduces support for the CentOS 8 and UBI 8 base container images.</description>
-    </item>
-    
-    <item>
       <title>4.4.1</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -449,6 +436,17 @@ The Operator can be deployed by multiple methods including:</description>
     </item>
     
     <item>
+      <title>Getting Started</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/</guid>
+      <description>Installation If you have not installed the PostgreSQL Operator yet, we recommend you take a look at our quickstart or the installation sections.
+Customizing an Installation How to customize a PostgreSQL Operator installation is a lengthy topic. The details are covered in the installation section, as well as a list of all the configuration variables available.
+Setup the pgo Client This tutorial will be using the pgo client to interact with the PostgreSQL Operator.</description>
+    </item>
+    
+    <item>
       <title>Helm Chart</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -487,6 +485,29 @@ Crunchy PostgreSQL Operator Architecture The Crunchy PostgreSQL Operator extends
       <description>What happens when the Crunchy PostgreSQL Operator creates a PostgreSQL cluster?
 First, an entry needs to be added to the Pgcluster CRD that provides the essential attributes for maintaining the definition of a PostgreSQL cluster. These attributes include:
  Cluster name The storage and resource definitions to use References to any secrets required, e.g. ones to the pgBackRest repository High-availability rules Which sidecars and ancillary services are enabled, e.g. pgBouncer, pgMonitor  After the Pgcluster CRD entry is set up, the PostgreSQL Operator handles various tasks to ensure that a healthy PostgreSQL cluster can be deployed.</description>
+    </item>
+    
+    <item>
+      <title>Create a Postgres Cluster</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/</guid>
+      <description>If you came here through the quickstart, you may have already created a cluster, in which case, feel free to skip ahead, or read onward for a more in depth look into cluster creation!
+Create a PostgreSQL Cluster Creating a cluster is simple with the pgo create cluster command:
+pgo create cluster hippo  with output similar to:
+created cluster: hippo workflow id: 25c870a0-5d27-42c2-be00-92f0ba8768e7 database name: hippo users: username: testuser password: securerandomlygeneratedpassword  This creates a new PostgreSQL cluster named hippo with a database in it named hippo.</description>
+    </item>
+    
+    <item>
+      <title>Connect to a Postgres Cluster</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/</guid>
+      <description>Naturally, once the PostgreSQL cluster is created, you may want to connect to it. You can get the credentials of the users of the cluster using the pgo show user command, i.e.:
+pgo show user hippo  yields output similar to:
+CLUSTER USERNAME PASSWORD EXPIRES STATUS ERROR ------- -------- -------------------------------- ------- ------ ----- hippo testuser securerandomlygeneratedpassword never ok  If you need to get the password of one of the system or privileged accounts, you will need to use the --show-system-accounts flag, i.</description>
     </item>
     
     <item>
@@ -727,6 +748,18 @@ If you have any question you can submit a Support - Question and Answer issue an
       <guid>https://crunchydata.github.io/postgres-operator/latest/contributing/pull-requests/</guid>
       <description>So you decided to submit an issue and work it. Great! Let&amp;rsquo;s get it merged in to the codebase. The following will go a long way to helping get the fix merged in quicker.
  Create a pull request from your fork to the master branch. Update the checklists in the Pull Request Description. Reference which issues this Pull Request is resolving.  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</guid>
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.5.0 on September XX, 2020.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+The PostgreSQL Operator 4.5.0 release includes the following software versions upgrades:
+ Add support for PostgreSQL 13. pgBackRest is now at version 2.29. postgres_exporter is now at version 0.8.0 pgMonitor support is now at 4.4 pgnodemx is now at version 1.0.1 wal2json is now at version 2.</description>
     </item>
     
     <item>

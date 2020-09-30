@@ -79,6 +79,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/architecture/</loc>
   </url>
   
@@ -167,10 +171,6 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</loc>
-  </url>
-  
-  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/advanced/</loc>
   </url>
   
@@ -219,6 +219,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/</loc>
   </url>
   
@@ -247,7 +251,15 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/create-cluster/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/support/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/</loc>
   </url>
   
   <url>
@@ -340,6 +352,11 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/contributing/pull-requests/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
