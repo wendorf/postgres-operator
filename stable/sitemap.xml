@@ -11,6 +11,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/advanced/crunchy-postgres-exporter/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/configuration/pgo-yaml-configuration/</loc>
   </url>
   
@@ -51,6 +55,18 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/other/ansible/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/other/ansible/metrics-prerequisites/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/metrics-prerequisites/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/prerequisites/</loc>
   </url>
   
@@ -63,11 +79,19 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/architecture/</loc>
   </url>
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/pgo-client/common-tasks/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/postgres-operator-metrics/</loc>
   </url>
   
   <url>
@@ -79,11 +103,15 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/other/helm-metrics/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/installing-operator/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/installing-metrics/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/other/ansible/installing-metrics/</loc>
   </url>
   
   <url>
@@ -95,7 +123,15 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/metrics-configuration/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/updating-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/other/ansible/updating-metrics/</loc>
   </url>
   
   <url>
@@ -111,7 +147,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/uninstalling-metrics/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/other/ansible/uninstalling-metrics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/</loc>
   </url>
   
   <url>
@@ -123,7 +163,15 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/security/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.5.0/</loc>
   </url>
   
   <url>
@@ -171,11 +219,27 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/metrics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/other/</loc>
   </url>
   
   <url>
@@ -191,11 +255,47 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.2.2/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/create-cluster/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/support/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/connect-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/customize-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/update-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/delete-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/tls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/pgbouncer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/high-availability/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/disaster-recovery/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.2.2/</loc>
   </url>
   
   <url>
@@ -203,7 +303,15 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/helm/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/google-cloud-marketplace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/tutorial/pgdump/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/other/operator-hub/</loc>
   </url>
   
   <url>
@@ -236,6 +344,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.1.0/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/architecture/monitoring/</loc>
   </url>
   
   <url>
@@ -410,10 +522,6 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_label/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_load/</loc>
   </url>
   
   <url>

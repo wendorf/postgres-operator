@@ -44,16 +44,6 @@ Installing on Linux On a Linux host with Ansible installed we can run the follow
     </item>
     
     <item>
-      <title>Installing Metrics Infrastructure</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/installing-metrics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/installing-metrics/</guid>
-      <description>Installing PostgreSQL clusters created by the Crunchy PostgreSQL Operator can optionally be configured to serve performance metrics via Prometheus Exporters. The metric exporters included in the database pod serve realtime metrics for the database container. In order to store and view this data, Grafana and Prometheus are required. The Crunchy PostgreSQL Operator does not create this infrastructure, however, they can be installed using the provided Ansible roles.
-Prerequisites The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.</description>
-    </item>
-    
-    <item>
       <title>Updating PostgreSQL Operator</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/updating-operator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -73,18 +63,6 @@ Prerequisites The following assumes the proper prerequisites are satisfied we ca
 First, it is recommended to use the playbooks tagged with the same version of the PostgreSQL Operator currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
 ansible-playbook -i /path/to/inventory.yaml --tags=uninstall --ask-become-pass main.yml Deleting pgo Client If variable pgo_client_install is set to true in the values.yaml file, the pgo client will also be removed when uninstalling.</description>
-    </item>
-    
-    <item>
-      <title>Uninstalling Metrics Stack</title>
-      <link>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/uninstalling-metrics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/stable/installation/other/ansible/uninstalling-metrics/</guid>
-      <description>Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator Metrics Infrastructure.
-First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
-With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
-ansible-playbook -i /path/to/inventory.yaml --tags=uninstall-metrics main.</description>
     </item>
     
   </channel>
