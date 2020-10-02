@@ -139,6 +139,62 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/customize-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/customize-cluster/">
+            Customize a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/update-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/update-cluster/">
+            Update a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/delete-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/delete-cluster/">
+            Delete a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/">
+            Setup TLS
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgbouncer/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgbouncer/">
+            pgBouncer
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/high-availability/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/high-availability/">
+            High Availability
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/disaster-recovery/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/disaster-recovery/">
+            Disaster Recovery
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgdump/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgdump/">
+            Logical Backups (pg_dump)
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
@@ -1090,6 +1146,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
+            4.5.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/">
@@ -1174,13 +1237,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
-            
-          </a>
-        </div>
-    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/support/" class="dd-item
@@ -1215,6 +1271,14 @@
       <option value="/tutorial/getting-started/"  selected>- Getting Started</option>
       <option value="/tutorial/create-cluster/" >- Create a Postgres Cluster</option>
       <option value="/tutorial/connect-cluster/" >- Connect to a Postgres Cluster</option>
+      <option value="/tutorial/customize-cluster/" >- Customize a Postgres Cluster</option>
+      <option value="/tutorial/update-cluster/" >- Update a Postgres Cluster</option>
+      <option value="/tutorial/delete-cluster/" >- Delete a Postgres Cluster</option>
+      <option value="/tutorial/tls/" >- Setup TLS</option>
+      <option value="/tutorial/pgbouncer/" >- pgBouncer</option>
+      <option value="/tutorial/high-availability/" >- High Availability</option>
+      <option value="/tutorial/disaster-recovery/" >- Disaster Recovery</option>
+      <option value="/tutorial/pgdump/" >- Logical Backups (pg_dump)</option>
   
     <option value="/architecture/" >
    Architecture</option>
@@ -1343,8 +1407,8 @@ pgo show cluster --all
 
 <p>If it is working, you should see results similar to:</p>
 
-<pre><code>pgo client version 4.5.0-rc.1
-pgo-apiserver version 4.5.0-rc.1
+<pre><code>pgo client version 4.5.0
+pgo-apiserver version 4.5.0
 </code></pre>
 
 <p>Note that the version of the <code>pgo</code> client <strong>must</strong> match that of the PostgreSQL Operator.</p>
@@ -1356,7 +1420,7 @@ pgo-apiserver version 4.5.0-rc.1
 
 <p>which yields results similar to:</p>
 
-<pre><code>pgo client version 4.5.0-rc.1
+<pre><code>pgo client version 4.5.0
 </code></pre>
 
 <p>Alright, we&rsquo;re now ready to start our journey with the PostgreSQL Operator!</p>

@@ -138,6 +138,62 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/customize-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/customize-cluster/">
+            Customize a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/update-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/update-cluster/">
+            Update a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/delete-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/delete-cluster/">
+            Delete a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/">
+            Setup TLS
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgbouncer/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgbouncer/">
+            pgBouncer
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/high-availability/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/high-availability/">
+            High Availability
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/disaster-recovery/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/disaster-recovery/">
+            Disaster Recovery
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgdump/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgdump/">
+            Logical Backups (pg_dump)
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
@@ -1091,6 +1147,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
+            4.5.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/">
@@ -1172,13 +1235,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.1.0/">
             4.1.0
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
-            
           </a>
         </div>
     </li>
@@ -1386,7 +1442,7 @@
 <pre><code>      --annotation strings                    Add an Annotation to all of the managed deployments (PostgreSQL, pgBackRest, pgBouncer)
                                               The format to add an annotation is &quot;name=value&quot;
                                               The format to remove an annotation is &quot;name-&quot;
-
+                                              
                                               For example, to add two annotations: &quot;--annotation=hippo=awesome,elephant=cool&quot;
       --annotation-pgbackrest strings         Add an Annotation specifically to pgBackRest deployments
                                               The format to add an annotation is &quot;name=value&quot;
@@ -1405,6 +1461,10 @@
       --custom-config string                  The name of a configMap that holds custom PostgreSQL configuration files used to override defaults.
   -d, --database string                       If specified, sets the name of the initial database that is created for the user. Defaults to the value set in the PostgreSQL Operator configuration, or if that is not present, the name of the cluster
       --disable-autofail                      Disables autofail capabitilies in the cluster following cluster initialization.
+      --exporter-cpu string                   Set the number of millicores to request for CPU for the Crunchy Postgres Exporter sidecar container, e.g. &quot;100m&quot; or &quot;0.1&quot;. Defaults to being unset.
+      --exporter-cpu-limit string             Set the number of millicores to limit for CPU for the Crunchy Postgres Exporter sidecar container, e.g. &quot;100m&quot; or &quot;0.1&quot;. Defaults to being unset.
+      --exporter-memory string                Set the amount of memory to request for the Crunchy Postgres Exporter sidecar container. Defaults to server value (24Mi).
+      --exporter-memory-limit string          Set the amount of memory to limit for the Crunchy Postgres Exporter sidecar container.
   -h, --help                                  help for cluster
   -l, --labels string                         The labels to apply to this cluster.
       --memory string                         Set the amount of RAM to request, e.g. 1GiB. Overrides the default server value.
@@ -1460,13 +1520,13 @@
       --storage-config string                 The name of a Storage config in pgo.yaml to use for the cluster storage.
       --sync-replication                      Enables synchronous replication for the cluster.
       --tablespace strings                    Create a PostgreSQL tablespace on the cluster, e.g. &quot;name=ts1:storageconfig=nfsstorage&quot;. The format is a key/value map that is delimited by &quot;=&quot; and separated by &quot;:&quot;. The following parameters are available:
-
+                                              
                                               - name (required): the name of the PostgreSQL tablespace
                                               - storageconfig (required): the storage configuration to use, as specified in the list available in the &quot;pgo-config&quot; ConfigMap (aka &quot;pgo.yaml&quot;)
                                               - pvcsize: the size of the PVC capacity, which overrides the value set in the specified storageconfig. Follows the Kubernetes quantity format.
-
+                                              
                                               For example, to create a tablespace with the NFS storage configuration with a PVC of size 10GiB:
-
+                                              
                                               --tablespace=name=ts1:storageconfig=nfsstorage:pvcsize=10Gi
       --tls-only                              If true, forces all PostgreSQL connections to be over TLS. Must also set &quot;server-tls-secret&quot; and &quot;server-ca-secret&quot;
   -u, --username string                       The username to use for creating the PostgreSQL user with standard permissions. Defaults to the value in the PostgreSQL Operator configuration.
@@ -1492,7 +1552,7 @@
 <li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">pgo create</a>    - Create a Postgres Operator resource</li>
 </ul>
 
-<h6 id="auto-generated-by-spf13-cobra-on-21-aug-2020">Auto generated by spf13/cobra on 21-Aug-2020</h6>
+<h6 id="auto-generated-by-spf13-cobra-on-1-oct-2020">Auto generated by spf13/cobra on 1-Oct-2020</h6>
 
 
 

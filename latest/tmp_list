@@ -4,6 +4,14 @@ content/tutorial/_index.md
 content/tutorial/getting-started.md
 content/tutorial/create-cluster.md
 content/tutorial/connect-cluster.md
+content/tutorial/customize-cluster.md
+content/tutorial/update-cluster.md
+content/tutorial/delete-cluster.md
+content/tutorial/tls.md
+content/tutorial/pgbouncer.md
+content/tutorial/high-availability.md
+content/tutorial/disaster-recovery.md
+content/tutorial/pgdump.md
 content/architecture/_index.md
 content/architecture/overview.md
 content/architecture/provisioning.md
@@ -74,6 +82,7 @@ content/contributing/documentation-updates.md
 content/contributing/issues.md
 content/contributing/pull-requests.md
 content/releases/_index.md
+content/releases/4.5.0.md
 content/releases/4.4.1.md
 content/releases/4.4.0.md
 content/releases/4.3.3.md

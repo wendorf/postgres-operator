@@ -139,6 +139,62 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/customize-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/customize-cluster/">
+            Customize a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/update-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/update-cluster/">
+            Update a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/delete-cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/delete-cluster/">
+            Delete a Postgres Cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/">
+            Setup TLS
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgbouncer/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgbouncer/">
+            pgBouncer
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/high-availability/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/high-availability/">
+            High Availability
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/disaster-recovery/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/disaster-recovery/">
+            Disaster Recovery
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgdump/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/pgdump/">
+            Logical Backups (pg_dump)
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
@@ -1090,6 +1146,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
+            4.5.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/">
@@ -1174,13 +1237,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
-            
-          </a>
-        </div>
-    </li>
         </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/support/" class="dd-item
@@ -1215,6 +1271,14 @@
       <option value="/tutorial/getting-started/" >- Getting Started</option>
       <option value="/tutorial/create-cluster/"  selected>- Create a Postgres Cluster</option>
       <option value="/tutorial/connect-cluster/" >- Connect to a Postgres Cluster</option>
+      <option value="/tutorial/customize-cluster/" >- Customize a Postgres Cluster</option>
+      <option value="/tutorial/update-cluster/" >- Update a Postgres Cluster</option>
+      <option value="/tutorial/delete-cluster/" >- Delete a Postgres Cluster</option>
+      <option value="/tutorial/tls/" >- Setup TLS</option>
+      <option value="/tutorial/pgbouncer/" >- pgBouncer</option>
+      <option value="/tutorial/high-availability/" >- High Availability</option>
+      <option value="/tutorial/disaster-recovery/" >- Disaster Recovery</option>
+      <option value="/tutorial/pgdump/" >- Logical Backups (pg_dump)</option>
   
     <option value="/architecture/" >
    Architecture</option>
@@ -1407,6 +1471,15 @@ users:
 
 <p>Some Job artifacts may be left around after the cluster creation process completes, including the stanza creation job (<code>hippo-stanza-create</code>) and initial backup job (<code>backrest-backup-hippo</code>). If the jobs completed successfully, you can safely delete these objects.</p>
 
+<h2 id="create-a-postgresql-cluster-with-monitoring">Create a PostgreSQL Cluster With Monitoring</h2>
+
+<p>The <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/">PostgreSQL Operator Monitoring</a> stack provides a convenient way to gain insights into the availabilty and performance of your PostgreSQL clusters. In order to collect metrics from your PostgreSQL clusters, you have to enable the <code>crunchy-postgres-exporter</code> sidecar alongside your PostgreSQL cluster. You can do this with the <code>--metrics</code> flag on <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>:</p>
+
+<pre><code>pgo create cluster hippo --metrics
+</code></pre>
+
+<p>Note that the <code>--metrics</code> flag just enables a sidecar that can be scraped. You will need to install the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/">monitoring stack</a> separately, or tie it into your existing monitoring infrastructure.</p>
+
 <h2 id="troubleshooting">Troubleshooting</h2>
 
 <h3 id="postgresql-pgbackrest-pods-stuck-in-pending-phase">PostgreSQL / pgBackRest Pods Stuck in <code>Pending</code> Phase</h3>
@@ -1421,7 +1494,7 @@ users:
 
 <h2 id="next-steps">Next Steps</h2>
 
-<p>Once your cluster is created, the next step is to <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/">connect to your PostgreSQL cluster</a>.</p>
+<p>Once your cluster is created, the next step is to <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/">connect to your PostgreSQL cluster</a>. You can also <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/customize-cluster/">learn how to customize your PostgreSQL cluster</a>!</p>
 
 
 

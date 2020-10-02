@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>4.5.0</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</guid>
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.5.0 on October 2, 2020.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+The PostgreSQL Operator 4.5.0 release includes the following software versions upgrades:
+ Add support for PostgreSQL 13. pgBackRest is now at version 2.29. postgres_exporter is now at version 0.8.0 pgMonitor support is now at 4.4 pgnodemx is now at version 1.0.1 wal2json is now at version 2.</description>
+    </item>
+    
+    <item>
       <title>4.4.1</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.4.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -149,18 +161,6 @@ The Postgres Operator 4.1.1 release includes the following software versions upg
 In addition to new features, such as dynamic namespace manage by the Operator and the ability to subscribe to a stream of lifecycle events that occur with PostgreSQL clusters, this release adds many new features and bug fixes.
 The Postgres Operator 4.1 release also includes the following software versions upgrades:
  The PostgreSQL now uses versions 11.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</guid>
-      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.5.0 on September XX, 2020.
-The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
-The PostgreSQL Operator 4.5.0 release includes the following software versions upgrades:
- Add support for PostgreSQL 13. pgBackRest is now at version 2.29. postgres_exporter is now at version 0.8.0 pgMonitor support is now at 4.4 pgnodemx is now at version 1.0.1 wal2json is now at version 2.</description>
     </item>
     
   </channel>

@@ -171,6 +171,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/advanced/</loc>
   </url>
   
@@ -263,6 +267,34 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/customize-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/update-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/delete-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/pgbouncer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/high-availability/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/disaster-recovery/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/releases/4.2.2/</loc>
   </url>
   
@@ -272,6 +304,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/other/google-cloud-marketplace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/tutorial/pgdump/</loc>
   </url>
   
   <url>
@@ -352,11 +388,6 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/contributing/pull-requests/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
