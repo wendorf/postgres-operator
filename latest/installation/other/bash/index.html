@@ -1379,7 +1379,7 @@
 <p>A full installation of the Operator includes the following steps:</p>
 
 <ul>
-<li>create a project structure</li>
+<li>get the Operator project</li>
 <li>configure your environment variables</li>
 <li>configure Operator templates</li>
 <li>create security resources</li>
@@ -1397,24 +1397,19 @@
 <li>Openshift Console installation using OLM</li>
 </ul>
 
-<h2 id="default-installation-create-project-structure">Default Installation - Create Project Structure</h2>
+<h2 id="default-installation-get-project">Default Installation - Get Project</h2>
 
-<p>The Operator follows a golang project structure, you can create a structure as follows on your local Linux host:</p>
+<p>The Operator project is hosted on GitHub. You can get a copy using <code>git clone</code>:</p>
 
-<pre><code>mkdir -p $HOME/odev/src/github.com/crunchydata $HOME/odev/bin $HOME/odev/pkg
-cd $HOME/odev/src/github.com/crunchydata
-git clone https://github.com/CrunchyData/postgres-operator.git
+<pre><code>git clone -b v4.5.0 https://github.com/CrunchyData/postgres-operator.git
 cd postgres-operator
-git checkout v4.5.0
 </code></pre>
-
-<p>This creates a directory structure under your HOME directory name <em>odev</em> and clones the current Operator version to that structure.</p>
 
 <h2 id="default-installation-configure-environment">Default Installation - Configure Environment</h2>
 
 <p>Environment variables control aspects of the Operator installation.  You can copy a sample set of Operator environment variables and aliases to your <em>.bashrc</em> file to work with.</p>
 
-<pre><code>cat $HOME/odev/src/github.com/crunchydata/postgres-operator/examples/envs.sh &gt;&gt; $HOME/.bashrc
+<pre><code>cat ./examples/envs.sh &gt;&gt; $HOME/.bashrc
 source $HOME/.bashrc
 </code></pre>
 
