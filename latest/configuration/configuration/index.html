@@ -1368,9 +1368,9 @@
  * the pgo-config ConfigMap in the namespace the Operator is running in
  * or, a copy of the configuration files are also included by default into the Operator container images themselves to support a very simplistic deployment of the Operator</p>
 
-<p>If the pgo-config ConfigMap is not found by the Operator, it will use
-the configuration files that are included in the Operator container
-images.</p>
+<p>If the <code>pgo-config</code> ConfigMap is not found by the Operator, it will create a
+<code>pgo-config</code> ConfigMap using the configuration files that are included in the
+Operator container.</p>
 
 <h2 id="conf-postgres-operator-pgo-yaml">conf/postgres-operator/pgo.yaml</h2>
 

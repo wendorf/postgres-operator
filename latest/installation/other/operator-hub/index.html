@@ -1407,18 +1407,6 @@ kubectl create namespace &quot;$PGO_OPERATOR_NAMESPACE&quot;
 cd postgres-operator
 </code></pre>
 
-<h3 id="postgresql-operator-configuration">PostgreSQL Operator Configuration</h3>
-
-<p>Edit <code>conf/postgres-operator/pgo.yaml</code> to configure the deployment. Look over all of the options and make any
-changes necessary for your environment. A full description of each option is available in the
-<a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/"><code>pgo.yaml</code> configuration guide</a>.</p>
-
-<p>When the file is ready, upload the entire directory to the <code>pgo-config</code> ConfigMap.</p>
-
-<pre><code>kubectl -n &quot;$PGO_OPERATOR_NAMESPACE&quot; create configmap pgo-config \
-  --from-file=./conf/postgres-operator
-</code></pre>
-
 <h3 id="secrets">Secrets</h3>
 
 <p>Configure pgBackRest for your environment. If you do not plan to use AWS S3 to store backups, you can omit
