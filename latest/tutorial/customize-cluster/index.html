@@ -1146,6 +1146,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
+            4.5.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
@@ -1542,6 +1549,30 @@ bootstrap:
 <li><strong>PVC cannot be provisioned</strong>. Ensure that you request a PVC size that is available, or that your PVC storage class is set up correctly.</li>
 <li><strong>Node affinity rules cannot be satisfied</strong>. If you assigned a node label, ensure that the Nodes with that label are available for scheduling. If they are, ensure that there are enough resources available.</li>
 <li><strong>Pod anti-affinity rules cannot be satisfied</strong>. This most likely happens when <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#how-the-crunchy-postgresql-operator-uses-pod-anti-affinity">pod anti-affinity</a> is set to <code>required</code> and there are not enough Nodes available for scheduling. Consider adding more Nodes or relaxing your anti-affinity rules.</li>
+</ul>
+
+<h3 id="postgresql-pod-reports-authentication-failed-for-ccp-monitoring">PostgreSQL Pod reports &ldquo;Authentication Failed for <code>ccp_monitoring</code>&ldquo;</h3>
+
+<p>This is a temporary error that occurs when a new PostgreSQL cluster is first
+initialized with the <code>--metrics</code> flag. The <code>crunchy-postgres-exporter</code> container
+within the PostgreSQL Pod may be ready before the container with PostgreSQL is
+ready. If a message in your logs further down displays a timestamp, e.g.:</p>
+
+<pre><code>             now              
+-------------------------------
+2020-11-10 08:23:15.968196-05
+</code></pre>
+
+<p>Then the <code>ccp_monitoring</code> user is properly reconciled with the PostgreSQL
+cluster.</p>
+
+<p>If the error message does not go away, this could indicate a few things:</p>
+
+<ul>
+<li>The PostgreSQL instance has not initialized. Check to ensure that PostgreSQL
+has successfully started.</li>
+<li>The password for the <code>ccp_monitoring</code> user has changed. In this case you will
+need to update the Secret with the monitoring credentials.</li>
 </ul>
 
 <h2 id="next-steps">Next Steps</h2>

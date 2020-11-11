@@ -1147,6 +1147,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
+            4.5.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.0/">
@@ -1403,7 +1410,7 @@ kubectl create namespace &quot;$PGO_OPERATOR_NAMESPACE&quot;
 
 <p>Next, clone the PostgreSQL Operator repository locally.</p>
 
-<pre><code>git clone -b v4.5.0 https://github.com/CrunchyData/postgres-operator.git
+<pre><code>git clone -b v4.5.1 https://github.com/CrunchyData/postgres-operator.git
 cd postgres-operator
 </code></pre>
 
@@ -1457,7 +1464,7 @@ spec:
   channel: stable
   source: operatorhubio-catalog
   sourceNamespace: olm
-  startingCSV: postgresoperator.v4.5.0
+  startingCSV: postgresoperator.v4.5.1
 YAML
 </code></pre>
 
@@ -1493,8 +1500,8 @@ export PGO_APISERVER_URL=&quot;https://127.0.0.1:8443&quot;
 <p>Verify connectivity using the <code>pgo</code> command.</p>
 
 <pre><code>pgo version
-# pgo client version 4.5.0
-# pgo-apiserver version 4.5.0
+# pgo client version 4.5.1
+# pgo-apiserver version 4.5.1
 </code></pre>
 
 
