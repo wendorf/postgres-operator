@@ -1146,6 +1146,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
+            4.5.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.0/">
@@ -1483,7 +1490,7 @@ Operator.</p>
 
 <tr>
 <td><code>ccp_image_tag</code></td>
-<td>centos7-12.4-4.5.0</td>
+<td>centos7-12.5-4.5.1</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag (version) used when creating containers from Crunchy Container Suite.</td>
 </tr>
@@ -1638,8 +1645,8 @@ Operator.</p>
 <tr>
 <td><code>pgo_admin_password</code></td>
 <td>examplepassword</td>
-<td><strong>Required</strong></td>
-<td>Configures the pgo administrator password.</td>
+<td></td>
+<td>Configures the pgo administrator password. When blank, a random password is generated.</td>
 </tr>
 
 <tr>
@@ -1674,7 +1681,7 @@ Operator.</p>
 <td><code>pgo_apiserver_url</code></td>
 <td><a href="https://postgres-operator">https://postgres-operator</a></td>
 <td></td>
-<td>Sets the <code>pgo_apiserver_url</code> for the <code>pgo-client</code> deployment.</td>
+<td>Sets the <code>pgo_apiserver_url</code> for the <code>pgo-client</code> deployment. Note that the URL should <strong>not</strong> end in a <code>/</code>.</td>
 </tr>
 
 <tr>
@@ -1700,7 +1707,7 @@ Operator.</p>
 
 <tr>
 <td><code>pgo_client_version</code></td>
-<td>4.5.0</td>
+<td>4.5.1</td>
 <td><strong>Required</strong></td>
 <td></td>
 </tr>
@@ -1749,7 +1756,7 @@ Operator.</p>
 
 <tr>
 <td><code>pgo_image_tag</code></td>
-<td>centos7-4.5.0</td>
+<td>centos7-4.5.1</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag used when creating containers for the Crunchy PostgreSQL Operator (apiserver, operator, scheduler..etc)</td>
 </tr>

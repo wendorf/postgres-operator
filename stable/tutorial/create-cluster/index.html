@@ -1146,6 +1146,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
+            4.5.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.0/">
@@ -1491,6 +1498,30 @@ users:
 <h3 id="stanza-create-job-never-finishes"><code>stanza-create</code> Job Never Finishes</h3>
 
 <p>The most common occurrence of this is due to the Kubernetes network blocking SSH connections between Pods. Ensure that your Kubernetes networking layer allows for SSH connections over port 2022 in the Namespace that you are deploying your PostgreSQL clusters into.</p>
+
+<h3 id="postgresql-pod-reports-authentication-failed-for-ccp-monitoring">PostgreSQL Pod reports &ldquo;Authentication Failed for <code>ccp_monitoring</code>&ldquo;</h3>
+
+<p>This is a temporary error that occurs when a new PostgreSQL cluster is first
+initialized with the <code>--metrics</code> flag. The <code>crunchy-postgres-exporter</code> container
+within the PostgreSQL Pod may be ready before the container with PostgreSQL is
+ready. If a message in your logs further down displays a timestamp, e.g.:</p>
+
+<pre><code>             now              
+-------------------------------
+2020-11-10 08:23:15.968196-05
+</code></pre>
+
+<p>Then the <code>ccp_monitoring</code> user is properly reconciled with the PostgreSQL
+cluster.</p>
+
+<p>If the error message does not go away, this could indicate a few things:</p>
+
+<ul>
+<li>The PostgreSQL instance has not initialized. Check to ensure that PostgreSQL
+has successfully started.</li>
+<li>The password for the <code>ccp_monitoring</code> user has changed. In this case you will
+need to update the Secret with the monitoring credentials.</li>
+</ul>
 
 <h2 id="next-steps">Next Steps</h2>
 

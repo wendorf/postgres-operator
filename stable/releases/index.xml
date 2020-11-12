@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>4.5.1</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/</guid>
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.5.1 on November 13, 2020.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+PostgreSQL Operator 4.5.1 release includes the following software versions upgrades:
+ PostgreSQL is now at versions 13.1, 12.5, 11.10, 10.15, 9.6.20, and 9.5.24. Patroni is now at version 2.0.1. PL/Perl can now be used in the PostGIS-enabled containers.  Changes  Simplified creation of a PostgreSQL cluster from a pgcluster resource.</description>
+    </item>
+    
+    <item>
       <title>4.5.0</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/releases/4.5.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
