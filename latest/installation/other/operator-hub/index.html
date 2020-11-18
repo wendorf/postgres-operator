@@ -1389,40 +1389,13 @@ that is available in OperatorHub.io.</p>
 
 <h2 id="before-you-begin">Before You Begin</h2>
 
-<p>There are a few manual steps that the cluster administrator must perform prior to installing the PostgreSQL Operator.
-At the very least, it must be provided with an initial configuration.</p>
+<p>There are some optional Secrets you can add before installing the PostgreSQL Operator into your cluster.</p>
 
-<p>First, make sure OLM and the OperatorHub.io catalog are installed by running
-<code>kubectl get CatalogSources --all-namespaces</code>.  You should see something similar to the following:</p>
+<h3 id="secrets-optional">Secrets (optional)</h3>
 
-<pre><code>NAMESPACE   NAME                    DISPLAY               TYPE   PUBLISHER
-olm         operatorhubio-catalog   Community Operators   grpc   OperatorHub.io
-</code></pre>
-
-<p>Take note of the name and namespace above, you will need them later on.</p>
-
-<p>Next, select a namespace in which to install the PostgreSQL Operator. PostgreSQL clusters will also be deployed here.
-If it does not exist, create it now.</p>
-
-<pre><code>export PGO_OPERATOR_NAMESPACE=pgo
-kubectl create namespace &quot;$PGO_OPERATOR_NAMESPACE&quot;
-</code></pre>
-
-<p>Next, clone the PostgreSQL Operator repository locally.</p>
-
-<pre><code>git clone -b v4.5.1 https://github.com/CrunchyData/postgres-operator.git
-cd postgres-operator
-</code></pre>
-
-<h3 id="secrets">Secrets</h3>
-
-<p>Configure pgBackRest for your environment. If you do not plan to use AWS S3 to store backups, you can omit
-the <code>aws-s3</code> keys below.</p>
+<p>If you plan to use AWS S3 to store backups and would like to have the keys available for every backup, you can create a Secret as described below:</p>
 
 <pre><code>kubectl -n &quot;$PGO_OPERATOR_NAMESPACE&quot; create secret generic pgo-backrest-repo-config \
-  --from-file=./installers/ansible/roles/pgo-operator/files/pgo-backrest-repo/config \
-  --from-file=./installers/ansible/roles/pgo-operator/files/pgo-backrest-repo/sshd_config \
-  --from-file=./installers/ansible/roles/pgo-operator/files/pgo-backrest-repo/aws-s3-ca.crt \
   --from-literal=aws-s3-key=&quot;&lt;your-aws-s3-key&gt;&quot; \
   --from-literal=aws-s3-key-secret=&quot;&lt;your-aws-s3-key-secret&gt;&quot;
 </code></pre>
@@ -1437,8 +1410,6 @@ automatically generate and use a self-signed certificate.</p>
   --cert=/path/to/server.crt \
   --key=/path/to/server.key
 </code></pre>
-
-<p>Once these resources are in place, the PostgreSQL Operator can be installed into the cluster.</p>
 
 <h2 id="installation">Installation</h2>
 

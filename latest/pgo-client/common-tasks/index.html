@@ -2411,6 +2411,13 @@ following command:</p>
 </span><span style="color:#8045ff"></span>  --password-superuser<span style="color:#f92672">=</span>supersecrethippo <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --password-replication<span style="color:#f92672">=</span>somewhatsecrethippo <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --password<span style="color:#f92672">=</span>opensourcehippo</code></pre></div>
+<p>If you are unsure of your user credentials form the original <code>hippo</code> cluster,
+you can retrieve them using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_show_user/"><code>pgo show user</code></a>
+command with the <code>--show-system-accounts</code> flag:</p>
+
+<pre><code>pgo show user hippo --show-system-accounts
+</code></pre>
+
 <p>The standby cluster will take a few moments to bootstrap, but it is now set up!</p>
 
 <h3 id="promoting-a-standby-cluster">Promoting a Standby Cluster</h3>

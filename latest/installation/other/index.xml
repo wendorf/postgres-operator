@@ -51,8 +51,8 @@ Using the gcloud utility, ensure you are logged into the GKE cluster in which yo
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/operator-hub/</guid>
       <description>If your Kubernetes cluster is already running the Operator Lifecycle Manager, the PostgreSQL Operator can be installed as part of Crunchy PostgreSQL for Kubernetes that is available in OperatorHub.io.
-Before You Begin There are a few manual steps that the cluster administrator must perform prior to installing the PostgreSQL Operator. At the very least, it must be provided with an initial configuration.
-First, make sure OLM and the OperatorHub.io catalog are installed by running kubectl get CatalogSources --all-namespaces.</description>
+Before You Begin There are some optional Secrets you can add before installing the PostgreSQL Operator into your cluster.
+Secrets (optional) If you plan to use AWS S3 to store backups and would like to have the keys available for every backup, you can create a Secret as described below:</description>
     </item>
     
   </channel>
