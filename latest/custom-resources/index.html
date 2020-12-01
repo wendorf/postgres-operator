@@ -2503,6 +2503,12 @@ a PostgreSQL cluster to help with failover scenarios too.</p>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource requests that the pgBouncer Pods should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource requests</a>.</td>
 </tr>
+
+<tr>
+<td>TLSSecret</td>
+<td><code>create</code></td>
+<td>A reference to the name of a Kubernetes TLS Secret that contains a keypair that is used for the pgBouncer instance to identify itself and perform TLS communications with PostgreSQL clients. Must be used with the parent Spec <code>TLSSecret</code> and <code>CASecret</code>.</td>
+</tr>
 </tbody>
 </table>
 
