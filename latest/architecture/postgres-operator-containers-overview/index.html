@@ -1377,10 +1377,16 @@
 
 <p>The PostgreSQL Operator orchestrates a series of PostgreSQL and PostgreSQL related containers containers that enable rapid deployment of PostgreSQL, including administration and monitoring tools in a Kubernetes environment. The PostgreSQL Operator supports PostgreSQL 9.5+ with multiple PostgreSQL cluster deployment strategies and a variety of PostgreSQL related extensions and tools enabling enterprise grade PostgreSQL-as-a-Service.   A full list of the containers supported by the PostgreSQL Operator is provided below.</p>
 
-<h3 id="postgresql-server-and-extensions">PostgreSQL Server and Extensions</h3>
+<h3 id="postgresql-server-tools-and-extensions">PostgreSQL Server, Tools, and Extensions</h3>
 
 <ul>
-<li><p><strong>PostgreSQL</strong> (crunchy-postgres-ha).  PostgreSQL database server.  The crunchy-postgres container image is unmodified, open source PostgreSQL packaged and maintained by Crunchy Data.</p></li>
+<li><p><strong>PostgreSQL</strong> (crunchy-postgres-ha).  PostgreSQL database server.  The crunchy-postgres container image is unmodified, open source PostgreSQL packaged and maintained by Crunchy Data. The container supports PostgreSQL tools by running in different modes, more information on running modes can be found in the <a href="https://access.crunchydata.com/documentation/crunchy-postgres-containers/latest/">Crunchy Container</a> documentation. The PostgreSQL operator uses the following running modes:</p>
+
+<ul>
+<li><strong>pgdump</strong> (MODE: pgdump) running in pgdump mode, the image executes either a pg_dump or pg_dumpall database backup against another PostgreSQL database.</li>
+<li><strong>pgrestore</strong> (MODE: pgrestore) running in pgrestore mode, the image provides a means of performing a restore of a dump from pg_dump or pg_dumpall via psql or pg_restore to a PostgreSQL container database.</li>
+<li><strong>sqlrunner</strong> (MODE: sqlrunner) running in sqlrunner mode, the image will use <code>psql</code> to issue specified queries, defined in SQL files, to a PostgreSQL container database.</li>
+</ul></li>
 
 <li><p><strong>PostGIS</strong> (crunchy-postgres-ha-gis).  PostgreSQL database server including the PostGIS extension. The crunchy-postgres-gis container image is unmodified, open source PostgreSQL packaged and maintained by Crunchy Data. This image is identical to the crunchy-postgres image except it includes the open source geospatial extension PostGIS for PostgreSQL in addition to the language extension PL/R which allows for writing functions in the R statistical computing language.</p></li>
 </ul>
@@ -1388,11 +1394,7 @@
 <h3 id="backup-and-restore">Backup and Restore</h3>
 
 <ul>
-<li><p><strong>pgBackRest</strong> (crunchy-postgres-ha). pgBackRest is a high performance backup and restore utility for PostgreSQL.  The crunchy-postgres-ha container executes the pgBackRest utility, allowing FULL and DELTA restore capability.</p></li>
-
-<li><p><strong>pgdump</strong> (crunchy-pgdump). The crunchy-pgdump container executes either a pg_dump or pg_dumpall database backup against another PostgreSQL database.</p></li>
-
-<li><p><strong>crunchy-pgrestore</strong> (restore). The restore image provides a means of performing a restore of a dump from pg_dump or pg_dumpall via psql or pg_restore to a PostgreSQL container database.</p></li>
+<li><strong>pgBackRest</strong> (crunchy-postgres-ha). pgBackRest is a high performance backup and restore utility for PostgreSQL.  The crunchy-postgres-ha container executes the pgBackRest utility, allowing FULL and DELTA restore capability.</li>
 </ul>
 
 <h3 id="administration-tools">Administration Tools</h3>
