@@ -1196,7 +1196,7 @@ pgo reload mycluster  pgo reload [flags]  Options  -h, --help help for reload --
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_restart/</guid>
       <description>pgo restart Restarts the PostgrSQL database within a PostgreSQL cluster
 Synopsis Restarts one or more PostgreSQL databases within a PostgreSQL cluster.
-For example, to restart the primary and all replicas: pgo restart mycluster Or target a specific instance within the cluster: pgo restart mycluster --target=mycluster-abcd And use the &#39;query&#39; flag obtain a list of all instances within the cluster: pgo restart mycluster --query  pgo restart [flags]  Options  -h, --help help for restart --no-prompt No command line confirmation.</description>
+For example, to restart the primary and all replicas: pgo restart mycluster To restart the primary and all replicas using a rolling update strategy: pgo restart mycluster --rolling Or target a specific instance within the cluster: pgo restart mycluster --target=mycluster-abcd And use the &#39;query&#39; flag obtain a list of all instances within the cluster: pgo restart mycluster --query  pgo restart [flags]  Options  -h, --help help for restart --no-prompt No command line confirmation.</description>
     </item>
     
     <item>
