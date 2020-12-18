@@ -1750,7 +1750,6 @@ spec:
   user: hippo
   userlabels:
     backrest-storage-type: &quot;s3&quot;
-    crunchy-postgres-exporter: &quot;false&quot;
     pg-pod-anti-affinity: &quot;&quot;
     pgo-version: 4.5.1
   usersecretname: ${pgo_cluster_name}-hippo-secret
@@ -1846,7 +1845,6 @@ spec:
   userlabels:
     NodeLabelKey: &quot;&quot;
     NodeLabelValue: &quot;&quot;
-    crunchy-postgres-exporter: &quot;false&quot;
     pg-pod-anti-affinity: &quot;&quot;
     pgo-version: 4.5.1
 EOF
@@ -1855,6 +1853,12 @@ kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgrepli
 </code></pre>
 
 <p>Add this time, removing a replica must be handled through the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks/#high-availability-scaling-up-down"><code>pgo</code> client</a>.</p>
+
+<h3 id="monitoring">Monitoring</h3>
+
+<p>To enable the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/">monitoring</a>
+(aka metrics) sidecar using the <code>crunchy-postgres-exporter</code> container, you need
+to set the <code>exporter</code> attribute in <code>pgclusters.crunchydata.com</code> custom resource.</p>
 
 <h3 id="add-a-tablespace">Add a Tablespace</h3>
 
@@ -2103,12 +2107,6 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>CollectSecretName</td>
-<td><code>create</code></td>
-<td>An optional attribute unless <code>crunchy-postgres-exporter</code> is specified in the <code>UserLabels</code>; contains the name of a Kubernetes Secret that contains the credentials for a PostgreSQL user that is used for metrics collection, and is created when the PostgreSQL cluster is first bootstrapped. For more information, please see <code>User Secret Specification</code>.</td>
-</tr>
-
-<tr>
 <td>ClusterName</td>
 <td><code>create</code></td>
 <td>The name of the PostgreSQL cluster, e.g. <code>hippo</code>. This is used to group PostgreSQL instances (primary, replicas) together.</td>
@@ -2133,9 +2131,15 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
+<td>Exporter</td>
+<td><code>create</code>,<code>update</code></td>
+<td>If <code>true</code>, deploys the <code>crunchy-postgres-exporter</code> sidecar for metrics collection</td>
+</tr>
+
+<tr>
 <td>ExporterPort</td>
 <td><code>create</code></td>
-<td>If the <code>&quot;crunchy-postgres-exporter&quot;</code> label is set in <code>UserLabels</code>, then this specifies the port that the metrics sidecar runs on (e.g. <code>9187</code>)</td>
+<td>If <code>Exporter</code> is <code>true</code>, then this specifies the port that the metrics sidecar runs on (e.g. <code>9187</code>)</td>
 </tr>
 
 <tr>
