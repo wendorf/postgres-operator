@@ -987,7 +987,7 @@ pgo create pgouser someuser  pgo create pgouser [flags]  Options  --all-namespac
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_policy/</guid>
       <description>pgo create policy Create a SQL policy
 Synopsis Create a policy. For example:
-pgo create policy mypolicy --in-file=/tmp/mypolicy.sql  pgo create policy [flags]  Options  -h, --help help for policy -i, --in-file string The policy file path to use for adding a policy. -u, --url string The url to use for adding a policy.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo create policy mypolicy --in-file=/tmp/mypolicy.sql  pgo create policy [flags]  Options  -h, --help help for policy -i, --in-file string The policy file path to use for adding a policy.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. Note that the URL should **not** end in a &#39;/&#39;.</description>
     </item>
     
     <item>
@@ -1020,7 +1020,7 @@ pgo create user --username=someuser --all --managed pgo create user --username=s
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete/</guid>
       <description>pgo delete Delete an Operator resource
 Synopsis The delete command allows you to delete an Operator resource. For example:
-pgo delete backup mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgadmin mycluster pgo delete pgbouncer mycluster pgo delete pgbouncer mycluster --uninstall pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+pgo delete backup mycluster --target=backup-name pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgadmin mycluster pgo delete pgbouncer mycluster pgo delete pgbouncer mycluster --uninstall pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>
@@ -1030,8 +1030,8 @@ pgo delete backup mycluster pgo delete cluster mycluster pgo delete cluster mycl
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_delete_backup/</guid>
       <description>pgo delete backup Delete a backup
-Synopsis Delete a backup. For example:
-pgo delete backup mydatabase  pgo delete backup [flags]  Options  -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. --debug Enable additional output for debugging. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
+Synopsis Delete a backup from pgBackRest. Requires a target backup. For example:
+pgo delete backup hippo --target=20201220-171801F  pgo delete backup [flags]  Options  -h, --help help for backup --no-prompt No command line confirmation. --target string The backup to expire, e.g. &amp;quot;20201220-171801F&amp;quot;. Use &amp;quot;pgo show backup&amp;quot; to determine the target.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
     </item>
     
     <item>

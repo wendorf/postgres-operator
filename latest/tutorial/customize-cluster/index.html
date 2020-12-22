@@ -1397,6 +1397,11 @@
 
 <p>Note that the <code>--metrics</code> flag just enables a sidecar that can be scraped. You will need to install the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/">monitoring stack</a> separately, or tie it into your existing monitoring infrastructure.</p>
 
+<p>If you have an exiting cluster that you would like to add metrics collection to, you can use the <code>--enable-metrics</code> flag on the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> command:</p>
+
+<pre><code>pgo update cluster hippo --enable-metrics
+</code></pre>
+
 <h2 id="customize-pvc-size">Customize PVC Size</h2>
 
 <p>Databases come in all different sizes, and those sizes can certainly change over time. As such, it is helpful to be able to specify what size PVC you want to store your PostgreSQL data.</p>
