@@ -1667,7 +1667,6 @@ metadata:
     backrest-storage-type: &quot;s3&quot;
     crunchy-pgbadger: &quot;false&quot;
     crunchy-pgha-scope: ${pgo_cluster_name}
-    crunchy-postgres-exporter: &quot;false&quot;
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
@@ -1718,6 +1717,7 @@ spec:
   clustername: ${pgo_cluster_name}
   customconfig: &quot;&quot;
   database: ${pgo_cluster_name}
+  exporter: false
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
