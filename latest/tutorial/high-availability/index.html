@@ -1455,6 +1455,20 @@ hippo-ojnd          	running   	node01    	           0 MB     	          false
 
 <p>To leran how to use pod anti-affinity and node affinity, please refer to the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/">high availability architecture documentation</a></p>
 
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="no-primary-available-after-both-synchronous-replication-instances-fail">No Primary Available After Both Synchronous Replication Instances Fail</h3>
+
+<p>Though synchronous replication is available for guarding against transaction loss for <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#synchronous-replication-guarding-against-transactions-loss">write sensitive workloads</a>, by default the high availability systems prefers availability over consistency and will continue to accept writes to a primary even if a replica fails. Additionally, in most scenarios, a system using synchronous replication will be able to recover and self heal should a primary or a replica go down.</p>
+
+<p>However, in the case that both a primary and its synchronous replica go down at the same time, a new primary may not be promoted. To guard against transaction loss, the high availability system will not promote any instances if it cannot determine if they had been one of the synchronous instances. As such, when it recovers, it will bring up all the instances as replicas.</p>
+
+<p>To get out of this situation, inspect the replicas using <code>pgo failover --query</code> to determine the best candidate (typically the one with the least amount of replication lag). After determining the best candidate, promote one of the replicas using <code>pgo failover --target</code> command.</p>
+
+<p>If you are still having issues, you may need to execute into one of the Pods and inspect the state with the <code>patronictl</code> command.</p>
+
+<p>A detailed breakdown of this case be found <a href="https://github.com/CrunchyData/postgres-operator/issues/2132#issuecomment-748719843">here</a>.</p>
+
 <h2 id="next-steps">Next Steps</h2>
 
 <p>Backups, restores, point-in-time-recoveries: <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/">disaster recovery</a> is a big topic! We&rsquo;ll learn about you can <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/disaster-recovery/">perform disaster recovery</a> and more in the PostgreSQL Operator.</p>
