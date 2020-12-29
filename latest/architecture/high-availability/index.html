@@ -1642,6 +1642,54 @@ is described in the Pod Anti-Affinity section above), so if a Pod cannot be
 scheduled to a particular Node matching the label, it will be scheduled to a
 different Node.</p>
 
+<h2 id="tolerations">Tolerations</h2>
+
+<p>Kubernetes <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Tolerations</a>
+can help with the scheduling of Pods to appropriate nodes. There are many
+reasons that a Kubernetes administrator may want to use tolerations, such as
+restricting the types of Pods that can be assigned to particular Nodes.
+Reasoning and strategy for using taints and tolerations is outside the scope of
+this documentation.</p>
+
+<p>The PostgreSQL Operator supports the setting of tolerations across all
+PostgreSQL instances in a cluster, as well as for each particular PostgreSQL
+instance within a cluster. Both the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
+and <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_scale/"><code>pgo scale</code></a> commands
+support the <code>--toleration</code> flag, which allows for one or more tolerations to be
+added to a PostgreSQL cluster. Values accepted by the <code>--toleration</code> use the
+following format:</p>
+
+<pre><code>rule:Effect
+</code></pre>
+
+<p>where a <code>rule</code> can represent existence (e.g. <code>key</code>) or equality (<code>key=value</code>)
+and <code>Effect</code> is one of <code>NoSchedule</code>, <code>PreferNoSchedule</code>, or <code>NoExecute</code>. For
+more information on how tolerations work, please refer to the
+<a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a>.</p>
+
+<p>For example, to add two tolerations to a new PostgreSQL cluster, one that is an
+existence toleration for a key of <code>ssd</code> and the other that is an equality
+toleration for a key/value pair of <code>zone</code>/<code>east</code>, you can run the following
+command:</p>
+
+<pre><code>pgo create cluster hippo \
+  --toleration=ssd:NoSchedule \
+  --toleration=zone=east:NoSchedule
+</code></pre>
+
+<p>For another example, to assign equality toleration for a key/value pair of
+<code>zone</code>/<code>west</code> to a new instance in the <code>hippo</code> cluster, you can run the
+following command:</p>
+
+<pre><code>pgo scale hippo --toleration=zone=west:NoSchedule
+</code></pre>
+
+<p>Tolerations can be updated on an existing cluster. To do so, you will need to
+modify the <code>pgclusters.crunchydata.com</code> and <code>pgreplicas.crunchydata.com</code> custom
+resources directly, e.g. via the <code>kubectl edit</code> command. Once the updates are
+applied, the PostgreSQL Operator will roll out the changes to the appropriate
+instances.</p>
+
 <h2 id="rolling-updates">Rolling Updates</h2>
 
 <p>During the lifecycle of a PostgreSQL cluster, there are certain events that may
@@ -1702,6 +1750,7 @@ modification to the custom resource:</p>
 <li>Custom annotation changes</li>
 <li>Enabling/disabling the monitoring sidecar on a PostgreSQL cluster (<code>--metrics</code>)</li>
 <li>Tablespace additions</li>
+<li>Toleration modifications</li>
 </ul>
 
 

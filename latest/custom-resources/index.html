@@ -1413,49 +1413,6 @@ create additional secrets.</p>
 <p>The following guide goes through how to create a PostgreSQL cluster called
 <code>hippo</code> by creating a new custom resource.</p>
 
-<h4 id="step-1-creating-the-postgresql-user-secrets">Step 1: Creating the PostgreSQL User Secrets</h4>
-
-<p>As mentioned above, there are a minimum of three PostgreSQL user accounts that
-you must create in order to bootstrap a PostgreSQL cluster. These are:</p>
-
-<ul>
-<li>A PostgreSQL superuser</li>
-<li>A replication user</li>
-<li>A standard PostgreSQL user</li>
-</ul>
-
-<p>The below code will help you set up these Secrets.</p>
-
-<pre><code># this variable is the name of the cluster being created
-pgo_cluster_name=hippo
-# this variable is the namespace the cluster is being deployed into
-cluster_namespace=pgo
-
-# this is the superuser secret
-kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-postgres-secret&quot; \
-  --from-literal=username=postgres \
-  --from-literal=password=Supersecurepassword*
-
-# this is the replication user secret
-kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-primaryuser-secret&quot; \
-  --from-literal=username=primaryuser \
-  --from-literal=password=Anothersecurepassword*
-
-# this is the standard user secret
-kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-hippo-secret&quot; \
-  --from-literal=username=hippo \
-  --from-literal=password=Moresecurepassword*
-
-
-kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-postgres-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
-kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-primaryuser-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
-kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-hippo-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
-</code></pre>
-
-<h4 id="step-2-create-the-postgresql-cluster">Step 2: Create the PostgreSQL Cluster</h4>
-
-<p>With the Secrets in place. It is now time to create the PostgreSQL cluster.</p>
-
 <p>The below manifest references the Secrets created in the previous step to add a
 custom resource to the <code>pgclusters.crunchydata.com</code> custom resource definition.</p>
 
@@ -1477,12 +1434,10 @@ metadata:
     autofail: &quot;true&quot;
     crunchy-pgbadger: &quot;false&quot;
     crunchy-pgha-scope: ${pgo_cluster_name}
-    crunchy-postgres-exporter: &quot;false&quot;
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
     pg-pod-anti-affinity: &quot;&quot;
-    pgo-backrest: &quot;true&quot;
     pgo-version: 4.5.1
     pgouser: admin
   name: ${pgo_cluster_name}
@@ -1512,29 +1467,16 @@ spec:
     storageclass: &quot;&quot;
     storagetype: create
     supplementalgroups: &quot;&quot;
-  annotations:
-  backrestLimits: {}
-  backrestRepoPath: &quot;&quot;
-  backrestResources:
-    memory: 48Mi
-  backrestS3Bucket: &quot;&quot;
-  backrestS3Endpoint: &quot;&quot;
-  backrestS3Region: &quot;&quot;
-  backrestS3URIStyle: &quot;&quot;
-  backrestS3VerifyTLS: &quot;&quot;
+  annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
   ccpimagetag: centos7-12.5-4.5.1
   clustername: ${pgo_cluster_name}
-  customconfig: &quot;&quot;
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
-  pgBouncer:
-    limits: {}
-    replicas: 0
   pgDataSource:
     restoreFrom: &quot;&quot;
     restoreOpts: &quot;&quot;
@@ -1544,28 +1486,111 @@ spec:
     default: preferred
     pgBackRest: preferred
     pgBouncer: preferred
-  policies: &quot;&quot;
   port: &quot;5432&quot;
-  primarysecretname: ${pgo_cluster_name}-primaryuser-secret
-  replicas: &quot;0&quot;
-  rootsecretname: ${pgo_cluster_name}-postgres-secret
-  shutdown: false
-  standby: false
-  tablespaceMounts: {}
-  tls:
-    caSecret: &quot;&quot;
-    replicationTLSSecret: &quot;&quot;
-    tlsSecret: &quot;&quot;
-  tlsOnly: false
+  tolerations: []
   user: hippo
   userlabels:
-    crunchy-postgres-exporter: &quot;false&quot;
-    pg-pod-anti-affinity: &quot;&quot;
     pgo-version: 4.5.1
-  usersecretname: ${pgo_cluster_name}-hippo-secret
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
+</code></pre>
+
+<p>And that&rsquo;s all! The PostgreSQL Operator will go ahead and create the cluster.</p>
+
+<p>As part of this process, the PostgreSQL Operator creates several Secrets that
+contain the credentials for three user accounts that must be present in order
+to bootstrap a PostgreSQL cluster. These are:</p>
+
+<ul>
+<li>A PostgreSQL superuser</li>
+<li>A replication user</li>
+<li>A standard PostgreSQL user</li>
+</ul>
+
+<p>The Secrets represent the following PostgreSQL users and can be identified using
+the below patterns:</p>
+
+<table>
+<thead>
+<tr>
+<th>PostgreSQL User</th>
+<th>Type</th>
+<th>Secret Pattern</th>
+<th>Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>postgres</code></td>
+<td>Superuser</td>
+<td><code>&lt;clusterName&gt;-postgres-secret</code></td>
+<td>This is the PostgreSQL superuser account. Using the above example, the name of the secret would be <code>hippo-postgres-secret</code>.</td>
+</tr>
+
+<tr>
+<td><code>primaryuser</code></td>
+<td>Replication</td>
+<td><code>&lt;clusterName&gt;-primaryuser-secret</code></td>
+<td>This is for the managed replication user account for maintaining high availability. This account does not need to be accessed. Using the above example, the name of the secret would be <code>hippo-primaryuser-secret</code>.</td>
+</tr>
+
+<tr>
+<td>User</td>
+<td>User</td>
+<td><code>&lt;clusterName&gt;-&lt;User&gt;-secret</code></td>
+<td>This is an unprivileged user that should be used for most operations. This secret is set by the <code>user</code> attribute in the custom resources. In the above example, the name of this user is <code>hippo</code>, which would make the Secret <code>hippo-hippo-secret</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>To extract the user credentials so you can log into the database, you can use
+the following JSONPath expression:</p>
+
+<pre><code># namespace that the cluster is running in
+export cluster_namespace=pgo
+# name of the cluster
+export pgo_cluster_name=hippo
+# name of the user whose password we want to get
+export pgo_cluster_username=hippo
+
+kubectl -n &quot;${cluster_namespace}&quot; get secrets \
+  &quot;${pgo_cluster_name}-${pgo_cluster_username}-secret&quot; -o &quot;jsonpath={.data['password']}&quot; | base64 -d
+</code></pre>
+
+<h4 id="customizing-user-credentials">Customizing User Credentials</h4>
+
+<p>If you wish to set the credentials for these users on your own, you have to
+create these Secrets <em>before</em> creating a custom resource. The below example
+shows how to create the three required user accounts prior to creating a custom
+resource. Note that if you omit any of these Secrets, the Postgres Operator
+will create it on its own.</p>
+
+<pre><code># this variable is the name of the cluster being created
+pgo_cluster_name=hippo
+# this variable is the namespace the cluster is being deployed into
+cluster_namespace=pgo
+
+# this is the superuser secret
+kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-postgres-secret&quot; \
+  --from-literal=username=postgres \
+  --from-literal=password=Supersecurepassword*
+
+# this is the replication user secret
+kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-primaryuser-secret&quot; \
+  --from-literal=username=primaryuser \
+  --from-literal=password=Anothersecurepassword*
+
+# this is the standard user secret
+kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-hippo-secret&quot; \
+  --from-literal=username=hippo \
+  --from-literal=password=Moresecurepassword*
+
+
+kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-postgres-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
+kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-primaryuser-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
+kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-hippo-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
 </code></pre>
 
 <h3 id="create-a-postgresql-cluster-with-backups-in-s3">Create a PostgreSQL Cluster With Backups in S3</h3>
@@ -1598,47 +1623,7 @@ unset backrest_s3_key
 unset backrest_s3_key_secret
 </code></pre>
 
-<h4 id="step-2-creating-the-postgresql-user-secrets">Step 2: Creating the PostgreSQL User Secrets</h4>
-
-<p>Similar to the basic create cluster example, there are a minimum of three
-PostgreSQL user accounts that you must create in order to bootstrap a PostgreSQL
-cluster. These are:</p>
-
-<ul>
-<li>A PostgreSQL superuser</li>
-<li>A replication user</li>
-<li>A standard PostgreSQL user</li>
-</ul>
-
-<p>The below code will help you set up these Secrets.</p>
-
-<pre><code># this variable is the name of the cluster being created
-pgo_cluster_name=hippo
-# this variable is the namespace the cluster is being deployed into
-cluster_namespace=pgo
-
-# this is the superuser secret
-kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-postgres-secret&quot; \
-  --from-literal=username=postgres \
-  --from-literal=password=Supersecurepassword*
-
-# this is the replication user secret
-kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-primaryuser-secret&quot; \
-  --from-literal=username=primaryuser \
-  --from-literal=password=Anothersecurepassword*
-
-# this is the standard user secret
-kubectl create secret generic -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-hippo-secret&quot; \
-  --from-literal=username=hippo \
-  --from-literal=password=Moresecurepassword*
-
-
-kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-postgres-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
-kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-primaryuser-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
-kubectl label secrets -n &quot;${cluster_namespace}&quot; &quot;${pgo_cluster_name}-hippo-secret&quot; &quot;pg-cluster=${pgo_cluster_name}&quot;
-</code></pre>
-
-<h4 id="step-3-create-the-postgresql-cluster">Step 3: Create the PostgreSQL Cluster</h4>
+<h4 id="step-2-create-the-postgresql-cluster">Step 2: Create the PostgreSQL Cluster</h4>
 
 <p>With the Secrets in place. It is now time to create the PostgreSQL cluster.</p>
 
@@ -1671,7 +1656,6 @@ metadata:
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
     pg-pod-anti-affinity: &quot;&quot;
-    pgo-backrest: &quot;true&quot;
     pgo-version: 4.5.1
     pgouser: admin
   name: ${pgo_cluster_name}
@@ -1701,11 +1685,7 @@ spec:
     storageclass: &quot;&quot;
     storagetype: dynamic
     supplementalgroups: &quot;&quot;
-  annotations:
-  backrestLimits: {}
-  backrestRepoPath: &quot;&quot;
-  backrestResources:
-    memory: 48Mi
+  annotations: {}
   backrestS3Bucket: ${backrest_s3_bucket}
   backrestS3Endpoint: ${backrest_s3_endpoint}
   backrestS3Region: ${backrest_s3_region}
@@ -1715,16 +1695,11 @@ spec:
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
   ccpimagetag: centos7-12.5-4.5.1
   clustername: ${pgo_cluster_name}
-  customconfig: &quot;&quot;
   database: ${pgo_cluster_name}
-  exporter: false
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
-  pgBouncer:
-    limits: {}
-    replicas: 0
   pgDataSource:
     restoreFrom: &quot;&quot;
     restoreOpts: &quot;&quot;
@@ -1734,25 +1709,140 @@ spec:
     default: preferred
     pgBackRest: preferred
     pgBouncer: preferred
-  policies: &quot;&quot;
   port: &quot;5432&quot;
-  primarysecretname: ${pgo_cluster_name}-primaryuser-secret
-  replicas: &quot;0&quot;
-  rootsecretname: ${pgo_cluster_name}-postgres-secret
-  shutdown: false
-  standby: false
-  tablespaceMounts: {}
-  tls:
-    caSecret: &quot;&quot;
-    replicationTLSSecret: &quot;&quot;
-    tlsSecret: &quot;&quot;
-  tlsOnly: false
+  tolerations: []
   user: hippo
   userlabels:
     backrest-storage-type: &quot;s3&quot;
+    pgo-version: 4.5.1
+EOF
+
+kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
+</code></pre>
+
+<h3 id="create-a-postgresql-cluster-with-tls">Create a PostgreSQL Cluster with TLS</h3>
+
+<p>There are three items that are required to enable TLS in your PostgreSQL clusters:</p>
+
+<ul>
+<li>A CA certificate</li>
+<li>A TLS private key</li>
+<li>A TLS certificate</li>
+</ul>
+
+<p>It is possible <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/">create a PostgreSQL cluster with TLS</a> using a custom resource workflow with the prerequisite of ensuring the above three items are created.</p>
+
+<p>For a detailed explanation for how TLS works with the PostgreSQL Operator, please see the <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/">TLS tutorial</a>.</p>
+
+<h4 id="step-1-create-tls-secrets">Step 1: Create TLS Secrets</h4>
+
+<p>There are two Secrets that need to be created:</p>
+
+<ol>
+<li>A Secret containing the certificate authority (CA). You may only need to create this Secret once, as a CA certificate can be shared amongst your clusters.</li>
+<li>A Secret that contains the TLS private key &amp; certificate.</li>
+</ol>
+
+<p>This assumes that you have already <a href="https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION">generated your TLS certificates</a> where the CA is named <code>ca.crt</code> and the server key and certificate are named <code>server.key</code> and <code>server.crt</code> respectively.</p>
+
+<p>Substitute the correct values for your environment into the environmental variables in the example below:</p>
+
+<pre><code># this variable is the name of the cluster being created
+export pgo_cluster_name=hippo
+# this variable is the namespace the cluster is being deployed into
+export cluster_namespace=pgo
+# this is the local path to where you stored the CA and server key and certificate
+export cluster_tls_asset_path=/path/to
+
+# create the CA secret. if this already exists, it's OK if it fails
+kubectl create secret generic postgresql-ca -n &quot;${cluster_namespace}&quot; \
+  --from-file=&quot;ca.crt=${cluster_tls_asset_path}/ca.crt&quot;
+
+# create the server key/certificate secret
+kubectl create secret tls &quot;${pgo_cluster_name}-tls-keypair&quot; -n &quot;${cluster_namespace}&quot; \
+  --cert=&quot;${cluster_tls_asset_path}/server.crt&quot; \
+  --key=&quot;${cluster_tls_asset_path}/server.key&quot;
+</code></pre>
+
+<h4 id="step-2-create-the-postgresql-cluster-1">Step 2: Create the PostgreSQL Cluster</h4>
+
+<p>The below example uses the Secrets created in the previous step and creates a TLS-enabled PostgreSQL cluster. Additionally, this example sets the <code>tlsOnly</code> attribute to <code>true</code>, which requires all TCP connections to occur over TLS:</p>
+
+<pre><code># this variable is the name of the cluster being created
+export pgo_cluster_name=hippo
+# this variable is the namespace the cluster is being deployed into
+export cluster_namespace=pgo
+
+cat &lt;&lt;-EOF &gt; &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
+apiVersion: crunchydata.com/v1
+kind: Pgcluster
+metadata:
+  annotations:
+    current-primary: ${pgo_cluster_name}
+  labels:
+    autofail: &quot;true&quot;
+    crunchy-pgbadger: &quot;false&quot;
+    crunchy-pgha-scope: ${pgo_cluster_name}
+    deployment-name: ${pgo_cluster_name}
+    name: ${pgo_cluster_name}
+    pg-cluster: ${pgo_cluster_name}
     pg-pod-anti-affinity: &quot;&quot;
     pgo-version: 4.5.1
-  usersecretname: ${pgo_cluster_name}-hippo-secret
+    pgouser: admin
+  name: ${pgo_cluster_name}
+  namespace: ${cluster_namespace}
+spec:
+  BackrestStorage:
+    accessmode: ReadWriteMany
+    matchLabels: &quot;&quot;
+    name: &quot;&quot;
+    size: 1G
+    storageclass: &quot;&quot;
+    storagetype: create
+    supplementalgroups: &quot;&quot;
+  PrimaryStorage:
+    accessmode: ReadWriteMany
+    matchLabels: &quot;&quot;
+    name: ${pgo_cluster_name}
+    size: 1G
+    storageclass: &quot;&quot;
+    storagetype: create
+    supplementalgroups: &quot;&quot;
+  ReplicaStorage:
+    accessmode: ReadWriteMany
+    matchLabels: &quot;&quot;
+    name: &quot;&quot;
+    size: 1G
+    storageclass: &quot;&quot;
+    storagetype: create
+    supplementalgroups: &quot;&quot;
+  annotations: {}
+  ccpimage: crunchy-postgres-ha
+  ccpimageprefix: registry.developers.crunchydata.com/crunchydata
+  ccpimagetag: centos7-12.5-4.5.1
+  clustername: ${pgo_cluster_name}
+  database: ${pgo_cluster_name}
+  exporterport: &quot;9187&quot;
+  limits: {}
+  name: ${pgo_cluster_name}
+  namespace: ${cluster_namespace}
+  pgDataSource:
+    restoreFrom: &quot;&quot;
+    restoreOpts: &quot;&quot;
+  pgbadgerport: &quot;10000&quot;
+  pgoimageprefix: registry.developers.crunchydata.com/crunchydata
+  podAntiAffinity:
+    default: preferred
+    pgBackRest: preferred
+    pgBouncer: preferred
+  port: &quot;5432&quot;
+  tls:
+    caSecret: postgresql-ca
+    tlsSecret: ${pgo_cluster_name}-tls-keypair
+  tlsOnly: true
+  user: hippo
+  userlabels:
+    pgo-version: 4.5.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1842,6 +1932,7 @@ spec:
     storageclass: &quot;&quot;
     storagetype: create
     supplementalgroups: &quot;&quot;
+  tolerations: []
   userlabels:
     NodeLabelKey: &quot;&quot;
     NodeLabelValue: &quot;&quot;
@@ -2209,18 +2300,6 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>PrimaryStorage</td>
-<td><code>create</code></td>
-<td>A specification that gives information about the storage attributes for the primary instance in the PostgreSQL cluster. For details, please see the <code>Storage Specification</code> section below. This is required.</td>
-</tr>
-
-<tr>
-<td>RootSecretName</td>
-<td><code>create</code></td>
-<td>The name of a Kubernetes Secret that contains the credentials for a PostgreSQL <em>replication user</em> that is created when the PostgreSQL cluster is first bootstrapped. For more information, please see <code>User Secret Specification</code>.</td>
-</tr>
-
-<tr>
 <td>ReplicaStorage</td>
 <td><code>create</code></td>
 <td>A specification that gives information about the storage attributes for any replicas in the PostgreSQL cluster. For details, please see the <code>Storage Specification</code> section below. This will likely be changed in the future based on the nature of the high-availability system, but presently it is still required that you set it. It is recommended you use similar settings to that of <code>PrimaryStorage</code>.</td>
@@ -2236,12 +2315,6 @@ make changes, as described below.</p>
 <td>Resources</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource requests that the PostgreSQL cluster should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource requests</a>.</td>
-</tr>
-
-<tr>
-<td>RootSecretName</td>
-<td><code>create</code></td>
-<td>The name of a Kubernetes Secret that contains the credentials for a PostgreSQL superuser that is created when the PostgreSQL cluster is first bootstrapped. For more information, please see <code>User Secret Specification</code>.</td>
 </tr>
 
 <tr>
@@ -2263,12 +2336,6 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>UserSecretName</td>
-<td><code>create</code></td>
-<td>The name of a Kubernetes Secret that contains the credentials for a standard PostgreSQL user that is created when the PostgreSQL cluster is first bootstrapped. For more information, please see <code>User Secret Specification</code>.</td>
-</tr>
-
-<tr>
 <td>TablespaceMounts</td>
 <td><code>create</code>,<code>update</code></td>
 <td>Lists any tablespaces that are attached to the PostgreSQL cluster. Tablespaces can be added at a later time by updating the <code>TablespaceMounts</code> entry, but they cannot be removed. Stores a map of information, with the key being the name of the tablespace, and the value being a Storage Specification, defined below.</td>
@@ -2284,6 +2351,12 @@ make changes, as described below.</p>
 <td>TLSOnly</td>
 <td><code>create</code></td>
 <td>If set to true, requires client connections to use only TLS to connect to the PostgreSQL database.</td>
+</tr>
+
+<tr>
+<td>Tolerations</td>
+<td><code>create</code>,<code>update</code></td>
+<td>Any array of Kubernetes <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Tolerations</a>. Please refer to the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a> for how to set this field.</td>
 </tr>
 
 <tr>
@@ -2614,6 +2687,12 @@ cluster. All of the attributes only affect the replica when it is created.</p>
 <td>UserLabels</td>
 <td><code>create</code></td>
 <td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; for things that really should be modeled in the CRD. These values do get copied to the actually CR labels. If you want to set up metrics collection, you would specify <code>&quot;crunchy-postgres-exporter&quot;: &quot;true&quot;</code> here. This also allows for node selector pinning using <code>NodeLabelKey</code> and <code>NodeLabelValue</code>. However, this structure does need to be set, so just follow whatever is in the example.</td>
+</tr>
+
+<tr>
+<td>Tolerations</td>
+<td><code>create</code>,<code>update</code></td>
+<td>Any array of Kubernetes <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Tolerations</a>. Please refer to the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a> for how to set this field.</td>
 </tr>
 </tbody>
 </table>

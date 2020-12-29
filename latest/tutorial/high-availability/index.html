@@ -1453,7 +1453,18 @@ hippo-ojnd          	running   	node01    	           0 MB     	          false
 
 <h2 id="pod-anti-affinity-and-node-affinity">Pod Anti-Affinity and Node Affinity</h2>
 
-<p>To leran how to use pod anti-affinity and node affinity, please refer to the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/">high availability architecture documentation</a></p>
+<p>To learn how to use pod anti-affinity and node affinity, please refer to the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/">high availability architecture documentation</a>.</p>
+
+<h2 id="tolerations">Tolerations</h2>
+
+<p>If you want to have a PostgreSQL instance use specific Kubernetes <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">tolerations</a>, you can use the <code>--toleration</code> flag on <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_scale/"><code>pgo scale</code></a>. Any tolerations added to the new PostgreSQL instance fully replace any tolerations available to the entire cluster.</p>
+
+<p>For example, to assign equality toleration for a key/value pair of <code>zone</code>/<code>west</code>, you can run the following command:</p>
+
+<pre><code>pgo scale hippo --toleration=zone=west:NoSchedule
+</code></pre>
+
+<p>For more information on the PostgreSQL Operator and tolerations, please review the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/">high availability architecture documentation</a>.</p>
 
 <h2 id="troubleshooting">Troubleshooting</h2>
 
