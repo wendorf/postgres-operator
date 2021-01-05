@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
@@ -1429,8 +1429,8 @@ command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>which, if working, will yield results similar to:</p>
 
-<pre><code>pgo client version 4.5.1
-pgo-apiserver version 4.5.1
+<pre><code>pgo client version 4.6.0-beta.1
+pgo-apiserver version 4.6.0-beta.1
 </code></pre>
 
 <h3 id="inspecting-the-postgresql-operator-configuration">Inspecting the PostgreSQL Operator Configuration</h3>
@@ -1446,7 +1446,7 @@ deployed by default, which storage classes are being used, etc.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">BasicAuth<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
 Cluster<span style="color:#111">:</span>
   CCPImagePrefix<span style="color:#111">:</span> crunchydata
-  CCPImageTag<span style="color:#111">:</span> centos7-12.5-4.5.1
+  CCPImageTag<span style="color:#111">:</span> centos8-13.1-4.6.0-beta.1
   Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Metrics<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   Badger<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
@@ -1473,7 +1473,7 @@ Cluster<span style="color:#111">:</span>
 Pgo<span style="color:#111">:</span>
   Audit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PGOImagePrefix<span style="color:#111">:</span> crunchydata
-  PGOImageTag<span style="color:#111">:</span> centos7-4.5.1
+  PGOImageTag<span style="color:#111">:</span> centos8-4.6.0-beta.1
 PrimaryStorage<span style="color:#111">:</span> nfsstorage
 BackupStorage<span style="color:#111">:</span> nfsstorage
 ReplicaStorage<span style="color:#111">:</span> nfsstorage
@@ -1561,10 +1561,10 @@ gibibytes of memory, you can use the following command:</p>
 
 <p>To create a PostgreSQL cluster that uses the geospatial extension PostGIS, you
 can execute the following command, updated with your desired image tag. In the
-example below, the cluster will use PostgreSQL 12.5 and PostGIS 3.0:</p>
+example below, the cluster will use PostgreSQL 13.1 and PostGIS 3.0:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hagiscluster <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --ccp-image<span style="color:#f92672">=</span>crunchy-postgres-gis-ha <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --ccp-image-tag<span style="color:#f92672">=</span>centos7-12.5-3.0-4.5.1</code></pre></div>
+</span><span style="color:#8045ff"></span>  --ccp-image-tag<span style="color:#f92672">=</span>centos8-13.1-3.0-4.6.0-beta.1</code></pre></div>
 <h4 id="create-a-postgresql-cluster-with-a-tablespace">Create a PostgreSQL Cluster with a Tablespace</h4>
 
 <p>Tablespaces are a PostgreSQL feature that allows a user to select specific
@@ -1654,7 +1654,7 @@ including the nodes that the pods are assigned to</li>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
 <p>which will yield output similar to:</p>
 
-<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.5-4.5.1)
+<pre><code>cluster : hacluster (crunchy-postgres-ha:centos8-13.1-4.6.0-beta.1)
 	pod : hacluster-6dc6cfcfb9-f9knq (Running) on node01 (1/1) (primary)
 	pvc : hacluster
 	resources : CPU Limit= Memory Limit=, CPU Request= Memory Request=
@@ -1662,7 +1662,7 @@ including the nodes that the pods are assigned to</li>
 	deployment : hacluster
 	deployment : hacluster-backrest-shared-repo
 	service : hacluster - ClusterIP (10.102.20.42)
-	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy-postgres-exporter=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.5.1 current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+	labels : archive-timeout=60 deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster pgo-version=4.6.0-beta.1 current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
 </code></pre>
 
 <h3 id="deleting-a-cluster">Deleting a Cluster</h3>
@@ -1995,16 +1995,32 @@ to see the overall information about the PostgreSQL cluster:</p>
 
 <p>The PostgreSQL Operator is set up with an automated failover system based on
 distributed consensus, but there may be times where you wish to have your
-cluster manually failover. If you wish to have your cluster manually failover,
-first, query your cluster to determine which failover targets are available.
-The query command also provides information that may help your decision, such as
-replication lag:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo failover --query hacluster</code></pre></div>
+cluster manually failover. There are two ways to issue a manual failover to
+your PostgreSQL cluster:</p>
+
+<ol>
+<li>Allow for the PostgreSQL Operator to select the best replica candidate to
+failover to</li>
+<li>Select your own replica candidate to failover to.</li>
+</ol>
+
+<p>To have the PostgreSQL Operator select the best replica candidate for failover,
+all you need to do is execute the following command:</p>
+
+<pre><code>pgo failover hacluster
+</code></pre>
+
+<p>If you wish to have your cluster manually failover, you must first query your
+cluster to determine which failover targets are available. The query command
+also provides information that may help your decision, such as replication lag:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo failover hacluster --query</code></pre></div>
 <p>Once you have selected the replica that is best for your to failover to, you can
 perform a failover with the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo failover hacluster --target<span style="color:#f92672">=</span>hacluster-abcd</code></pre></div>
 <p>where <code>hacluster-abcd</code> is the name of the PostgreSQL instance that you want to
-promote to become the new primary</p>
+promote to become the new primary.</p>
+
+<p>Both methods perform the failover immediately upon execution.</p>
 
 <h4 id="destroying-a-replica">Destroying a Replica</h4>
 
@@ -2381,7 +2397,7 @@ equivalent S3-compatible storage system that is accessible to both the primary
 and standby clusters. For example, to create a primary cluster to these
 specifications:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hippo --pgbouncer --replica-count<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --pgbackrest-storage-type<span style="color:#f92672">=</span>local,s3 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --pgbackrest-storage-type<span style="color:#f92672">=</span>posix,s3 <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-key<span style="color:#f92672">=</span>&lt;redacted&gt; <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-key-secret<span style="color:#f92672">=</span>&lt;redacted&gt; <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --pgbackrest-s3-bucket<span style="color:#f92672">=</span>watering-hole <span style="color:#8045ff">\

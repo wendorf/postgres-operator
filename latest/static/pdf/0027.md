@@ -272,10 +272,33 @@ when creating a PostgreSQL cluster;
 pgo create cluster thatcluster --node-label=region=us-east-1
 ```
 
-The Node Affinity only uses the `preferred` scheduling strategy (similar to what
-is described in the Pod Anti-Affinity section above), so if a Pod cannot be
-scheduled to a particular Node matching the label, it will be scheduled to a
-different Node.
+By default, node affinity uses the `preferred` scheduling strategy (similar to
+what is described in the [Pod Anti-Affinity]("#how-the-crunchy-postgresql-operator-uses-pod-anti-affinity")
+section above), so if a Pod cannot be scheduled to a particular Node matching
+the label, it will be scheduled to a different Node.
+
+The PostgreSQL Operator supports two different types of node affinity:
+
+- `preferred`
+- `required`
+
+which can be selected with the `--node-affinity-type` flag, e.g:
+
+```
+pgo create cluster hippo \
+  --node-label=region=us-east-1 --node-affinity-type=required
+```
+
+When creating a cluster, the node affinity rules will be applied to the primary
+and any other PostgreSQL instances that are added. If you would like to specify
+a node affinity rule for a specific instance, you can do so with the
+[`pgo scale`]({{< relref "pgo-client/reference/pgo_scale.md">}}) command and the
+`--node-label` and `--node-affinity-type` flags, i.e:
+
+```
+pgo scale cluster hippo \
+  --node-label=region=us-south-1 --node-affinity-type=required
+```
 
 ## Tolerations
 
@@ -322,11 +345,24 @@ following command:
 pgo scale hippo --toleration=zone=west:NoSchedule
 ```
 
-Tolerations can be updated on an existing cluster. To do so, you will need to
-modify the `pgclusters.crunchydata.com` and `pgreplicas.crunchydata.com` custom
-resources directly, e.g. via the `kubectl edit` command. Once the updates are
-applied, the PostgreSQL Operator will roll out the changes to the appropriate
-instances.
+Tolerations can be updated on an existing cluster. You can do this by either
+modifying the `pgclusters.crunchydata.com` and `pgreplicas.crunchydata.com`
+custom resources directly, e.g. via the `kubectl edit` command, or with the
+[`pgo update cluster`]({{ relref "pgo-client/reference/pgo_update_cluster.md" }})
+command. Using the `pgo update cluster` command, a toleration can be removed by
+adding a `-` at the end of the toleration effect.
+
+For example, to add a toleration of `zone=west:NoSchedule` and remove the
+toleration of `zone=east:NoSchedule`, you could run the following command:
+
+```
+pgo update cluster hippo \
+  --toleration=zone=west:NoSchedule \
+  --toleration=zone-east:NoSchedule-
+```
+
+Once the updates are applied, the PostgreSQL Operator will roll out the changes
+to the appropriate instances.
 
 ## Rolling Updates
 

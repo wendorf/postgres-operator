@@ -580,13 +580,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">
@@ -1147,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
@@ -1291,7 +1291,6 @@
       <option value="/pgo-client/reference/pgo_apply/" >-- pgo apply</option>
       <option value="/pgo-client/reference/pgo_backup/" >-- pgo backup</option>
       <option value="/pgo-client/reference/pgo_cat/" >-- pgo cat</option>
-      <option value="/pgo-client/reference/pgo_clone/" >-- pgo clone</option>
       <option value="/pgo-client/reference/pgo_create/" >-- pgo create</option>
       <option value="/pgo-client/reference/pgo_create_cluster/" >-- pgo create cluster</option>
       <option value="/pgo-client/reference/pgo_create_namespace/" >-- pgo create namespace</option>
@@ -1450,7 +1449,7 @@
       --database string                  The database to run the SQL policy against.
   -h, --help                             help for schedule
       --pgbackrest-backup-type string    The type of pgBackRest backup to schedule (full, diff or incr).
-      --pgbackrest-storage-type string   The type of storage to use when scheduling pgBackRest backups. Either &quot;local&quot;, &quot;s3&quot; or both, comma separated. (default &quot;local&quot;)
+      --pgbackrest-storage-type string   The type of storage to use when scheduling pgBackRest backups. Either &quot;posix&quot;, &quot;s3&quot; or both, comma separated. (default &quot;posix&quot;)
       --policy string                    The policy to use for SQL schedules.
       --schedule string                  The schedule assigned to the cron task.
       --schedule-opts string             The custom options passed to the create schedule API.

@@ -578,13 +578,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">
@@ -1145,6 +1138,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
@@ -1431,14 +1431,11 @@ metadata:
   annotations:
     current-primary: ${pgo_cluster_name}
   labels:
-    autofail: &quot;true&quot;
-    crunchy-pgbadger: &quot;false&quot;
     crunchy-pgha-scope: ${pgo_cluster_name}
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: 4.5.1
+    pgo-version: 4.6.0-beta.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1470,7 +1467,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos7-12.5-4.5.1
+  ccpimagetag: centos8-13.1-4.6.0-beta.1
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1490,7 +1487,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.5.1
+    pgo-version: 4.6.0-beta.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1648,15 +1645,11 @@ metadata:
   annotations:
     current-primary: ${pgo_cluster_name}
   labels:
-    autofail: &quot;true&quot;
-    backrest-storage-type: &quot;s3&quot;
-    crunchy-pgbadger: &quot;false&quot;
     crunchy-pgha-scope: ${pgo_cluster_name}
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: 4.5.1
+    pgo-version: 4.6.0-beta.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1686,6 +1679,8 @@ spec:
     storagetype: dynamic
     supplementalgroups: &quot;&quot;
   annotations: {}
+  backrestStorageTypes:
+  - s3
   backrestS3Bucket: ${backrest_s3_bucket}
   backrestS3Endpoint: ${backrest_s3_endpoint}
   backrestS3Region: ${backrest_s3_region}
@@ -1693,7 +1688,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos7-12.5-4.5.1
+  ccpimagetag: centos8-13.1-4.6.0-beta.1
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1713,8 +1708,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    backrest-storage-type: &quot;s3&quot;
-    pgo-version: 4.5.1
+    pgo-version: 4.6.0-beta.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1780,14 +1774,11 @@ metadata:
   annotations:
     current-primary: ${pgo_cluster_name}
   labels:
-    autofail: &quot;true&quot;
-    crunchy-pgbadger: &quot;false&quot;
     crunchy-pgha-scope: ${pgo_cluster_name}
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: 4.5.1
+    pgo-version: 4.6.0-beta.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1819,7 +1810,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos7-12.5-4.5.1
+  ccpimagetag: centos8-13.1-4.6.0-beta.1
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1842,7 +1833,7 @@ spec:
   tlsOnly: true
   user: hippo
   userlabels:
-    pgo-version: 4.5.1
+    pgo-version: 4.6.0-beta.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1934,10 +1925,7 @@ spec:
     supplementalgroups: &quot;&quot;
   tolerations: []
   userlabels:
-    NodeLabelKey: &quot;&quot;
-    NodeLabelValue: &quot;&quot;
-    pg-pod-anti-affinity: &quot;&quot;
-    pgo-version: 4.5.1
+    pgo-version: 4.6.0-beta.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;
@@ -2120,21 +2108,27 @@ make changes, as described below.</p>
 
 <tbody>
 <tr>
-<td>Annotations</td>
+<td>annotations</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/">Annotations</a> that can be applied to the different deployments managed by the PostgreSQL Operator (PostgreSQL, pgBackRest, pgBouncer). For more information, please see the &ldquo;Annotations Specification&rdquo; below.</td>
 </tr>
 
 <tr>
-<td>BackrestConfig</td>
+<td>backrestConfig</td>
 <td><code>create</code></td>
 <td>Optional references to pgBackRest configuration files</td>
 </tr>
 
 <tr>
-<td>BackrestLimits</td>
+<td>backrestLimits</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource limits that the pgBackRest repository should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource limits</a>.</td>
+</tr>
+
+<tr>
+<td>backrestRepoPath</td>
+<td><code>create</code></td>
+<td>Optional reference to the location of the pgBackRest repository.</td>
 </tr>
 
 <tr>
@@ -2144,31 +2138,31 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>BackrestS3Bucket</td>
+<td>backrestS3Bucket</td>
 <td><code>create</code></td>
 <td>An optional parameter that specifies a S3 bucket that pgBackRest should use.</td>
 </tr>
 
 <tr>
-<td>BackrestS3Endpoint</td>
+<td>backrestS3Endpoint</td>
 <td><code>create</code></td>
 <td>An optional parameter that specifies the S3 endpoint pgBackRest should use.</td>
 </tr>
 
 <tr>
-<td>BackrestS3Region</td>
+<td>backrestS3Region</td>
 <td><code>create</code></td>
 <td>An optional parameter that specifies a cloud region that pgBackRest should use.</td>
 </tr>
 
 <tr>
-<td>BackrestS3URIStyle</td>
+<td>backrestS3URIStyle</td>
 <td><code>create</code></td>
 <td>An optional parameter that specifies if pgBackRest should use the <code>path</code> or <code>host</code> S3 URI style.</td>
 </tr>
 
 <tr>
-<td>BackrestS3VerifyTLS</td>
+<td>backrestS3VerifyTLS</td>
 <td><code>create</code></td>
 <td>An optional parameter that specifies if pgBackRest should verify the TLS endpoint.</td>
 </tr>
@@ -2180,121 +2174,145 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>CCPImage</td>
+<td>backrestStorageTypes</td>
+<td><code>create</code></td>
+<td>An optional parameter that takes an array of different repositories types that can be used to store pgBackRest backups. Choices are <code>posix</code> and <code>s3</code>. If nothing is specified, it defaults to <code>posix</code>. (<code>local</code>, equivalent to <code>posix</code>, is available for backwards compatibility).</td>
+</tr>
+
+<tr>
+<td>ccpimage</td>
 <td><code>create</code></td>
 <td>The name of the PostgreSQL container image to use, e.g. <code>crunchy-postgres-ha</code> or <code>crunchy-postgres-ha-gis</code>.</td>
 </tr>
 
 <tr>
-<td>CCPImagePrefix</td>
+<td>ccpimageprefix</td>
 <td><code>create</code></td>
 <td>If provided, the image prefix (or registry) of the PostgreSQL container image, e.g. <code>registry.developers.crunchydata.com/crunchydata</code>. The default is to use the image prefix set in the PostgreSQL Operator configuration.</td>
 </tr>
 
 <tr>
-<td>CCPImageTag</td>
+<td>ccpimagetag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos7-12.5-4.5.1</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.1-4.6.0-beta.1</code>.</td>
 </tr>
 
 <tr>
-<td>ClusterName</td>
+<td>clustername</td>
 <td><code>create</code></td>
 <td>The name of the PostgreSQL cluster, e.g. <code>hippo</code>. This is used to group PostgreSQL instances (primary, replicas) together.</td>
 </tr>
 
 <tr>
-<td>CustomConfig</td>
+<td>customconfig</td>
 <td><code>create</code></td>
 <td>If specified, references a custom ConfigMap to use when bootstrapping a PostgreSQL cluster. For the shape of this file, please see the section on <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom Configuration</a></td>
 </tr>
 
 <tr>
-<td>Database</td>
+<td>database</td>
 <td><code>create</code></td>
 <td>The name of a database that the PostgreSQL user can log into after the PostgreSQL cluster is created.</td>
 </tr>
 
 <tr>
-<td>ExporterLimits</td>
+<td>disableAutofail</td>
 <td><code>create</code>, <code>update</code></td>
-<td>Specify the container resource limits that the <code>crunchy-postgres-exporter</code> sidecar uses when it is deployed with a PostgreSQL instance. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource limits</a>.</td>
+<td>If set to true, disables the high availability capabilities of a PostgreSQL cluster. By default, every cluster can have high availability if there is at least one replica.</td>
 </tr>
 
 <tr>
-<td>Exporter</td>
+<td>exporter</td>
 <td><code>create</code>,<code>update</code></td>
 <td>If <code>true</code>, deploys the <code>crunchy-postgres-exporter</code> sidecar for metrics collection</td>
 </tr>
 
 <tr>
-<td>ExporterPort</td>
+<td>exporterLimits</td>
+<td><code>create</code>, <code>update</code></td>
+<td>Specify the container resource limits that the <code>crunchy-postgres-exporter</code> sidecar uses when it is deployed with a PostgreSQL instance. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource limits</a>.</td>
+</tr>
+
+<tr>
+<td>exporterport</td>
 <td><code>create</code></td>
 <td>If <code>Exporter</code> is <code>true</code>, then this specifies the port that the metrics sidecar runs on (e.g. <code>9187</code>)</td>
 </tr>
 
 <tr>
-<td>ExporterResources</td>
+<td>exporterResources</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource requests that the <code>crunchy-postgres-exporter</code> sidecar uses when it is deployed with a PostgreSQL instance. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource requests</a>.</td>
 </tr>
 
 <tr>
-<td>Limits</td>
+<td>limits</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource limits that the PostgreSQL cluster should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource limits</a>.</td>
 </tr>
 
 <tr>
-<td>Name</td>
+<td>name</td>
 <td><code>create</code></td>
 <td>The name of the PostgreSQL instance that is the primary. On creation, this should be set to be the same as <code>ClusterName</code>.</td>
 </tr>
 
 <tr>
-<td>Namespace</td>
+<td>namespace</td>
 <td><code>create</code></td>
 <td>The Kubernetes Namespace that the PostgreSQL cluster is deployed in.</td>
 </tr>
 
 <tr>
-<td>PGBadgerPort</td>
+<td>nodeAffinity</td>
 <td><code>create</code></td>
-<td>If the <code>&quot;crunchy-pgbadger&quot;</code> label is set in <code>UserLabels</code>, then this specifies the port that the pgBadger sidecar runs on (e.g. <code>10000</code>)</td>
+<td>Sets the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#node-affinity">node affinity rules</a> for the PostgreSQL cluster and associated PostgreSQL instances. Can be overridden on a per-instance (<code>pgreplicas.crunchydata.com</code>) basis. Please see the <code>Node Affinity Specification</code> section below.</td>
 </tr>
 
 <tr>
-<td>PGDataSource</td>
-<td><code>create</code></td>
-<td>Used to indicate if a PostgreSQL cluster should bootstrap its data from a pgBackRest repository. This uses the PostgreSQL Data Source Specification, described below.</td>
+<td>pgBadger</td>
+<td><code>create</code>,<code>update</code></td>
+<td>If <code>true</code>, deploys the <code>crunchy-pgbadger</code> sidecar for query analysis.</td>
 </tr>
 
 <tr>
-<td>PGOImagePrefix</td>
+<td>pgbadgerport</td>
 <td><code>create</code></td>
-<td>If provided, the image prefix (or registry) of any PostgreSQL Operator images that are used for jobs, e.g. <code>registry.developers.crunchydata.com/crunchydata</code>. The default is to use the image prefix set in the PostgreSQL Operator configuration.</td>
+<td>If the <code>PGBadger</code> label is set, then this specifies the port that the pgBadger sidecar runs on (e.g. <code>10000</code>)</td>
 </tr>
 
 <tr>
-<td>PgBouncer</td>
+<td>pgBouncer</td>
 <td><code>create</code>, <code>update</code></td>
 <td>If specified, defines the attributes to use for the pgBouncer connection pooling deployment that can be used in conjunction with this PostgreSQL cluster. Please see the specification defined below.</td>
 </tr>
 
 <tr>
-<td>PodAntiAffinity</td>
+<td>pgDataSource</td>
+<td><code>create</code></td>
+<td>Used to indicate if a PostgreSQL cluster should bootstrap its data from a pgBackRest repository. This uses the PostgreSQL Data Source Specification, described below.</td>
+</tr>
+
+<tr>
+<td>pgoimageprefix</td>
+<td><code>create</code></td>
+<td>If provided, the image prefix (or registry) of any PostgreSQL Operator images that are used for jobs, e.g. <code>registry.developers.crunchydata.com/crunchydata</code>. The default is to use the image prefix set in the PostgreSQL Operator configuration.</td>
+</tr>
+
+<tr>
+<td>podAntiAffinity</td>
 <td><code>create</code></td>
 <td>A required section. Sets the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#how-the-crunchy-postgresql-operator-uses-pod-anti-affinity">pod anti-affinity rules</a> for the PostgreSQL cluster and associated deployments. Please see the <code>Pod Anti-Affinity Specification</code> section below.</td>
 </tr>
 
 <tr>
-<td>Policies</td>
+<td>policies</td>
 <td><code>create</code></td>
 <td>If provided, a comma-separated list referring to <code>pgpolicies.crunchydata.com.Spec.Name</code> that should be run once the PostgreSQL primary is first initialized.</td>
 </tr>
 
 <tr>
-<td>Port</td>
+<td>port</td>
 <td><code>create</code></td>
 <td>The port that PostgreSQL will run on, e.g. <code>5432</code>.</td>
 </tr>
@@ -2306,69 +2324,75 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>Replicas</td>
+<td>replicas</td>
 <td><code>create</code></td>
 <td>The number of replicas to create after a PostgreSQL primary is first initialized. This only works on create; to scale a cluster after it is initialized, please use the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_scale/"><code>pgo scale</code></a> command.</td>
 </tr>
 
 <tr>
-<td>Resources</td>
+<td>resources</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource requests that the PostgreSQL cluster should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource requests</a>.</td>
 </tr>
 
 <tr>
-<td>SyncReplication</td>
-<td><code>create</code></td>
-<td>If set to <code>true</code>, specifies the PostgreSQL cluster to use <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#how-the-crunchy-postgresql-operator-uses-pod-anti-affinity#synchronous-replication-guarding-against-transactions-loss">synchronous replication</a>.</td>
+<td>serviceType</td>
+<td><code>create</code>, <code>update</code></td>
+<td>Sets the Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a> type to use for the cluster. If not set, defaults to <code>ClusterIP</code>.</td>
 </tr>
 
 <tr>
-<td>User</td>
-<td><code>create</code></td>
-<td>The name of the PostgreSQL user that is created when the PostgreSQL cluster is first created.</td>
+<td>shutdown</td>
+<td><code>create</code>, <code>update</code></td>
+<td>If set to true, indicates that a PostgreSQL cluster should shutdown. If set to false, indicates that a PostgreSQL cluster should be up and running.</td>
 </tr>
 
 <tr>
-<td>UserLabels</td>
-<td><code>create</code></td>
-<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; for things that really should be modeled in the CRD. These values do get copied to the actually CR labels. If you want to set up metrics collection or pgBadger, you would specify <code>&quot;crunchy-postgres-exporter&quot;: &quot;true&quot;</code> and <code>&quot;crunchy-pgbadger&quot;: &quot;true&quot;</code> here, respectively. However, this structure does need to be set, so just follow whatever is in the example.</td>
-</tr>
-
-<tr>
-<td>TablespaceMounts</td>
-<td><code>create</code>,<code>update</code></td>
-<td>Lists any tablespaces that are attached to the PostgreSQL cluster. Tablespaces can be added at a later time by updating the <code>TablespaceMounts</code> entry, but they cannot be removed. Stores a map of information, with the key being the name of the tablespace, and the value being a Storage Specification, defined below.</td>
-</tr>
-
-<tr>
-<td>TLS</td>
-<td><code>create</code></td>
-<td>Defines the attributes for enabling TLS for a PostgreSQL cluster. See TLS Specification below.</td>
-</tr>
-
-<tr>
-<td>TLSOnly</td>
-<td><code>create</code></td>
-<td>If set to true, requires client connections to use only TLS to connect to the PostgreSQL database.</td>
-</tr>
-
-<tr>
-<td>Tolerations</td>
-<td><code>create</code>,<code>update</code></td>
-<td>Any array of Kubernetes <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Tolerations</a>. Please refer to the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a> for how to set this field.</td>
-</tr>
-
-<tr>
-<td>Standby</td>
+<td>standby</td>
 <td><code>create</code>, <code>update</code></td>
 <td>If set to true, indicates that the PostgreSQL cluster is a &ldquo;standby&rdquo; cluster, i.e. is in read-only mode entirely. Please see <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/multi-cluster-kubernetes/">Kubernetes Multi-Cluster Deployments</a> for more information.</td>
 </tr>
 
 <tr>
-<td>Shutdown</td>
-<td><code>create</code>, <code>update</code></td>
-<td>If set to true, indicates that a PostgreSQL cluster should shutdown. If set to false, indicates that a PostgreSQL cluster should be up and running.</td>
+<td>syncReplication</td>
+<td><code>create</code></td>
+<td>If set to <code>true</code>, specifies the PostgreSQL cluster to use <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#how-the-crunchy-postgresql-operator-uses-pod-anti-affinity#synchronous-replication-guarding-against-transactions-loss">synchronous replication</a>.</td>
+</tr>
+
+<tr>
+<td>tablespaceMounts</td>
+<td><code>create</code>,<code>update</code></td>
+<td>Lists any tablespaces that are attached to the PostgreSQL cluster. Tablespaces can be added at a later time by updating the <code>TablespaceMounts</code> entry, but they cannot be removed. Stores a map of information, with the key being the name of the tablespace, and the value being a Storage Specification, defined below.</td>
+</tr>
+
+<tr>
+<td>tls</td>
+<td><code>create</code></td>
+<td>Defines the attributes for enabling TLS for a PostgreSQL cluster. See TLS Specification below.</td>
+</tr>
+
+<tr>
+<td>tlsOnly</td>
+<td><code>create</code></td>
+<td>If set to true, requires client connections to use only TLS to connect to the PostgreSQL database.</td>
+</tr>
+
+<tr>
+<td>tolerations</td>
+<td><code>create</code>,<code>update</code></td>
+<td>Any array of Kubernetes <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Tolerations</a>. Please refer to the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a> for how to set this field.</td>
+</tr>
+
+<tr>
+<td>user</td>
+<td><code>create</code></td>
+<td>The name of the PostgreSQL user that is created when the PostgreSQL cluster is first created.</td>
+</tr>
+
+<tr>
+<td>userlabels</td>
+<td><code>create</code></td>
+<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; as well as a way to add custom labels to clusters. This will disappear at some point.</td>
 </tr>
 </tbody>
 </table>
@@ -2391,45 +2415,73 @@ attribute and how it works.</p>
 
 <tbody>
 <tr>
-<td>AccessMode</td>
+<td>accessmode</td>
 <td><code>create</code></td>
 <td>The name of the Kubernetes Persistent Volume <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">Access Mode</a> to use.</td>
 </tr>
 
 <tr>
-<td>MatchLabels</td>
+<td>matchLabels</td>
 <td><code>create</code></td>
 <td>Only used with <code>StorageType</code> of <code>create</code>, used to match a particular subset of provisioned Persistent Volumes.</td>
 </tr>
 
 <tr>
-<td>Name</td>
+<td>name</td>
 <td><code>create</code></td>
 <td>Only needed for <code>PrimaryStorage</code> in <code>pgclusters.crunchydata.com</code>.Used to identify the name of the PostgreSQL cluster. Should match <code>ClusterName</code>.</td>
 </tr>
 
 <tr>
-<td>Size</td>
+<td>size</td>
 <td><code>create</code></td>
 <td>The size of the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">Persistent Volume Claim</a> (PVC). Must use a Kubernetes resource value, e.g. <code>20Gi</code>.</td>
 </tr>
 
 <tr>
-<td>StorageClass</td>
+<td>storageclass</td>
 <td><code>create</code></td>
 <td>The name of the Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">StorageClass</a> to use.</td>
 </tr>
 
 <tr>
-<td>StorageType</td>
+<td>storagetype</td>
 <td><code>create</code></td>
 <td>Set to <code>create</code> if storage is provisioned (e.g. using <code>hostpath</code>). Set to <code>dynamic</code> if using a dynamic storage provisioner, e.g. via a <code>StorageClass</code>.</td>
 </tr>
 
 <tr>
-<td>SupplementalGroups</td>
+<td>supplementalgroups</td>
 <td><code>create</code></td>
 <td>If provided, a comma-separated list of group IDs to use in case it is needed to interface with a particular storage system. Typically used with NFS or hostpath storage.</td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="node-affinity-specification">Node Affinity Specification</h5>
+
+<p>Sets the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#node-affinity">node affinity</a>
+for the PostgreSQL cluster and associated deployments. Follows the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">Kubernetes standard format for setting node affinity</a>, including <code>preferred</code> and <code>required</code> node affinity.</p>
+
+<p>To set node affinity for a PostgreSQL cluster, you will need to modify the <code>default</code> attribute in the node affinity specification. As mentioned above, the values that <code>default</code> accepts match what Kubernetes uses for <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">node affinity</a>.</p>
+
+<p>For a detailed explanation for node affinity works. Please see the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#node-affinity">high-availability</a>
+documentation.</p>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>default</td>
+<td><code>create</code></td>
+<td>The default pod anti-affinity to use for all PostgreSQL instances managed in a given PostgreSQL cluster. Can be overridden on a per-instance basis with the <code>pgreplicas.crunchydata.com</code> custom resource.</td>
 </tr>
 </tbody>
 </table>
@@ -2460,19 +2512,19 @@ documentation.</p>
 
 <tbody>
 <tr>
-<td>Default</td>
+<td>default</td>
 <td><code>create</code></td>
 <td>The default pod anti-affinity to use for all Pods managed in a given PostgreSQL cluster.</td>
 </tr>
 
 <tr>
-<td>PgBackRest</td>
+<td>pgBackRest</td>
 <td><code>create</code></td>
 <td>If set to a value that differs from <code>Default</code>, specifies the pod anti-affinity to use for just the pgBackRest repository.</td>
 </tr>
 
 <tr>
-<td>PgBouncer</td>
+<td>pgBouncer</td>
 <td><code>create</code></td>
 <td>If set to a value that differs from <code>Default</code>, specifies the pod anti-affinity to use for just the pgBouncer Pods.</td>
 </tr>
@@ -2497,13 +2549,13 @@ spawning new PostgreSQL clusters.</p>
 
 <tbody>
 <tr>
-<td>RestoreFrom</td>
+<td>restoreFrom</td>
 <td><code>create</code></td>
 <td>The name of a PostgreSQL cluster, active or former, that will be used for bootstrapping the data of a new PostgreSQL cluster.</td>
 </tr>
 
 <tr>
-<td>RestoreOpts</td>
+<td>restoreOpts</td>
 <td><code>create</code></td>
 <td>Additional pgBackRest <a href="https://pgbackrest.org/command.html#command-restore">restore options</a> that can be used as part of the bootstrapping operation, for example, point-in-time-recovery options.</td>
 </tr>
@@ -2527,19 +2579,19 @@ should be structured, please see <a href="https://crunchydata.github.io/postgres
 
 <tbody>
 <tr>
-<td>CASecret</td>
+<td>caSecret</td>
 <td><code>create</code></td>
 <td>A reference to the name of a Kubernetes Secret that specifies a certificate authority for the PostgreSQL cluster to trust.</td>
 </tr>
 
 <tr>
-<td>ReplicationTLSSecret</td>
+<td>replicationTLSSecret</td>
 <td><code>create</code></td>
 <td>A reference to the name of a Kubernetes TLS Secret that contains a keypair for authenticating the replication user. Must be used with <code>CASecret</code> and <code>TLSSecret</code>.</td>
 </tr>
 
 <tr>
-<td>TLSSecret</td>
+<td>tlsSecret</td>
 <td><code>create</code></td>
 <td>A reference to the name of a Kubernetes TLS Secret that contains a keypair that is used for the PostgreSQL instance to identify itself and perform TLS communications with PostgreSQL clients. Must be used with <code>CASecret</code>.</td>
 </tr>
@@ -2564,25 +2616,31 @@ a PostgreSQL cluster to help with failover scenarios too.</p>
 
 <tbody>
 <tr>
-<td>Limits</td>
+<td>limits</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource limits that the pgBouncer Pods should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource limits</a>.</td>
 </tr>
 
 <tr>
-<td>Replicas</td>
+<td>replicas</td>
 <td><code>create</code>, <code>update</code></td>
 <td>The number of pgBouncer instances to deploy. Must be set to at least <code>1</code> to deploy pgBouncer. Setting to <code>0</code> removes an existing pgBouncer deployment for the PostgreSQL cluster.</td>
 </tr>
 
 <tr>
-<td>Resources</td>
+<td>resources</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource requests that the pgBouncer Pods should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource requests</a>.</td>
 </tr>
 
 <tr>
-<td>TLSSecret</td>
+<td>serviceType</td>
+<td><code>create</code>, <code>update</code></td>
+<td>Sets the Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a> type to use for the cluster. If not set, defaults to the <code>ServiceType</code> set for the PostgreSQL cluster.</td>
+</tr>
+
+<tr>
+<td>tlsSecret</td>
 <td><code>create</code></td>
 <td>A reference to the name of a Kubernetes TLS Secret that contains a keypair that is used for the pgBouncer instance to identify itself and perform TLS communications with PostgreSQL clients. Must be used with the parent Spec <code>TLSSecret</code> and <code>CASecret</code>.</td>
 </tr>
@@ -2616,25 +2674,25 @@ different deployment groups.</p>
 
 <tbody>
 <tr>
-<td>Backrest</td>
+<td>backrest</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify annotations that are only applied to the pgBackRest deployments</td>
 </tr>
 
 <tr>
-<td>Global</td>
+<td>global</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify annotations that are applied to the PostgreSQL, pgBackRest, and pgBouncer deployments</td>
 </tr>
 
 <tr>
-<td>PgBouncer</td>
+<td>pgBouncer</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify annotations that are only applied to the pgBouncer deployments</td>
 </tr>
 
 <tr>
-<td>Postgres</td>
+<td>postgres</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify annotations that are only applied to the PostgreSQL deployments</td>
 </tr>
@@ -2660,37 +2718,49 @@ cluster. All of the attributes only affect the replica when it is created.</p>
 
 <tbody>
 <tr>
-<td>ClusterName</td>
+<td>clustername</td>
 <td><code>create</code></td>
 <td>The name of the PostgreSQL cluster, e.g. <code>hippo</code>. This is used to group PostgreSQL instances (primary, replicas) together.</td>
 </tr>
 
 <tr>
-<td>Name</td>
+<td>name</td>
 <td><code>create</code></td>
 <td>The name of this PostgreSQL replica. It should be unique within a <code>ClusterName</code>.</td>
 </tr>
 
 <tr>
-<td>Namespace</td>
+<td>namespace</td>
 <td><code>create</code></td>
 <td>The Kubernetes Namespace that the PostgreSQL cluster is deployed in.</td>
 </tr>
 
 <tr>
-<td>ReplicaStorage</td>
+<td>nodeAffinity</td>
+<td><code>create</code></td>
+<td>Sets the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#node-affinity">node affinity rules</a> for this PostgreSQL instance. Follows the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">Kubernetes standard format for setting node affinity</a>.</td>
+</tr>
+
+<tr>
+<td>replicastorage</td>
 <td><code>create</code></td>
 <td>A specification that gives information about the storage attributes for any replicas in the PostgreSQL cluster. For details, please see the <code>Storage Specification</code> section in the <code>pgclusters.crunchydata.com</code> description. This will likely be changed in the future based on the nature of the high-availability system, but presently it is still required that you set it. It is recommended you use similar settings to that of <code>PrimaryStorage</code>.</td>
 </tr>
 
 <tr>
-<td>UserLabels</td>
-<td><code>create</code></td>
-<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; for things that really should be modeled in the CRD. These values do get copied to the actually CR labels. If you want to set up metrics collection, you would specify <code>&quot;crunchy-postgres-exporter&quot;: &quot;true&quot;</code> here. This also allows for node selector pinning using <code>NodeLabelKey</code> and <code>NodeLabelValue</code>. However, this structure does need to be set, so just follow whatever is in the example.</td>
+<td>serviceType</td>
+<td><code>create</code>, <code>update</code></td>
+<td>Sets the Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a> type to use for this particular instance. If not set, defaults to the value in the related <code>pgclusters.crunchydata.com</code> custom resource.</td>
 </tr>
 
 <tr>
-<td>Tolerations</td>
+<td>userlabels</td>
+<td><code>create</code></td>
+<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; as well as a way to add custom labels to clusters. This will disappear at some point.</td>
+</tr>
+
+<tr>
+<td>tolerations</td>
 <td><code>create</code>,<code>update</code></td>
 <td>Any array of Kubernetes <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Tolerations</a>. Please refer to the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a> for how to set this field.</td>
 </tr>

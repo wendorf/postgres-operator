@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
@@ -1558,7 +1558,7 @@ command. You must specify a specific backup to delete using the <code>--target</
 <p>Let&rsquo;s say that the <code>hippo</code> cluster currently has a set of backups that look like this, obtained from running the <code>pgo show backup hippo</code> command:</p>
 
 <pre><code>cluster: hippo
-storage type: local
+storage type: posix
 
 stanza: db
     status: ok
@@ -1606,7 +1606,7 @@ stanza: db
 <p>You can then verify the backup is deleted with <code>pgo show backup hippo</code>:</p>
 
 <pre><code>cluster: hippo
-storage type: local
+storage type: posix
 
 stanza: db
     status: ok

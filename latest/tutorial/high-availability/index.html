@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
@@ -1425,7 +1425,29 @@ hippo-ojnd          	running   	node01    	           0 MB     	          false
 
 <h2 id="manual-failover">Manual Failover</h2>
 
-<p>Each PostgreSQL cluster will manage its own availability. If you wish to manually fail over, you will need to use the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_failover/"><code>pgo failover</code></a> command. First, determine which instance you want to fail over to:</p>
+<p>Each PostgreSQL cluster will manage its own availability. If you wish to manually fail over, you will need to use the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_failover/"><code>pgo failover</code></a> command.</p>
+
+<p>There are two ways to issue a manual failover to your PostgreSQL cluster:</p>
+
+<ol>
+<li>Allow for the PostgreSQL Operator to select the best replica candidate for failover.</li>
+<li>Select your own replica candidate for failover.</li>
+</ol>
+
+<p>Both methods are detailed below.</p>
+
+<h3 id="manual-failover-postgresql-operator-candidate-selection">Manual Failover - PostgreSQL Operator Candidate Selection</h3>
+
+<p>To have the PostgreSQL Operator select the best replica candidate for failover, all you need to do is execute the following command:</p>
+
+<pre><code>pgo failover hippo
+</code></pre>
+
+<p>The PostgreSQL Operator will determine which is the best replica candidate to fail over to, and take into account factors such as replication lag and current timeline.</p>
+
+<h3 id="manual-failover-manual-selection">Manual Failover - Manual Selection</h3>
+
+<p>If you wish to have your cluster manually failover, you must first query your determine which instance you want to fail over to. You can do so with the following command:</p>
 
 <pre><code>pgo failover hippo --query
 </code></pre>

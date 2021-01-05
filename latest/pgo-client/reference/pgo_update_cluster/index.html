@@ -580,13 +580,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">
@@ -1147,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
@@ -1291,7 +1291,6 @@
       <option value="/pgo-client/reference/pgo_apply/" >-- pgo apply</option>
       <option value="/pgo-client/reference/pgo_backup/" >-- pgo backup</option>
       <option value="/pgo-client/reference/pgo_cat/" >-- pgo cat</option>
-      <option value="/pgo-client/reference/pgo_clone/" >-- pgo clone</option>
       <option value="/pgo-client/reference/pgo_create/" >-- pgo create</option>
       <option value="/pgo-client/reference/pgo_create_cluster/" >-- pgo create cluster</option>
       <option value="/pgo-client/reference/pgo_create_namespace/" >-- pgo create namespace</option>
@@ -1467,8 +1466,10 @@ pgo update cluster --all --enable-autofail
       --cpu-limit string                 Set the number of millicores to limit for the CPU, e.g. &quot;100m&quot; or &quot;0.1&quot;.
       --disable-autofail                 Disables autofail capabitilies in the cluster.
       --disable-metrics                  Disable the metrics collection sidecar. May cause brief downtime.
+      --disable-pgbadger                 Disable the pgBadger sidecar. May cause brief downtime.
       --enable-autofail                  Enables autofail capabitilies in the cluster.
       --enable-metrics                   Enable the metrics collection sidecar. May cause brief downtime.
+      --enable-pgbadger                  Enable the pgBadger sidecar. May cause brief downtime.
       --enable-standby                   Enables standby mode in the cluster(s) specified.
       --exporter-cpu string              Set the number of millicores to request for CPU for the Crunchy Postgres Exporter sidecar container, e.g. &quot;100m&quot; or &quot;0.1&quot;.
       --exporter-cpu-limit string        Set the number of millicores to limit for CPU for the Crunchy Postgres Exporter sidecar container, e.g. &quot;100m&quot; or &quot;0.1&quot;.
@@ -1485,6 +1486,7 @@ pgo update cluster --all --enable-autofail
       --pgbackrest-memory-limit string   Set the amount of memory to limit for the pgBackRest repository.
       --promote-standby                  Disables standby mode (if enabled) and promotes the cluster(s) specified.
   -s, --selector string                  The selector to use for cluster filtering.
+      --service-type string              The Service type to use for the PostgreSQL cluster. If not set, the pgo.yaml default will be used.
       --shutdown                         Shutdown the database cluster if it is currently running.
       --startup                          Restart the database cluster if it is currently shutdown.
       --tablespace strings               Add a PostgreSQL tablespace on the cluster, e.g. &quot;name=ts1:storageconfig=nfsstorage&quot;. The format is a key/value map that is delimited by &quot;=&quot; and separated by &quot;:&quot;. The following parameters are available:
@@ -1496,6 +1498,11 @@ pgo update cluster --all --enable-autofail
                                          For example, to create a tablespace with the NFS storage configuration with a PVC of size 10GiB:
                                          
                                          --tablespace=name=ts1:storageconfig=nfsstorage:pvcsize=10Gi
+      --toleration strings               Set Pod tolerations for each PostgreSQL instance in a cluster.
+                                         The general format is &quot;key=value:Effect&quot;
+                                         For example, to add an Exists and an Equals toleration: &quot;--toleration=ssd:NoSchedule,zone=east:NoSchedule&quot;
+                                         A toleration can be removed by adding a &quot;-&quot; to the end, for example:
+                                         --toleration=ssd:NoSchedule-
 </code></pre>
 
 <h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
@@ -1516,7 +1523,7 @@ pgo update cluster --all --enable-autofail
 <li><a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update/">pgo update</a>    - Update a pgouser, pgorole, or cluster</li>
 </ul>
 
-<h6 id="auto-generated-by-spf13-cobra-on-16-dec-2020">Auto generated by spf13/cobra on 16-Dec-2020</h6>
+<h6 id="auto-generated-by-spf13-cobra-on-3-jan-2021">Auto generated by spf13/cobra on 3-Jan-2021</h6>
 
 
 

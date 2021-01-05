@@ -45,17 +45,6 @@ pgo cat mycluster /pgdata/mycluster/postgresql.conf  pgo cat [flags]  Options  -
     </item>
     
     <item>
-      <title>pgo clone</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/</guid>
-      <description>pgo clone Copies the primary database of an existing cluster to a new cluster
-Synopsis Clone makes a copy of an existing PostgreSQL cluster managed by the Operator and creates a new PostgreSQL cluster managed by the Operator, with the data from the old cluster.
-pgo clone oldcluster newcluster  pgo clone [flags]  Options  --enable-metrics If sets, enables metrics collection on the newly cloned cluster -h, --help help for clone --pgbackrest-pvc-size string The size of the PVC capacity for the pgBackRest repository.</description>
-    </item>
-    
-    <item>
       <title>pgo create</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -316,7 +305,7 @@ pgo df mycluster pgo df --selector=env=research pgo df --all  pgo df [flags]  Op
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_failover/</guid>
       <description>pgo failover Performs a manual failover
 Synopsis Performs a manual failover. For example:
-pgo failover mycluster  pgo failover [flags]  Options  -h, --help help for failover --no-prompt No command line confirmation. --query Prints the list of failover candidates. --target string The replica target which the failover will occur on.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.</description>
+# have the operator select the best target candidate pgo failover hippo # get a list of target candidates pgo failover hippo --query # failover to a specific target candidate pgo failover hippo --target=hippo-abcd  pgo failover [flags]  Options  --force Force the failover to occur, regardless of the health of the target instance. Must be used with &amp;quot;--target&amp;quot;.</description>
     </item>
     
     <item>

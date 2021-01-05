@@ -580,13 +580,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create/">
@@ -1147,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/">
@@ -1637,10 +1637,33 @@ when creating a PostgreSQL cluster;</p>
 <pre><code>pgo create cluster thatcluster --node-label=region=us-east-1
 </code></pre>
 
-<p>The Node Affinity only uses the <code>preferred</code> scheduling strategy (similar to what
-is described in the Pod Anti-Affinity section above), so if a Pod cannot be
-scheduled to a particular Node matching the label, it will be scheduled to a
-different Node.</p>
+<p>By default, node affinity uses the <code>preferred</code> scheduling strategy (similar to
+what is described in the [Pod Anti-Affinity](&ldquo;#how-the-crunchy-postgresql-operator-uses-pod-anti-affinity&rdquo;)
+section above), so if a Pod cannot be scheduled to a particular Node matching
+the label, it will be scheduled to a different Node.</p>
+
+<p>The PostgreSQL Operator supports two different types of node affinity:</p>
+
+<ul>
+<li><code>preferred</code></li>
+<li><code>required</code></li>
+</ul>
+
+<p>which can be selected with the <code>--node-affinity-type</code> flag, e.g:</p>
+
+<pre><code>pgo create cluster hippo \
+  --node-label=region=us-east-1 --node-affinity-type=required
+</code></pre>
+
+<p>When creating a cluster, the node affinity rules will be applied to the primary
+and any other PostgreSQL instances that are added. If you would like to specify
+a node affinity rule for a specific instance, you can do so with the
+<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_scale/"><code>pgo scale</code></a> command and the
+<code>--node-label</code> and <code>--node-affinity-type</code> flags, i.e:</p>
+
+<pre><code>pgo scale cluster hippo \
+  --node-label=region=us-south-1 --node-affinity-type=required
+</code></pre>
 
 <h2 id="tolerations">Tolerations</h2>
 
@@ -1684,11 +1707,23 @@ following command:</p>
 <pre><code>pgo scale hippo --toleration=zone=west:NoSchedule
 </code></pre>
 
-<p>Tolerations can be updated on an existing cluster. To do so, you will need to
-modify the <code>pgclusters.crunchydata.com</code> and <code>pgreplicas.crunchydata.com</code> custom
-resources directly, e.g. via the <code>kubectl edit</code> command. Once the updates are
-applied, the PostgreSQL Operator will roll out the changes to the appropriate
-instances.</p>
+<p>Tolerations can be updated on an existing cluster. You can do this by either
+modifying the <code>pgclusters.crunchydata.com</code> and <code>pgreplicas.crunchydata.com</code>
+custom resources directly, e.g. via the <code>kubectl edit</code> command, or with the
+<a href="{{ relref &quot;pgo-client/reference/pgo_update_cluster.md&quot; }}"><code>pgo update cluster</code></a>
+command. Using the <code>pgo update cluster</code> command, a toleration can be removed by
+adding a <code>-</code> at the end of the toleration effect.</p>
+
+<p>For example, to add a toleration of <code>zone=west:NoSchedule</code> and remove the
+toleration of <code>zone=east:NoSchedule</code>, you could run the following command:</p>
+
+<pre><code>pgo update cluster hippo \
+  --toleration=zone=west:NoSchedule \
+  --toleration=zone-east:NoSchedule-
+</code></pre>
+
+<p>Once the updates are applied, the PostgreSQL Operator will roll out the changes
+to the appropriate instances.</p>
 
 <h2 id="rolling-updates">Rolling Updates</h2>
 

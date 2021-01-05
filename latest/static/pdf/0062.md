@@ -384,7 +384,7 @@ cluster : hacluster (crunchy-postgres-ha:{{< param centosBase >}}-{{< param post
 	deployment : hacluster
 	deployment : hacluster-backrest-shared-repo
 	service : hacluster - ClusterIP (10.102.20.42)
-	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy-postgres-exporter=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version={{< param operatorVersion >}} current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+	labels : archive-timeout=60 deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster pgo-version={{< param operatorVersion >}} current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
 ```
 
 ### Deleting a Cluster
@@ -816,13 +816,26 @@ pgo failover --query hacluster
 
 The PostgreSQL Operator is set up with an automated failover system based on
 distributed consensus, but there may be times where you wish to have your
-cluster manually failover. If you wish to have your cluster manually failover,
-first, query your cluster to determine which failover targets are available.
-The query command also provides information that may help your decision, such as
-replication lag:
+cluster manually failover. There are two ways to issue a manual failover to
+your PostgreSQL cluster:
+
+1. Allow for the PostgreSQL Operator to select the best replica candidate to
+failover to
+2. Select your own replica candidate to failover to.
+
+To have the PostgreSQL Operator select the best replica candidate for failover,
+all you need to do is execute the following command:
+
+```
+pgo failover hacluster
+```
+
+If you wish to have your cluster manually failover, you must first query your
+cluster to determine which failover targets are available. The query command
+also provides information that may help your decision, such as replication lag:
 
 ```shell
-pgo failover --query hacluster
+pgo failover hacluster --query
 ```
 
 Once you have selected the replica that is best for your to failover to, you can
@@ -833,7 +846,9 @@ pgo failover hacluster --target=hacluster-abcd
 ```
 
 where `hacluster-abcd` is the name of the PostgreSQL instance that you want to
-promote to become the new primary
+promote to become the new primary.
+
+Both methods perform the failover immediately upon execution.
 
 #### Destroying a Replica
 
@@ -1262,7 +1277,7 @@ specifications:
 
 ```shell
 pgo create cluster hippo --pgbouncer --replica-count=2 \
-  --pgbackrest-storage-type=local,s3 \
+  --pgbackrest-storage-type=posix,s3 \
   --pgbackrest-s3-key=<redacted> \
   --pgbackrest-s3-key-secret=<redacted> \
   --pgbackrest-s3-bucket=watering-hole \

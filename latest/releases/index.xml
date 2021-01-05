@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>4.6.0</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.6.0/</guid>
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.6.0 on January DD, 2021. You can get started with the PostgreSQL Operator with the following commands:
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.0-beta.1/installers/kubectl/postgres-operator.yml  The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+The PostgreSQL Operator 4.6.0 release includes the following software versions upgrades:
+ pgBackRest is now at version 2.31. pgnodemx is now at version 1.</description>
+    </item>
+    
+    <item>
       <title>4.5.1</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.5.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

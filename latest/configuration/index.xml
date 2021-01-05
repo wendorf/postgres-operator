@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.5.1 4.5.1 13.1 2.29     12.5 2.29     11.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.6.0 4.6.0 13.1 2.31     12.5 2.31     11.</description>
     </item>
     
     <item>
