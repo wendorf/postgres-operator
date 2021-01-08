@@ -1393,7 +1393,7 @@ kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator
 <p>The monitoring stack for the PostgreSQL Operator uses upstream components as opposed to repackaging them. These are specified as part of the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/installation/postgres-operator/">PostgreSQL Operator Installer</a>. We have tested this release with the following versions of each component:</p>
 
 <ul>
-<li>Prometheus: 2.23.0</li>
+<li>Prometheus: 2.24.0</li>
 <li>Grafana: 6.7.5</li>
 <li>Alertmanager: 0.21.0</li>
 </ul>
@@ -1620,6 +1620,7 @@ The <code>affinity.json</code> entry in the <code>pgo-config</code> ConfigMap ha
 <li>Remove legacy <code>defaultMode</code> setting on the volume instructions for the pgBackRest repo Secret as the <code>readOnly</code> setting is used on the mount itself. Reported by (@szhang1).</li>
 <li>The logger no longer defaults to using a log level of <code>DEBUG</code>.</li>
 <li>Autofailover is no longer disabled when an <code>rmdata</code> Job is run, enabling a clean database shutdown process when deleting a PostgreSQL cluster.</li>
+<li>Update <code>pgo-target</code> permissions to match expectations for modern Kubernetes versions.</li>
 <li>Major upgrade container now includes references for <code>pgnodemx</code>.</li>
 <li>During a major upgrade, ensure permissions are correct on the old data directory before running <code>pg_upgrade</code>.</li>
 </ul>

@@ -1528,8 +1528,6 @@ rules<span style="color:#111">:</span>
       - endpoints
       - pods
       - pods/exec
-      - pods/log
-      - replicasets
       - secrets
       - services
       - persistentvolumeclaims
@@ -1543,9 +1541,18 @@ rules<span style="color:#111">:</span>
       - delete
       - deletecollection
   - apiGroups<span style="color:#111">:</span>
+    - <span style="color:#d88200">&#39;&#39;</span>
+    resources<span style="color:#111">:</span>
+      - pods/log
+    verbs<span style="color:#111">:</span>
+      - get
+      - list
+      - watch
+  - apiGroups<span style="color:#111">:</span>
       - apps
     resources<span style="color:#111">:</span>
       - deployments
+      - replicasets
     verbs<span style="color:#111">:</span>
       - get
       - list
