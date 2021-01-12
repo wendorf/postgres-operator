@@ -2053,6 +2053,17 @@ this explicitly shows that this is the <code>spec</code> block. <strong>Do not m
 <p>Save your edits, and in a short period of time, you should see these annotations
 applied to the managed Deployments.</p>
 
+<h3 id="delete-a-postgresql-cluster">Delete a PostgreSQL Cluster</h3>
+
+<p>A PostgreSQL cluster can be deleted by simply deleting the <code>pgclusters.crunchydata.com</code> resource.</p>
+
+<p>It is possible to keep both the PostgreSQL data directory as well as the pgBackRest backup repository when using this method by setting the following annotations on the <code>pgclusters.crunchydata.com</code> custom resource:</p>
+
+<ul>
+<li><code>keep-backups</code>: indicates to keep the pgBackRest PVC when deleting the cluster.</li>
+<li><code>keep-data</code>: indicates to keep the PostgreSQL data PVC when deleting the cluster.</li>
+</ul>
+
 <h2 id="postgresql-operator-custom-resource-definitions">PostgreSQL Operator Custom Resource Definitions</h2>
 
 <p>There are several PostgreSQL Operator Custom Resource Definitions (CRDs) that
