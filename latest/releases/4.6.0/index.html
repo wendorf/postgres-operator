@@ -1388,6 +1388,7 @@ kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator
 <li><a href="https://pgbackrest.org/">pgBackRest</a> is now at version 2.31.</li>
 <li><a href="https://github.com/CrunchyData/pgnodemx">pgnodemx</a> is now at version 1.0.3</li>
 <li><a href="https://patroni.readthedocs.io/">Patroni</a> is now at version 2.0.1</li>
+<li><a href="https://github.com/darold/pgbadger">pgBadger</a> is now at 11.4</li>
 </ul>
 
 <p>The monitoring stack for the PostgreSQL Operator uses upstream components as opposed to repackaging them. These are specified as part of the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/installation/postgres-operator/">PostgreSQL Operator Installer</a>. We have tested this release with the following versions of each component:</p>
@@ -1579,6 +1580,7 @@ The <code>affinity.json</code> entry in the <code>pgo-config</code> ConfigMap ha
 <li><code>pgo restore</code> will now first attempt a <a href="https://pgbackrest.org/user-guide.html#restore/option-delta">pgBackRest delta restore</a>, which can significantly speed up the restore time for large databases. Passing in the <a href="https://pgbackrest.org/command.html#command-archive-get/category-general/option-process-max"><code>--process-max</code></a> option to <code>--backup-opts</code> can help speed up the restore process based upon the amount of CPU you have available.</li>
 <li>A pgBackRest backup can now be deleted with <code>pgo delete backup</code>. A backup name must be specified with the <code>--target</code> flag. Please refer to the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/tutorial/disaster-recovery/#deleting-a-backup">documentation</a> for how to use this command.</li>
 <li>pgBadger can now be enabled/disabled during the lifetime of a PostgreSQL cluster using the <code>pgo update --enable-pgbadger</code> and <code>pgo update --disable-pgbadger</code> flag. This can also be modified directly on a custom resource.</li>
+<li>Managed PostgreSQL system accounts and now have their credentials set and rotated with <code>pgo update user</code> by including the <code>--set-system-account-password</code> flag. Suggested by (@srinathganesh).</li>
 </ul>
 
 <h2 id="changes">Changes</h2>
@@ -1593,13 +1595,16 @@ The <code>affinity.json</code> entry in the <code>pgo-config</code> ConfigMap ha
 <li>The <code>pgo failover</code> command now works without specifying a target: the candidate to fail over to will be automatically selected.</li>
 <li>For clusters that have no healthy instances, <code>pgo failover</code> can now force a promotion using the <code>--force</code> flag. A <code>--target</code> flag must also be specified when using <code>--force</code>.</li>
 <li>If a predefined custom ConfigMap for a PostgreSQL cluster (<code>-pgha-config</code>) is detected at bootstrap time, the Operator will ensure it properly initializes the cluster.</li>
+<li>Deleting a <code>pgclusters.crunchydata.com</code> custom resource will now properly delete a PostgreSQL cluster. If the <code>pgclusters.crunchydata.com</code> custom resource has the annotations <code>keep-backups</code> or <code>keep-data</code>, it will keep the backups or keep the PostgreSQL data directory respectively. Reported by Leo Khomenko (@lkhomenk).</li>
 <li>PostgreSQL JIT compilation is explicitly disabled on new cluster creation. This prevents a memory leak that has been observed on queries coming from the metrics exporter.</li>
 <li>The credentials for the metrics collection user are now available with <code>pgo show user --show-system-accounts</code>.</li>
 <li>The default user for executing scheduled SQL policies is now the Postgres superuser, instead of the replication user.</li>
 <li>Add the <code>--no-prompt</code> flag to <code>pgo upgrade</code>. The mechanism to disable the prompt verification was already in place, but the flag was not exposed. Reported by (@devopsevd).</li>
 <li>Remove certain characters that causes issues in shell environments from consideration when using the random password generator, which is used to create default passwords or with <code>--rotate-password</code>.</li>
+<li>Allow for the <code>--link-map</code> attribute for a pgBackRest option, which can help with the restore of an existing cluster to a new cluster that adds an external WAL volume.</li>
 <li>Remove the long deprecated <code>archivestorage</code> attribute from the <code>pgclusters.crunchydata.com</code> custom resource definition. As this attribute is not used at all, this should have no effect.</li>
 <li>The <code>ArchiveMode</code> parameter is now removed from the configuration. This had been fully deprecated for awhile.</li>
+<li>Add an explicit size limit of <code>64Mi</code> for the <code>pgBadger</code> ephemeral storage mount. Additionally, remove the ephemeral storage mount for the <code>/recover</code> mount point as that is not used. Reported by Pierre-Marie Petit (@pmpetit).</li>
 <li>New PostgreSQL Operator deployments will now generate ECDSA keys (P-256, SHA384) for use by the API server.</li>
 </ul>
 
@@ -1617,12 +1622,15 @@ The <code>affinity.json</code> entry in the <code>pgo-config</code> ConfigMap ha
 <li>Fix syntax in recovery check command which could lead to failures when manually promoting a standby cluster. Reported by (@SockenSalat).</li>
 <li>Fix potential race condition that could lead to a crash in the Operator boot when an error is issued around loading the <code>pgo-config</code> ConfigMap. Reported by Aleksander Roszig (@AleksanderRoszig).</li>
 <li>Do not trigger a backup if a standby cluster fails over. Reported by (@aprilito1965).</li>
+<li>Ensure pgBouncer Secret is created when adding it to a standby cluster.</li>
 <li>Remove legacy <code>defaultMode</code> setting on the volume instructions for the pgBackRest repo Secret as the <code>readOnly</code> setting is used on the mount itself. Reported by (@szhang1).</li>
 <li>The logger no longer defaults to using a log level of <code>DEBUG</code>.</li>
 <li>Autofailover is no longer disabled when an <code>rmdata</code> Job is run, enabling a clean database shutdown process when deleting a PostgreSQL cluster.</li>
+<li>Allow for <code>Restart</code> API server permission to be explicitly set. Reported by Aleksander Roszig (@AleksanderRoszig).</li>
 <li>Update <code>pgo-target</code> permissions to match expectations for modern Kubernetes versions.</li>
 <li>Major upgrade container now includes references for <code>pgnodemx</code>.</li>
 <li>During a major upgrade, ensure permissions are correct on the old data directory before running <code>pg_upgrade</code>.</li>
+<li>The metrics stack installer is fixed to work in environments that may not have connectivity to the Internet (&ldquo;air gapped&rdquo;). Reported by (@eliranw).</li>
 </ul>
 
 
