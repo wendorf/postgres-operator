@@ -1571,7 +1571,7 @@ will take a new, full backup of the cluster.</li>
 <p>At this point, the PostgreSQL cluster has been restored. However, you will need
 to re-enable autofail if you would like your PostgreSQL cluster to be
 highly-available. You can re-enable autofail with this command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo update cluster hacluster --autofail<span style="color:#f92672">=</span>true</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo update cluster hacluster --enable-autofail</code></pre></div>
 <h2 id="scheduling-backups">Scheduling Backups</h2>
 
 <p>Any effective disaster recovery strategy includes having regularly scheduled
