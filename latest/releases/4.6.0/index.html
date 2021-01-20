@@ -1543,9 +1543,11 @@ kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator
 <li><code>autofail</code>, which is now represented by the <code>disableAutofail</code> attribute.</li>
 <li><code>service-type</code>, which is now represented by the <code>serviceType</code> attribute.</li>
 <li><code>NodeLabelKey</code>/<code>NodeLabelValue</code>, which is now replaced by the <code>nodeAffinity</code> attribute.</li>
-<li><code>backrest-storage-type</code>, which is now represented with the <code>backrestStorageTypes</code> attribute.
-The <code>pgo upgrade</code> command will properly moved any data you have in these labels into the correct attributes. You can read more about how to use the various CRD attributes in the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/custom-resources/">Custom Resources</a> section of the documentation.</li>
+<li><code>backrest-storage-type</code>, which is now represented with the <code>backrestStorageTypes</code> attribute.</li>
 </ul></li>
+<li>The <code>--labels</code> flag on <code>pgo create cluster</code> is removed and replaced with the <code>--label</code>, which can be specified multiple times. The API endpoint for <code>pgo create cluster</code> is also modified: labels must now be passed in as a set of key-value pairs. Please see the &ldquo;Features&rdquo; section for more details.</li>
+<li>The API endpoints for <code>pgo label</code> and <code>pgo delete label</code> is modified to accept a set of key/value pairs for the values of the <code>--label</code> flag. The API parameter for this is now called <code>Labels</code>.
+The <code>pgo upgrade</code> command will properly moved any data you have in these labels into the correct attributes. You can read more about how to use the various CRD attributes in the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/custom-resources/">Custom Resources</a> section of the documentation.</li>
 <li>The <code>rootsecretname</code>, <code>primarysecretname</code>, and <code>usersecretname</code> attributes on the <code>pgclusters.crunchydata.com</code> CRD have been removed. Each of these represented managed Secrets. Additionally, if the managed Secrets are not created at cluster creation time, the Operator will now generate these Secrets.</li>
 <li>The <code>collectSecretName</code> attribute on <code>pgclusters.crunchydata.com</code> has been removed. The Secret for the metrics collection user is now fully managed by the PostgreSQL Operator.</li>
 <li>There are changes to the <code>exporter.json</code> and <code>cluster-deployment.json</code> templates that reside within the <code>pgo-config</code> ConfigMap that could be breaking to those who have customized those templates. This includes removing the opening comma in the <code>exporter.json</code> and removing unneeded match labels on the PostgreSQL cluster Deployment. This is resolved by following the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/upgrade/">standard upgrade procedure</a>.(<a href="https://access.crunchydata.com/documentation/postgres-operator/latest/upgrade/">https://access.crunchydata.com/documentation/postgres-operator/latest/upgrade/</a>), and only affects new clusters and existing clusters that wish to use the enable/disable metric collection feature.
@@ -1579,6 +1581,8 @@ The <code>affinity.json</code> entry in the <code>pgo-config</code> ConfigMap ha
 <ul>
 <li><code>pgo restore</code> will now first attempt a <a href="https://pgbackrest.org/user-guide.html#restore/option-delta">pgBackRest delta restore</a>, which can significantly speed up the restore time for large databases. Passing in the <a href="https://pgbackrest.org/command.html#command-archive-get/category-general/option-process-max"><code>--process-max</code></a> option to <code>--backup-opts</code> can help speed up the restore process based upon the amount of CPU you have available.</li>
 <li>A pgBackRest backup can now be deleted with <code>pgo delete backup</code>. A backup name must be specified with the <code>--target</code> flag. Please refer to the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/tutorial/disaster-recovery/#deleting-a-backup">documentation</a> for how to use this command.</li>
+<li><code>pgo create cluster</code> now accepts a <code>--label</code> flag that can be used to specify one or more custom labels for a PostgreSQL cluster. This replaces the <code>--labels</code>flag.</li>
+<li><code>pgo label</code> and <code>pgo delete label</code> can accept a <code>--label</code> flag specified multiple times.</li>
 <li>pgBadger can now be enabled/disabled during the lifetime of a PostgreSQL cluster using the <code>pgo update --enable-pgbadger</code> and <code>pgo update --disable-pgbadger</code> flag. This can also be modified directly on a custom resource.</li>
 <li>Managed PostgreSQL system accounts and now have their credentials set and rotated with <code>pgo update user</code> by including the <code>--set-system-account-password</code> flag. Suggested by (@srinathganesh).</li>
 </ul>
@@ -1623,7 +1627,9 @@ The <code>affinity.json</code> entry in the <code>pgo-config</code> ConfigMap ha
 <li>Fix potential race condition that could lead to a crash in the Operator boot when an error is issued around loading the <code>pgo-config</code> ConfigMap. Reported by Aleksander Roszig (@AleksanderRoszig).</li>
 <li>Do not trigger a backup if a standby cluster fails over. Reported by (@aprilito1965).</li>
 <li>Ensure pgBouncer Secret is created when adding it to a standby cluster.</li>
+<li>Generally improvements to initialization of a standby cluster.</li>
 <li>Remove legacy <code>defaultMode</code> setting on the volume instructions for the pgBackRest repo Secret as the <code>readOnly</code> setting is used on the mount itself. Reported by (@szhang1).</li>
+<li>Ensure proper label parsing based on Kubernetes rules and that it is consistently applied across all functionality that uses labels. Reported by José Joye (@jose-joye).</li>
 <li>The logger no longer defaults to using a log level of <code>DEBUG</code>.</li>
 <li>Autofailover is no longer disabled when an <code>rmdata</code> Job is run, enabling a clean database shutdown process when deleting a PostgreSQL cluster.</li>
 <li>Allow for <code>Restart</code> API server permission to be explicitly set. Reported by Aleksander Roszig (@AleksanderRoszig).</li>
