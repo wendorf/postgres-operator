@@ -1437,6 +1437,43 @@ files that ship with the Crunchy Postgres container, there is no
 requirement to. In this event, continue using the Operator as usual
 and avoid defining a global configMap.</p>
 
+<h2 id="create-a-postgresql-cluster-with-custom-configuration">Create a PostgreSQL Cluster With Custom Configuration</h2>
+
+<p>The PostgreSQL Operator allows for a PostgreSQL cluster to be created with a customized configuration. To do this, one must create a ConfigMap with an entry called <code>postgres-ha.yaml</code> that contains the custom configuration. The custom configuration follows the <a href="https://access.crunchydata.com/documentation/patroni/latest/settings/">Patorni YAML format</a>. Note that parameters that are placed in the <code>bootstrap</code> section are applied once during cluster initialization. Editing these values in a working cluster require following the <a href="#modifying-postgresql-cluster-configuration">Modifying PostgreSQL Cluster Configuration</a> section.</p>
+
+<p>For example, let&rsquo;s say we want to create a PostgreSQL cluster with <code>shared_buffers</code> set to <code>2GB</code>, <code>max_connections</code> set to <code>30</code> and <code>password_encryption</code> set to <code>scram-sha-256</code>. We would create a configuration file that looks similar to:</p>
+
+<pre><code>---
+bootstrap:
+  dcs:
+    postgresql:
+      parameters:
+        max_connections: 30
+        shared_buffers: 2GB
+        password_encryption: scram-sha-256
+</code></pre>
+
+<p>Save this configuration in a file called <code>postgres-ha.yaml</code>.</p>
+
+<p>Create a <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/"><code>ConfigMap</code></a> like so:</p>
+
+<pre><code>kubectl -n pgo create configmap hippo-custom-config --from-file=postgres-ha.yaml
+</code></pre>
+
+<p>You can then have you new PostgreSQL cluster use <code>hippo-custom-config</code> as part of its cluster initialization by using the <code>--custom-config</code> flag of <code>pgo create cluster</code>:</p>
+
+<pre><code>pgo create cluster hippo -n pgo --custom-config=hippo-custom-config
+</code></pre>
+
+<p>After your cluster is initialized, <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/connect-cluster/">connect to your cluster</a> and confirm that your settings have been applied:</p>
+
+<pre><code>SHOW shared_buffers;
+
+ shared_buffers
+----------------
+ 2GB
+</code></pre>
+
 <h2 id="modifying-postgresql-cluster-configuration">Modifying PostgreSQL Cluster Configuration</h2>
 
 <p>Once a PostgreSQL cluster has been initialized, its configuration settings
