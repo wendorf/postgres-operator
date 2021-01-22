@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1490,7 +1490,7 @@ Operator.</p>
 
 <tr>
 <td><code>ccp_image_tag</code></td>
-<td>centos7-12.5-4.5.1</td>
+<td>centos8-13.1-4.6.0</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag (version) used when creating containers from Crunchy Container Suite.</td>
 </tr>
@@ -1707,7 +1707,7 @@ Operator.</p>
 
 <tr>
 <td><code>pgo_client_version</code></td>
-<td>4.5.1</td>
+<td>4.6.0</td>
 <td><strong>Required</strong></td>
 <td></td>
 </tr>
@@ -1756,7 +1756,7 @@ Operator.</p>
 
 <tr>
 <td><code>pgo_image_tag</code></td>
-<td>centos7-4.5.1</td>
+<td>centos8-4.6.0</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag used when creating containers for the Crunchy PostgreSQL Operator (apiserver, operator, scheduler..etc)</td>
 </tr>
@@ -1910,9 +1910,8 @@ unique ID for each required storage configuration.</p>
 
 <p>You can specify the default storage to use for PostgreSQL, pgBackRest, and other
 elements that require storage that can outlast the lifetime of a Pod. While the
-PostgreSQL Operator defaults to using <code>hostpathstorage</code> to work with
-environments that are typically used to test, we recommend using one of the
-other storage classes in production deployments.</p>
+PostgreSQL Operator defaults to using <code>default</code> to work with the default storage
+class available in your environment.</p>
 
 <table>
 <thead>
@@ -1927,28 +1926,28 @@ other storage classes in production deployments.</p>
 <tbody>
 <tr>
 <td><code>backrest_storage</code></td>
-<td>hostpathstorage</td>
+<td>default</td>
 <td><strong>Required</strong></td>
 <td>Set the value of the storage configuration to use for the pgbackrest shared repository deployment created when a user specifies pgbackrest to be enabled on a cluster.</td>
 </tr>
 
 <tr>
 <td><code>backup_storage</code></td>
-<td>hostpathstorage</td>
+<td>default</td>
 <td><strong>Required</strong></td>
 <td>Set the value of the storage configuration to use for backups, including the storage for pgbackrest repo volumes.</td>
 </tr>
 
 <tr>
 <td><code>primary_storage</code></td>
-<td>hostpathstorage</td>
+<td>default</td>
 <td><strong>Required</strong></td>
 <td>Set to configure which storage definition to use when creating volumes used by PostgreSQL primaries on all newly created clusters.</td>
 </tr>
 
 <tr>
 <td><code>replica_storage</code></td>
-<td>hostpathstorage</td>
+<td>default</td>
 <td><strong>Required</strong></td>
 <td>Set to configure which storage definition to use when creating volumes used by PostgreSQL replicas on all newly created clusters.</td>
 </tr>
@@ -1963,13 +1962,12 @@ other storage classes in production deployments.</p>
 </table>
 
 <h4 id="example-defaults">Example Defaults</h4>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">backrest_storage<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span>
-backup_storage<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span>
-primary_storage<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span>
-replica_storage<span style="color:#111">:</span> <span style="color:#d88200">&#39;nfsstorage&#39;</span></code></pre></div>
-<p>With the configuration shown above, the <code>nfsstorage</code> storage configuration would
-be used by default for the various containers created for a PG cluster
-(i.e. containers for the primary DB, replica DB&rsquo;s, backups and/or <code>pgBackRest</code>).</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">backrest_storage<span style="color:#111">:</span> default
+backup_storage<span style="color:#111">:</span> default
+primary_storage<span style="color:#111">:</span> default
+replica_storage<span style="color:#111">:</span> default</code></pre></div>
+<p>With the configuration shown above, the default storage class available in the
+deployment environment is used.</p>
 
 <h3 id="considerations-for-multi-zone-cloud-environments">Considerations for Multi-Zone Cloud Environments</h3>
 

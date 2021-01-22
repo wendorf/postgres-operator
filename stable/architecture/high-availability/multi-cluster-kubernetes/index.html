@@ -580,13 +580,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1147,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1473,12 +1473,19 @@ that matches that of the active cluster it is replicating.</li>
 <li><code>--pgbackrest-s3-region</code>: The S3 region to use</li>
 </ul>
 
+<p>If you do not want to set the user credentials, you can retrieve them at a later
+time by using the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_show_user/"><code>pgo show user</code></a>
+command with the <code>--show-system-accounts</code> flag, e.g.</p>
+
+<pre><code>pgo show user --show-system-accounts hippo
+</code></pre>
+
 <p>With respect to the credentials, it should be noted that when the standby
 cluster is being created within the same Kubernetes cluster AND it has access to
 the Kubernetes Secret created for the active cluster, one can use the
 <code>--secret-from</code> flag to set up the credentials.</p>
 
-<h4 id="pgo-update-cluster-hahahugoshortcode-s5-hbhb"><a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a></h4>
+<h4 id="pgo-update-cluster-hahahugoshortcode-s6-hbhb"><a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a></h4>
 
 <p><a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a>
 is responsible for the promotion and disabling of a standby cluster, and
@@ -1515,7 +1522,7 @@ across multuple Kubernetes clusters.</p>
 pgBackRest. For example:</p>
 
 <pre><code>pgo create cluster hippo --pgbouncer --replica-count=2 \
-  --pgbackrest-storage-type=local,s3 \
+  --pgbackrest-storage-type=posix,s3 \
   --pgbackrest-s3-key=&lt;redacted&gt; \
   --pgbackrest-s3-key-secret=&lt;redacted&gt; \
   --pgbackrest-s3-bucket=watering-hole \
@@ -1562,6 +1569,9 @@ cluster [e.g. <code>hippo</code>] as the value of the <code>--secret-from</code>
   --password=opensourcehippo
 </code></pre>
 
+<p>(If you are unsure of your credentials, you can use
+<code>pgo show user hippo --show-system-accounts</code> to retrieve them).</p>
+
 <p>Note the use of the <code>--pgbackrest-repo-path</code> flag as it points to the name of
 the pgBackRest repository that is used for the original <code>hippo</code> cluster.</p>
 
@@ -1586,7 +1596,7 @@ command.</p>
 
 <pre><code>pgo show cluster hippo
 
-cluster : standby (crunchy-postgres-ha:centos7-12.5-4.5.1)
+cluster : standby (crunchy-postgres-ha:centos8-13.1-4.6.0)
        standby : true
 </code></pre>
 

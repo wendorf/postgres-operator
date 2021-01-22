@@ -578,13 +578,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1369,7 +1369,7 @@
 
 <h1 id="prerequisites">Prerequisites</h1>
 
-<p>The target development host for these instructions is a CentOS 7 or RHEL 7 host. Others operating systems
+<p>The target development host for these instructions is a CentOS 8 or RHEL 8 host. Others operating systems
 are possible, however we do not support building or running the Operator on others at this time.</p>
 
 <h2 id="environment-variables">Environment Variables</h2>
@@ -1387,14 +1387,8 @@ are possible, however we do not support building or running the Operator on othe
 
 <tbody>
 <tr>
-<td><code>GOPATH</code></td>
-<td>$HOME/odev</td>
-<td>Golang project directory</td>
-</tr>
-
-<tr>
 <td><code>PGOROOT</code></td>
-<td>$GOPATH/src/github.com/crunchydata/postgres-operator</td>
+<td>$HOME/postgres-operator</td>
 <td>Operator repository location</td>
 </tr>
 
@@ -1402,36 +1396,6 @@ are possible, however we do not support building or running the Operator on othe
 <td><code>PGO_CONF_DIR</code></td>
 <td>$PGOROOT/installers/ansible/roles/pgo-operator/files</td>
 <td>Operator Config Template Directory</td>
-</tr>
-
-<tr>
-<td><code>PGO_BASEOS</code></td>
-<td>centos7</td>
-<td>Base OS for container images</td>
-</tr>
-
-<tr>
-<td><code>PGO_CMD</code></td>
-<td>kubectl</td>
-<td>Cluster management tool executable</td>
-</tr>
-
-<tr>
-<td><code>PGO_IMAGE_PREFIX</code></td>
-<td>crunchydata</td>
-<td>Container image prefix</td>
-</tr>
-
-<tr>
-<td><code>PGO_OPERATOR_NAMESPACE</code></td>
-<td>pgo</td>
-<td>Kubernetes namespace for the operator</td>
-</tr>
-
-<tr>
-<td><code>PGO_VERSION</code></td>
-<td>4.5.1</td>
-<td>Operator version</td>
 </tr>
 </tbody>
 </table>
@@ -1441,12 +1405,9 @@ are possible, however we do not support building or running the Operator on othe
 <h2 id="other-requirements">Other requirements</h2>
 
 <ul>
-<li>The development host has been created, has access to <code>yum</code> updates, and has a regular user account with <code>sudo</code> rights to run <code>yum</code>.</li>
-<li><code>GOPATH</code> points to a directory containing <code>src</code>,<code>pkg</code>, and <code>bin</code> directories.</li>
-<li>The development host has <code>$GOPATH/bin</code> added to its <code>PATH</code> environment variable. Development tools will be installed to this path. Defining a <code>GOBIN</code> environment variable other than <code>$GOPATH/bin</code> may yield unexpected results.</li>
-<li>The development host has <code>git</code> installed and has cloned the postgres-operator repository to <code>$GOPATH/src/github.com/crunchydata/postgres-operator</code>. Makefile targets below are run from the repository directory.</li>
+<li>The development host has <code>git</code> installed and has cloned the <a href="https://github.com/CrunchyData/postgres-operator.git">postgres-operator</a> repository. Makefile targets below are run from the repository directory.</li>
 <li>Deploying the Operator will require deployment access to a Kubernetes or OpenShift cluster</li>
-<li>Once you have cloned the git repository, you will need to download the CentOS 7 repository files and GPG keys and place them in the <code>$PGOROOT/conf</code> directory. You can do so with the following code:</li>
+<li>Once you have cloned the git repository, you will need to download the CentOS repository files and GPG keys and place them in the <code>$PGOROOT/conf</code> directory. You can do so with the following code:</li>
 </ul>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">cd</span> <span style="color:#111">$PGOROOT</span>
 curl https://api.developers.crunchydata.com/downloads/repo/rpm-centos/postgresql12/crunchypg12.repo &gt; conf/crunchypg12.repo
@@ -1464,16 +1425,10 @@ curl https://api.developers.crunchydata.com/downloads/gpg/RPM-GPG-KEY-crunchydat
 <p>The setup target ensures the presence of:</p>
 
 <ul>
-<li><code>GOPATH</code> and <code>PATH</code> as described in the prerequisites</li>
-<li>EPEL yum repository</li>
 <li><a href="https://golang.org/"><code>go</code></a> compiler version 1.13+</li>
-<li><a href="https://golang.github.io/dep/"><code>dep</code></a> dependency manager</li>
 <li>NSQ messaging binaries</li>
-<li><code>docker</code> container tool</li>
 <li><code>buildah</code> OCI image building tool version 1.14.9+</li>
 </ul>
-
-<p>By default, docker is not configured to run its daemon. Refer to the <a href="https://docs.docker.com/install/linux/linux-postinstall/">docker post-installation instructions</a> to configure it to run once or at system startup. This is not done automatically.</p>
 
 <h2 id="code-generation">Code Generation</h2>
 
@@ -1481,14 +1436,10 @@ curl https://api.developers.crunchydata.com/downloads/gpg/RPM-GPG-KEY-crunchydat
 various <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resources</a>
 (e.g. <code>pgclusters</code>) comprising the PostgreSQL Operator declarative API.  Code generation is provided
 by the <a href="https://github.com/kubernetes/code-generator">Kubernetes code-generator project</a>,
-and the following two <code>Make</code> targets are included within the PostgreSQL Operator project to both
-determine if any generated code within the project requires an update, and then update that code
+and the following Make target is included within the PostgreSQL Operator project to update that code
 as needed:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Check to see if an update to generated code is needed:</span>
-make verify-codegen
-
-<span style="color:#75715e"># Update any generated code:</span>
-make update-codegen</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Update any generated code:</span>
+make generate</code></pre></div>
 <p>Therefore, in the event that a Custom Resource defined within the PostgreSQL Operator API
 (<code>$PGOROOT/pkg/apis/crunchydata.com</code>) is updated, the <code>verify-codegen</code> target will indicate that
 an update is needed, and the <code>update-codegen</code> target should then be utilized to generate the
@@ -1508,20 +1459,12 @@ before proceeding.</div>
 
 <p>By default, the Makefile will use buildah to build the container images, to override this default to use docker to build the images, set the IMGBUILDER variable to <code>docker</code></p>
 
-<p>The project uses the golang dep package manager to vendor all the golang source dependencies into the <code>vendor</code> directory.  You typically do not need to run any <code>dep</code> commands unless you are adding new golang package dependencies into the project outside of what is within the project for a given release.</p>
-
-<p>After a full compile, you will have a <code>pgo</code> binary in <code>$HOME/odev/bin</code> and the Operator images in your local Docker registry.</p>
+<p>After a full compile, you will have a <code>pgo</code> binary in <code>$PGOROOT/bin</code> and the Operator images in your local Docker registry.</p>
 
 <h1 id="deployment">Deployment</h1>
 
 <p>Now that you have built the PostgreSQL Operator images, you can now deploy them
-to your Kubernetes cluster. To deploy the image and associated Kubernetes
-manifests, you can execute the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make deployoperator</code></pre></div>
-<p>If your Kubernetes cluster is not local to your development host, you will need
-to specify a config file that will connect you to your Kubernetes cluster. See
-the <a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/">Kubernetes documentation</a>
-for details.</p>
+to your Kubernetes cluster by following the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/other/bash/">Bash Installation Guide</a>.</p>
 
 <h1 id="testing">Testing</h1>
 

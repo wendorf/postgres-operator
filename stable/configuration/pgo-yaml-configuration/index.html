@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1392,7 +1392,7 @@
 
 <tr>
 <td>CCPImageTag</td>
-<td>newly created containers will be based on this image version (e.g. centos7-12.5-4.5.1), unless you override it using the &ndash;ccp-image-tag command line flag</td>
+<td>newly created containers will be based on this image version (e.g. centos8-13.1-4.6.0), unless you override it using the &ndash;ccp-image-tag command line flag</td>
 </tr>
 
 <tr>
@@ -1423,11 +1423,6 @@
 <tr>
 <td>Replicas</td>
 <td>the number of cluster replicas to create for newly created clusters, typically users will scale up replicas on the pgo CLI command line but this global value can be set as well</td>
-</tr>
-
-<tr>
-<td>PgmonitorPassword</td>
-<td>the password to use for pgmonitor metrics collection if you specify &ndash;metrics when creating a PG cluster</td>
 </tr>
 
 <tr>

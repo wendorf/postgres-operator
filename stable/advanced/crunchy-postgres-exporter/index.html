@@ -578,13 +578,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1382,9 +1382,9 @@ can be specified for the API to collect. For an example of a queries.yml file, s
 <p>The crunchy-postgres-exporter Docker image contains the following packages (versions vary depending on PostgreSQL version):</p>
 
 <ul>
-<li>PostgreSQL (13.1, 12.5, 11.10, 10.15, 9.6.20 and 9.5.24)</li>
-<li>CentOS7 - publicly available</li>
-<li>UBI7 - customers only</li>
+<li>PostgreSQL (13.1, 13.1, 11.10, 10.15, 9.6.20 and 9.5.24)</li>
+<li>CentOS 8 - publicly available</li>
+<li>UBI 7, UBI 8  - customers only</li>
 <li><a href="https://github.com/wrouesnel/postgres_exporter">PostgreSQL Exporter</a></li>
 </ul>
 
@@ -2612,7 +2612,7 @@ Current size in bytes of the WAL directory
 
 <h3>ccp_connection_stats</h3>
 <h4>SQL Query:</h4>
-select ((total - idle) - idle_in_txn) as active , total , idle , idle_in_txn , (select coalesce(extract(epoch from (max(now() - state_change))),0) from monitor.pg_stat_activity() where state = &#39;idle in transaction&#39;) as max_idle_in_txn_time , (select coalesce(extract(epoch from (max(now() - query_start))),0) from monitor.pg_stat_activity() where state &lt;&gt; &#39;idle&#39;) as max_query_time , (select coalesce(extract(epoch from (max(now() - query_start))),0) from pg_catalog.pg_stat_activity where backend_type = &#39;client backend&#39; and wait_event_type = &#39;Lock&#39; ) as max_blocked_query_time , max_connections from ( select count(*) as total , coalesce(sum(case when state = &#39;idle&#39; then 1 else 0 end),0) as idle , coalesce(sum(case when state = &#39;idle in transaction&#39; then 1 else 0 end),0) as idle_in_txn from monitor.pg_stat_activity()) x join (select setting::float AS max_connections FROM pg_settings WHERE name = &#39;max_connections&#39;) xx ON (true);
+select ((total - idle) - idle_in_txn) as active , total , idle , idle_in_txn , (select coalesce(extract(epoch from (max(now() - state_change))),0) from monitor.pg_stat_activity() where state = &#39;idle in transaction&#39;) as max_idle_in_txn_time , (select coalesce(extract(epoch from (max(now() - query_start))),0) from monitor.pg_stat_activity() where state &lt;&gt; &#39;idle&#39;) as max_query_time , (select coalesce(extract(epoch from (max(now() - query_start))),0) from pg_catalog.pg_stat_activity where wait_event_type = &#39;Lock&#39; ) as max_blocked_query_time , max_connections from ( select count(*) as total , coalesce(sum(case when state = &#39;idle&#39; then 1 else 0 end),0) as idle , coalesce(sum(case when state = &#39;idle in transaction&#39; then 1 else 0 end),0) as idle_in_txn from monitor.pg_stat_activity()) x join (select setting::float AS max_connections FROM pg_settings WHERE name = &#39;max_connections&#39;) xx ON (true);
 
 <h4>Metrics:</h4>
 

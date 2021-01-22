@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1374,7 +1374,7 @@
 
 <ul>
 <li>Resource allocations (e.g. Memory, CPU, PVC size)</li>
-<li>Sidecars (e.g. <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/monitoring/">Monitoring</a>, pgBouncer, <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/pgadmin4/">pgAdmin 4</a>)</li>
+<li>Sidecars (e.g. <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/monitoring/">Monitoring</a>, <a href="https://crunchydata.github.io/postgres-operator/stable/tutorial/pgbouncer/">pgBouncer</a>, <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/pgadmin4/">pgAdmin 4</a>)</li>
 <li>High Availability (e.g. adding replicas)</li>
 <li>Specifying specific PostgreSQL images (e.g. one with PostGIS)</li>
 <li>Specifying a <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/">Pod anti-affinity and Node affinity</a></li>
@@ -1396,6 +1396,11 @@
 </code></pre>
 
 <p>Note that the <code>--metrics</code> flag just enables a sidecar that can be scraped. You will need to install the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/metrics/">monitoring stack</a> separately, or tie it into your existing monitoring infrastructure.</p>
+
+<p>If you have an exiting cluster that you would like to add metrics collection to, you can use the <code>--enable-metrics</code> flag on the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> command:</p>
+
+<pre><code>pgo update cluster hippo --enable-metrics
+</code></pre>
 
 <h2 id="customize-pvc-size">Customize PVC Size</h2>
 
@@ -1499,6 +1504,40 @@
 
 <p>You can scale up and down your PostgreSQL cluster with the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_scale/"><code>pgo scale</code></a> and <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_scaledown/"><code>pgo scaledown</code></a> commands.</p>
 
+<h2 id="set-tolerations-for-a-postgresql-cluster">Set Tolerations for a PostgreSQL Cluster</h2>
+
+<p><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Tolerations</a> help with the scheduling of Pods to appropriate nodes. There are many reasons that a Kubernetes administrator may want to use tolerations, such as restricting the types of Pods that can be assigned to particular nodes.</p>
+
+<p>The PostgreSQL Operator supports adding tolerations to PostgreSQL instances using the <code>--toleration</code> flag. The format for adding a toleration is as such:</p>
+
+<pre><code>rule:Effect
+</code></pre>
+
+<p>or</p>
+
+<pre><code>rule
+</code></pre>
+
+<p>where a <code>rule</code> can represent existence (e.g. <code>key</code>) or equality (<code>key=value</code>) and <code>Effect</code> is one of <code>NoSchedule</code>, <code>PreferNoSchedule</code>, or <code>NoExecute</code>. For more information on how tolerations work, please refer to the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a>.</p>
+
+<p>You can assign multiple tolerations to a PostgreSQL cluster.</p>
+
+<p>For example, to add two tolerations to a new PostgreSQL cluster, one that is an existence toleration for a key of <code>ssd</code> and the other that is an equality toleration for a key/value pair of <code>zone</code>/<code>east</code>, you can run the following command:</p>
+
+<pre><code>pgo create cluster hippo \
+  --toleration=ssd:NoSchedule \
+  --toleration=zone=east:NoSchedule
+</code></pre>
+
+<p>Tolerations can be updated on an existing cluster using the <a href="{{ relref &quot;pgo-client/reference/pgo_update_cluster.md&quot; }}"><code>pgo update cluster</code></a> command. For example, to add a toleration of <code>zone=west:NoSchedule</code> and remove the toleration of <code>zone=east:NoSchedule</code>, you could run the following command:</p>
+
+<pre><code>pgo update cluster hippo \
+  --toleration=zone=west:NoSchedule \
+  --toleration=zone-east:NoSchedule-
+</code></pre>
+
+<p>You can also add or edit tolerations directly on the <code>pgclusters.crunchydata.com</code> custom resource and the PostgreSQL Operator will roll out the changes to the appropriate instances.</p>
+
 <h2 id="customize-postgresql-configuration">Customize PostgreSQL Configuration</h2>
 
 <p>PostgreSQL provides a lot of different knobs that can be used to fine tune the <a href="https://www.postgresql.org/docs/current/runtime-config.html">configuration</a> for your workload. While you can <a href="https://crunchydata.github.io/postgres-operator/stable/advanced/custom-configuration/">customize your PostgreSQL configuration</a> after your cluster has been deployed, you may also want to load in your custom configuration during initialization.</p>
@@ -1574,6 +1613,10 @@ has successfully started.</li>
 <li>The password for the <code>ccp_monitoring</code> user has changed. In this case you will
 need to update the Secret with the monitoring credentials.</li>
 </ul>
+
+<h3 id="postgresql-pod-not-scheduled-to-nodes-matching-tolerations">PostgreSQL Pod Not Scheduled to Nodes Matching Tolerations</h3>
+
+<p>While Kubernetes <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Tolerations</a> allow for Pods to be scheduled to Nodes based on their taints, this does not mean that the Pod <em>will</em> be assigned to those nodes. To provide Kubernetes scheduling guidance on where a Pod should be assigned, you must also use <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/#node-affinity">Node Affinity</a>.</p>
 
 <h2 id="next-steps">Next Steps</h2>
 

@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1457,7 +1457,7 @@ hippo-pgbouncer              ClusterIP   10.96.85.35     &lt;none&gt;        543
 
 <p>You should then be greeted with the PostgreSQL prompt:</p>
 
-<pre><code>psql (12.5)
+<pre><code>psql (13.1)
 Type &quot;help&quot; for help.
 
 hippo=&gt;
@@ -1486,7 +1486,7 @@ hippo   hippo-pgbouncer pgbouncer randompassword           10.96.85.35
 
 <p>You should see something similar to this:</p>
 
-<pre><code>psql (12.5, server 1.14.0/bouncer)
+<pre><code>psql (13.1, server 1.14.0/bouncer)
 Type &quot;help&quot; for help.
 
 pgbouncer=#
@@ -1498,6 +1498,73 @@ pgbouncer=#
 </code></pre>
 
 <p>Success, you have connected to pgBouncer!</p>
+
+<h2 id="setup-pgbouncer-with-tls">Setup pgBouncer with TLS</h2>
+
+<p>Similarly to how you can <a href="https://crunchydata.github.io/postgres-operator/stable/tutorial/tls/">setup TLS for PostgreSQL</a>, you can set up TLS connections for pgBouncer. To do this, the PostgreSQL Operator takes the following steps:</p>
+
+<ul>
+<li>Ensuring TLS communication between a client (e.g. <code>psql</code>, your application, etc.) and pgBouncer</li>
+<li>Ensuring TLS communication between pgBouncer and PostgreSQL</li>
+</ul>
+
+<p>When TLS is enabled, the PostgreSQL Operator configures pgBouncer to require each client to use TLS to communicate with pgBouncer. Additionally, the PostgreSQL Operator requires that pgBouncer and the PostgreSQL cluster share the same certificate authority (CA) bundle, which allows for pgBouncer to communicate with the PostgreSQL cluster using PostgreSQL&rsquo;s <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION"><code>verify-ca</code> SSL mode</a>.</p>
+
+<p>The below guide will show you how set up TLS for pgBouncer.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>In order to set up TLS connections for pgBouncer, you must first <a href="https://crunchydata.github.io/postgres-operator/stable/tutorial/tls/">enable TLS on your PostgreSQL cluster</a>.</p>
+
+<p>For the purposes of this exercise, we will re-use the Secret TLS keypair <code>hippo-tls-keypair</code> that was created for the PostgreSQL server. This is only being done for convenience: you can substitute <code>hippo-tls-keypair</code> with a different TLS key pair as long as it can be verified by the certificate authority (CA) that you selected for your PostgreSQL cluster. Recall that the certificate authority (CA) bundle is stored in a Secret named <code>postgresql-ca</code>.</p>
+
+<h3 id="create-pgbouncer-with-tls">Create pgBouncer with TLS</h3>
+
+<p>Knowing that our TLS key pair is stored in a Secret called <code>hippo-tls-keypair</code>, you can setup pgBouncer with TLS using the following command:</p>
+
+<pre><code>pgo create pgbouncer hippo --tls-secret=hippo-tls-keypair
+</code></pre>
+
+<p>And that&rsquo;s it! So long as the prerequisites are satisfied, this will create a pgBouncer instance that is TLS enabled.</p>
+
+<p>Don&rsquo;t believe it? Try logging in. First, ensure you have a port-forward from pgBouncer to your host machine:</p>
+
+<pre><code>kubectl -n pgo port-forward svc/hippo-pgbouncer 5432:5432
+</code></pre>
+
+<p>Then, connect to the pgBouncer instances:</p>
+
+<pre><code>PGPASSWORD=securerandomlygeneratedpassword psql -h localhost -p 5432 -U testuser hippo
+</code></pre>
+
+<p>You should see something similar to this:</p>
+
+<pre><code>psql (13.1)
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type &quot;help&quot; for help.
+
+hippo=&gt;
+</code></pre>
+
+<p>Still don&rsquo;t believe it? You can verify your connection using the PostgreSQL <code>get_backend_pid()</code> function and the <a href="https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-SSL-VIEW"><code>pg_stat_ssl</code></a> monitoring view:</p>
+
+<pre><code>hippo=&gt; SELECT * FROM pg_stat_ssl WHERE pid = pg_backend_pid();
+  pid  | ssl | version |         cipher         | bits | compression | client_dn | client_serial | issuer_dn
+-------+-----+---------+------------------------+------+-------------+-----------+---------------+-----------
+ 15653 | t   | TLSv1.3 | TLS_AES_256_GCM_SHA384 |  256 | f           |           |               |
+(1 row)
+</code></pre>
+
+<h3 id="create-a-postgresql-cluster-with-pgbouncer-and-tls">Create a PostgreSQL cluster with pgBouncer and TLS</h3>
+
+<p>Want to create a PostgreSQL cluster with pgBouncer with TLS enabled? You can with the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a> command and using the <code>--pgbouncer-tls-secret</code> flag. Using the same Secrets that were created in the <a href="{{ relref &quot;tutorial/tls.md&quot; }}">creating a PostgreSQL cluster with TLS</a> tutorial, you can create a PostgreSQL cluster with pgBouncer and TLS with the following command:</p>
+
+<pre><code>pgo create cluster hippo \
+  --server-ca-secret=postgresql-ca \
+  --server-tls-secret=hippo-tls-keypair \
+  --pgbouncer \
+  --pgbouncer-tls-secret=hippo-tls-keypair
+</code></pre>
 
 <h2 id="customize-cpu-memory-for-pgbouncer">Customize CPU / Memory for pgBouncer</h2>
 

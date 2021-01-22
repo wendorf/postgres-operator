@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1400,6 +1400,13 @@ flag as part of the <a href="https://crunchydata.github.io/postgres-operator/sta
 command, for example:</p>
 
 <pre><code>pgo create cluster --metrics hippo
+</code></pre>
+
+<p>If you have already created a cluster and want to add metrics collection to it,
+you can use the <code>--enable-metrics</code> flag as part of the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a>
+command, for example:</p>
+
+<pre><code>pgo update cluster --enable-metrics hippo
 </code></pre>
 
 <h2 id="components">Components</h2>

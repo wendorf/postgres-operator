@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1478,12 +1478,6 @@ provides:</p>
 </tr>
 
 <tr>
-<td align="left">clone</td>
-<td align="left"><code>pgo clone oldcluster newcluster</code></td>
-<td align="left">DEPRECATED: Copies the primary database of an existing cluster to a new cluster. For a more robust method to copy data, use <code>pgo create cluster newcluster --restore-from oldcluster</code></td>
-</tr>
-
-<tr>
 <td align="left">create</td>
 <td align="left"><code>pgo create cluster mycluster</code></td>
 <td align="left">Create an Operator resource type (e.g. cluster, policy, schedule, user, namespace, pgouser, pgorole)</td>
@@ -1662,11 +1656,6 @@ client.</p>
 <tr>
 <td align="left"><code>EXCLUDE_OS_TRUST</code></td>
 <td align="left">Exclude CA certs from OS default trust store.</td>
-</tr>
-
-<tr>
-<td align="left"><code>GENERATE_BASH_COMPLETION</code></td>
-<td align="left">If set, will allow <code>pgo</code> to leverage &ldquo;bash completion&rdquo; to help complete commands as they are typed.</td>
 </tr>
 
 <tr>

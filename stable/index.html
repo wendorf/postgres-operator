@@ -578,13 +578,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1145,6 +1138,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1325,7 +1325,7 @@
 
 <h2 id="run-your-own-production-grade-postgresql-as-a-service-on-kubernetes">Run your own production-grade PostgreSQL-as-a-Service on Kubernetes!</h2>
 
-<p>Latest Release: 4.5.1</p>
+<p>Latest Release: 4.6.0</p>
 
 <p>The <a href="https://www.crunchydata.com/developers/download-postgres/containers/postgres-operator">Crunchy PostgreSQL Operator</a> automates and simplifies deploying and managing open source PostgreSQL clusters on Kubernetes and other Kubernetes-enabled Platforms by providing the essential features you need to keep your PostgreSQL clusters up and running, including:</p>
 
@@ -1371,11 +1371,11 @@ library.</p>
 
 <h4 id="connection-pooling">Connection Pooling</h4>
 
-<p>Use <a href="https://access.crunchydata.com/documentation/pgbouncer/">pgBouncer</a> for connection pooling</p>
+<p>Use <a href="https://crunchydata.github.io/postgres-operator/stable/tutorial/pgbouncer/">pgBouncer</a> for connection pooling.</p>
 
-<h4 id="node-affinity">Node Affinity</h4>
+<h4 id="affinity-and-tolerations">Affinity and Tolerations</h4>
 
-<p>Have your PostgreSQL clusters deployed to <a href="https://kubernetes.io/docs/concepts/architecture/nodes/">Kubernetes Nodes</a> of your preference</p>
+<p>Have your PostgreSQL clusters deployed to <a href="https://kubernetes.io/docs/concepts/architecture/nodes/">Kubernetes Nodes</a> of your preference with <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/#node-affinity">node affinity</a>, or designate which nodes Kubernetes can schedule PostgreSQL instances to with <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/#tolerations">tolerations</a>.</p>
 
 <h4 id="scheduled-backups">Scheduled Backups</h4>
 
@@ -1469,15 +1469,19 @@ library.</p>
 
 <h1 id="supported-platforms">Supported Platforms</h1>
 
-<p>The Crunchy PostgreSQL Operator is tested on the following Platforms:</p>
+<p>The Crunchy PostgreSQL Operator maintains backwards compatibility to Kubernetes 1.11 and is tested is tested against the following Platforms:</p>
 
 <ul>
-<li>Kubernetes 1.13+</li>
-<li>OpenShift 3.11+</li>
+<li>Kubernetes 1.17+</li>
+<li>Openshift 4.4+</li>
+<li>OpenShift 3.11</li>
 <li>Google Kubernetes Engine (GKE), including Anthos</li>
 <li>Amazon EKS</li>
+<li>Microsoft AKS</li>
 <li>VMware Enterprise PKS 1.3+</li>
 </ul>
+
+<p>This list only includes the platforms that the PostgreSQL Operator is specifically tested on as part of the release process: the PostgreSQL Operator works on other Kubernetes distributions as well.</p>
 
 <h2 id="storage">Storage</h2>
 

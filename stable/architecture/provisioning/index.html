@@ -579,13 +579,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1146,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1423,8 +1423,8 @@ backups and perform full and point-in-time restores</li>
 </ul>
 
 <p>The pgBackRest repository can be configured to use storage that resides within
-the Kubernetes cluster (the <code>local</code> option), Amazon S3 or a storage system that
-uses the S3 protocol (the <code>s3</code> option), or both (<code>local,s3</code>).</p>
+the Kubernetes cluster (the <code>posix</code> option), Amazon S3 or a storage system that
+uses the S3 protocol (the <code>s3</code> option), or both (<code>posix,s3</code>).</p>
 
 <p>Once the PostgreSQL primary instance is ready, there are two follow up actions
 that the PostgreSQL Operator takes to properly leverage the pgBackRest

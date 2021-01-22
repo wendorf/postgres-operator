@@ -580,13 +580,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_clone/">
-            pgo clone
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">
@@ -1147,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
+            4.6.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.5.1/">
@@ -1291,7 +1291,6 @@
       <option value="/pgo-client/reference/pgo_apply/" >-- pgo apply</option>
       <option value="/pgo-client/reference/pgo_backup/" >-- pgo backup</option>
       <option value="/pgo-client/reference/pgo_cat/" >-- pgo cat</option>
-      <option value="/pgo-client/reference/pgo_clone/" >-- pgo clone</option>
       <option value="/pgo-client/reference/pgo_create/" >-- pgo create</option>
       <option value="/pgo-client/reference/pgo_create_cluster/"  selected>-- pgo create cluster</option>
       <option value="/pgo-client/reference/pgo_create_namespace/" >-- pgo create namespace</option>
@@ -1473,10 +1472,11 @@
       --exporter-memory string                Set the amount of memory to request for the Crunchy Postgres Exporter sidecar container. Defaults to server value (24Mi).
       --exporter-memory-limit string          Set the amount of memory to limit for the Crunchy Postgres Exporter sidecar container.
   -h, --help                                  help for cluster
-  -l, --labels string                         The labels to apply to this cluster.
+      --label strings                         Add labels to apply to the PostgreSQL cluster, e.g. &quot;key=value&quot;, &quot;prefix/key=value&quot;. Can specify flag multiple times.
       --memory string                         Set the amount of RAM to request, e.g. 1GiB. Overrides the default server value.
       --memory-limit string                   Set the amount of RAM to limit, e.g. 1GiB.
       --metrics                               Adds the crunchy-postgres-exporter container to the database pod.
+      --node-affinity-type string             Sets the type of node affinity to use. Can be either preferred (default) or required. Must be used with --node-label
       --node-label string                     The node label (key=value) to use in placing the primary database. If not set, any node is used.
       --password string                       The password to use for standard user account created during cluster initialization.
       --password-length int                   If no password is supplied, sets the length of the automatically generated password. Defaults to the value set on the server.
@@ -1487,7 +1487,7 @@
       --pgbackrest-custom-config string       The name of a ConfigMap containing pgBackRest configuration files.
       --pgbackrest-memory string              Set the amount of memory to request for the pgBackRest repository. Defaults to server value (48Mi).
       --pgbackrest-memory-limit string        Set the amount of memory to limit for the pgBackRest repository.
-      --pgbackrest-pvc-size string            The size of the PVC capacity for the pgBackRest repository. Overrides the value set in the storage class. This is ignored if the storage type of &quot;local&quot; is not used. Must follow the standard Kubernetes format, e.g. &quot;10.1Gi&quot;
+      --pgbackrest-pvc-size string            The size of the PVC capacity for the pgBackRest repository. Overrides the value set in the storage class. This is ignored if the storage type of &quot;posix&quot; is not used. Must follow the standard Kubernetes format, e.g. &quot;10.1Gi&quot;
       --pgbackrest-repo-path string           The pgBackRest repository path that should be utilized instead of the default. Required for standby
                                               clusters to define the location of an existing pgBackRest repository.
       --pgbackrest-s3-bucket string           The AWS S3 bucket that should be utilized for the cluster when the &quot;s3&quot; storage type is enabled for pgBackRest.
@@ -1499,7 +1499,7 @@
       --pgbackrest-s3-uri-style string        Specifies whether &quot;host&quot; or &quot;path&quot; style URIs will be used when connecting to S3.
       --pgbackrest-s3-verify-tls              This sets if pgBackRest should verify the TLS certificate when connecting to S3. To disable, use &quot;--pgbackrest-s3-verify-tls=false&quot;. (default true)
       --pgbackrest-storage-config string      The name of the storage config in pgo.yaml to use for the pgBackRest local repository.
-      --pgbackrest-storage-type string        The type of storage to use with pgBackRest. Either &quot;local&quot;, &quot;s3&quot; or both, comma separated. (default &quot;local&quot;)
+      --pgbackrest-storage-type string        The type of storage to use with pgBackRest. Either &quot;posix&quot;, &quot;s3&quot; or both, comma separated. (default &quot;posix&quot;)
       --pgbadger                              Adds the crunchy-pgbadger container to the database pod.
       --pgbouncer                             Adds a crunchy-pgbouncer deployment to the cluster.
       --pgbouncer-cpu string                  Set the number of millicores to request for CPU for pgBouncer. Defaults to being unset.
@@ -1507,6 +1507,8 @@
       --pgbouncer-memory string               Set the amount of memory to request for pgBouncer. Defaults to server value (24Mi).
       --pgbouncer-memory-limit string         Set the amount of memory to limit for pgBouncer.
       --pgbouncer-replicas int32              Set the total number of pgBouncer instances to deploy. If not set, defaults to 1.
+      --pgbouncer-service-type string         The Service type to use for pgBouncer. Defaults to the Service type of the PostgreSQL cluster.
+      --pgbouncer-tls-secret string           The name of the secret that contains the TLS keypair to use for enabling pgBouncer to accept TLS connections. Must also set server-tls-secret and server-ca-secret.
       --pgo-image-prefix string               The PGOImagePrefix to use for cluster creation. If specified, overrides the global configuration.
       --pod-anti-affinity string              Specifies the type of anti-affinity that should be utilized when applying  default pod anti-affinity rules to PG clusters (default &quot;preferred&quot;)
       --pod-anti-affinity-pgbackrest string   Set the Pod anti-affinity rules specifically for the pgBackRest repository. Defaults to the default cluster pod anti-affinity (i.e. &quot;preferred&quot;), or the value set by --pod-anti-affinity
@@ -1536,6 +1538,9 @@
                                               
                                               --tablespace=name=ts1:storageconfig=nfsstorage:pvcsize=10Gi
       --tls-only                              If true, forces all PostgreSQL connections to be over TLS. Must also set &quot;server-tls-secret&quot; and &quot;server-ca-secret&quot;
+      --toleration strings                    Set Pod tolerations for each PostgreSQL instance in a cluster.
+                                              The general format is &quot;key=value:Effect&quot;
+                                              For example, to add an Exists and an Equals toleration: &quot;--toleration=ssd:NoSchedule,zone=east:NoSchedule&quot;
   -u, --username string                       The username to use for creating the PostgreSQL user with standard permissions. Defaults to the value in the PostgreSQL Operator configuration.
       --wal-storage-config string             The name of a storage configuration in pgo.yaml to use for PostgreSQL's write-ahead log (WAL).
       --wal-storage-size string               The size of the capacity for WAL storage, which overrides any value in the storage configuration. Follows the Kubernetes quantity format.
@@ -1543,7 +1548,7 @@
 
 <h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
 
-<pre><code>      --apiserver-url string     The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client.
+<pre><code>      --apiserver-url string     The URL for the PostgreSQL Operator apiserver that will process the request from the pgo client. Note that the URL should **not** end in a '/'.
       --debug                    Enable additional output for debugging.
       --disable-tls              Disable TLS authentication to the Postgres Operator.
       --exclude-os-trust         Exclude CA certs from OS default trust store
@@ -1559,7 +1564,7 @@
 <li><a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">pgo create</a>    - Create a Postgres Operator resource</li>
 </ul>
 
-<h6 id="auto-generated-by-spf13-cobra-on-1-oct-2020">Auto generated by spf13/cobra on 1-Oct-2020</h6>
+<h6 id="auto-generated-by-spf13-cobra-on-18-jan-2021">Auto generated by spf13/cobra on 18-Jan-2021</h6>
 
 
 
