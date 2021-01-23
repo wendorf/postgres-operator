@@ -1391,10 +1391,8 @@ when manipulating the PostgreSQL Operator Custom Resources directly.</p>
 <h3 id="create-a-postgresql-cluster">Create a PostgreSQL Cluster</h3>
 
 <p>The fundamental workflow for interfacing with a PostgreSQL Operator Custom
-Resource Definition is for creating a PostgreSQL cluster. However, this is also
-one of the most complicated workflows to go through, as there are several
-Kubernetes objects that need to be created prior to using this method. These
-include:</p>
+Resource Definition is for creating a PostgreSQL cluster. There are several
+that a PostgreSQL cluster requires to be deployed, including:</p>
 
 <ul>
 <li>Secrets
@@ -1410,14 +1408,11 @@ include:</p>
 <p>Additionally, if you want to add some of the other sidecars, you may need to
 create additional secrets.</p>
 
-<p>The following guide goes through how to create a PostgreSQL cluster called
+<p>The good news is that if you do not provide these objects, the PostgreSQL
+Operator will create them for you to get your Postgres cluster up and running!</p>
+
+<p>The following goes through how to create a PostgreSQL cluster called
 <code>hippo</code> by creating a new custom resource.</p>
-
-<p>The below manifest references the Secrets created in the previous step to add a
-custom resource to the <code>pgclusters.crunchydata.com</code> custom resource definition.</p>
-
-<p><strong>NOTE</strong>: You will need to modify the storage sections to match your storage
-configuration.</p>
 
 <pre><code># this variable is the name of the cluster being created
 export pgo_cluster_name=hippo
@@ -1435,7 +1430,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.0-rc.1
+    pgo-version: 4.6.0
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1446,7 +1441,7 @@ spec:
     name: &quot;&quot;
     size: 1G
     storageclass: &quot;&quot;
-    storagetype: create
+    storagetype: dynamic
     supplementalgroups: &quot;&quot;
   PrimaryStorage:
     accessmode: ReadWriteMany
@@ -1454,7 +1449,7 @@ spec:
     name: ${pgo_cluster_name}
     size: 1G
     storageclass: &quot;&quot;
-    storagetype: create
+    storagetype: dynamic
     supplementalgroups: &quot;&quot;
   ReplicaStorage:
     accessmode: ReadWriteMany
@@ -1462,12 +1457,12 @@ spec:
     name: &quot;&quot;
     size: 1G
     storageclass: &quot;&quot;
-    storagetype: create
+    storagetype: dynamic
     supplementalgroups: &quot;&quot;
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.1-4.6.0-rc.1
+  ccpimagetag: centos8-13.1-4.6.0
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1487,7 +1482,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.0-rc.1
+    pgo-version: 4.6.0
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1649,7 +1644,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.0-rc.1
+    pgo-version: 4.6.0
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1688,7 +1683,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.1-4.6.0-rc.1
+  ccpimagetag: centos8-13.1-4.6.0
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1708,7 +1703,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.0-rc.1
+    pgo-version: 4.6.0
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1778,7 +1773,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.0-rc.1
+    pgo-version: 4.6.0
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1789,7 +1784,7 @@ spec:
     name: &quot;&quot;
     size: 1G
     storageclass: &quot;&quot;
-    storagetype: create
+    storagetype: dynamic
     supplementalgroups: &quot;&quot;
   PrimaryStorage:
     accessmode: ReadWriteMany
@@ -1797,7 +1792,7 @@ spec:
     name: ${pgo_cluster_name}
     size: 1G
     storageclass: &quot;&quot;
-    storagetype: create
+    storagetype: dynamic
     supplementalgroups: &quot;&quot;
   ReplicaStorage:
     accessmode: ReadWriteMany
@@ -1805,12 +1800,12 @@ spec:
     name: &quot;&quot;
     size: 1G
     storageclass: &quot;&quot;
-    storagetype: create
+    storagetype: dynamic
     supplementalgroups: &quot;&quot;
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.1-4.6.0-rc.1
+  ccpimagetag: centos8-13.1-4.6.0
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1833,7 +1828,7 @@ spec:
   tlsOnly: true
   user: hippo
   userlabels:
-    pgo-version: 4.6.0-rc.1
+    pgo-version: 4.6.0
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1921,11 +1916,11 @@ spec:
     name: ${pgo_cluster_name}-${pgo_cluster_replica_suffix}
     size: 1G
     storageclass: &quot;&quot;
-    storagetype: create
+    storagetype: dynamic
     supplementalgroups: &quot;&quot;
   tolerations: []
   userlabels:
-    pgo-version: 4.6.0-rc.1
+    pgo-version: 4.6.0
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;
@@ -1968,7 +1963,7 @@ with the addition of the correct storage configuration for your environment:</p>
     matchLabels: &quot;&quot;
     size: 5Gi
     storageclass: &quot;&quot;
-    storagetype: create
+    storagetype: dynamic
     supplementalgroups: &quot;&quot;
 </code></pre>
 
@@ -2205,7 +2200,7 @@ make changes, as described below.</p>
 <tr>
 <td>ccpimagetag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.1-4.6.0-rc.1</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.1-4.6.0</code>.</td>
 </tr>
 
 <tr>
