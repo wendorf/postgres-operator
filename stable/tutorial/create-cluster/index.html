@@ -1139,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/">
+            4.6.1
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.0/">
@@ -1429,7 +1436,7 @@ users:
 <li>Creating <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">persistent volume claims</a> (PVCs) for the PostgreSQL instance and the pgBackRest repository.</li>
 <li>Creating <a href="https://kubernetes.io/docs/concepts/services-networking/service/">services</a> that provide a stable network interface for connecting to the PostgreSQL instance and pgBackRest repository.</li>
 <li>Creating <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">deployments</a> that house each PostgreSQL instance and pgBackRest repository. Each of these is responsible for one Pod.</li>
-<li>The PostgreSQL Pod, when it is started, provisions a PostgreSQL database and performs other bootstrapping functions, such as creating <code>testuer</code>.</li>
+<li>The PostgreSQL Pod, when it is started, provisions a PostgreSQL database and performs other bootstrapping functions, such as creating <code>testuser</code>.</li>
 <li>The pgBackRest Pod, when it is started, initializes a pgBackRest repository. Note that the pgBackRest repository is not yet ready to start taking backups, but will be after the next step!</li>
 </ul></li>
 
