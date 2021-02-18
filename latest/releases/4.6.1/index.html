@@ -1382,7 +1382,7 @@
     
     
 
-<p>Crunchy Data announces the release of the PostgreSQL Operator 4.6.1 on February 15, 2021.</p>
+<p>Crunchy Data announces the release of the PostgreSQL Operator 4.6.1 on February 16, 2021.</p>
 
 <p>The PostgreSQL Operator is released in conjunction with the <a href="https://github.com/CrunchyData/crunchy-containers/">Crunchy Container Suite</a>.</p>
 
@@ -1414,6 +1414,7 @@
 <li>Remove <code>/crunchyadm</code> from <code>unix_socket_directories</code> configuration during a <code>pgo upgrade</code>. Reported by Steven Siahetiong (@ssiahetiong).</li>
 <li>Ensure updated paths, i.e. rename to <code>/opt/crunchy</code>, are reflected in cluster ConfigMap when running <code>pgo upgrade</code>. Reported by Steven Siahetiong (@ssiahetiong).</li>
 <li>Ensure value from <code>--ccp-image-tag</code> is applied when running <code>pgo upgrade</code>.</li>
+<li>Ensure the pgBackRest repository sets ownership settings to the <code>pgbackrest</code> user, which, while not noticed under most operating environments, could manifest itself in different UID modes. Reported by Matt Russell (@mjrussell).</li>
 </ul>
 
 
