@@ -1655,7 +1655,7 @@ primary_storage: &quot;nfsstorage&quot;
 replica_storage: &quot;nfsstorage&quot;
 </code></pre>
 
-<p>If you are using either Openshift or CodeReady Containers and you have a <code>restricted</code> Security Context Constraint, you will need to set <code>disable_fsgroup</code> to <code>true</code> in order to deploy the PostgreSQL Operator.</p>
+<p>In OpenShift and CodeReady Containers, the PostgreSQL Operator will automatically set <code>disable_fsgroup</code> to <code>true</code> so that it will deploy PostgreSQL clusters correctly under the <code>restricted</code> Security Context Constraint (SCC). Though we recommend using <code>restricted</code>, if you are using the <code>anyuid</code> SCC, you will need to set <code>disable_fsgroup</code> to <code>false</code> in order to deploy the PostgreSQL Operator.</p>
 
 <p>For a full list of available storage types that can be used with this installation method, please review the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/configuration/">configuration parameters</a>.</p>
 
