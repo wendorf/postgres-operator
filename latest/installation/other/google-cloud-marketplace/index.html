@@ -1140,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.2/">
+            4.6.2
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/releases/4.6.1/">
@@ -1457,7 +1464,7 @@ kubectl -n pgo get secret pgo.tls -o <span style="color:#d88200">&#39;go-templat
 
 <p>The <code>pgo</code> client can be downloaded from GitHub <a href="https://github.com/crunchydata/postgres-operator/releases">Releases</a> (subscribers can download it from the <a href="https://access.crunchydata.com">Crunchy Data Customer Portal</a>).</p>
 
-<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version 4.6.1 of the PostgreSQL Operator, you must use the <code>pgo</code> for 4.6.1.</p>
+<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version 4.6.2 of the PostgreSQL Operator, you must use the <code>pgo</code> for 4.6.2.</p>
 
 <p>Once you have download the <code>pgo</code> client, change the permissions on the file to be executable if need be as shown below:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod +x pgo</code></pre></div>
@@ -1471,8 +1478,8 @@ kubectl -n pgo get secret pgo.tls -o <span style="color:#d88200">&#39;go-templat
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.6.1
-pgo-apiserver version 4.6.1
+<pre><code>pgo client version 4.6.2
+pgo-apiserver version 4.6.2
 </code></pre>
 
 <h2 id="step-8-create-a-namespace">Step 8: Create a Namespace</h2>
