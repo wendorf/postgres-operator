@@ -1390,7 +1390,7 @@
     
     
 
-<p>Crunchy Data announces the release of the PostgreSQL Operator 4.6.2 on March 17, 2021.</p>
+<p>Crunchy Data announces the release of the PostgreSQL Operator 4.6.2 on March 19, 2021.</p>
 
 <p>The PostgreSQL Operator is released in conjunction with the <a href="https://github.com/CrunchyData/crunchy-containers/">Crunchy Container Suite</a>.</p>
 
@@ -1398,6 +1398,7 @@
 
 <ul>
 <li><a href="https://patroni.readthedocs.io/">Patroni</a> is now at version 2.0.2.</li>
+<li><a href="https://www.pgbouncer.org/">pgBouncer</a> for CentOS 8 / UBI 8 is rebuilt to use the libc for its async DNS backend.</li>
 </ul>
 
 <p>PostgreSQL Operator is tested against Kubernetes 1.17 - 1.20, OpenShift 3.11, OpenShift 4.4+, Google Kubernetes Engine (GKE), Amazon EKS, Microsoft AKS, and VMware Enterprise PKS 1.3+, and works on other Kubernetes distributions as well.</p>
@@ -1405,7 +1406,7 @@
 <h2 id="changes">Changes</h2>
 
 <ul>
-<li>The Postgres Operator and associated containers now contain defaults to use more locked down Pod and Container security context settings. These include setting <code>readOnlyRootFileSystem</code> to <code>true</code>, <code>allowPrivilegeEscalation</code> to <code>false</code>,  and explicitly stating that the container should not run as <code>root</code>. Many of these were already honored, if not defaulted, within the Postgres Operator ecosystem, but these changes make the settings explicit. This is all configuration: there are no breaking changes, and these configurations can be supported down to at least the 4.2 series.</li>
+<li>The Postgres Operator and associated containers now contain defaults to use more locked down Pod and Container security context settings. These include setting <code>allowPrivilegeEscalation</code> to <code>false</code>  and explicitly stating that the container should not run as <code>root</code>. Many of these were already honored, if not defaulted, within the Postgres Operator ecosystem, but these changes make the settings explicit. This is all configuration: there are no breaking changes, and these configurations can be supported down to at least the 4.2 series.</li>
 <li>Revert setting &ldquo;UsePAM&rdquo; to &ldquo;yes&rdquo; by default as the bug fix in Docker that required that change was applied roughly one year ago.</li>
 <li>On Operator boot, Automatically detect when deployed in an OpenShift environment and set <code>DisableFSGroup</code> to <code>true</code>. This makes it easier to get started with the Postgres Operator in an OpenShift environment with the default security settings (i.e. <code>restricted</code>). If you use the <code>anyuid</code> Security Context Constraint, you will need to explicitly set <code>DisableFSGroup</code> to <code>false</code>.</li>
 </ul>
