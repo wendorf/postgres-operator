@@ -1140,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
+            4.6.2
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/">
@@ -1398,7 +1405,7 @@ for you, you can take a chance by running the metrics manifest directly from the
 repository:</p>
 
 <pre><code>kubectl create namespace pgo
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.1/installers/metrics/kubectl/postgres-operator-metrics.yml
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/metrics/kubectl/postgres-operator-metrics.yml
 </code></pre>
 
 <p>However, we still advise that you read onward to see how to properly configure
@@ -1421,7 +1428,7 @@ including:</p>
 and takes care of setting up all of the objects required to run the PostgreSQL
 Operator.</p>
 
-<p>The installation manifest, called <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.1/installers/metrics/kubectl/postgres-operator-metrics.yml"><code>postgres-operator-metrics.yml</code></a>, is available in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.1/installers/metrics/kubectl/postgres-operator-metrics.yml"><code>installers/metrics/kubectl/postgres-operator-metrics.yml</code></a>
+<p>The installation manifest, called <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.2/installers/metrics/kubectl/postgres-operator-metrics.yml"><code>postgres-operator-metrics.yml</code></a>, is available in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.2/installers/metrics/kubectl/postgres-operator-metrics.yml"><code>installers/metrics/kubectl/postgres-operator-metrics.yml</code></a>
 path in the PostgreSQL Operator repository.</p>
 
 <h2 id="requirements">Requirements</h2>
@@ -1446,10 +1453,10 @@ to create:</p>
 </ul>
 
 <p>The required list of privileges are available in the
-<a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.1/installers/metrics/kubectl/postgres-operator-metrics.yml">postgres-operator-metrics.yml</a>
+<a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/metrics/kubectl/postgres-operator-metrics.yml">postgres-operator-metrics.yml</a>
 file:</p>
 
-<p><a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.1/installers/kubectl/postgres-operator.yml">https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.1/installers/metrics/kubectl/postgres-operator-metrics.yml</a></p>
+<p><a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml">https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/metrics/kubectl/postgres-operator-metrics.yml</a></p>
 
 <p>If you have already configured the ServiceAccount and ClusterRoleBinding for the
 installation process (e.g. from a previous installation), then you can remove
@@ -1476,7 +1483,7 @@ exists before the job is run</strong>.</p>
 <h2 id="configuration-postgres-operator-metrics-yml">Configuration - <code>postgres-operator-metrics.yml</code></h2>
 
 <p>The <code>postgres-operator-metrics.yml</code> file contains all of the configuration parameters
-for deploying PostgreSQL Operator Monitoring. The <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.1/installers/metrics/kubectl/postgres-operator-metrics.yml">example file</a>
+for deploying PostgreSQL Operator Monitoring. The <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.2/installers/metrics/kubectl/postgres-operator-metrics.yml">example file</a>
 contains defaults that should work in most Kubernetes environments, but it may
 require some customization.</p>
 
@@ -1541,36 +1548,9 @@ you will need to have elevated privileges.</p>
 
 
     
-        <div class="chevrons">
-    <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/stable/installation/metrics/metrics-prerequisites/" title="Monitoring Prerequisites"> <i class="fa fa-chevron-left"></i><label>Monitoring Prerequisites</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/installation/metrics/metrics-configuration/" title="Monitoring Configuration Reference" style="margin-right: 0px;"><label>Monitoring Configuration Reference</label><i class="fa fa-chevron-right"></i></a></div>
-  </div>
-
-  </section>
-</article>
-
-<footer>
-
-<div class="footline">
-    
-
-    
-
-  
-
-  </div>
-
-
-	<div>
-	</div>
-</footer>
-
-<link href="https://crunchydata.github.io/postgres-operator/stable/css/featherlight.min.css" rel="stylesheet">
-<script src="https://crunchydata.github.io/postgres-operator/stable/js/featherlight.min.js"></script>
-
-<script src="https://crunchydata.github.io/postgres-operator/stable/theme-flex/script.js"></script>
-
+      <div class="text-center">
+  <p><small>&copy; 2017 - 2021 Crunchy Data Solutions, Inc.</small></p>
+</div>
 
     
 

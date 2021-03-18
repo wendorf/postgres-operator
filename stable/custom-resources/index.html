@@ -1138,6 +1138,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
+            4.6.2
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/">
@@ -1437,7 +1444,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.1
+    pgo-version: 4.6.2
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1469,7 +1476,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.1
+  ccpimagetag: centos8-13.2-4.6.2
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1489,7 +1496,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.1
+    pgo-version: 4.6.2
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1651,7 +1658,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.1
+    pgo-version: 4.6.2
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1690,7 +1697,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.1
+  ccpimagetag: centos8-13.2-4.6.2
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1710,7 +1717,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.1
+    pgo-version: 4.6.2
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1780,7 +1787,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.1
+    pgo-version: 4.6.2
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1812,7 +1819,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.1
+  ccpimagetag: centos8-13.2-4.6.2
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1835,7 +1842,7 @@ spec:
   tlsOnly: true
   user: hippo
   userlabels:
-    pgo-version: 4.6.1
+    pgo-version: 4.6.2
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1927,7 +1934,7 @@ spec:
     supplementalgroups: &quot;&quot;
   tolerations: []
   userlabels:
-    pgo-version: 4.6.1
+    pgo-version: 4.6.2
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;
@@ -2207,7 +2214,7 @@ make changes, as described below.</p>
 <tr>
 <td>ccpimagetag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.2-4.6.1</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.2-4.6.2</code>.</td>
 </tr>
 
 <tr>
@@ -2784,36 +2791,9 @@ cluster. All of the attributes only affect the replica when it is created.</p>
 
 
     
-        <div class="chevrons">
-    <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_watch/" title="pgo watch"> <i class="fa fa-chevron-left"></i><label>pgo watch</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/security/" title="RBAC Configuration" style="margin-right: 0px;"><label>RBAC Configuration</label><i class="fa fa-chevron-right"></i></a></div>
-  </div>
-
-  </section>
-</article>
-
-<footer>
-
-<div class="footline">
-    
-
-    
-
-  
-
-  </div>
-
-
-	<div>
-	</div>
-</footer>
-
-<link href="https://crunchydata.github.io/postgres-operator/stable/css/featherlight.min.css" rel="stylesheet">
-<script src="https://crunchydata.github.io/postgres-operator/stable/js/featherlight.min.js"></script>
-
-<script src="https://crunchydata.github.io/postgres-operator/stable/theme-flex/script.js"></script>
-
+      <div class="text-center">
+  <p><small>&copy; 2017 - 2021 Crunchy Data Solutions, Inc.</small></p>
+</div>
 
     
 

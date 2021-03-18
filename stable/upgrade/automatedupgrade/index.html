@@ -1139,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
+            4.6.2
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/">
@@ -1458,7 +1465,7 @@ export EXCLUDE_OS_TRUST=false
 
 <p>Then, for either 4.1.X or 4.2.X,</p>
 
-<p>Update the <code>PGO_VERSION</code> variable to <code>4.6.1</code></p>
+<p>Update the <code>PGO_VERSION</code> variable to <code>4.6.2</code></p>
 
 <p>Finally, source this file with</p>
 
@@ -1498,10 +1505,10 @@ To help ensure that needed resources are not inadvertently deleted during an upg
 
 <p>If you are using the PostGIS-enabled image (i.e. <code>crunchy-postgres-gis-ha</code>) or any other custom images, you will need to add the <code>--ccp-image-tag</code>:</p>
 
-<pre><code>pgo upgrade --ccp-image-tag=centos8-13.2-3.0-4.6.1 mygiscluster
+<pre><code>pgo upgrade --ccp-image-tag=centos8-13.2-3.0-4.6.2 mygiscluster
 </code></pre>
 
-<p>Where <code>13.2</code> is the PostgreSQL version, <code>3.0</code> is the PostGIS version and <code>4.6.1</code> is the PostgreSQL Operator version.
+<p>Where <code>13.2</code> is the PostgreSQL version, <code>3.0</code> is the PostGIS version and <code>4.6.2</code> is the PostgreSQL Operator version.
 Please note, no tag validation will be performed and additional steps may be required to upgrade your PostGIS extension implementation. For more information on PostGIS upgrade considerations, please see
 <a href="https://access.crunchydata.com/documentation/postgis/latest/postgis_installation.html#upgrading">PostGIS Upgrade Documentation</a>.</p>
 
@@ -1528,36 +1535,9 @@ mycluster-pgha-default-config
 
 
     
-        <div class="chevrons">
-    <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/stable/upgrade/" title="Upgrade"> <i class="fa fa-chevron-left"></i><label>Upgrade</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/upgrade/manual/" title="Manual Upgrades" style="margin-right: 0px;"><label>Manual Upgrades</label><i class="fa fa-chevron-right"></i></a></div>
-  </div>
-
-  </section>
-</article>
-
-<footer>
-
-<div class="footline">
-    
-
-    
-
-  
-
-  </div>
-
-
-	<div>
-	</div>
-</footer>
-
-<link href="https://crunchydata.github.io/postgres-operator/stable/css/featherlight.min.css" rel="stylesheet">
-<script src="https://crunchydata.github.io/postgres-operator/stable/js/featherlight.min.js"></script>
-
-<script src="https://crunchydata.github.io/postgres-operator/stable/theme-flex/script.js"></script>
-
+      <div class="text-center">
+  <p><small>&copy; 2017 - 2021 Crunchy Data Solutions, Inc.</small></p>
+</div>
 
     
 

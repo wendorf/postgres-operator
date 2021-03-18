@@ -1139,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
+            4.6.2
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.1/">
@@ -1497,7 +1504,7 @@ Operator.</p>
 
 <tr>
 <td><code>ccp_image_tag</code></td>
-<td>centos8-13.2-4.6.1</td>
+<td>centos8-13.2-4.6.2</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag (version) used when creating containers from Crunchy Container Suite.</td>
 </tr>
@@ -1602,9 +1609,9 @@ Operator.</p>
 
 <tr>
 <td><code>disable_fsgroup</code></td>
-<td>false</td>
 <td></td>
-<td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in OpenShift environments that have a <code>restricted</code> Security Context Constraints.</td>
+<td></td>
+<td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in OpenShift environments that have a <code>restricted</code> Security Context Constraints. If you use the <code>anyuid</code> SCC, you would want to set this to <code>false</code>. The Postgres Operator will set this value appropriately by default, except for when using the <code>anyuid</code> SCC.</td>
 </tr>
 
 <tr>
@@ -1714,7 +1721,7 @@ Operator.</p>
 
 <tr>
 <td><code>pgo_client_version</code></td>
-<td>4.6.1</td>
+<td>4.6.2</td>
 <td><strong>Required</strong></td>
 <td></td>
 </tr>
@@ -1763,7 +1770,7 @@ Operator.</p>
 
 <tr>
 <td><code>pgo_image_tag</code></td>
-<td>centos8-4.6.1</td>
+<td>centos8-4.6.2</td>
 <td><strong>Required</strong></td>
 <td>Configures the image tag used when creating containers for the Crunchy PostgreSQL Operator (apiserver, operator, scheduler..etc)</td>
 </tr>
@@ -2430,36 +2437,9 @@ the TLS and <code>pgouser</code> client credentials.</p>
 
 
     
-        <div class="chevrons">
-    <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" title="Install `pgo` Client"> <i class="fa fa-chevron-left"></i><label>Install `pgo` Client</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/installation/other/" title="Other Methods" style="margin-right: 0px;"><label>Other Methods</label><i class="fa fa-chevron-right"></i></a></div>
-  </div>
-
-  </section>
-</article>
-
-<footer>
-
-<div class="footline">
-    
-
-    
-
-  
-
-  </div>
-
-
-	<div>
-	</div>
-</footer>
-
-<link href="https://crunchydata.github.io/postgres-operator/stable/css/featherlight.min.css" rel="stylesheet">
-<script src="https://crunchydata.github.io/postgres-operator/stable/js/featherlight.min.js"></script>
-
-<script src="https://crunchydata.github.io/postgres-operator/stable/theme-flex/script.js"></script>
-
+      <div class="text-center">
+  <p><small>&copy; 2017 - 2021 Crunchy Data Solutions, Inc.</small></p>
+</div>
 
     
 
