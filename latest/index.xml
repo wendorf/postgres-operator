@@ -348,7 +348,7 @@ ansible-playbook -i /path/to/inventory.yaml --tags=uninstall-metrics main.</desc
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.6.2/</guid>
-      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.6.2 on March 19, 2021.
+      <description>Crunchy Data announces the release of the PostgreSQL Operator 4.6.2 on March 22, 2021.
 The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
 PostgreSQL Operator 4.6.2 release includes the following software versions upgrades:
  Patroni is now at version 2.0.2. pgBouncer for CentOS 8 / UBI 8 is rebuilt to use the libc for its async DNS backend.  PostgreSQL Operator is tested against Kubernetes 1.17 - 1.</description>

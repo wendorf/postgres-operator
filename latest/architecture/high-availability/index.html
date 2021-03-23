@@ -1605,6 +1605,31 @@ number of nodes are available to support this configuration, certain deployments
 will fail, since it will not be possible for Kubernetes to successfully schedule
 the pods for each deployment.</p>
 
+<p>It is possible to fine tune the pod anti-affinity rules further, specifically,
+set different affinity rules for the PostgreSQL, pgBackRest, and pgBouncer
+Deployments. These can be handled by the following flags on <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>:</p>
+
+<ul>
+<li><code>--pod-anti-affinity</code>: Sets the pod anti-affinity rules for all the managed
+Deployments in the cluster (PostgreSQL, pgBackRest, pgBouncer)</li>
+<li><code>--pod-anti-affinity-pgbackrest</code>: Sets the pod anti-affinity rules for <em>only</em>
+the pgBackRest Deployment. This takes precedence over the value of
+<code>--pod-anti-affinity</code>.</li>
+<li><code>--pod-anti-affinity-pgbouncer</code>: Sets the pod anti-affinity rules for <em>only</em>
+the pgBouncer Deployment. This takes precedence over the value of
+<code>--pod-anti-affinity</code>.</li>
+</ul>
+
+<p>For example, to use <code>required</code> pod anti-affinity between PostgreSQL instances
+but use only <code>preferred</code> anti-affinity for pgBackRest and pgBouncer, you could
+use the following command:</p>
+
+<pre><code>pgo create cluster hippo --replicas=2 --pgbouncer \
+  --pod-anti-affinity=required \
+  --pod-anti-affinity=preferred \
+  --pod-anti-afinity=preferred
+</code></pre>
+
 <h2 id="synchronous-replication-guarding-against-transactions-loss">Synchronous Replication: Guarding Against Transactions Loss</h2>
 
 <p>Clusters managed by the Crunchy PostgreSQL Operator can be deployed with
@@ -1807,9 +1832,42 @@ modification to the custom resource:</p>
 
 
     
-      <div class="text-center">
+      <div class="chevrons">
+  <div id="navigation">
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/" title="Disaster Recovery"> <i class="fa fa-chevron-left"></i><label>Disaster Recovery</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/multi-cluster-kubernetes/" title="Kubernetes Multi-Cluster Deployments" style="margin-right: 0px;"><label>Kubernetes Multi-Cluster Deployments</label><i class="fa fa-chevron-right"></i></a></div>
+</div>
+
+</section>
+</article>
+
+<footer>
+
+<div class="footline">
+  
+
+  
+
+
+
+</div>
+
+
+<div>
+</div>
+
+<div class="text-center">
   <p><small>&copy; 2017 - 2021 Crunchy Data Solutions, Inc.</small></p>
 </div>
+
+
+</footer>
+
+<link href="https://crunchydata.github.io/postgres-operator/latest/css/featherlight.min.css" rel="stylesheet">
+<script src="https://crunchydata.github.io/postgres-operator/latest/js/featherlight.min.js"></script>
+
+<script src="https://crunchydata.github.io/postgres-operator/latest/theme-flex/script.js"></script>
+
 
     
 
