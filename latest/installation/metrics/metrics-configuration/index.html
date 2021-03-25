@@ -1483,7 +1483,7 @@ are defined below.</p>
 <td><code>disable_fsgroup</code></td>
 <td>false</td>
 <td></td>
-<td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in OpenShift environments that have a <code>restricted</code> Security Context Constraints.</td>
+<td>Set to <code>true</code> for deployments where you do not want to have the default PostgreSQL fsGroup (26) set. The typical usage is in OpenShift environments that have a <code>restricted</code> Security Context Constraints. If you use the <code>anyuid</code> SCC, you would want to set this to <code>false</code>. The Postgres Operator will set this value appropriately by default, except for when using the <code>anyuid</code> SCC.</td>
 </tr>
 
 <tr>

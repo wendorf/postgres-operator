@@ -1464,6 +1464,11 @@ the PostgreSQL Operator Monitoring infrastructure.
 The <a href="https://github.com/CrunchyData/postgres-operator/blob/master/installers/metrics/helm/values.yaml">values.yaml file</a>
 contains the defaults that should work in most Kubernetes environments, but it may require some customization.</p>
 
+<p>Note that in OpenShift and CodeReady Containers you will need to set the
+<code>disable_fsgroup</code> to <code>true</code> attribute to <code>true</code> if you are using the
+<code>restricted</code> Security Context Constraint (SCC). If you are using the <code>anyuid</code>
+SCC, you will need to set <code>disable_fsgroup</code> to <code>false</code>.</p>
+
 <p>For a detailed description of each configuration parameter, please read the
 <a href="https://crunchydata.github.io/postgres-operator/latest/installation/metrics/metrics-configuration/">PostgreSQL Operator Monitoring Installer Configuration Reference</a></p>
 
