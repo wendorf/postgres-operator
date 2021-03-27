@@ -1482,7 +1482,6 @@ spec:
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
-  namespace: ${cluster_namespace}
   pgDataSource:
     restoreFrom: &quot;&quot;
     restoreOpts: &quot;&quot;
@@ -1703,7 +1702,6 @@ spec:
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
-  namespace: ${cluster_namespace}
   pgDataSource:
     restoreFrom: &quot;&quot;
     restoreOpts: &quot;&quot;
@@ -1825,7 +1823,6 @@ spec:
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
-  namespace: ${cluster_namespace}
   pgDataSource:
     restoreFrom: &quot;&quot;
     restoreOpts: &quot;&quot;
@@ -1923,7 +1920,6 @@ metadata:
 spec:
   clustername: ${pgo_cluster_name}
   name: ${pgo_cluster_name}-${pgo_cluster_replica_suffix}
-  namespace: ${cluster_namespace}
   replicastorage:
     accessmode: ReadWriteMany
     matchLabels: &quot;&quot;
@@ -2275,12 +2271,6 @@ make changes, as described below.</p>
 <td>name</td>
 <td><code>create</code></td>
 <td>The name of the PostgreSQL instance that is the primary. On creation, this should be set to be the same as <code>ClusterName</code>.</td>
-</tr>
-
-<tr>
-<td>namespace</td>
-<td><code>create</code></td>
-<td>The Kubernetes Namespace that the PostgreSQL cluster is deployed in.</td>
 </tr>
 
 <tr>
@@ -2747,12 +2737,6 @@ cluster. All of the attributes only affect the replica when it is created.</p>
 <td>name</td>
 <td><code>create</code></td>
 <td>The name of this PostgreSQL replica. It should be unique within a <code>ClusterName</code>.</td>
-</tr>
-
-<tr>
-<td>namespace</td>
-<td><code>create</code></td>
-<td>The Kubernetes Namespace that the PostgreSQL cluster is deployed in.</td>
 </tr>
 
 <tr>
