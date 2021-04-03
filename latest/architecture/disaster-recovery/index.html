@@ -1508,6 +1508,9 @@ command with several flags:</p>
 <li><code>--restore-from</code>: specifies the name of a PostgreSQL cluster (either one that
 is active, or a former cluster whose pgBackRest repository still exists) to
 restore from.</li>
+<li><code>--restore-from-namespace</code> (optional): the namespace of the PostgreSQL cluster specified
+using <code>--restore-from</code> (the namespace of the cluster being created is utilized if a namespace
+is not specified using this option)</li>
 <li><code>--restore-opts</code>: used to specify additional options, similar to the ones that
 are passed into <a href="https://pgbackrest.org/command.html#command-restore"><code>pgbackrest restore</code></a>.</li>
 </ul>
@@ -1529,7 +1532,10 @@ perform, and <code>--target</code> indicates the point in time to recover to:</p
 
 <p>Note that when using this method, the PostgreSQL Operator can only restore one
 cluster from each pgBackRest repository at a time. Using the above example, one
-can only perform one restore from <code>oldcluster</code> at a given time.</p>
+can only perform one restore from <code>oldcluster</code> at a given time.  Additionally,
+if the cluster being utilized for restore is in another namespace than the
+cluster being created, the proper namespace can be specified using the
+<code>--restore-from-namespace</code> option.</p>
 
 <p>When using the restore to a new cluster method, the PostgreSQL Operator takes
 the following actions:</p>

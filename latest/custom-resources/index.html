@@ -2155,8 +2155,8 @@ make changes, as described below.</p>
 
 <tr>
 <td>backrestS3Bucket</td>
-<td><code>create</code></td>
-<td>An optional parameter that specifies a S3 bucket that pgBackRest should use.</td>
+<td><code>create</code>, <code>update</code></td>
+<td>An optional parameter that specifies a S3 bucket that pgBackRest should use. If the name is updated, the Postgres Operator will create a new stanza and take an initial backup in the new bucket.</td>
 </tr>
 
 <tr>

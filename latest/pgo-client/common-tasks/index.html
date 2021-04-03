@@ -1885,6 +1885,14 @@ execute the following command:</p>
 <pre><code>pgo create cluster newcluster --restore-from=oldcluster
 </code></pre>
 
+<h5 id="full-restore-across-namespaces">Full Restore Across Namespaces</h5>
+
+<p>To create a new PostgreSQL cluster from a backup in another namespace and restore it
+fully, you can execute the following command:</p>
+
+<pre><code>pgo create cluster newcluster --restore-from=oldcluster --restore-from-namespace=oldnamespace
+</code></pre>
+
 <h5 id="point-in-time-recovery-pitr">Point-in-time-Recovery (PITR)</h5>
 
 <p>To create a new PostgreSQL cluster and restore it to specific point-in-time
