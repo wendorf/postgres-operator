@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Crunchy PostgreSQL Operator :: Crunchy PostgreSQL Operator Documentation</title>
+<title>PGO: The Postgres Operator from Crunchy Data :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/latest/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -1333,17 +1333,27 @@
  
 
 
-<h1 id="crunchy-postgresql-operator">Crunchy PostgreSQL Operator</h1>
+<h1 id="pgo-the-postgres-operator-from-crunchy-data">PGO: The Postgres Operator from Crunchy Data</h1>
 
 <p><img width="25%" src="crunchy_logo.png"/></p>
 
-<h2 id="run-your-own-production-grade-postgresql-as-a-service-on-kubernetes">Run your own production-grade PostgreSQL-as-a-Service on Kubernetes!</h2>
+<h2 id="run-cloud-native-postgresql-on-kubernetes-https-www-crunchydata-com-products-crunchy-postgresql-for-kubernetes-with-pgo-the-postgres-operator-https-github-com-crunchydata-postgres-operator-from-crunchy-data-https-www-crunchydata-com">Run <a href="https://www.crunchydata.com/products/crunchy-postgresql-for-kubernetes/">Cloud Native PostgreSQL on Kubernetes</a> with PGO: The <a href="https://github.com/CrunchyData/postgres-operator">Postgres Operator</a> from <a href="https://www.crunchydata.com/">Crunchy Data</a>!</h2>
 
 <p>Latest Release: 4.6.2</p>
 
-<p>The <a href="https://www.crunchydata.com/developers/download-postgres/containers/postgres-operator">Crunchy PostgreSQL Operator</a> automates and simplifies deploying and managing open source PostgreSQL clusters on Kubernetes and other Kubernetes-enabled Platforms by providing the essential features you need to keep your PostgreSQL clusters up and running, including:</p>
+<p><a href="https://www.crunchydata.com/developers/download-postgres/containers/postgres-operator">PGO</a>,
+the <a href="https://github.com/CrunchyData/postgres-operator">Postgres Operator</a>
+developed by <a href="https://crunchydata.com/">Crunchy Data</a> and included in
+<a href="https://www.crunchydata.com/products/crunchy-postgresql-for-kubernetes/">Crunchy PostgreSQL for Kubernetes</a>,
+automates and simplifies deploying and managing open source PostgreSQL clusters
+on Kubernetes.</p>
 
-<h4 id="postgresql-cluster-provisioning-hahahugoshortcode-s1-hbhb">PostgreSQL Cluster <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/">Provisioning</a></h4>
+<p>Whether you need to get a simple Postgres cluster up and running, need to deploy
+a high availability, fault tolerant cluster in production, or are running your
+own database-as-a-service, the PostgreSQL Operator provides the essential
+features you need to keep your cloud native Postgres clusters healthy, including:</p>
+
+<h4 id="postgres-cluster-provisioning-hahahugoshortcode-s1-hbhb">Postgres Cluster <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/">Provisioning</a></h4>
 
 <p><a href="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/">Create, Scale, &amp; Delete PostgreSQL clusters with ease</a>, while fully customizing your Pods and PostgreSQL configuration!</p>
 
@@ -1359,7 +1369,7 @@
 
 <h4 id="tls">TLS</h4>
 
-<p>Secure communication between your applications and data servers by <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks/#enable-tls">enabling TLS for your PostgreSQL servers</a>, including the ability to enforce that all of your connections to use TLS.</p>
+<p>Secure communication between your applications and data servers by <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks/#enable-tls">enabling TLS for your PostgreSQL servers</a>, including the ability to enforce all of your connections to use TLS.</p>
 
 <h4 id="monitoring-hahahugoshortcode-s6-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/">Monitoring</a></h4>
 
@@ -1401,18 +1411,24 @@ library.</p>
 
 <h4 id="multi-namespace-support">Multi-Namespace Support</h4>
 
-<p>You can control how the PostgreSQL Operator leverages <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes Namespaces</a> with several different deployment models:</p>
+<p>You can control how PGO, the Postgres Operator, leverages <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes Namespaces</a> with several different deployment models:</p>
 
 <ul>
-<li>Deploy the PostgreSQL Operator and all PostgreSQL clusters to the same namespace</li>
-<li>Deploy the PostgreSQL Operator to one namespaces, and all PostgreSQL clusters to a different namespace</li>
-<li>Deploy the PostgreSQL Operator to one namespace, and have your PostgreSQL clusters managed acrossed multiple namespaces</li>
-<li>Dynamically add and remove namespaces managed by the PostgreSQL Operator using the <code>pgo create namespace</code> and <code>pgo delete namespace</code> commands</li>
+<li>Deploy PGO and all PostgreSQL clusters to the same namespace</li>
+<li>Deploy PGO to one namespaces, and all PostgreSQL clusters to a different
+namespace</li>
+<li>Deploy PGO to one namespace, and have your PostgreSQL clusters managed across
+multiple namespaces</li>
+<li>Dynamically add and remove namespaces managed by the PostgreSQL Operator using
+the <code>pgo</code> client to run <code>pgo create namespace</code> and <code>pgo delete namespace</code></li>
 </ul>
 
 <h4 id="full-customizability">Full Customizability</h4>
 
-<p>The Crunchy PostgreSQL Operator makes it easy to get your own PostgreSQL-as-a-Service up and running on Kubernetes-enabled platforms, but we know that there are further customizations that you can make. As such, the Crunchy PostgreSQL Operator allows you to further customize your deployments, including:</p>
+<p>The Postgres Operator (PGO) makes it easy to get Postgres up and running on
+Kubernetes-enabled platforms, but we know that there are further customizations
+that you can make. As such, PGO allows you to further customize your
+deployments, including:</p>
 
 <ul>
 <li>Selecting different storage classes for your primary, replica, and backup storage</li>
@@ -1483,7 +1499,9 @@ library.</p>
 
 <h1 id="supported-platforms">Supported Platforms</h1>
 
-<p>The Crunchy PostgreSQL Operator maintains backwards compatibility to Kubernetes 1.11 and is tested is tested against the following Platforms:</p>
+<p>PGO, the Postgres Operator, is Kubernetes-native and maintains backwards
+compatibility to Kubernetes 1.11 and is tested is tested against the following
+platforms:</p>
 
 <ul>
 <li>Kubernetes 1.17+</li>
@@ -1492,26 +1510,24 @@ library.</p>
 <li>Google Kubernetes Engine (GKE), including Anthos</li>
 <li>Amazon EKS</li>
 <li>Microsoft AKS</li>
-<li>VMware Enterprise PKS 1.3+</li>
+<li>VMware Tanzu</li>
 </ul>
 
-<p>This list only includes the platforms that the PostgreSQL Operator is specifically tested on as part of the release process: the PostgreSQL Operator works on other Kubernetes distributions as well.</p>
+<p>This list only includes the platforms that the Postgres Operator is specifically
+tested on as part of the release process: PGO works on other Kubernetes
+distributions as well.</p>
 
 <h2 id="storage">Storage</h2>
 
-<p>The Crunchy PostgreSQL Operator is tested with a variety of different types of Kubernetes storage and Storage Classes, including:</p>
+<p>PGO, the Postgres Operator, is tested with a variety of different types of
+Kubernetes storage and Storage Classes, as well as hostPath and NFS.</p>
 
-<ul>
-<li>Rook</li>
-<li>StorageOS</li>
-<li>Google Compute Engine persistent volumes</li>
-<li>NFS</li>
-<li>HostPath</li>
-</ul>
-
-<p>and more. We have had reports of people using the PostgreSQL Operator with other <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">Storage Classes</a> as well.</p>
-
-<p>We know there are a variety of different types of <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">Storage Classes</a> available for Kubernetes and we do our best to test each one, but due to the breadth of this area we are unable to verify PostgreSQL Operator functionality in each one. With that said, the PostgreSQL Operator is designed to be storage class agnostic and has been demonstrated to work with additional Storage Classes. Storage is a rapidly evolving field in Kubernetes and we will continue to adapt the PostgreSQL Operator to modern Kubernetes storage standards.</p>
+<p>We know there are a variety of different types of <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">Storage Classes</a>
+available for Kubernetes and we do our best to test each one, but due to the
+breadth of this area we are unable to verify Postgres Operator functionality in
+each one. With that said, the PostgreSQL Operator is designed to be storage
+class agnostic and has been demonstrated to work with additional Storage
+Classes.</p>
 
 
 

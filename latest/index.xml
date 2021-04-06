@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Crunchy PostgreSQL Operator on Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: The Postgres Operator from Crunchy Data on PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     <link>https://crunchydata.github.io/postgres-operator/latest/</link>
-    <description>Recent content in Crunchy PostgreSQL Operator on Crunchy PostgreSQL Operator Documentation</description>
+    <description>Recent content in PGO: The Postgres Operator from Crunchy Data on PGO: PostgreSQL Operator from Crunchy Data Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
