@@ -186,9 +186,10 @@ Environment PostgreSQL Operator Monitoring is tested in the following environmen
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/prerequisites/</guid>
-      <description>Prerequisites The following is required prior to installing PostgreSQL Operator.
-Environment The PostgreSQL Operator is tested in the following environments:
- Kubernetes v1.13+ Red Hat OpenShift v3.11+ Red Hat OpenShift v4.4+ Amazon EKS VMWare Enterprise PKS 1.3+ IBM Cloud Pak Data  IBM Cloud Pak Data If you install the PostgreSQL Operator, which comes with Crunchy PostgreSQL for Kubernetes, on IBM Cloud Pak Data, please note the following additional requirements:</description>
+      <description>Prerequisites The following is required prior to installing PGO.
+Environment PGO is tested in the following environments:
+ Kubernetes v1.13+ Red Hat OpenShift v3.11+ Red Hat OpenShift v4.4+ Amazon EKS VMWare Enterprise PKS 1.3+ IBM Cloud Pak Data  IBM Cloud Pak Data If you install PGO, which comes with Crunchy PostgreSQL for Kubernetes, on IBM Cloud Pak Data, please note the following additional requirements:
+ Cloud Pak Data Version 2.</description>
     </item>
     
     <item>
@@ -202,6 +203,17 @@ The below guide covers many of the common operations that are required when mana
     </item>
     
     <item>
+      <title>Install PGO the Postgres Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</guid>
+      <description>PGO: Postgres Operator Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the manifest directly from the repository:
+kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
+Overview PGO comes with a container called pgo-deployer which handles a variety of lifecycle actions for the Postgres Operator, including:</description>
+    </item>
+    
+    <item>
       <title>Install PostgreSQL Operator Monitoring</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -209,17 +221,6 @@ The below guide covers many of the common operations that are required when mana
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/metrics/postgres-operator-metrics/</guid>
       <description>PostgreSQL Operator Monitoring Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the metrics manifest directly from the repository:
 kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/metrics/kubectl/postgres-operator-metrics.yml  Note that in OpenShift and CodeReady Containers you will need to set the disable_fsgroup to true attribute to true if you are using the restricted Security Context Constraint (SCC).</description>
-    </item>
-    
-    <item>
-      <title>Install the PostgreSQL Operator</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/</guid>
-      <description>The PostgreSQL Operator Installer Quickstart If you believe that all the default settings in the installation manifest work for you, you can take a chance by running the manifest directly from the repository:
-kubectl create namespace pgo kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml  However, we still advise that you read onward to see how to properly configure the PostgreSQL Operator.
-Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:</description>
     </item>
     
     <item>
@@ -265,14 +266,14 @@ Installing on Linux On a Linux host with Ansible installed we can run the follow
     </item>
     
     <item>
-      <title>Install `pgo` Client</title>
+      <title>Install &#34;pgo&#34; Client</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/</guid>
-      <description>Install the PostgreSQL Operator (pgo) Client The following will install and configure the pgo client on all systems. For the purpose of these instructions it&amp;rsquo;s assumed that the Crunchy PostgreSQL Operator is already deployed.
-Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  To authenticate with the Crunchy PostgreSQL Operator API:
- Client CA Certificate Client TLS Certificate Client Key pgouser file containing &amp;lt;username&amp;gt;:&amp;lt;password&amp;gt;  All of the requirements above should be obtained from an administrator who installed the Crunchy PostgreSQL Operator.</description>
+      <description>Install the PostgreSQL Operator (pgo) Client The following will install and configure the pgo client on all systems. For the purpose of these instructions it&amp;rsquo;s assumed that PGO: the Postgres Operator from Crunchy Data is already deployed.
+Prerequisites  For Kubernetes deployments: kubectl configured to communicate with Kubernetes For OpenShift deployments: oc configured to communicate with OpenShift  To authenticate with the PGO API:
+ Client CA Certificate Client TLS Certificate Client Key pgouser file containing &amp;lt;username&amp;gt;:&amp;lt;password&amp;gt;  All of the requirements above should be obtained from an administrator who installed PGO.</description>
     </item>
     
     <item>
@@ -312,7 +313,7 @@ General Configuration These variables affect the general configuration of Postgr
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/configuration/</guid>
-      <description>PostgreSQL Operator Installer Configuration When installing the PostgreSQL Operator you have many configuration options, these options are listed in this section.
+      <description>PGO Installer Configuration When installing PGO, the Postgres Operator you have many configuration options, these options are listed in this section.
 General Configuration These variables affect the general configuration of the PostgreSQL Operator.
    Name Default Required Description     archive_mode true Required Set to true enable archive logging on all newly created clusters.   archive_timeout 60 Required Set to a value in seconds to configure the timeout threshold for archiving.</description>
     </item>
@@ -489,9 +490,9 @@ The PostgreSQL Operator 4.3.0 release includes the following software versions u
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/bash/</guid>
-      <description>A full installation of the Operator includes the following steps:
- get the Operator project configure your environment variables configure Operator templates create security resources deploy the operator install pgo CLI (end user command tool)  Operator end-users are only required to install the pgo CLI client on their host and can skip the server-side installation steps. pgo CLI clients are provided for Linux, Mac, and Windows clients.
-The Operator can be deployed by multiple methods including:</description>
+      <description>A full installation of PGO includes the following steps:
+ get the PGO project configure your environment variables configure PGO templates create security resources deploy the operator install pgo client (end user command tool)  PGO end-users are only required to install the pgo client on their host and can skip the server-side installation steps. pgo clients are provided for Linux, Mac, and Windows clients.
+PGO can be deployed by multiple methods including:</description>
     </item>
     
     <item>
@@ -500,9 +501,9 @@ The Operator can be deployed by multiple methods including:</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/</guid>
-      <description>Installation If you have not installed the PostgreSQL Operator yet, we recommend you take a look at our quickstart or the installation sections.
-Customizing an Installation How to customize a PostgreSQL Operator installation is a lengthy topic. The details are covered in the installation section, as well as a list of all the configuration variables available.
-Setup the pgo Client This tutorial will be using the pgo client to interact with the PostgreSQL Operator.</description>
+      <description>Installation If you have not installed PGO, the Postgres Operator, yet, we recommend you take a look at our quickstart or the installation sections.
+Customizing an Installation How to customize a PGO installation is a lengthy topic. The details are covered in the installation section, as well as a list of all the configuration variables available.
+Setup the pgo Client This tutorial will be using the pgo client to interact with the Postgres Operator.</description>
     </item>
     
     <item>
@@ -511,9 +512,8 @@ Setup the pgo Client This tutorial will be using the pgo client to interact with
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/helm/</guid>
-      <description>The PostgreSQL Operator Helm Chart Overview The PostgreSQL Operator comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:
- Installation Upgrading Uninstallation  After configuring the values.yaml file with you configuration options, the installer will be run using the helm command line tool and takes care of setting up all of the objects required to run the PostgreSQL Operator.
-The postgres-operator Helm chart is available in the Helm directory in the PostgreSQL Operator repository.</description>
+      <description>PGO: The Postgres Operator Helm Chart Overview PGO, the Postgres Operator from Crunchy Data, comes with a container called pgo-deployer which handles a variety of lifecycle actions for the PostgreSQL Operator, including:
+ Installation Upgrading Uninstallation  After configuring the values.yaml file with you configuration options, the installer will be run using the helm command line tool and takes care of setting up all of the objects required to run the PostgreSQL Operator.</description>
     </item>
     
     <item>
@@ -670,10 +670,10 @@ The PostgreSQL Operator uses the open source pgBackRest backup and restore utili
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/google-cloud-marketplace/</guid>
-      <description>The PostgreSQL Operator is installed as part of Crunchy PostgreSQL for GKE that is available in the Google Cloud Marketplace.
+      <description>PGO: the PostgreSQL Operator from Crunchy Data is installed as part of Crunchy PostgreSQL for GKE that is available in the Google Cloud Marketplace.
 Step 1: Install Install Crunchy PostgreSQL for GKE to a Google Kubernetes Engine cluster using Google Cloud Marketplace.
 Step 2: Verify Installation Install kubectl using the gcloud components command of the Google Cloud SDK or by following the Kubernetes documentation.
-Using the gcloud utility, ensure you are logged into the GKE cluster in which you installed the PostgreSQL Operator, and see that it is running in the namespace in which you installed it.</description>
+Using the gcloud utility, ensure you are logged into the GKE cluster in which you installed PGO, the PostgreSQL Operator, and see that it is running in the namespace in which you installed it.</description>
     </item>
     
     <item>
@@ -692,8 +692,8 @@ Create a Logical Backup To create a logical backup of the postgres database, you
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/other/operator-hub/</guid>
-      <description>If your Kubernetes cluster is already running the Operator Lifecycle Manager, the PostgreSQL Operator can be installed as part of Crunchy PostgreSQL for Kubernetes that is available in OperatorHub.io.
-Before You Begin There are some optional Secrets you can add before installing the PostgreSQL Operator into your cluster.
+      <description>If your Kubernetes cluster is already running the Operator Lifecycle Manager, then PGO, the Postgres Operator from Crunchy Data, can be installed as part of Crunchy PostgreSQL for Kubernetes that is available in OperatorHub.io.
+Before You Begin There are some optional Secrets you can add before installing PGO into your cluster.
 Secrets (optional) If you plan to use AWS S3 to store backups and would like to have the keys available for every backup, you can create a Secret as described below:</description>
     </item>
     

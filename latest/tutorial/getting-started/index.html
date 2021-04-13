@@ -353,14 +353,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1386,17 +1386,17 @@
 
 <h2 id="installation">Installation</h2>
 
-<p>If you have not installed the PostgreSQL Operator yet, we recommend you take a look at our <a href="https://crunchydata.github.io/postgres-operator/latest/quickstart/">quickstart</a> or the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">installation</a> sections.</p>
+<p>If you have not installed PGO, the Postgres Operator, yet, we recommend you take a look at our <a href="https://crunchydata.github.io/postgres-operator/latest/quickstart/">quickstart</a> or the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">installation</a> sections.</p>
 
 <h3 id="customizing-an-installation">Customizing an Installation</h3>
 
-<p>How to customize a PostgreSQL Operator installation is a lengthy topic. The details are covered in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/">installation</a> section, as well as a list of all the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/configuration/">configuration variables</a> available.</p>
+<p>How to customize a PGO installation is a lengthy topic. The details are covered in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/">installation</a> section, as well as a list of all the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/configuration/">configuration variables</a> available.</p>
 
 <h2 id="setup-the-pgo-client">Setup the <code>pgo</code> Client</h2>
 
-<p>This tutorial will be using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/"><code>pgo</code> client</a> to interact with the PostgreSQL Operator. Please follow the instructions in the <a href="https://crunchydata.github.io/postgres-operator/latest/quickstart/">quickstart</a> or the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/">installation</a> sections for how to configure the <code>pgo</code> client.</p>
+<p>This tutorial will be using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/"><code>pgo</code> client</a> to interact with the Postgres Operator. Please follow the instructions in the <a href="https://crunchydata.github.io/postgres-operator/latest/quickstart/">quickstart</a> or the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/">installation</a> sections for how to configure the <code>pgo</code> client.</p>
 
-<p>The PostgreSQL Operator and <code>pgo</code> client are designed to work in a <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/">multi-namespace deployment environment</a> and many <code>pgo</code> commands require that the namespace flag (<code>-n</code>) are passed into it. You can use the <code>PGO_NAMESPACE</code> environmental variable to set which namespace a <code>pgo</code> command can use. For example:</p>
+<p>The Postgres Operator and <code>pgo</code> client are designed to work in a <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/">multi-namespace deployment environment</a> and many <code>pgo</code> commands require that the namespace flag (<code>-n</code>) are passed into it. You can use the <code>PGO_NAMESPACE</code> environmental variable to set which namespace a <code>pgo</code> command can use. For example:</p>
 
 <pre><code>export PGO_NAMESPACE=pgo
 pgo show cluster --all
@@ -1416,12 +1416,12 @@ pgo show cluster --all
 
 <h2 id="next-steps">Next Steps</h2>
 
-<p>Before proceeding, please make sure that your <code>pgo</code> client setup can communicate with your PostgreSQL Operator. In a separate terminal window, set up a port forward to your PostgreSQL Operator:</p>
+<p>Before proceeding, please make sure that your <code>pgo</code> client setup can communicate with your PGO Deployment. In a separate terminal window, set up a port forward to your PostgreSQL Operator:</p>
 
 <pre><code>kubectl port-forward -n pgo svc/postgres-operator 8443:8443
 </code></pre>
 
-<p>The <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_version/"><code>pgo version</code></a> command is a great way to check connectivity with the PostgreSQL Operator, as it is a very simple, safe operation. Try it out:</p>
+<p>The <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_version/"><code>pgo version</code></a> command is a great way to check connectivity with the Postgres Operator, as it is a very simple, safe operation. Try it out:</p>
 
 <pre><code>pgo version
 </code></pre>
@@ -1444,7 +1444,7 @@ pgo-apiserver version 4.6.2
 <pre><code>pgo client version 4.6.2
 </code></pre>
 
-<p>Alright, we&rsquo;re now ready to start our journey with the PostgreSQL Operator!</p>
+<p>Alright, we&rsquo;re now ready to start our journey with PGO!</p>
 
 
 

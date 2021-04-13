@@ -16,9 +16,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/tutorial/getting-started/</guid>
-      <description>Installation If you have not installed the PostgreSQL Operator yet, we recommend you take a look at our quickstart or the installation sections.
-Customizing an Installation How to customize a PostgreSQL Operator installation is a lengthy topic. The details are covered in the installation section, as well as a list of all the configuration variables available.
-Setup the pgo Client This tutorial will be using the pgo client to interact with the PostgreSQL Operator.</description>
+      <description>Installation If you have not installed PGO, the Postgres Operator, yet, we recommend you take a look at our quickstart or the installation sections.
+Customizing an Installation How to customize a PGO installation is a lengthy topic. The details are covered in the installation section, as well as a list of all the configuration variables available.
+Setup the pgo Client This tutorial will be using the pgo client to interact with the Postgres Operator.</description>
     </item>
     
     <item>

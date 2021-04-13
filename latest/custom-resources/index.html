@@ -352,14 +352,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1938,6 +1938,73 @@ kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgrepli
 
 <p>Add this time, removing a replica must be handled through the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/common-tasks/#high-availability-scaling-up-down"><code>pgo</code> client</a>.</p>
 
+<h3 id="resize-pvc">Resize PVC</h3>
+
+<p>PGO lets you resize the PVCs that the Operator manages, e.g. the Postgres data
+directory, pgBackRest, the WAL volume, etc. The PVC can be resized so long as
+the following conditions are met:</p>
+
+<ol>
+<li>The <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">Storage Class</a>
+supports resizing.</li>
+<li>The new size of the PVC is larger than the old size.</li>
+</ol>
+
+<p>The following sections explain how the different PVC resizing operations work
+and how you can resize the PVCs.</p>
+
+<h4 id="resize-the-postgresql-cluster-pvc">Resize the PostgreSQL Cluster PVC</h4>
+
+<p>To resize the PVC that stores the PostgreSQL data directory across the entire
+cluster, you will need to edit the <code>size</code> attribute of the <code>PrimaryStorage</code>
+section of the <code>pgclusters.crunchydata.com</code> custom resource.</p>
+
+<p>The PVC resize process for a cluster uses a <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#rolling-updates">rolling update</a>
+to apply the size changes. During the process, each Deployment is scaled down
+and back to allow for the PVC resize to take effect.</p>
+
+<h4 id="resize-the-pgbackrest-pvc">Resize the pgBackRest PVC</h4>
+
+<p>To resize the PVC that stores the backups managed by pgBackRest, you will need to
+edit the <code>size</code> attribute of the <code>BackrestStorage</code> section of the
+<code>pgclusters.crunchydata.com</code> custom resource.</p>
+
+<p>The Postgres Operator will apply the PVC size change and scale the pgBackRest
+Deployment down and back up.</p>
+
+<h4 id="resize-a-single-postgresql-instance-read-only-replica">Resize a single PostgreSQL instance / read-only replica</h4>
+
+<p>To resize the PVC for a read-only replica, you can edit the <code>size</code> attribute
+of the <code>ReplicaStorage</code> portion of the <code>pgreplicas.crunchydata.com</code> custom
+resource.</p>
+
+<p>Note that if a subsequent action resizes the PVCs for all of the instances in a
+Postgres cluster and that new PVC size is larger than the specific instance
+size that is set, then the instance PVC is also resized.</p>
+
+<p>The Postgres Operator will apply the PVC size change and scale the instance
+Deployment down and back up.</p>
+
+<h4 id="resize-a-wal-pvc">Resize a WAL PVC</h4>
+
+<p>To resize the optional PVC that can be used to store WAL archives, you can edit
+the <code>size</code> attribute of the <code>WALStorage</code> section of the
+<code>pgclusters.crunchydata.com</code> custom resource.</p>
+
+<p>The PVC resize process for a cluster uses a <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#rolling-updates">rolling update</a>
+to apply the size changes. During the process, each Deployment is scaled down
+and back up to allow for the PVC resize to take effect.</p>
+
+<h4 id="resize-the-pgadmin-4-pvc">Resize the pgAdmin 4 PVC</h4>
+
+<p>If you have deployed <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/pgadmin4/">pgAdmin 4</a> and
+need to resize its PVC, you can edit the <code>size</code> attribute of the <code>PGAdmin</code>
+section of the <code>pgclusters.crunchydata.com</code> custom resource.</p>
+
+<p>The PVC resize process for a cluster uses a <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/#rolling-updates">rolling update</a>
+to apply the size changes. During the process, the pgAdmin 4 Deployment is
+scaled down and back up to allow for the PVC resize to take effect.</p>
+
 <h3 id="monitoring">Monitoring</h3>
 
 <p>To enable the <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/monitoring/">monitoring</a>
@@ -2444,7 +2511,7 @@ attribute and how it works.</p>
 
 <tr>
 <td>size</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>The size of the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">Persistent Volume Claim</a> (PVC). Must use a Kubernetes resource value, e.g. <code>20Gi</code>.</td>
 </tr>
 
