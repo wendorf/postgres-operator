@@ -1424,9 +1424,12 @@ pgBackRest repository that can be used, including:</p>
 <li><code>posix</code>: Uses the storage that is provided by the Kubernetes cluster&rsquo;s Storage
 Class that you select</li>
 <li><code>s3</code>: Use Amazon S3 or an object storage system that uses the S3 protocol</li>
+<li><code>gcs</code>: Use Google Cloud Storage (GCS)</li>
 <li><code>posix,s3</code>: Use both the storage that is provided by the Kubernetes cluster&rsquo;s
 Storage Class that you select AND Amazon S3 (or equivalent object storage system
 that uses the S3 protocol)</li>
+<li><code>posix,gcs</code>: Use both the storage that is provided by the Kubernetes cluster&rsquo;s
+Storage Class that you select and Google Cloud Storage (GCS)</li>
 </ul>
 
 <p>The pgBackRest repository consists of the following Kubernetes objects:</p>
@@ -1680,6 +1683,50 @@ clusters.</p>
 <code>pgo create cluster</code> command needs to be set to <code>s3</code> or <code>posix,s3</code>.</p>
 
 <p>Once configured, the <code>pgo backup</code> and <code>pgo restore</code> commands will work with S3
+similarly to the above!</p>
+
+<h2 id="using-gcs">Using GCS</h2>
+
+<p><img src="https://crunchydata.github.io/postgres-operator/latest/images/postgresql-cluster-dr-gcs.png" alt="PostgreSQL Operator pgBackRest GCS" /></p>
+
+<p>The PostgreSQL Operator integration with pgBackRest allows it to use the Google
+Cloud Storage (GCS) object storage system.</p>
+
+<p>In order to enable GCS, it is helpful to provide some of the GCS
+information prior to deploying PGO, the Postgres Operator, or updating the
+<code>pgo-config</code> ConfigMap and restarting the Postgres Operator pod.</p>
+
+<p>The easiest way to get started is by setting the GCS bucket name that you wish
+to use with the Postgres Operator. You can do this by editing the <code>Cluster</code>
+section of the <code>pgo.yaml</code> <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">configuration file</a>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">Cluster<span style="color:#111">:</span>
+  BackrestGCSBucket<span style="color:#111">:</span> my-postgresql-backups-example</code></pre></div>
+<p>These values can also be set on a per-cluster basis with the
+<code>pgo create cluster</code> command. The two most important ones are:</p>
+
+<ul>
+<li><code>--pgbackrest-gcs-bucket</code> - specifics the GCS bucket that should be utilized.
+If not specified, the default bucket name that you set in the <code>pgo.yaml</code>
+configuration file will be used.</li>
+<li><code>--pgbackrest-gcs-key</code> - A path to the GCS credential file on your local
+system. This will be added to the pgBackRest Secret.</li>
+</ul>
+
+<p>There are some other options that are optional, but explained below for
+completeness:</p>
+
+<ul>
+<li><code>--pgbackrest-gcs-endpoint</code> specifies an alternative GCS endpoint.</li>
+<li><code>--pgbackrest-gcs-key-type</code>- Either <code>service</code> or <code>token</code>, defaults to <code>service</code>.</li>
+</ul>
+
+<p>As mentioned above, GCS keys are stored in Kubernetes Secrets and are securely
+mounted to PostgreSQL clusters.</p>
+
+<p>To enable a PostgreSQL cluster to use GCS, the <code>--pgbackrest-storage-type</code> on the
+<code>pgo create cluster</code> command needs to be set to <code>gcs</code> or <code>posix,gcs</code>.</p>
+
+<p>Once configured, the <code>pgo backup</code> and <code>pgo restore</code> commands will work with GCS
 similarly to the above!</p>
 
 <h2 id="deleting-a-backup">Deleting a Backup</h2>

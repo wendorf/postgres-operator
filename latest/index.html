@@ -1405,9 +1405,9 @@ library.</p>
 
 <p>Choose the type of backup (full, incremental, differential) and <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/#scheduling-backups">how frequently you want it to occur</a> on each PostgreSQL cluster.</p>
 
-<h4 id="backup-to-s3">Backup to S3</h4>
+<h4 id="backup-to-s3-or-gcs">Backup to S3 or GCS</h4>
 
-<p><a href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/#using-s3">Store your backups in Amazon S3</a> or any object storage system that supports the S3 protocol. The PostgreSQL Operator can backup, restore, and create new clusters from these backups.</p>
+<p><a href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/#using-s3">Store your backups in Amazon S3</a>, any object storage system that supports the S3 protocol, or <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/#using-gcs">GCS</a>. The PostgreSQL Operator can backup, restore, and create new clusters from these backups.</p>
 
 <h4 id="multi-namespace-support">Multi-Namespace Support</h4>
 

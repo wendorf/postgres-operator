@@ -1464,7 +1464,28 @@ Operator.</p>
 <td><code>backrest_aws_s3_verify_tls</code></td>
 <td></td>
 <td></td>
-<td>Set this value to true to enable TLS verification when making a pgBackRest connection to S3.f</td>
+<td>Set this value to true to enable TLS verification when making a pgBackRest connection to S3.</td>
+</tr>
+
+<tr>
+<td><code>backrest_gcs_bucket</code></td>
+<td></td>
+<td></td>
+<td>Set to configure the <em>bucket</em> used by pgBackRest with Google Cloud Storage (GCS) for backups and restoration.</td>
+</tr>
+
+<tr>
+<td><code>backrest_gcs_endpoint</code></td>
+<td></td>
+<td></td>
+<td>Set to configure the <em>endpoint</em> used by pgBackRest with Google Cloud Storage (GCS) for backups and restoration.</td>
+</tr>
+
+<tr>
+<td><code>backrest_gcs_key_type</code></td>
+<td></td>
+<td></td>
+<td>Set to configure the <em>key type</em> used by pgBackRest with Google Cloud Storage (GCS) for backups and restoration. Can be <code>service</code> or <code>token</code>. Defaults to <code>service</code>.</td>
 </tr>
 
 <tr>
