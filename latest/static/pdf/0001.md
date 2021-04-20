@@ -40,7 +40,7 @@ Backups and restores leverage the open source [pgBackRest](https://www.pgbackres
 
 #### TLS
 
-Secure communication between your applications and data servers by [enabling TLS for your PostgreSQL servers](/pgo-client/common-tasks/#enable-tls), including the ability to enforce all of your connections to use TLS.
+Secure communication between your applications and data servers by [enabling TLS for your PostgreSQL servers]({{< relref "/tutorial/tls.md" >}}), including the ability to enforce all of your connections to use TLS.
 
 #### [Monitoring]({{< relref "/architecture/monitoring.md" >}})
 
@@ -124,6 +124,7 @@ The Crunchy PostgreSQL Operator extends Kubernetes to provide a higher-level abs
   - [pgAudit](https://www.pgaudit.org/)
   - [pgAudit Analyze](https://github.com/pgaudit/pgaudit_analyze)
   - [pgnodemx](https://github.com/CrunchyData/pgnodemx)
+  - [pg_partman](https://github.com/pgpartman/pg_partman)
   - [set_user](https://github.com/pgaudit/set_user)
   - [wal2json](https://github.com/eulerto/wal2json)
 - [pgBackRest](https://pgbackrest.org/)

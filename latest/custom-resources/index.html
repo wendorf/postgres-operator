@@ -1850,6 +1850,8 @@ kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
 
 <p>For a detailed explanation for how TLS works with the PostgreSQL Operator, please see the <a href="https://crunchydata.github.io/postgres-operator/latest/tutorial/tls/">TLS tutorial</a>.</p>
 
+<p>TLS can be added to an existing cluster, also long as there are values for <code>tls.caSecret</code> and <code>tls.tlsSecret</code>.</p>
+
 <h4 id="step-1-create-tls-secrets">Step 1: Create TLS Secrets</h4>
 
 <p>There are two Secrets that need to be created:</p>
@@ -2571,13 +2573,13 @@ make changes, as described below.</p>
 
 <tr>
 <td>tls</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>Defines the attributes for enabling TLS for a PostgreSQL cluster. See TLS Specification below.</td>
 </tr>
 
 <tr>
 <td>tlsOnly</td>
-<td><code>create</code></td>
+<td><code>create</code>,<code>update</code></td>
 <td>If set to true, requires client connections to use only TLS to connect to the PostgreSQL database.</td>
 </tr>
 
@@ -2784,19 +2786,19 @@ should be structured, please see <a href="https://crunchydata.github.io/postgres
 <tbody>
 <tr>
 <td>caSecret</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>A reference to the name of a Kubernetes Secret that specifies a certificate authority for the PostgreSQL cluster to trust.</td>
 </tr>
 
 <tr>
 <td>replicationTLSSecret</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>A reference to the name of a Kubernetes TLS Secret that contains a keypair for authenticating the replication user. Must be used with <code>CASecret</code> and <code>TLSSecret</code>.</td>
 </tr>
 
 <tr>
 <td>tlsSecret</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>A reference to the name of a Kubernetes TLS Secret that contains a keypair that is used for the PostgreSQL instance to identify itself and perform TLS communications with PostgreSQL clients. Must be used with <code>CASecret</code>.</td>
 </tr>
 </tbody>

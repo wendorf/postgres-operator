@@ -2335,7 +2335,40 @@ PostgreSQL instances (i.e. certificate-based authentication with SSL mode of
 <code>verify-full</code>), you will need to create a
 <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">PostgreSQL custom configuration</a>.</p>
 
-<h2 id="custom-postgresql-configuration-hahahugoshortcode-s27-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL Configuration</a></h2>
+<h3 id="add-tls-to-an-existing-postgresql-cluster">Add TLS to an Existing PostgreSQL Cluster</h3>
+
+<p>You can add TLS support to an existing PostgreSQL cluster using the
+<a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a>
+command. The following flags are used to manage TLS in a Postgres cluster,
+including:</p>
+
+<ul>
+<li><code>--disable-server-tls</code>: removes TLS from a cluster</li>
+<li><code>--disable-tls-only</code>: removes the TLS-only requirement from a cluster</li>
+<li><code>--enable-tls-only</code>: adds the TLS-only requirement to a cluster</li>
+<li><code>--server-ca-secret</code>: combined with <code>--server-tls-secret</code>, enables TLS in a
+cluster</li>
+<li><code>--server-tls-secret</code>: combined with <code>--server-ca-secret</code>, enables TLS in a
+cluster</li>
+<li><code>--replication-tls-secret</code>: enables certificate-based authentication between
+Postgres instances.</li>
+</ul>
+
+<p>Using the above examples, to add TLS to a PostgreSQL cluster named <code>hippo</code> and
+require TLS, you can use the following command:</p>
+
+<pre><code>pgo update cluster hippo \
+  --enable-tls-only \
+  --server-ca-secret=postgresql-ca \
+  --server-tls-secret=hacluster-tls-keypair
+</code></pre>
+
+<p>Conversely, you can disable TLS with the <code>--disable-tls</code> flag:</p>
+
+<pre><code>pgo update cluster hippo --disable-server-tls
+</code></pre>
+
+<h2 id="custom-postgresql-configuration-hahahugoshortcode-s28-hbhb"><a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">Custom PostgreSQL Configuration</a></h2>
 
 <p>Customizing PostgreSQL configuration is currently not subject to the <code>pgo</code>
 client, but given it is a common question, we thought it may be helpful to link

@@ -1402,13 +1402,13 @@
 
 <h2 id="update-cpu-memory">Update CPU / Memory</h2>
 
-<p>You can update the CPU and memory resources available to the Pods in your PostgreSQL cluster by using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> command. By using this method, the PostgreSQL instances are safely shut down and the new resources are applied in a rolling fashion (though we caution that a brief downtime may still occur).</p>
+<p>You can update the CPU and memory resources available to the Pods in your PostgreSQL cluster by using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> command. You can also modify the custom resource attributes to resize these attributes as well. By using this method, the PostgreSQL instances are safely shut down and the new resources are applied in a rolling fashion (though we caution that a brief downtime may still occur).</p>
 
 <p>Customizing CPU and memory does add more resources to your PostgreSQL cluster, but to fully take advantage of additional resources, you will need to <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">customize your PostgreSQL configuration</a> and tune parameters such as <code>shared_buffers</code> and others.</p>
 
 <h3 id="customize-cpu-memory-for-postgresql">Customize CPU / Memory for PostgreSQL</h3>
 
-<p>The PostgreSQL Operator provides several flags for <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> to help manage resources for a PostgreSQL instance:</p>
+<p>The PostgreSQL Operator provides several flags for <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a> to help manage resources for a PostgreSQL instance:</p>
 
 <ul>
 <li><code>--cpu</code>: Specify the CPU Request for a PostgreSQL instance</li>
@@ -1470,6 +1470,32 @@
 </code></pre>
 
 <p>We recommend that you read the section on how to <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-configuration/">customize your PostgreSQL configuration</a> to find out how to customize your configuration.</p>
+
+<h2 id="update-pvc-size">Update PVC Size</h2>
+
+<p>You can update the PVC sizes for your PostgreSQL cluster, the pgBackRest repository, and an optional external WAL PVC by using the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a> command. You can also modify the custom resource attributes to resize these attributes as well. By using this method, the PostgreSQL instances are safely shut down and the new resources are applied in a rolling fashion (though we caution that a brief downtime may still occur).</p>
+
+<p>It is possible to update the PVC size for a replica instance or a pgAdmin 4 instance as well, but you must do this by editing a custom resource directly.</p>
+
+<h3 id="update-pvc-size-for-a-postgres-cluster">Update PVC Size for a Postgres Cluster</h3>
+
+<p>PGO provides the <code>--pvc-size</code> flag on the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a> command to let you update the size of the PVC that stores your PostgreSQL data. To use this feature, the new PVC size <strong>must</strong> be larger than the old PVC size.</p>
+
+<p>For example, let&rsquo;s say your current PostgreSQL cluster named <code>hippo</code> has a PVC size of <code>10Gi</code>. To update your PostgreSQL cluster to use a <code>20Gi</code> PVC, you would use the following command:</p>
+
+<pre><code>pgo update cluster hippo --pvc-size=20Gi
+</code></pre>
+
+<p>As mentioned above, if you have deployed a HA Postgres cluster, the Postgres Operator will apply the changes using a rolling update to minimize downtime.</p>
+
+<h3 id="update-pvc-size-for-a-pgbackrest-repository">Update PVC Size for a pgBackRest Repository</h3>
+
+<p>If you are using pgBackRest repository with <code>posix</code> mode (<strong>not</strong> <code>s3</code> or <code>gcs</code> only modes), you can resize its PVC using the <code>--pgbackrest-pvc-size</code> flag on the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> command.</p>
+
+<p>For example, let&rsquo;s say your current PostgreSQL cluster named <code>hippo</code> has a pgBackRest PVC size of <code>30Gi</code>. To update your PostgreSQL cluster to use a <code>60Gi</code> PVC, you would use the following command:</p>
+
+<pre><code>pgo update cluster hippo --pgbackrest-pvc-size=60Gi
+</code></pre>
 
 <h2 id="troubleshooting">Troubleshooting</h2>
 
