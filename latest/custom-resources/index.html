@@ -2476,6 +2476,12 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
+<td>passwordType</td>
+<td><code>create</code>, <code>update</code></td>
+<td>If set, provides the Postgres password type that is used for creating Postgres users that are managed by PGO. Can be either <code>md5</code> or <code>scram-sha-256</code>.</td>
+</tr>
+
+<tr>
 <td>pgBadger</td>
 <td><code>create</code>,<code>update</code></td>
 <td>If <code>true</code>, deploys the <code>crunchy-pgbadger</code> sidecar for query analysis.</td>
