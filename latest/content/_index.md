@@ -6,7 +6,7 @@ draft: false
 
 # PGO: The Postgres Operator from Crunchy Data
 
- <img width="25%" src="pgo.svg" alt="PGO: The Postgres Operator from Crunchy Data" />
+ <img width="25%" src="logos/pgo.svg" alt="PGO: The Postgres Operator from Crunchy Data" />
 
 ## Run [Cloud Native PostgreSQL on Kubernetes](https://www.crunchydata.com/products/crunchy-postgresql-for-kubernetes/) with PGO: The [Postgres Operator](https://github.com/CrunchyData/postgres-operator) from [Crunchy Data](https://www.crunchydata.com/)!
 
@@ -124,8 +124,10 @@ The Crunchy PostgreSQL Operator extends Kubernetes to provide a higher-level abs
   - [pgAudit](https://www.pgaudit.org/)
   - [pgAudit Analyze](https://github.com/pgaudit/pgaudit_analyze)
   - [pgnodemx](https://github.com/CrunchyData/pgnodemx)
+  - [pg_cron](https://github.com/citusdata/pg_cron)
   - [pg_partman](https://github.com/pgpartman/pg_partman)
   - [set_user](https://github.com/pgaudit/set_user)
+  - [TimescaleDB](https://github.com/timescale/timescaledb) (Apache-licensed community edition)
   - [wal2json](https://github.com/eulerto/wal2json)
 - [pgBackRest](https://pgbackrest.org/)
 - [pgBouncer](http://pgbouncer.github.io/)
@@ -184,3 +186,5 @@ breadth of this area we are unable to verify Postgres Operator functionality in
 each one. With that said, the PostgreSQL Operator is designed to be storage
 class agnostic and has been demonstrated to work with additional Storage
 Classes.
+
+The PGO Postgres Operator project source code is available subject to the [Apache 2.0 license](https://raw.githubusercontent.com/CrunchyData/postgres-operator/master/LICENSE.md) with the PGO logo and branding assets covered by [our trademark guidelines](/logos/TRADEMARKS.md).
