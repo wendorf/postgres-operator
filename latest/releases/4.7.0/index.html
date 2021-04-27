@@ -1415,6 +1415,7 @@
 <ul>
 <li><a href="https://postgis.net/">PostGIS</a> 3.1 is now available.</li>
 <li><a href="https://pgbackrest.org/">pgBackRest</a> is now at version 2.33.</li>
+<li><a href="https://github.com/CrunchyData/pgmonitor">pgMonitor</a> is now at 4.5.0. Grafana 7.4 is now required for visualizing the exported metrics.</li>
 <li><a href="https://patroni.readthedocs.io/">Patroni</a> is now at version 2.0.2.</li>
 <li><a href="https://www.pgbouncer.org/">pgBouncer</a> for CentOS 8 / UBI 8 is rebuilt to use the evdns for its async DNS backend.</li>
 </ul>
@@ -1496,6 +1497,18 @@
 <p>and the Postgres Operator will create <code>hippo</code> from <code>elephant</code>. This also works by setting the <code>namespace</code> attribute in the <code>restoreFrom</code> block in the <code>pgclusters.crunchydata.com</code> custom resource.</p>
 
 <p>Note that the Postgres Operator needs to have <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/architecture/namespace/">sufficient privileges in both namespaces</a> to use this feature. For more information, please read about <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/architecture/namespace/">Namespace Management</a> in the documentation.</p>
+
+<h2 id="monitoring-improvements">Monitoring Improvements</h2>
+
+<p>This release brings several enhancements to monitoring Postgres clusters managed by PGO, including support for Grafana 7.4. These include:</p>
+
+<ul>
+<li>New query performance insights, including the standard &ldquo;top N&rdquo; views (longest running queries, average runtime, total queries run) to help with performance troubleshooting.</li>
+<li>Enhancements to information available about the state of backups, including the backup recovery window, the total number of missing WAL archives, the total size of backups, and more.</li>
+<li>A new &ldquo;alerting dashboard&rdquo; that provides summary information about system health and alert history.</li>
+</ul>
+
+<p>There are also general improvements to the overall user experience of the monitoring visualizations.</p>
 
 <h2 id="enable-disable-tls-in-active-postgresql-clusters">Enable / Disable TLS in Active PostgreSQL Clusters</h2>
 
