@@ -1451,7 +1451,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1483,7 +1483,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.2
+  ccpimagetag: centos8-13.2-4.7.0-beta.3
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1502,7 +1502,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1664,7 +1664,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1703,7 +1703,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.2
+  ccpimagetag: centos8-13.2-4.7.0-beta.3
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1722,7 +1722,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1783,7 +1783,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1818,7 +1818,7 @@ spec:
   backrestGCSBucket: ${backrest_gcs_bucket}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.2
+  ccpimagetag: centos8-13.2-4.7.0-beta.3
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1837,7 +1837,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1909,7 +1909,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1941,7 +1941,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.2
+  ccpimagetag: centos8-13.2-4.7.0-beta.3
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1963,7 +1963,7 @@ spec:
   tlsOnly: true
   user: hippo
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -2054,7 +2054,7 @@ spec:
     supplementalgroups: &quot;&quot;
   tolerations: []
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0-beta.3
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;
@@ -2249,6 +2249,35 @@ this explicitly shows that this is the <code>spec</code> block. <strong>Do not m
 <p>Save your edits, and in a short period of time, you should see these annotations
 applied to the managed Deployments.</p>
 
+<h3 id="manage-custom-labels">Manage Custom Labels</h3>
+
+<p>Several Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/">Labels</a>
+are automatically applied by PGO to its managed objects. However, it is possible
+to apply your own custom labels to the objects that PGO manages for a Postgres
+cluster. These objects include:</p>
+
+<ul>
+<li>ConfigMaps</li>
+<li>Deployments</li>
+<li>Jobs</li>
+<li>Pods</li>
+<li>PVCs</li>
+<li>Secrets</li>
+<li>Services</li>
+</ul>
+
+<p>The custom labels can be managed through the <code>userlabels</code> attribute on the
+<code>pgclusters.crunchydata.com</code> custom resource spec.</p>
+
+<p>For example, if I want to add a custom label to all of the objects within my
+Postgres cluster with a key of <code>favorite</code> and a value of <code>hippo</code>, you would
+apply the following to the spec:</p>
+
+<pre><code>spec:
+  userlabels:
+    favorite: hippo
+</code></pre>
+
 <h3 id="delete-a-postgresql-cluster">Delete a PostgreSQL Cluster</h3>
 
 <p>A PostgreSQL cluster can be deleted by simply deleting the <code>pgclusters.crunchydata.com</code> resource.</p>
@@ -2413,7 +2442,7 @@ make changes, as described below.</p>
 <tr>
 <td>ccpimagetag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.2-4.6.2</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.2-4.7.0-beta.3</code>.</td>
 </tr>
 
 <tr>
@@ -2610,8 +2639,8 @@ make changes, as described below.</p>
 
 <tr>
 <td>userlabels</td>
-<td><code>create</code></td>
-<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; as well as a way to add custom labels to clusters. This will disappear at some point.</td>
+<td><code>create</code>,<code>update</code></td>
+<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; as well as a way to add custom labels to clusters.</td>
 </tr>
 </tbody>
 </table>

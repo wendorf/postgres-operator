@@ -1550,6 +1550,8 @@
 <h1 id="features">Features</h1>
 
 <ul>
+<li>Custom labels can now be added and removed through the <code>userlabels</code> attribute on the <code>pgclusters.crunchydata.com</code> custom resource, in addition to extending this functionality of the <code>pgo label</code> and <code>pgo delete label</code> commands.</li>
+<li>Custom labels are now applied to all of the managed Kubenretes objects associated with a Postgres cluster. These include: Deployments, Jobs, Pods, PVCs, ConfigMaps, and Secrets.</li>
 <li>The default password hashing mechanism (<code>scram-sha-256</code>, <code>md5</code>) for PostgreSQL users can now be selected using the <code>--password-type</code> flag on <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>. The <code>passwordType</code> attribute on the <code>pgclusters.crunchydata.com</code> custom resource can also be used for this purpose.</li>
 <li>The size of the pgAdmin4 PVC can be set with the <code>--pvc-size</code> flag on the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/pgo-client/reference/pgo_create_pgadmin/"><code>pgo create pgadmin</code></a> command.</li>
 <li>The storage configuration for pgAdmin 4 is now configurable. This can be configured either in the <code>pgo.yaml</code> ConfigMap in the <code>PGAdminStorage</code> section, or via the <code>--storage-config</code> flag on the <a href="https://access.crunchydata.com/documentation/postgres-operator/latest/pgo-client/reference/pgo_create_pgadmin/"><code>pgo create pgadmin</code></a> command. If nothing is set, it will default to the configuration based on <code>PrimaryStorage</code>.</li>
@@ -1567,6 +1569,7 @@
 <li>Revert setting &ldquo;UsePAM&rdquo; to &ldquo;yes&rdquo; by default as the bug fix in Docker that required that change was applied roughly one year ago.</li>
 <li>PGO Apiserver now requires a minimum of TLS 1.2 to connect. Additionally, the ciphersuites that can be used are further restricted to be a more secure set while still maintaining FIPS compatibility. Contributed by Steve Kerrison (@stevekerrison).</li>
 <li>The post-cluster creation pgBackRest tasks, i.e. creating a stanza and creating an initial backup, are now deleted by the Operator should they complete successfully. Besides good housekeeping, this provides a workaround for an OpenShift 3.11 bug that was causing the Operator to continuously issue pgBackRest backups during an OpenShift refresh cycle. Reported by Paul Heinen (@v3nturetheworld).</li>
+<li>The container ports are now named, which may make it easier to integrate PGO with external systems. Suggested by Aleksander Roszig (@AleksanderRoszig).</li>
 <li>On Operator boot, Automatically detect when deployed in an OpenShift environment and set <code>DisableFSGroup</code> to <code>true</code>. This makes it easier to get started with the Postgres Operator in an OpenShift environment with the default security settings (i.e. <code>restricted</code>). If you use the <code>anyuid</code> Security Context Constraint, you will need to explicitly set <code>DisableFSGroup</code> to <code>false</code>.</li>
 <li>Update Helm installer to follow appropriate conventions. Contributed by Jakub Ráček (@kubaracek)</li>
 </ul>
@@ -1578,13 +1581,16 @@
 <li>Only attempts to start scheduled backups in running pgBackRest repository Pods. Reported by Satria Sahputra (@satriashp).</li>
 <li>Fix error when attempting to perform restores when using node affinity. Reported by (@gilfrade) and Cristian Chiru (@cristichiru).</li>
 <li>Fix issue with newer versions of PostgreSQL where a replica would automatically restart after a configuration change. Now the replica will only show that it is pending a restart; a user will have to run <code>pgo restart</code>.</li>
+<li>Fix issue where metrics about pgBackRest backups could not be scraped if the backups were stored in a S3-like environment that requires the use of disabling TLS verification. Reported by (@lphan-clv) and (@dakine1111).</li>
 <li>Fix issue where certain pgAdmin 4 functions did not work (e.g. taking a backup) due to <code>python</code> references in EL8 containers. Reported by (@douggutaby).</li>
 <li>Fix how the pgAdmin 4 Service is identified in <code>pgo test</code>. Prior to this, it was identified as a &ldquo;primary&rdquo;; now it is &ldquo;pgadmin&rdquo;.</li>
 <li>Ensure a Postgres cluster shutdown can execute even if the <code>status</code> subresource of a <code>pgclusters.crunchydata.com</code> custom resource is missing.</li>
 <li>Support the substitution for the limit on the number of queries to include the the <code>pg_stat_statements</code> support of pgMonitor. Defaults to 20, which is the pgMonitor upstream value. Contributed by Steven Siahetiong (@ssiahetiong).</li>
 <li>Ensure <code>sshd_config</code> is correctly set on an upgrade. This could have manifested with some pgBackRest functionality not working. This can be manually fixed by setting <code>UsePAM no</code> in the <code>sshd_config</code> file in a cluster. Reported by (@douggutaby)</li>
 <li>Ensure major upgrades via <code>crunchy-upgrade</code> support PostgreSQL 12 and PostgreSQL 13. Reported by (@lbartnicki92).</li>
+<li>The <code>pgo-deployer</code> and Ansible installer will no longer create an initial TLS secret for the PGO apiserver. PGO apiserver has been able to self-create this for a long time, and PGO defers to that. This fixes an issue that occurred on newer builds where certificates generated by OPenSSL contained incomplete usage blocks, which could cause for these certificates to be properly outright rejected.</li>
 <li>Fix installed RBAC permissions via OLM. Reported by Tim Bo (@timbrd), with additional analysis from Aleksander Roszig (@AleksanderRoszig) and Eric Ace (@aceeric).</li>
+<li>Fix nonbreaking error message that occurs when <code>pgo-scheduler</code> container shuts down in the UBI 8 base container.</li>
 </ul>
 
 
