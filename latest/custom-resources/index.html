@@ -1976,7 +1976,7 @@ kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
 
 <h4 id="modify-resource-requests-limits">Modify Resource Requests &amp; Limits</h4>
 
-<p>Modifying the <code>resources</code>, <code>limits</code>, <code>backrestResources</code>, <code>backRestLimits</code>,
+<p>Modifying the <code>resources</code>, <code>limits</code>, <code>backrestResources</code>, <code>backrestLimits</code>,
 <code>pgBouncer.resources</code>, or <code>pgbouncer.limits</code> will cause the PostgreSQL Operator
 to apply the new values to the affected <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployments</a>.</p>
 
@@ -2368,7 +2368,7 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>BackrestResources</td>
+<td>backrestResources</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource requests that the pgBackRest repository should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource requests</a>.</td>
 </tr>
