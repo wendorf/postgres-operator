@@ -1404,7 +1404,7 @@ required to enable TLS support for your PostgreSQL cluster when using the Postgr
 <li>A TLS certificate</li>
 </ul>
 
-<p>There are a variety of methods available to generate these items: in fact, Kubernetes comes with its own <a href="https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/">certificate management system</a>! It is up to you to decide how you want to manage this for your cluster. The PostgreSQL documentation also provides an example for how to <a href="https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION">generate a TLS certificate</a> as well.</p>
+<p>There are a variety of methods available to generate these items: in fact, Kubernetes comes with its own <a href="https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/">certificate management system</a>! It is up to you to decide how you want to manage this for your cluster. The PostgreSQL documentation also provides an example for how to <a href="https://blog.crunchydata.com/blog/tls-postgres-kubernetes-openssl">generate a TLS certificate</a> as well.</p>
 
 <p>To set up TLS for your PostgreSQL cluster, you have to create two <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Secrets</a>: one that contains the CA certificate, and the other that contains the server TLS key pair.</p>
 

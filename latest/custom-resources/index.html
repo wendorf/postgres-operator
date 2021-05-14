@@ -1451,7 +1451,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1483,7 +1483,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.7.0-beta.3
+  ccpimagetag: centos8-13.3-4.7.0-rc.1
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1502,7 +1502,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1664,7 +1664,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1703,7 +1703,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.7.0-beta.3
+  ccpimagetag: centos8-13.3-4.7.0-rc.1
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1722,7 +1722,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1783,7 +1783,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1818,7 +1818,7 @@ spec:
   backrestGCSBucket: ${backrest_gcs_bucket}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.7.0-beta.3
+  ccpimagetag: centos8-13.3-4.7.0-rc.1
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1837,7 +1837,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1868,7 +1868,7 @@ kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
 <li>A Secret that contains the TLS private key &amp; certificate.</li>
 </ol>
 
-<p>This assumes that you have already <a href="https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION">generated your TLS certificates</a> where the CA is named <code>ca.crt</code> and the server key and certificate are named <code>server.key</code> and <code>server.crt</code> respectively.</p>
+<p>This assumes that you have already <a href="https://blog.crunchydata.com/blog/tls-postgres-kubernetes-openssl">generated your TLS certificates</a> where the CA is named <code>ca.crt</code> and the server key and certificate are named <code>server.key</code> and <code>server.crt</code> respectively.</p>
 
 <p>Substitute the correct values for your environment into the environmental variables in the example below:</p>
 
@@ -1909,7 +1909,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1941,7 +1941,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.7.0-beta.3
+  ccpimagetag: centos8-13.3-4.7.0-rc.1
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1963,7 +1963,7 @@ spec:
   tlsOnly: true
   user: hippo
   userlabels:
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -2054,7 +2054,7 @@ spec:
     supplementalgroups: &quot;&quot;
   tolerations: []
   userlabels:
-    pgo-version: 4.7.0-beta.3
+    pgo-version: 4.7.0-rc.1
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;
@@ -2442,7 +2442,7 @@ make changes, as described below.</p>
 <tr>
 <td>ccpimagetag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.2-4.7.0-beta.3</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.3-4.7.0-rc.1</code>.</td>
 </tr>
 
 <tr>
