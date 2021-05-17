@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Install the PostgreSQL Operator :: Crunchy PostgreSQL Operator Documentation</title>
+<title>Install PGO the Postgres Operator :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -353,14 +353,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1139,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/">
+            4.7.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
@@ -1296,8 +1303,8 @@
     <option value="/installation/" >
    Installation</option> 
       <option value="/installation/prerequisites/" >- Prerequisites</option>
-      <option value="/installation/postgres-operator/"  selected>- Install the PostgreSQL Operator</option>
-      <option value="/installation/pgo-client/" >- Install `pgo` Client</option>
+      <option value="/installation/postgres-operator/"  selected>- Install PGO the Postgres Operator</option>
+      <option value="/installation/pgo-client/" >- Install &#34;pgo&#34; Client</option>
       <option value="/installation/configuration/" >- Configuration Reference</option>
     <option value="/installation/other/" >
   - 
@@ -1360,7 +1367,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/stable/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/installation/'>Installation</a> > Install the PostgreSQL Operator
+ <a href='https://crunchydata.github.io/postgres-operator/stable/'>PGO: The Postgres Operator from Crunchy Data</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/installation/'>Installation</a> > Install PGO the Postgres Operator
 
  
 
@@ -1376,14 +1383,14 @@
     
     <div id="body-inner">
 
-    <h1>Install the PostgreSQL Operator</h1>
+    <h1>Install PGO the Postgres Operator</h1>
 
     
 
     
     
 
-<h1 id="the-postgresql-operator-installer">The PostgreSQL Operator Installer</h1>
+<h1 id="pgo-postgres-operator-installer">PGO: Postgres Operator Installer</h1>
 
 <h2 id="quickstart">Quickstart</h2>
 
@@ -1392,7 +1399,7 @@ for you, you can take a chance by running the manifest directly from the
 repository:</p>
 
 <pre><code>kubectl create namespace pgo
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/postgres-operator.yml
 </code></pre>
 
 <p>However, we still advise that you read onward to see how to properly configure
@@ -1400,8 +1407,8 @@ the PostgreSQL Operator.</p>
 
 <h2 id="overview">Overview</h2>
 
-<p>The PostgreSQL Operator comes with a container called <code>pgo-deployer</code> which
-handles a variety of lifecycle actions for the PostgreSQL Operator, including:</p>
+<p>PGO comes with a container called <code>pgo-deployer</code> which
+handles a variety of lifecycle actions for the Postgres Operator, including:</p>
 
 <ul>
 <li>Installation</li>
@@ -1414,7 +1421,7 @@ handles a variety of lifecycle actions for the PostgreSQL Operator, including:</
 and takes care of setting up all of the objects required to run the PostgreSQL
 Operator.</p>
 
-<p>The installation manifest, called <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.2/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yaml</code></a>, is available in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.2/installers/kubectl/postgres-operator.yml"><code>installers/kubectl/postgres-operator.yml</code></a>
+<p>The installation manifest, called <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.7.0/installers/kubectl/postgres-operator.yml"><code>postgres-operator.yaml</code></a>, is available in the <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.7.0/installers/kubectl/postgres-operator.yml"><code>installers/kubectl/postgres-operator.yml</code></a>
 path in the PostgreSQL Operator repository.</p>
 
 <h2 id="requirements">Requirements</h2>
@@ -1430,12 +1437,12 @@ environmental requirements.</p>
 <p>By default, the <code>pgo-deployer</code> uses a ServiceAccount called <code>pgo-deployer-sa</code>
 that has a ClusterRoleBinding (<code>pgo-deployer-crb</code>) with several ClusterRole
 permissions. This is required to create the <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions</a>
-that power the PostgreSQL Operator. While the PostgreSQL Operator itself can be
+that power PGO. While the Postgres Operator itself can be
 scoped to a specific namespace, you will need to have <code>cluster-admin</code> for the
 initial deployment, or privileges that allow you to install Custom Resource
-Definitions. The required list of privileges are available in the <a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml">postgres-operator.yml</a> file:</p>
+Definitions. The required list of privileges are available in the <a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/postgres-operator.yml">postgres-operator.yml</a> file:</p>
 
-<p><a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml">https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml</a></p>
+<p><a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/postgres-operator.yml">https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/postgres-operator.yml</a></p>
 
 <p>If you have already configured the ServiceAccount and ClusterRoleBinding for the
 installation process (e.g. from a previous installation), then you can remove
@@ -1459,7 +1466,7 @@ exists before the job is run</strong>.</p>
 <pre><code>kubectl create namespace pgo
 </code></pre>
 
-<p>The PostgreSQL Operator has the ability to manage PostgreSQL clusters across
+<p>The Postgres Operator has the ability to manage PostgreSQL clusters across
 multiple Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Namespaces</a>,
 including the ability to add and remove Namespaces that it watches. Doing so
 does require the PostgreSQL Operator to have elevated privileges, and as such,
@@ -1499,7 +1506,7 @@ PostgreSQL Operator cannot create the RBAC itself.</p></li>
 <h2 id="configuration-postgres-operator-yml">Configuration - <code>postgres-operator.yml</code></h2>
 
 <p>The <code>postgres-operator.yml</code> file contains all of the configuration parameters
-for deploying the PostgreSQL Operator. The <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.6.2/installers/kubectl/postgres-operator.yml">example file</a>
+for deploying PGO. The <a href="https://github.com/CrunchyData/postgres-operator/blob/v4.7.0/installers/kubectl/postgres-operator.yml">example file</a>
 contains defaults that should work in most Kubernetes environments, but it may
 require some customization.</p>
 
@@ -1516,7 +1523,7 @@ set to <code>install</code>, <code>update</code>, and <code>uninstall</code>.</p
 
 <h3 id="image-pull-secrets">Image Pull Secrets</h3>
 
-<p>If you are pulling the PostgreSQL Operator images from a private registry, you
+<p>If you are pulling PGO images from a private registry, you
 will need to setup an
 <a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">imagePullSecret</a>
 with access to the registry. The image pull secret will need to be added to the
@@ -1550,7 +1557,7 @@ oc secrets link &lt;registry-secret&gt; &lt;deployer-sa&gt; --for=pull --namespa
 
 <h2 id="installation">Installation</h2>
 
-<p>Once you have configured the PostgreSQL Operator Installer to your
+<p>Once you have configured the PGO Installer to your
 specification, you can install the PostgreSQL Operator with the following
 command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f /path/to/postgres-operator.yml</code></pre></div>
@@ -1559,9 +1566,9 @@ command:</p>
 <p>To use the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/"><code>pgo</code> Client</a>,
 there are a few additional steps to take in order to get it to work with you
 PostgreSQL Operator installation. For convenience, you can download and run the
-<a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/client-setup.sh"><code>client-setup.sh</code></a>
+<a href="https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/client-setup.sh"><code>client-setup.sh</code></a>
 script in your local environment:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/client-setup.sh &gt; client-setup.sh
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/client-setup.sh &gt; client-setup.sh
 chmod +x client-setup.sh
 ./client-setup.sh</code></pre></div>
 <div class="notices tip" >Running this script can cause existing <code>pgo</code> client binary, <code>pgouser</code>,
@@ -1625,8 +1632,8 @@ please see <a href="https://crunchydata.github.io/postgres-operator/stable/insta
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.6.2
-pgo-apiserver version 4.6.2
+<pre><code>pgo client version 4.7.0
+pgo-apiserver version 4.7.0
 </code></pre>
 
 <h2 id="post-installation">Post-Installation</h2>
@@ -1636,7 +1643,7 @@ pgo-apiserver version 4.6.2
 <p>Note that if you still have the ServiceAccount and ClusterRoleBinding in there,
 you will need to have elevated privileges.</p>
 
-<h2 id="installing-the-postgresql-operator-monitoring-infrastructure">Installing the PostgreSQL Operator Monitoring Infrastructure</h2>
+<h2 id="installing-the-pgo-monitoring-infrastructure">Installing the PGO Monitoring Infrastructure</h2>
 
 <p>Please see the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/metrics/">PostgreSQL Operator Monitoring installation section</a>
 for instructions on how to install the PostgreSQL Operator Monitoring infrastructure.</p>
@@ -1647,7 +1654,7 @@ for instructions on how to install the PostgreSQL Operator Monitoring infrastruc
       <div class="chevrons">
   <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/stable/installation/prerequisites/" title="Prerequisites"> <i class="fa fa-chevron-left"></i><label>Prerequisites</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" title="Install `pgo` Client" style="margin-right: 0px;"><label>Install `pgo` Client</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" title="Install &#34;pgo&#34; Client" style="margin-right: 0px;"><label>Install &#34;pgo&#34; Client</label><i class="fa fa-chevron-right"></i></a></div>
 </div>
 
 </section>

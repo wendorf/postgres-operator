@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Quickstart :: Crunchy PostgreSQL Operator Documentation</title>
+<title>Quickstart :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -352,14 +352,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1138,6 +1138,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/">
+            4.7.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
@@ -1346,7 +1353,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/stable/'>Crunchy PostgreSQL Operator</a> > Quickstart
+ <a href='https://crunchydata.github.io/postgres-operator/stable/'>PGO: The Postgres Operator from Crunchy Data</a> > Quickstart
 
  
 
@@ -1368,14 +1375,15 @@
 
 
 
-<h1 id="postgresql-operator-quickstart">PostgreSQL Operator Quickstart</h1>
+<h1 id="pgo-postgresql-operator-quickstart">PGO: PostgreSQL Operator Quickstart</h1>
 
-<p>Can&rsquo;t wait to try out the PostgreSQL Operator? Let us show you the quickest possible path to getting up and running.</p>
+<p>Can&rsquo;t wait to try out PGO, the Postgres Operator from Crunchy Data? Let us show
+you the quickest possible path to getting up and running.</p>
 
-<p>There are two paths to quickly get you up and running with the PostgreSQL Operator:</p>
+<p>There are two paths to quickly get you up and running with PGO:</p>
 
 <ul>
-<li><a href="#postgresql-operator-installer">Installation via the PostgreSQL Operator Installer</a></li>
+<li><a href="#postgresql-operator-installer">Installation via the Postgres Operator Installer</a></li>
 <li>Installation via a Marketplace
 
 <ul>
@@ -1386,18 +1394,18 @@
 
 <p>Marketplaces can help you get more quickly started in your environment as they provide a mostly automated process, but there are a few steps you will need to take to ensure you can fully utilize your PostgreSQL Operator environment. You can find out more information about how to get started with one of those installers in the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/">Installation</a> section.</p>
 
-<h1 id="postgresql-operator-installer">PostgreSQL Operator Installer</h1>
+<h1 id="postgres-operator-installer">Postgres Operator Installer</h1>
 
 <p>Below will guide you through the steps for installing and using the PostgreSQL Operator using an installer that works with Ansible.</p>
 
 <h2 id="installation">Installation</h2>
 
-<h3 id="install-the-postgresql-operator">Install the PostgreSQL Operator</h3>
+<h3 id="install-pgo-the-postgresql-operator">Install PGO: the PostgreSQL Operator</h3>
 
 <p>On environments that have a <a href="https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/">default storage class</a> set up (which is most modern Kubernetes environments), the below command should work:</p>
 
 <pre><code>kubectl create namespace pgo
-kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml
+kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/postgres-operator.yml
 </code></pre>
 
 <p>This will launch the <code>pgo-deployer</code> container that will run the various setup and installation jobs. This can take a few minutes to complete depending on your Kubernetes cluster.</p>
@@ -1406,13 +1414,13 @@ kubectl apply -f https://raw.githubusercontent.com/CrunchyData/postgres-operator
 
 <h3 id="install-the-pgo-client">Install the <code>pgo</code> Client</h3>
 
-<p>During or after the installation of the PostgreSQL Operator, download the <code>pgo</code> client set up script. This will help set up your local environment for using the PostgreSQL Operator:</p>
+<p>During or after the installation of PGO: the Postgres Operator, download the <code>pgo</code> client set up script. This will help set up your local environment for using the Postgres Operator:</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/client-setup.sh &gt; client-setup.sh
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/client-setup.sh &gt; client-setup.sh
 chmod +x client-setup.sh
 </code></pre>
 
-<p>When the PostgreSQL Operator is done installing, run the client setup script:</p>
+<p>When the Postgres Operator is done installing, run the client setup script:</p>
 
 <pre><code>./client-setup.sh
 </code></pre>
@@ -1445,9 +1453,9 @@ source ~/.bashrc
 
 <h3 id="post-installation-setup">Post-Installation Setup</h3>
 
-<p>Below are a few steps to check if the PostgreSQL Operator is up and running.</p>
+<p>Below are a few steps to check if PGO: the Postgres Operator is up and running.</p>
 
-<p>By default, the PostgreSQL Operator installs into a namespace called <code>pgo</code>. First, see that the Kubernetes Deployment of the Operator exists and is healthy:</p>
+<p>By default, PGO installs into a namespace called <code>pgo</code>. First, see that the Kubernetes Deployment of PGO exists and is healthy:</p>
 
 <pre><code>kubectl -n pgo get deployments
 </code></pre>
@@ -1469,7 +1477,7 @@ postgres-operator   1/1     1            1           16h
 postgres-operator-56d6ccb97-tmz7m   4/4     Running   0          2m
 </code></pre>
 
-<p>Finally, let&rsquo;s see if we can connect to the PostgreSQL Operator from the <code>pgo</code> command-line client. The Ansible installer installs the <code>pgo</code> command line client into your environment, along with the username/password file that allows you to access the PostgreSQL Operator. In order to communicate with the PostgreSQL Operator API server, you will first need to set up a <a href="https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/">port forward</a> to your local environment.</p>
+<p>Finally, let&rsquo;s see if we can connect to the Postgres Operator from the <code>pgo</code> command-line client. The Ansible installer installs the <code>pgo</code> command line client into your environment, along with the username/password file that allows you to access the PostgreSQL Operator. In order to communicate with the PostgreSQL Operator API server, you will first need to set up a <a href="https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/">port forward</a> to your local environment.</p>
 
 <p>In a new console window, run the following command to set up a port forward:</p>
 
@@ -1483,13 +1491,13 @@ postgres-operator-56d6ccb97-tmz7m   4/4     Running   0          2m
 
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.6.2
-pgo-apiserver version 4.6.2
+<pre><code>pgo client version 4.7.0
+pgo-apiserver version 4.7.0
 </code></pre>
 
 <h2 id="create-a-postgresql-cluster">Create a PostgreSQL Cluster</h2>
 
-<p>The quickstart installation method creates a namespace called <code>pgo</code> where the PostgreSQL Operator manages PostgreSQL clusters. Try creating a PostgreSQL cluster called <code>hippo</code>:</p>
+<p>The quickstart installation method creates a namespace called <code>pgo</code> where PGO, the Postgres Operator, manages PostgreSQL clusters. Try creating a PostgreSQL cluster called <code>hippo</code>:</p>
 
 <pre><code>pgo create cluster -n pgo hippo
 </code></pre>
@@ -1507,7 +1515,7 @@ pgo-apiserver version 4.6.2
 workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
 </code></pre>
 
-<p>This will create a PostgreSQL cluster named <code>hippo</code>. It may take a few moments for the cluster to be provisioned. You can see the status of this cluster using the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_test/"><code>pgo test</code></a> command:</p>
+<p>This will create a Postgres cluster named <code>hippo</code>. It may take a few moments for the cluster to be provisioned. You can see the status of this cluster using the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_test/"><code>pgo test</code></a> command:</p>
 
 <pre><code>pgo test -n pgo hippo
 </code></pre>
@@ -1525,7 +1533,7 @@ workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
 
 <h2 id="connect-to-a-postgresql-cluster">Connect to a PostgreSQL Cluster</h2>
 
-<p>By default, the PostgreSQL Operator creates a database inside the cluster with the same name of the cluster, in this case, <code>hippo</code>. Below demonstrates how we can connect to <code>hippo</code>.</p>
+<p>By default, PGO creates a database inside the cluster with the same name of the cluster, in this case, <code>hippo</code>. Below demonstrates how we can connect to <code>hippo</code>.</p>
 
 <h3 id="how-users-work">How Users Work</h3>
 
@@ -1541,7 +1549,7 @@ workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
 hippo   testuser datalake                 never   ok
 </code></pre>
 
-<p>To get the information about all PostgreSQL users that the PostgreSQL Operator is managing, you will need to use the <code>--show-system-accounts</code> flag:</p>
+<p>To get the information about all PostgreSQL users that PGO is managing, you will need to use the <code>--show-system-accounts</code> flag:</p>
 
 <pre><code>pgo show user -n pgo hippo --show-system-accounts
 </code></pre>
@@ -1563,7 +1571,7 @@ hippo   testuser       datalake                 never   ok
 
 <p>Let&rsquo;s see how we can connect to <code>hippo</code> using <a href="https://www.postgresql.org/docs/current/app-psql.html"><code>psql</code></a>, the command-line tool for accessing PostgreSQL. Ensure you have <a href="https://www.crunchydata.com/developers/download-postgres/binaries/postgresql12">installed the <code>psql</code> client</a>.</p>
 
-<p>The PostgreSQL Operator creates a service with the same name as the cluster. See for yourself! Get a list of all of the Services available in the <code>pgo</code> namespace:</p>
+<p>PGO, the Postgres Operator, creates a service with the same name as the cluster. See for yourself! Get a list of all of the Services available in the <code>pgo</code> namespace:</p>
 
 <pre><code>kubectl -n pgo get svc
 
@@ -1585,7 +1593,7 @@ postgres-operator            ClusterIP   10.96.121.246   &lt;none&gt;        844
 
 <p>You should then be greeted with the PostgreSQL prompt:</p>
 
-<pre><code>psql (13.2)
+<pre><code>psql (13.3)
 Type &quot;help&quot; for help.
 
 hippo=&gt;
@@ -1632,21 +1640,21 @@ postgres-operator            ClusterIP   10.96.121.246   &lt;none&gt;        844
 
 <p>Some Kubernetes environments may require you to customize the configuration for the PostgreSQL Operator installer. The below provides a guide on the common parameters that require modification, though this may vary based on your installation. For a full reference, please visit the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/">Installation</a> section.</p>
 
-<p>If you already attempted to install the PostgreSQL Operator and that failed, the easiest way to clean up that installation is to delete the <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Namespace</a> that you attempted to install the PostgreSQL Operator into. <strong>Note: This deletes all of the other objects in the Namespace, so please be sure this is OK!</strong></p>
+<p>If you already attempted to install PGO and that failed, the easiest way to clean up that installation is to delete the <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Namespace</a> that you attempted to install the Postgres Operator into. <strong>Note: This deletes all of the other objects in the Namespace, so please be sure this is OK!</strong></p>
 
 <p>To delete the namespace, you can run the following command:</p>
 
 <pre><code>kubectl delete namespace pgo
 </code></pre>
 
-<h4 id="get-the-postgresql-operator-installer-manifest">Get the PostgreSQL Operator Installer Manifest</h4>
+<h4 id="get-the-postgres-operator-installer-manifest">Get the Postgres Operator Installer Manifest</h4>
 
-<p>You will need to download the PostgreSQL Operator Installer manifest to your environment, which you can do with the following command:</p>
+<p>You will need to download the Postgres Operator Installer manifest to your environment, which you can do with the following command:</p>
 
-<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.6.2/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
+<pre><code>curl https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.0/installers/kubectl/postgres-operator.yml &gt; postgres-operator.yml
 </code></pre>
 
-<h4 id="configure-the-postgresql-operator-installer">Configure the PostgreSQL Operator Installer</h4>
+<h4 id="configure-the-postgres-operator-installer">Configure the Postgres Operator Installer</h4>
 
 <p>There are many <a href="https://crunchydata.github.io/postgres-operator/stable/installation/configuration/">configuration parameters</a> to help you fine tune your installation, but there are a few that you may want to change to get the PostgreSQL Operator to run in your environment. Open up the <code>postgres-operator.yml</code> file and edit a few variables.</p>
 
@@ -1662,11 +1670,11 @@ primary_storage: &quot;nfsstorage&quot;
 replica_storage: &quot;nfsstorage&quot;
 </code></pre>
 
-<p>In OpenShift and CodeReady Containers, the PostgreSQL Operator will automatically set <code>disable_fsgroup</code> to <code>true</code> so that it will deploy PostgreSQL clusters correctly under the <code>restricted</code> Security Context Constraint (SCC). Though we recommend using <code>restricted</code>, if you are using the <code>anyuid</code> SCC, you will need to set <code>disable_fsgroup</code> to <code>false</code> in order to deploy the PostgreSQL Operator.</p>
+<p>In OpenShift and CodeReady Containers, PGO will automatically set <code>disable_fsgroup</code> to <code>true</code> so that it will deploy PostgreSQL clusters correctly under the <code>restricted</code> Security Context Constraint (SCC). Though we recommend using <code>restricted</code>, if you are using the <code>anyuid</code> SCC, you will need to set <code>disable_fsgroup</code> to <code>false</code> in order to deploy the PostgreSQL Operator.</p>
 
 <p>For a full list of available storage types that can be used with this installation method, please review the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/configuration/">configuration parameters</a>.</p>
 
-<p>When you are done editing the file, you can install the PostgreSQL Operator by running the following commands:</p>
+<p>When you are done editing the file, you can install PGO by running the following commands:</p>
 
 <pre><code>kubectl create namespace pgo
 kubectl apply -f postgres-operator.yml
@@ -1678,7 +1686,7 @@ kubectl apply -f postgres-operator.yml
     
       <div class="chevrons">
   <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/stable/" title="Crunchy PostgreSQL Operator"> <i class="fa fa-chevron-left"></i><label>Crunchy PostgreSQL Operator</label></a>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/stable/" title="PGO: The Postgres Operator from Crunchy Data"> <i class="fa fa-chevron-left"></i><label>PGO: The Postgres Operator from Crunchy Data</label></a>
     <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/stable/tutorial/" title="Tutorial" style="margin-right: 0px;"><label>Tutorial</label><i class="fa fa-chevron-right"></i></a></div>
 </div>
 

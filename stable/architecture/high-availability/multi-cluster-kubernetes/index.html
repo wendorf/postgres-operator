@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Kubernetes Multi-Cluster Deployments :: Crunchy PostgreSQL Operator Documentation</title>
+<title>Kubernetes Multi-Cluster Deployments :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -354,14 +354,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1140,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/">
+            4.7.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
@@ -1370,7 +1377,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/stable/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/architecture/'>Architecture</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/'>High-Availability</a> > Kubernetes Multi-Cluster Deployments
+ <a href='https://crunchydata.github.io/postgres-operator/stable/'>PGO: The Postgres Operator from Crunchy Data</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/architecture/'>Architecture</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/'>High-Availability</a> > Kubernetes Multi-Cluster Deployments
 
  
 
@@ -1414,7 +1421,12 @@ few environmental setups:</p>
 
 <ul>
 <li>Two Kubernetes clusters</li>
-<li>S3, or an external storage system that uses the S3 protocol</li>
+<li>An external storage system, using one of the following:
+
+<ul>
+<li>S3, or an external storage system that uses the S3 protocol OR</li>
+<li>GCS</li>
+</ul></li>
 </ul>
 
 <p>At a high-level, the PostgreSQL Operator follows the &ldquo;active-standby&rdquo; data
@@ -1445,7 +1457,7 @@ standby cluster is identical to before: you can use <a href="https://crunchydata
 
 <p>As the architecture diagram above shows, the main difference is that there is
 no primary instance: one PostgreSQL instance is reading in the database changes
-from the S3 repository, while the other replicas are replicas of that instance.
+from the S3 or GCS repository, while the other replicas are replicas of that instance.
 This is known as <a href="https://www.postgresql.org/docs/current/warm-standby.html#CASCADING-REPLICATION">cascading replication</a>.
  replicas are cascading replicas, i.e. replicas replicating from a database server that itself is replicating from another database server.</p>
 
@@ -1479,12 +1491,26 @@ PostgreSQL cluster initialization.</li>
 <li><code>--pgbackrest-repo-path</code>: The specific pgBackRest repository path that should
 be utilized by the standby cluster.  Allows a standby cluster to specify a path
 that matches that of the active cluster it is replicating.</li>
-<li><code>--pgbackrest-storage-type</code>: Must be set to <code>s3</code></li>
+<li><code>--pgbackrest-storage-type</code>: Must be set to either <code>s3</code> or <code>gcs</code></li>
+</ul>
+
+<p>If you are using S3 or an S3-compatible storage system, you will need to set the
+following flags:</p>
+
+<ul>
 <li><code>--pgbackrest-s3-key</code>: The S3 key to use</li>
 <li><code>--pgbackrest-s3-key-secret</code>: The S3 key secret to use</li>
 <li><code>--pgbackrest-s3-bucket</code>: The S3 bucket to use</li>
 <li><code>--pgbackrest-s3-endpoint</code>: The S3 endpoint to use</li>
 <li><code>--pgbackrest-s3-region</code>: The S3 region to use</li>
+</ul>
+
+<p>If you are using GCS, you will need to set the following flags:</p>
+
+<ul>
+<li><code>--pgbackrest-gcs-bucket</code>: The GCS bucket to use</li>
+<li><code>--pgbackrest-gcs-key</code>: A reference to a file on your local system that
+contains the GCS key information</li>
 </ul>
 
 <p>If you do not want to set the user credentials, you can retrieve them at a later
@@ -1532,8 +1558,10 @@ consistent primary/replica architecture across startups and shutdowns.</li>
 cluster! You can try this example either within a single Kubernetes cluster, or
 across multuple Kubernetes clusters.</p>
 
-<p>First, deploy a new active PostgreSQL cluster that is configured to use S3 with
-pgBackRest. For example:</p>
+<p>First, deploy a new active PostgreSQL cluster that is configured to use S3 or
+GCS with pgBackRest.</p>
+
+<p>An example that uses S3:</p>
 
 <pre><code>pgo create cluster hippo --pgbouncer --replica-count=2 \
   --pgbackrest-storage-type=posix,s3 \
@@ -1542,6 +1570,17 @@ pgBackRest. For example:</p>
   --pgbackrest-s3-bucket=watering-hole \
   --pgbackrest-s3-endpoint=s3.amazonaws.com \
   --pgbackrest-s3-region=us-east-1 \
+  --password-superuser=supersecrethippo \
+  --password-replication=somewhatsecrethippo \
+  --password=opensourcehippo
+</code></pre>
+
+<p>An example that uses GCS:</p>
+
+<pre><code>pgo create cluster hippo --pgbouncer --replica-count=2 \
+  --pgbackrest-storage-type=posix,gcs \
+  --pgbackrest-gcs-bucket=watering-hole \
+  --pgbackrest-gcs-key=/path/to/your/gcs/credentials.json \
   --password-superuser=supersecrethippo \
   --password-replication=somewhatsecrethippo \
   --password=opensourcehippo
@@ -1568,7 +1607,10 @@ deployment (and therefore the same Kubernetes cluster), the <code>--secret-from<
 can also be used in lieu of these passwords. You would specify the name of the
 cluster [e.g. <code>hippo</code>] as the value of the <code>--secret-from</code> variable.)</p>
 
-<p>With this in mind, create a standby cluster similar to this below:</p>
+<p>With this in mind, create a standby cluster. Below are examples that allow you
+to create a standby cluster using S3 and GCS.</p>
+
+<p>With S3:</p>
 
 <pre><code>pgo create cluster hippo-standby --standby --pgbouncer --replica-count=2 \
   --pgbackrest-storage-type=s3 \
@@ -1577,6 +1619,18 @@ cluster [e.g. <code>hippo</code>] as the value of the <code>--secret-from</code>
   --pgbackrest-s3-bucket=watering-hole \
   --pgbackrest-s3-endpoint=s3.amazonaws.com \
   --pgbackrest-s3-region=us-east-1 \
+  --pgbackrest-repo-path=/backrestrepo/hippo-backrest-shared-repo \
+  --password-superuser=supersecrethippo \
+  --password-replication=somewhatsecrethippo \
+  --password=opensourcehippo
+</code></pre>
+
+<p>With GCS:</p>
+
+<pre><code>pgo create cluster hippo-standby --standby --pgbouncer --replica-count=2 \
+  --pgbackrest-storage-type=gcs \
+  --pgbackrest-gcs-bucket=watering-hole \
+  --pgbackrest-gcs-key=/path/to/your/gcs/credentials.json \
   --pgbackrest-repo-path=/backrestrepo/hippo-backrest-shared-repo \
   --password-superuser=supersecrethippo \
   --password-replication=somewhatsecrethippo \
@@ -1610,7 +1664,7 @@ command.</p>
 
 <pre><code>pgo show cluster hippo
 
-cluster : standby (crunchy-postgres-ha:centos8-13.2-4.6.2)
+cluster : standby (crunchy-postgres-ha:centos8-13.3-4.7.0)
        standby : true
 </code></pre>
 
@@ -1618,7 +1672,7 @@ cluster : standby (crunchy-postgres-ha:centos8-13.2-4.6.2)
 
 <p>There comes a time where a standby cluster needs to be promoted to an active
 cluster. Promoting a standby cluster means that a PostgreSQL instance within
-it will become a priary and start accepting both reads and writes. This has the
+it will become a primary and start accepting both reads and writes. This has the
 net effect of pushing WAL (transaction archives) to the pgBackRest repository,
 so we need to take a few steps first to ensure we don&rsquo;t accidentally create a
 split-brain scenario.</p>
@@ -1674,7 +1728,7 @@ rotate the password with the following command:</p>
 <p>With the standby cluster now promoted, the cluster with the original active
 PostgreSQL cluster can now be turned into a standby PostgreSQL cluster.  This is
 done by deleting and recreating all PVCs for the cluster and re-initializing it
-as a standby using the S3 repository.  Being that this is a destructive action
+as a standby using the S3 or GCS repository.  Being that this is a destructive action
 (i.e. data will only be retained if any Storage Classes and/or Persistent
   Volumes have the appropriate reclaim policy configured) a warning is shown
   when attempting to enable standby.</p>

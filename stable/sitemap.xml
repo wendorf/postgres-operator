@@ -91,11 +91,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/postgres-operator-metrics/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/postgres-operator-metrics/</loc>
   </url>
   
   <url>
@@ -148,6 +148,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/installation/metrics/other/ansible/uninstalling-metrics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/</loc>
   </url>
   
   <url>

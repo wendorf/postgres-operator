@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>pgo create cluster :: Crunchy PostgreSQL Operator Documentation</title>
+<title>pgo create cluster :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -352,14 +352,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1140,6 +1140,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/">
+            4.7.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
@@ -1418,7 +1425,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/stable/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/pgo-client/'>Using the pgo Client</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/'>pgo Client Reference</a> > pgo create cluster
+ <a href='https://crunchydata.github.io/postgres-operator/stable/'>PGO: The Postgres Operator from Crunchy Data</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/pgo-client/'>Using the pgo Client</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/'>pgo Client Reference</a> > pgo create cluster
 
  
 
@@ -1496,9 +1503,14 @@
       --password-length int                   If no password is supplied, sets the length of the automatically generated password. Defaults to the value set on the server.
       --password-replication string           The password to use for the PostgreSQL replication user.
       --password-superuser string             The password to use for the PostgreSQL superuser.
+      --password-type string                  The default Postgres password type to use for managed users. Either &quot;scram-sha-256&quot; or &quot;md5&quot;. Defaults to &quot;md5&quot;.
       --pgbackrest-cpu string                 Set the number of millicores to request for CPU for the pgBackRest repository.
       --pgbackrest-cpu-limit string           Set the number of millicores to limit for CPU for the pgBackRest repository.
       --pgbackrest-custom-config string       The name of a ConfigMap containing pgBackRest configuration files.
+      --pgbackrest-gcs-bucket string          The GCS bucket that should be utilized for the cluster when the &quot;gcs&quot; storage type is enabled for pgBackRest.
+      --pgbackrest-gcs-endpoint string        The GCS endpoint that should be utilized for the cluster when the &quot;gcs&quot; storage type is enabled for pgBackRest.
+      --pgbackrest-gcs-key string             The GCS key that should be utilized for the cluster when the &quot;gcs&quot; storage type is enabled for pgBackRest. This must be a path to a file.
+      --pgbackrest-gcs-key-type string        The GCS key type should be utilized for the cluster when the &quot;gcs&quot; storage type is enabled for pgBackRest. (default &quot;service&quot;)
       --pgbackrest-memory string              Set the amount of memory to request for the pgBackRest repository. Defaults to server value (48Mi).
       --pgbackrest-memory-limit string        Set the amount of memory to limit for the pgBackRest repository.
       --pgbackrest-pvc-size string            The size of the PVC capacity for the pgBackRest repository. Overrides the value set in the storage class. This is ignored if the storage type of &quot;posix&quot; is not used. Must follow the standard Kubernetes format, e.g. &quot;10.1Gi&quot;
@@ -1513,7 +1525,7 @@
       --pgbackrest-s3-uri-style string        Specifies whether &quot;host&quot; or &quot;path&quot; style URIs will be used when connecting to S3.
       --pgbackrest-s3-verify-tls              This sets if pgBackRest should verify the TLS certificate when connecting to S3. To disable, use &quot;--pgbackrest-s3-verify-tls=false&quot;. (default true)
       --pgbackrest-storage-config string      The name of the storage config in pgo.yaml to use for the pgBackRest local repository.
-      --pgbackrest-storage-type string        The type of storage to use with pgBackRest. Either &quot;posix&quot;, &quot;s3&quot; or both, comma separated. (default &quot;posix&quot;)
+      --pgbackrest-storage-type string        The type of storage to use with pgBackRest. Either &quot;posix&quot;, &quot;s3&quot;, &quot;gcs&quot;, &quot;posix,s3&quot; or &quot;posix,gcs&quot;. (default &quot;posix&quot;)
       --pgbadger                              Adds the crunchy-pgbadger container to the database pod.
       --pgbouncer                             Adds a crunchy-pgbouncer deployment to the cluster.
       --pgbouncer-cpu string                  Set the number of millicores to request for CPU for pgBouncer. Defaults to being unset.
@@ -1533,6 +1545,7 @@
       --replica-storage-config string         The name of a Storage config in pgo.yaml to use for the cluster replica storage.
       --replication-tls-secret string         The name of the secret that contains the TLS keypair to use for enabling certificate-based authentication between PostgreSQL instances, particularly for the purpose of replication. Must be used with &quot;server-tls-secret&quot; and &quot;server-ca-secret&quot;.
       --restore-from string                   The name of cluster to restore from when bootstrapping a new cluster
+      --restore-from-namespace string         The namespace for the cluster specified using --restore-from.  Defaults to the namespace of the cluster being created if not provided.
       --restore-opts string                   The options to pass into pgbackrest where performing a restore to bootrap the cluster. Only applicable when a &quot;restore-from&quot; value is specified
   -s, --secret-from string                    The cluster name to use when restoring secrets.
       --server-ca-secret string               The name of the secret that contains the certficate authority (CA) to use for enabling the PostgreSQL cluster to accept TLS connections. Must be used with &quot;server-tls-secret&quot;.
@@ -1578,7 +1591,7 @@
 <li><a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create/">pgo create</a>    - Create a Postgres Operator resource</li>
 </ul>
 
-<h6 id="auto-generated-by-spf13-cobra-on-18-jan-2021">Auto generated by spf13/cobra on 18-Jan-2021</h6>
+<h6 id="auto-generated-by-spf13-cobra-on-19-apr-2021">Auto generated by spf13/cobra on 19-Apr-2021</h6>
 
 
 

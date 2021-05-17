@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Using Custom Resources :: Crunchy PostgreSQL Operator Documentation</title>
+<title>Using Custom Resources :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -352,14 +352,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1138,6 +1138,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/">
+            4.7.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
@@ -1346,7 +1353,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/stable/'>Crunchy PostgreSQL Operator</a> > Using Custom Resources
+ <a href='https://crunchydata.github.io/postgres-operator/stable/'>PGO: The Postgres Operator from Crunchy Data</a> > Using Custom Resources
 
  
 
@@ -1444,7 +1451,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1476,13 +1483,12 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.2
+  ccpimagetag: centos8-13.3-4.7.0
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
-  namespace: ${cluster_namespace}
   pgDataSource:
     restoreFrom: &quot;&quot;
     restoreOpts: &quot;&quot;
@@ -1496,7 +1502,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1658,7 +1664,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1697,13 +1703,12 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.2
+  ccpimagetag: centos8-13.3-4.7.0
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
-  namespace: ${cluster_namespace}
   pgDataSource:
     restoreFrom: &quot;&quot;
     restoreOpts: &quot;&quot;
@@ -1717,7 +1722,122 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0
+EOF
+
+kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
+</code></pre>
+
+<h3 id="create-a-postgresql-cluster-with-backups-in-gcs">Create a PostgreSQL Cluster With Backups in GCS</h3>
+
+<p>A frequent use case is to create a PostgreSQL cluster with Google Cloud Storage
+(GCS) for storing backups. This requires adding a Secret that contains
+the GCS key for your account, and adding some additional
+information into the custom resource.</p>
+
+<h4 id="step-1-create-the-pgbackrest-gcs-secrets">Step 1: Create the pgBackRest GCS Secrets</h4>
+
+<p>As mentioned above, it is necessary to create a Secret containing the GCS key.
+This is a file that you can download from Google.</p>
+
+<p>The below code will help you set up this Secret.</p>
+
+<pre><code># this variable is the name of the cluster being created
+pgo_cluster_name=hippo
+# this variable is the namespace the cluster is being deployed into
+cluster_namespace=pgo
+# the following variables are your S3 key and key secret
+backrest_gcs_key=/path/to/your/gcs/credential.json
+
+kubectl -n &quot;${cluster_namespace}&quot; create secret generic &quot;${pgo_cluster_name}-backrest-repo-config&quot; \
+  --from-file=&quot;gcs-key=${backrest_gcs_key}&quot;
+
+unset backrest_gcs_key
+</code></pre>
+
+<h4 id="step-2-create-the-postgresql-cluster-1">Step 2: Create the PostgreSQL Cluster</h4>
+
+<p>With the Secrets in place. It is now time to create the PostgreSQL cluster.</p>
+
+<p>The below manifest references the Secrets created in the previous step to add a
+custom resource to the <code>pgclusters.crunchydata.com</code> custom resource definition.
+There are some additions in this example specifically for storing backups in
+GCS.</p>
+
+<pre><code># this variable is the name of the cluster being created
+export pgo_cluster_name=hippo
+# this variable is the namespace the cluster is being deployed into
+export cluster_namespace=pgo
+# the following variables store the information for your S3 cluster. You may
+# need to adjust them for your actual settings
+export backrest_gcs_bucket=your-bucket
+
+cat &lt;&lt;-EOF &gt; &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
+apiVersion: crunchydata.com/v1
+kind: Pgcluster
+metadata:
+  annotations:
+    current-primary: ${pgo_cluster_name}
+  labels:
+    crunchy-pgha-scope: ${pgo_cluster_name}
+    deployment-name: ${pgo_cluster_name}
+    name: ${pgo_cluster_name}
+    pg-cluster: ${pgo_cluster_name}
+    pgo-version: 4.7.0
+    pgouser: admin
+  name: ${pgo_cluster_name}
+  namespace: ${cluster_namespace}
+spec:
+  BackrestStorage:
+    accessmode: ReadWriteMany
+    matchLabels: &quot;&quot;
+    name: &quot;&quot;
+    size: 1G
+    storageclass: &quot;&quot;
+    storagetype: dynamic
+    supplementalgroups: &quot;&quot;
+  PrimaryStorage:
+    accessmode: ReadWriteMany
+    matchLabels: &quot;&quot;
+    name: ${pgo_cluster_name}
+    size: 1G
+    storageclass: &quot;&quot;
+    storagetype: dynamic
+    supplementalgroups: &quot;&quot;
+  ReplicaStorage:
+    accessmode: ReadWriteMany
+    matchLabels: &quot;&quot;
+    name: &quot;&quot;
+    size: 1G
+    storageclass: &quot;&quot;
+    storagetype: dynamic
+    supplementalgroups: &quot;&quot;
+  annotations: {}
+  backrestStorageTypes:
+  - gcs
+  backrestGCSBucket: ${backrest_gcs_bucket}
+  ccpimage: crunchy-postgres-ha
+  ccpimageprefix: registry.developers.crunchydata.com/crunchydata
+  ccpimagetag: centos8-13.3-4.7.0
+  clustername: ${pgo_cluster_name}
+  database: ${pgo_cluster_name}
+  exporterport: &quot;9187&quot;
+  limits: {}
+  name: ${pgo_cluster_name}
+  pgDataSource:
+    restoreFrom: &quot;&quot;
+    restoreOpts: &quot;&quot;
+  pgbadgerport: &quot;10000&quot;
+  pgoimageprefix: registry.developers.crunchydata.com/crunchydata
+  podAntiAffinity:
+    default: preferred
+    pgBackRest: preferred
+    pgBouncer: preferred
+  port: &quot;5432&quot;
+  tolerations: []
+  user: hippo
+  userlabels:
+    pgo-version: 4.7.0
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1737,6 +1857,8 @@ kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
 
 <p>For a detailed explanation for how TLS works with the PostgreSQL Operator, please see the <a href="https://crunchydata.github.io/postgres-operator/stable/tutorial/tls/">TLS tutorial</a>.</p>
 
+<p>TLS can be added to an existing cluster, also long as there are values for <code>tls.caSecret</code> and <code>tls.tlsSecret</code>.</p>
+
 <h4 id="step-1-create-tls-secrets">Step 1: Create TLS Secrets</h4>
 
 <p>There are two Secrets that need to be created:</p>
@@ -1746,7 +1868,7 @@ kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
 <li>A Secret that contains the TLS private key &amp; certificate.</li>
 </ol>
 
-<p>This assumes that you have already <a href="https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION">generated your TLS certificates</a> where the CA is named <code>ca.crt</code> and the server key and certificate are named <code>server.key</code> and <code>server.crt</code> respectively.</p>
+<p>This assumes that you have already <a href="https://blog.crunchydata.com/blog/tls-postgres-kubernetes-openssl">generated your TLS certificates</a> where the CA is named <code>ca.crt</code> and the server key and certificate are named <code>server.key</code> and <code>server.crt</code> respectively.</p>
 
 <p>Substitute the correct values for your environment into the environmental variables in the example below:</p>
 
@@ -1767,7 +1889,7 @@ kubectl create secret tls &quot;${pgo_cluster_name}-tls-keypair&quot; -n &quot;$
   --key=&quot;${cluster_tls_asset_path}/server.key&quot;
 </code></pre>
 
-<h4 id="step-2-create-the-postgresql-cluster-1">Step 2: Create the PostgreSQL Cluster</h4>
+<h4 id="step-2-create-the-postgresql-cluster-2">Step 2: Create the PostgreSQL Cluster</h4>
 
 <p>The below example uses the Secrets created in the previous step and creates a TLS-enabled PostgreSQL cluster. Additionally, this example sets the <code>tlsOnly</code> attribute to <code>true</code>, which requires all TCP connections to occur over TLS:</p>
 
@@ -1787,7 +1909,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1819,13 +1941,12 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.2-4.6.2
+  ccpimagetag: centos8-13.3-4.7.0
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
   limits: {}
   name: ${pgo_cluster_name}
-  namespace: ${cluster_namespace}
   pgDataSource:
     restoreFrom: &quot;&quot;
     restoreOpts: &quot;&quot;
@@ -1842,7 +1963,7 @@ spec:
   tlsOnly: true
   user: hippo
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1855,7 +1976,7 @@ kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
 
 <h4 id="modify-resource-requests-limits">Modify Resource Requests &amp; Limits</h4>
 
-<p>Modifying the <code>resources</code>, <code>limits</code>, <code>backrestResources</code>, <code>backRestLimits</code>,
+<p>Modifying the <code>resources</code>, <code>limits</code>, <code>backrestResources</code>, <code>backrestLimits</code>,
 <code>pgBouncer.resources</code>, or <code>pgbouncer.limits</code> will cause the PostgreSQL Operator
 to apply the new values to the affected <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployments</a>.</p>
 
@@ -1923,7 +2044,6 @@ metadata:
 spec:
   clustername: ${pgo_cluster_name}
   name: ${pgo_cluster_name}-${pgo_cluster_replica_suffix}
-  namespace: ${cluster_namespace}
   replicastorage:
     accessmode: ReadWriteMany
     matchLabels: &quot;&quot;
@@ -1934,13 +2054,80 @@ spec:
     supplementalgroups: &quot;&quot;
   tolerations: []
   userlabels:
-    pgo-version: 4.6.2
+    pgo-version: 4.7.0
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;
 </code></pre>
 
 <p>Add this time, removing a replica must be handled through the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/common-tasks/#high-availability-scaling-up-down"><code>pgo</code> client</a>.</p>
+
+<h3 id="resize-pvc">Resize PVC</h3>
+
+<p>PGO lets you resize the PVCs that the Operator manages, e.g. the Postgres data
+directory, pgBackRest, the WAL volume, etc. The PVC can be resized so long as
+the following conditions are met:</p>
+
+<ol>
+<li>The <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">Storage Class</a>
+supports resizing.</li>
+<li>The new size of the PVC is larger than the old size.</li>
+</ol>
+
+<p>The following sections explain how the different PVC resizing operations work
+and how you can resize the PVCs.</p>
+
+<h4 id="resize-the-postgresql-cluster-pvc">Resize the PostgreSQL Cluster PVC</h4>
+
+<p>To resize the PVC that stores the PostgreSQL data directory across the entire
+cluster, you will need to edit the <code>size</code> attribute of the <code>PrimaryStorage</code>
+section of the <code>pgclusters.crunchydata.com</code> custom resource.</p>
+
+<p>The PVC resize process for a cluster uses a <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/#rolling-updates">rolling update</a>
+to apply the size changes. During the process, each Deployment is scaled down
+and back to allow for the PVC resize to take effect.</p>
+
+<h4 id="resize-the-pgbackrest-pvc">Resize the pgBackRest PVC</h4>
+
+<p>To resize the PVC that stores the backups managed by pgBackRest, you will need to
+edit the <code>size</code> attribute of the <code>BackrestStorage</code> section of the
+<code>pgclusters.crunchydata.com</code> custom resource.</p>
+
+<p>The Postgres Operator will apply the PVC size change and scale the pgBackRest
+Deployment down and back up.</p>
+
+<h4 id="resize-a-single-postgresql-instance-read-only-replica">Resize a single PostgreSQL instance / read-only replica</h4>
+
+<p>To resize the PVC for a read-only replica, you can edit the <code>size</code> attribute
+of the <code>ReplicaStorage</code> portion of the <code>pgreplicas.crunchydata.com</code> custom
+resource.</p>
+
+<p>Note that if a subsequent action resizes the PVCs for all of the instances in a
+Postgres cluster and that new PVC size is larger than the specific instance
+size that is set, then the instance PVC is also resized.</p>
+
+<p>The Postgres Operator will apply the PVC size change and scale the instance
+Deployment down and back up.</p>
+
+<h4 id="resize-a-wal-pvc">Resize a WAL PVC</h4>
+
+<p>To resize the optional PVC that can be used to store WAL archives, you can edit
+the <code>size</code> attribute of the <code>WALStorage</code> section of the
+<code>pgclusters.crunchydata.com</code> custom resource.</p>
+
+<p>The PVC resize process for a cluster uses a <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/#rolling-updates">rolling update</a>
+to apply the size changes. During the process, each Deployment is scaled down
+and back up to allow for the PVC resize to take effect.</p>
+
+<h4 id="resize-the-pgadmin-4-pvc">Resize the pgAdmin 4 PVC</h4>
+
+<p>If you have deployed <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/pgadmin4/">pgAdmin 4</a> and
+need to resize its PVC, you can edit the <code>size</code> attribute of the <code>PGAdmin</code>
+section of the <code>pgclusters.crunchydata.com</code> custom resource.</p>
+
+<p>The PVC resize process for a cluster uses a <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/#rolling-updates">rolling update</a>
+to apply the size changes. During the process, the pgAdmin 4 Deployment is
+scaled down and back up to allow for the PVC resize to take effect.</p>
 
 <h3 id="monitoring">Monitoring</h3>
 
@@ -2062,6 +2249,35 @@ this explicitly shows that this is the <code>spec</code> block. <strong>Do not m
 <p>Save your edits, and in a short period of time, you should see these annotations
 applied to the managed Deployments.</p>
 
+<h3 id="manage-custom-labels">Manage Custom Labels</h3>
+
+<p>Several Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/">Labels</a>
+are automatically applied by PGO to its managed objects. However, it is possible
+to apply your own custom labels to the objects that PGO manages for a Postgres
+cluster. These objects include:</p>
+
+<ul>
+<li>ConfigMaps</li>
+<li>Deployments</li>
+<li>Jobs</li>
+<li>Pods</li>
+<li>PVCs</li>
+<li>Secrets</li>
+<li>Services</li>
+</ul>
+
+<p>The custom labels can be managed through the <code>userlabels</code> attribute on the
+<code>pgclusters.crunchydata.com</code> custom resource spec.</p>
+
+<p>For example, if I want to add a custom label to all of the objects within my
+Postgres cluster with a key of <code>favorite</code> and a value of <code>hippo</code>, you would
+apply the following to the spec:</p>
+
+<pre><code>spec:
+  userlabels:
+    favorite: hippo
+</code></pre>
+
 <h3 id="delete-a-postgresql-cluster">Delete a PostgreSQL Cluster</h3>
 
 <p>A PostgreSQL cluster can be deleted by simply deleting the <code>pgclusters.crunchydata.com</code> resource.</p>
@@ -2152,15 +2368,27 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>BackrestResources</td>
+<td>backrestResources</td>
 <td><code>create</code>, <code>update</code></td>
 <td>Specify the container resource requests that the pgBackRest repository should use. Follows the <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">Kubernetes definitions of resource requests</a>.</td>
 </tr>
 
 <tr>
-<td>backrestS3Bucket</td>
+<td>backrestGCSBucket</td>
 <td><code>create</code></td>
-<td>An optional parameter that specifies a S3 bucket that pgBackRest should use.</td>
+<td>An optional parameter (unless you are using GCS for backup storage) that specifies the GCS bucket that pgBackRest should use.</td>
+</tr>
+
+<tr>
+<td>backrestGCSEndpoint</td>
+<td><code>create</code></td>
+<td>An optional parameter that specifies a GCS endpoint pgBackRest should use, if not using the default GCS endpoint.</td>
+</tr>
+
+<tr>
+<td>backrestGCSKeyType</td>
+<td><code>create</code></td>
+<td>An optional parameter that specifies a GCS key type that pgBackRest should use. Can be either <code>service</code> or <code>token</code>, and if not specified, pgBackRest will use <code>service</code>.</td>
 </tr>
 
 <tr>
@@ -2214,7 +2442,7 @@ make changes, as described below.</p>
 <tr>
 <td>ccpimagetag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.2-4.6.2</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.3-4.7.0</code>.</td>
 </tr>
 
 <tr>
@@ -2278,15 +2506,15 @@ make changes, as described below.</p>
 </tr>
 
 <tr>
-<td>namespace</td>
-<td><code>create</code></td>
-<td>The Kubernetes Namespace that the PostgreSQL cluster is deployed in.</td>
-</tr>
-
-<tr>
 <td>nodeAffinity</td>
 <td><code>create</code></td>
 <td>Sets the <a href="https://crunchydata.github.io/postgres-operator/stable/architecture/high-availability/#node-affinity">node affinity rules</a> for the PostgreSQL cluster and associated PostgreSQL instances. Can be overridden on a per-instance (<code>pgreplicas.crunchydata.com</code>) basis. Please see the <code>Node Affinity Specification</code> section below.</td>
+</tr>
+
+<tr>
+<td>passwordType</td>
+<td><code>create</code>, <code>update</code></td>
+<td>If set, provides the Postgres password type that is used for creating Postgres users that are managed by PGO. Can be either <code>md5</code> or <code>scram-sha-256</code>.</td>
 </tr>
 
 <tr>
@@ -2387,13 +2615,13 @@ make changes, as described below.</p>
 
 <tr>
 <td>tls</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>Defines the attributes for enabling TLS for a PostgreSQL cluster. See TLS Specification below.</td>
 </tr>
 
 <tr>
 <td>tlsOnly</td>
-<td><code>create</code></td>
+<td><code>create</code>,<code>update</code></td>
 <td>If set to true, requires client connections to use only TLS to connect to the PostgreSQL database.</td>
 </tr>
 
@@ -2411,8 +2639,8 @@ make changes, as described below.</p>
 
 <tr>
 <td>userlabels</td>
-<td><code>create</code></td>
-<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; as well as a way to add custom labels to clusters. This will disappear at some point.</td>
+<td><code>create</code>,<code>update</code></td>
+<td>A set of key-value string pairs that are used as a sort of &ldquo;catch-all&rdquo; as well as a way to add custom labels to clusters.</td>
 </tr>
 </tbody>
 </table>
@@ -2454,7 +2682,7 @@ attribute and how it works.</p>
 
 <tr>
 <td>size</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>The size of the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">Persistent Volume Claim</a> (PVC). Must use a Kubernetes resource value, e.g. <code>20Gi</code>.</td>
 </tr>
 
@@ -2600,19 +2828,19 @@ should be structured, please see <a href="https://crunchydata.github.io/postgres
 <tbody>
 <tr>
 <td>caSecret</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>A reference to the name of a Kubernetes Secret that specifies a certificate authority for the PostgreSQL cluster to trust.</td>
 </tr>
 
 <tr>
 <td>replicationTLSSecret</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>A reference to the name of a Kubernetes TLS Secret that contains a keypair for authenticating the replication user. Must be used with <code>CASecret</code> and <code>TLSSecret</code>.</td>
 </tr>
 
 <tr>
 <td>tlsSecret</td>
-<td><code>create</code></td>
+<td><code>create</code>, <code>update</code></td>
 <td>A reference to the name of a Kubernetes TLS Secret that contains a keypair that is used for the PostgreSQL instance to identify itself and perform TLS communications with PostgreSQL clients. Must be used with <code>CASecret</code>.</td>
 </tr>
 </tbody>
@@ -2747,12 +2975,6 @@ cluster. All of the attributes only affect the replica when it is created.</p>
 <td>name</td>
 <td><code>create</code></td>
 <td>The name of this PostgreSQL replica. It should be unique within a <code>ClusterName</code>.</td>
-</tr>
-
-<tr>
-<td>namespace</td>
-<td><code>create</code></td>
-<td>The Kubernetes Namespace that the PostgreSQL cluster is deployed in.</td>
 </tr>
 
 <tr>

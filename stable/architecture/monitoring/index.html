@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Monitoring :: Crunchy PostgreSQL Operator Documentation</title>
+<title>Monitoring :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -353,14 +353,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1139,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/">
+            4.7.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
@@ -1364,7 +1371,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/stable/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/architecture/'>Architecture</a> > Monitoring
+ <a href='https://crunchydata.github.io/postgres-operator/stable/'>PGO: The Postgres Operator from Crunchy Data</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/architecture/'>Architecture</a> > Monitoring
 
  
 
@@ -1568,6 +1575,41 @@ device.</li>
 <li>Container ResourceS: The CPU and memory limits and requests.</li>
 </ul>
 
+<h3 id="backups">Backups</h3>
+
+<p><img src="https://crunchydata.github.io/postgres-operator/stable/images/postgresql-monitoring-backups.png" alt="PostgreSQL Operator - Monitoring - Backup Health" /></p>
+
+<p>There are a variety of reasons why you need to monitoring your backups, starting
+from answering the fundamental question of &ldquo;do I have backups available?&rdquo;
+Backups can be used for a variety of situations, from cloning new clusters to
+restoring clusters after a disaster. Additionally, Postgres can run into issues
+if your backup repository is not healthy, e.g. if it cannot push WAL archives.
+If your backups are set up properly and healthy, you will be set up to mitigate
+the risk of data loss!</p>
+
+<p>The backup, or pgBackRest panel, will provide information about the overall
+state of your backups. This includes:</p>
+
+<ul>
+<li>Recovery Window: This is an indicator of how far back you are able to restore
+your data from. This represents all of the backups and archives available in
+your backup repository. Typically, your recovery window should be close to your
+overall data retention specifications.</li>
+<li>Time Since Last Backup: this indicates how long it has been since your last
+backup. This is broken down into pgBackRest backup type (full, incremental,
+differential) as well as time since the last WAL archive was pushed.</li>
+<li>Backup Runtimes: How long the last backup of a given type (full, incremental
+differential) took to execute. If your backups are slow, consider providing more
+resources to the backup jobs and tweaking pgBackRest&rsquo;s performance tuning
+settings.</li>
+<li>Backup Size: How large the backups of a given type (full, incremental,
+differential).</li>
+<li>WAL Stats: Shows the metrics around WAL archive pushes. If you have failing
+pushes, you should to see if there is a transient or permanent error that is
+preventing WAL archives from being pushed. If left untreated, this could end up
+causing issues for your Postgres cluster.</li>
+</ul>
+
 <h3 id="postgresql-service-health-overview">PostgreSQL Service Health Overview</h3>
 
 <p><img src="https://crunchydata.github.io/postgres-operator/stable/images/postgresql-monitoring-service.png" alt="PostgreSQL Operator Monitoring - Service Health Overview" /></p>
@@ -1585,6 +1627,47 @@ handling.</li>
 <li>Errors: Displays the total number of errors occurring at a particular Service.</li>
 <li>Latency: What the overall network latency is when interfacing with the
 Service.</li>
+</ul>
+
+<h3 id="query-runtime">Query Runtime</h3>
+
+<p><img src="https://crunchydata.github.io/postgres-operator/stable/images/postgresql-monitoring-query-total.png" alt="PostgreSQL Operator Monitoring - Query Performance" /></p>
+
+<p>Looking at the overall performance of queries can help optimize a Postgres
+deployment, both from <a href="https://crunchydata.github.io/postgres-operator/stable/tutorial/customize-cluster/">providing resources</a> to query tuning in the application
+itself.</p>
+
+<p>You can get a sense of the overall activity of a PostgreSQL cluster from the
+chart that is visualized above:</p>
+
+<ul>
+<li>Queries Executed: The total number of queries executed on a system during the
+period.</li>
+<li>Query runtime: The aggregate runtime of all the queries combined across the
+system that were executed in the period.</li>
+<li>Query mean runtime: The average query time across all queries executed on the
+system in the given period.</li>
+<li>Rows retrieved or affected: The total number of rows in a database that were
+either retrieved or had modifications made to them.</li>
+</ul>
+
+<p>PostgreSQL Operator Monitoring also further breaks down the queries so you can
+identify queries that are being executed too frequently or are taking up too
+much time.</p>
+
+<p><img src="https://crunchydata.github.io/postgres-operator/stable/images/postgresql-monitoring-query-topn.png" alt="PostgreSQL Operator Monitoring - Query Analysis" /></p>
+
+<ul>
+<li>Query Mean Runtime (Top N): This highlights the N number of slowest queries by
+average runtime on the system. This might indicate you are missing an index
+somewhere, or perhaps the query could be rewritten to be more efficient.</li>
+<li>Query Max Runtime (Top N): This highlights the N number of slowest queries by
+absolute runtime. This could indicate that a specific query or the system as a
+whole may need more resources.</li>
+<li>Query Total Runtime (Top N): This highlights the N of slowest queres by
+aggregate runtime. This could indicate that a ORM is looping over a single query
+and executing it many times that could possibly be rewritten as a single, faster
+query.</li>
 </ul>
 
 <h3 id="alerts">Alerts</h3>

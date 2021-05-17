@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorial on Crunchy PostgreSQL Operator Documentation</title>
+    <title>Tutorial on PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     <link>https://crunchydata.github.io/postgres-operator/stable/tutorial/</link>
-    <description>Recent content in Tutorial on Crunchy PostgreSQL Operator Documentation</description>
+    <description>Recent content in Tutorial on PGO: PostgreSQL Operator from Crunchy Data Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -16,9 +16,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/tutorial/getting-started/</guid>
-      <description>Installation If you have not installed the PostgreSQL Operator yet, we recommend you take a look at our quickstart or the installation sections.
-Customizing an Installation How to customize a PostgreSQL Operator installation is a lengthy topic. The details are covered in the installation section, as well as a list of all the configuration variables available.
-Setup the pgo Client This tutorial will be using the pgo client to interact with the PostgreSQL Operator.</description>
+      <description>Installation If you have not installed PGO, the Postgres Operator, yet, we recommend you take a look at our quickstart or the installation sections.
+Customizing an Installation How to customize a PGO installation is a lengthy topic. The details are covered in the installation section, as well as a list of all the configuration variables available.
+Setup the pgo Client This tutorial will be using the pgo client to interact with the Postgres Operator.</description>
     </item>
     
     <item>

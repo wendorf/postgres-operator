@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Common pgo Client Tasks :: Crunchy PostgreSQL Operator Documentation</title>
+<title>Common pgo Client Tasks :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -352,14 +352,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1139,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/">
+            4.7.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
@@ -1354,7 +1361,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/stable/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/pgo-client/'>Using the pgo Client</a> > Common pgo Client Tasks
+ <a href='https://crunchydata.github.io/postgres-operator/stable/'>PGO: The Postgres Operator from Crunchy Data</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/pgo-client/'>Using the pgo Client</a> > Common pgo Client Tasks
 
  
 
@@ -1443,8 +1450,8 @@ command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>which, if working, will yield results similar to:</p>
 
-<pre><code>pgo client version 4.6.2
-pgo-apiserver version 4.6.2
+<pre><code>pgo client version 4.7.0
+pgo-apiserver version 4.7.0
 </code></pre>
 
 <h3 id="inspecting-the-postgresql-operator-configuration">Inspecting the PostgreSQL Operator Configuration</h3>
@@ -1460,7 +1467,7 @@ deployed by default, which storage classes are being used, etc.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">BasicAuth<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
 Cluster<span style="color:#111">:</span>
   CCPImagePrefix<span style="color:#111">:</span> crunchydata
-  CCPImageTag<span style="color:#111">:</span> centos8-13.2-4.6.2
+  CCPImageTag<span style="color:#111">:</span> centos8-13.3-4.7.0
   Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Metrics<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   Badger<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
@@ -1487,7 +1494,7 @@ Cluster<span style="color:#111">:</span>
 Pgo<span style="color:#111">:</span>
   Audit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PGOImagePrefix<span style="color:#111">:</span> crunchydata
-  PGOImageTag<span style="color:#111">:</span> centos8-4.6.2
+  PGOImageTag<span style="color:#111">:</span> centos8-4.7.0
 PrimaryStorage<span style="color:#111">:</span> nfsstorage
 BackupStorage<span style="color:#111">:</span> nfsstorage
 ReplicaStorage<span style="color:#111">:</span> nfsstorage
@@ -1575,10 +1582,10 @@ gibibytes of memory, you can use the following command:</p>
 
 <p>To create a PostgreSQL cluster that uses the geospatial extension PostGIS, you
 can execute the following command, updated with your desired image tag. In the
-example below, the cluster will use PostgreSQL 13.2 and PostGIS 3.0:</p>
+example below, the cluster will use PostgreSQL 13.3 and PostGIS 3.0:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hagiscluster <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --ccp-image<span style="color:#f92672">=</span>crunchy-postgres-gis-ha <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --ccp-image-tag<span style="color:#f92672">=</span>centos8-13.2-3.0-4.6.2</code></pre></div>
+</span><span style="color:#8045ff"></span>  --ccp-image-tag<span style="color:#f92672">=</span>centos8-13.3-3.0-4.7.0</code></pre></div>
 <h4 id="create-a-postgresql-cluster-with-a-tablespace">Create a PostgreSQL Cluster with a Tablespace</h4>
 
 <p>Tablespaces are a PostgreSQL feature that allows a user to select specific
@@ -1668,7 +1675,7 @@ including the nodes that the pods are assigned to</li>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
 <p>which will yield output similar to:</p>
 
-<pre><code>cluster : hacluster (crunchy-postgres-ha:centos8-13.2-4.6.2)
+<pre><code>cluster : hacluster (crunchy-postgres-ha:centos8-13.3-4.7.0)
 	pod : hacluster-6dc6cfcfb9-f9knq (Running) on node01 (1/1) (primary)
 	pvc : hacluster
 	resources : CPU Limit= Memory Limit=, CPU Request= Memory Request=
@@ -1676,7 +1683,7 @@ including the nodes that the pods are assigned to</li>
 	deployment : hacluster
 	deployment : hacluster-backrest-shared-repo
 	service : hacluster - ClusterIP (10.102.20.42)
-	labels : archive-timeout=60 deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster pgo-version=4.6.2 current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+	labels : archive-timeout=60 deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster pgo-version=4.7.0 current-primary=hacluster name=hacluster pgouser=admin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
 </code></pre>
 
 <h3 id="deleting-a-cluster">Deleting a Cluster</h3>
@@ -1883,6 +1890,14 @@ the current cluster</li>
 execute the following command:</p>
 
 <pre><code>pgo create cluster newcluster --restore-from=oldcluster
+</code></pre>
+
+<h5 id="full-restore-across-namespaces">Full Restore Across Namespaces</h5>
+
+<p>To create a new PostgreSQL cluster from a backup in another namespace and restore it
+fully, you can execute the following command:</p>
+
+<pre><code>pgo create cluster newcluster --restore-from=oldcluster --restore-from-namespace=oldnamespace
 </code></pre>
 
 <h5 id="point-in-time-recovery-pitr">Point-in-time-Recovery (PITR)</h5>
@@ -2188,7 +2203,7 @@ clusters:</p>
 Kubernetes comes with its own <a href="https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/">certificate management system</a>!
 It is up to you to decide how you want to manage this for your cluster. The
 PostgreSQL documentation also provides an example for how to
-<a href="https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION">generate a TLS certificate</a>
+<a href="https://blog.crunchydata.com/blog/tls-postgres-kubernetes-openssl">generate a TLS certificate</a>
 as well.</p>
 
 <p>To set up TLS for your PostgreSQL cluster, you have to create two <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Secrets</a>:
@@ -2321,13 +2336,46 @@ replicas that also requires TLS for any connection:</p>
 </code></pre>
 
 <p>By default, the PostgreSQL Operator has each replica connect to PostgreSQL using
-a <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS">PostgreSQL TLS mode</a>
+a <a href="https://blog.crunchydata.com/blog/tls-postgres-kubernetes-openssl">PostgreSQL TLS mode</a>
 of <code>verify-ca</code>. If you wish to perform TLS mutual authentication between
 PostgreSQL instances (i.e. certificate-based authentication with SSL mode of
 <code>verify-full</code>), you will need to create a
 <a href="https://crunchydata.github.io/postgres-operator/stable/advanced/custom-configuration/">PostgreSQL custom configuration</a>.</p>
 
-<h2 id="custom-postgresql-configuration-hahahugoshortcode-s27-hbhb"><a href="https://crunchydata.github.io/postgres-operator/stable/advanced/custom-configuration/">Custom PostgreSQL Configuration</a></h2>
+<h3 id="add-tls-to-an-existing-postgresql-cluster">Add TLS to an Existing PostgreSQL Cluster</h3>
+
+<p>You can add TLS support to an existing PostgreSQL cluster using the
+<a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a>
+command. The following flags are used to manage TLS in a Postgres cluster,
+including:</p>
+
+<ul>
+<li><code>--disable-server-tls</code>: removes TLS from a cluster</li>
+<li><code>--disable-tls-only</code>: removes the TLS-only requirement from a cluster</li>
+<li><code>--enable-tls-only</code>: adds the TLS-only requirement to a cluster</li>
+<li><code>--server-ca-secret</code>: combined with <code>--server-tls-secret</code>, enables TLS in a
+cluster</li>
+<li><code>--server-tls-secret</code>: combined with <code>--server-ca-secret</code>, enables TLS in a
+cluster</li>
+<li><code>--replication-tls-secret</code>: enables certificate-based authentication between
+Postgres instances.</li>
+</ul>
+
+<p>Using the above examples, to add TLS to a PostgreSQL cluster named <code>hippo</code> and
+require TLS, you can use the following command:</p>
+
+<pre><code>pgo update cluster hippo \
+  --enable-tls-only \
+  --server-ca-secret=postgresql-ca \
+  --server-tls-secret=hacluster-tls-keypair
+</code></pre>
+
+<p>Conversely, you can disable TLS with the <code>--disable-tls</code> flag:</p>
+
+<pre><code>pgo update cluster hippo --disable-server-tls
+</code></pre>
+
+<h2 id="custom-postgresql-configuration-hahahugoshortcode-s28-hbhb"><a href="https://crunchydata.github.io/postgres-operator/stable/advanced/custom-configuration/">Custom PostgreSQL Configuration</a></h2>
 
 <p>Customizing PostgreSQL configuration is currently not subject to the <code>pgo</code>
 client, but given it is a common question, we thought it may be helpful to link

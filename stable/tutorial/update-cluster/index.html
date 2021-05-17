@@ -2,12 +2,12 @@
 <html>
   <head>
     
-    <title>Crunchy PostgreSQL Operator Documentation</title>
+    <title>PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Update a Postgres Cluster :: Crunchy PostgreSQL Operator Documentation</title>
+<title>Update a Postgres Cluster :: PGO: PostgreSQL Operator from Crunchy Data Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/stable/theme-flex/style.css" rel="stylesheet">
@@ -85,7 +85,7 @@
       </div>
 
       <hr>
-      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy PostgreSQL Operator Documentation</a>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">PGO: PostgreSQL Operator from Crunchy Data Documentation</a>
       <hr>
         <b>Available Formats</b>
         <nav class="downloads">
@@ -353,14 +353,14 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/postgres-operator/">
-            Install the PostgreSQL Operator
+            Install PGO the Postgres Operator
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/installation/pgo-client/">
-            Install `pgo` Client
+            Install &#34;pgo&#34; Client
           </a>
         </div>
     </li>
@@ -1139,6 +1139,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/">
+            4.7.0
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.6.2/">
@@ -1361,7 +1368,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/stable/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/tutorial/'>Tutorial</a> > Update a Postgres Cluster
+ <a href='https://crunchydata.github.io/postgres-operator/stable/'>PGO: The Postgres Operator from Crunchy Data</a> > <a href='https://crunchydata.github.io/postgres-operator/stable/tutorial/'>Tutorial</a> > Update a Postgres Cluster
 
  
 
@@ -1402,13 +1409,13 @@
 
 <h2 id="update-cpu-memory">Update CPU / Memory</h2>
 
-<p>You can update the CPU and memory resources available to the Pods in your PostgreSQL cluster by using the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> command. By using this method, the PostgreSQL instances are safely shut down and the new resources are applied in a rolling fashion (though we caution that a brief downtime may still occur).</p>
+<p>You can update the CPU and memory resources available to the Pods in your PostgreSQL cluster by using the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> command. You can also modify the custom resource attributes to resize these attributes as well. By using this method, the PostgreSQL instances are safely shut down and the new resources are applied in a rolling fashion (though we caution that a brief downtime may still occur).</p>
 
 <p>Customizing CPU and memory does add more resources to your PostgreSQL cluster, but to fully take advantage of additional resources, you will need to <a href="https://crunchydata.github.io/postgres-operator/stable/advanced/custom-configuration/">customize your PostgreSQL configuration</a> and tune parameters such as <code>shared_buffers</code> and others.</p>
 
 <h3 id="customize-cpu-memory-for-postgresql">Customize CPU / Memory for PostgreSQL</h3>
 
-<p>The PostgreSQL Operator provides several flags for <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> to help manage resources for a PostgreSQL instance:</p>
+<p>The PostgreSQL Operator provides several flags for <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a> to help manage resources for a PostgreSQL instance:</p>
 
 <ul>
 <li><code>--cpu</code>: Specify the CPU Request for a PostgreSQL instance</li>
@@ -1470,6 +1477,32 @@
 </code></pre>
 
 <p>We recommend that you read the section on how to <a href="https://crunchydata.github.io/postgres-operator/stable/advanced/custom-configuration/">customize your PostgreSQL configuration</a> to find out how to customize your configuration.</p>
+
+<h2 id="update-pvc-size">Update PVC Size</h2>
+
+<p>You can update the PVC sizes for your PostgreSQL cluster, the pgBackRest repository, and an optional external WAL PVC by using the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a> command. You can also modify the custom resource attributes to resize these attributes as well. By using this method, the PostgreSQL instances are safely shut down and the new resources are applied in a rolling fashion (though we caution that a brief downtime may still occur).</p>
+
+<p>It is possible to update the PVC size for a replica instance or a pgAdmin 4 instance as well, but you must do this by editing a custom resource directly.</p>
+
+<h3 id="update-pvc-size-for-a-postgres-cluster">Update PVC Size for a Postgres Cluster</h3>
+
+<p>PGO provides the <code>--pvc-size</code> flag on the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_update_cluster/"><code>pgo update cluster</code></a> command to let you update the size of the PVC that stores your PostgreSQL data. To use this feature, the new PVC size <strong>must</strong> be larger than the old PVC size.</p>
+
+<p>For example, let&rsquo;s say your current PostgreSQL cluster named <code>hippo</code> has a PVC size of <code>10Gi</code>. To update your PostgreSQL cluster to use a <code>20Gi</code> PVC, you would use the following command:</p>
+
+<pre><code>pgo update cluster hippo --pvc-size=20Gi
+</code></pre>
+
+<p>As mentioned above, if you have deployed a HA Postgres cluster, the Postgres Operator will apply the changes using a rolling update to minimize downtime.</p>
+
+<h3 id="update-pvc-size-for-a-pgbackrest-repository">Update PVC Size for a pgBackRest Repository</h3>
+
+<p>If you are using pgBackRest repository with <code>posix</code> mode (<strong>not</strong> <code>s3</code> or <code>gcs</code> only modes), you can resize its PVC using the <code>--pgbackrest-pvc-size</code> flag on the <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/reference/pgo_create_cluster/"><code>pgo update cluster</code></a> command.</p>
+
+<p>For example, let&rsquo;s say your current PostgreSQL cluster named <code>hippo</code> has a pgBackRest PVC size of <code>30Gi</code>. To update your PostgreSQL cluster to use a <code>60Gi</code> PVC, you would use the following command:</p>
+
+<pre><code>pgo update cluster hippo --pgbackrest-pvc-size=60Gi
+</code></pre>
 
 <h2 id="troubleshooting">Troubleshooting</h2>
 
