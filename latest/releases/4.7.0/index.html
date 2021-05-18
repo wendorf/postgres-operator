@@ -1398,7 +1398,7 @@
     
     
 
-<p>Crunchy Data announces the release of the PGO, the PostgreSQL Operator, 4.7.0 on MMM DD, YYYY.</p>
+<p>Crunchy Data announces the release of the PGO, the PostgreSQL Operator, 4.7.0 on May 17, 2021.</p>
 
 <p>The PostgreSQL Operator is released in conjunction with the <a href="https://github.com/CrunchyData/crunchy-containers/">Crunchy Container Suite</a>.</p>
 
@@ -1581,6 +1581,7 @@
 <li>Ensure <code>archive_mode</code> is forced to <code>on</code> when performing using the &ldquo;restore in place&rdquo; method. This ensures that the timeline is correctly incremented post-restore, which could manifest itself with various types of WAL archive failures.</li>
 <li>Only attempts to start scheduled backups in running pgBackRest repository Pods. Reported by Satria Sahputra (@satriashp).</li>
 <li>Fix error when attempting to perform restores when using node affinity. Reported by (@gilfrade) and Cristian Chiru (@cristichiru).</li>
+<li>Fix crash due to superfluous trailing whitespace when parsing <code>--backup-opts</code> in <code>pgo backup</code>. Reported by Samir Faci (@safaci2000).</li>
 <li>Fix issue with newer versions of PostgreSQL where a replica would automatically restart after a configuration change. Now the replica will only show that it is pending a restart; a user will have to run <code>pgo restart</code>.</li>
 <li>Fix issue where metrics about pgBackRest backups could not be scraped if the backups were stored in a S3-like environment that requires the use of disabling TLS verification. Reported by (@lphan-clv) and (@dakine1111).</li>
 <li>Fix issue where certain pgAdmin 4 functions did not work (e.g. taking a backup) due to <code>python</code> references in EL8 containers. Reported by (@douggutaby).</li>
