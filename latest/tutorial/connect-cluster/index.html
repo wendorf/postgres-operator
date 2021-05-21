@@ -1492,7 +1492,7 @@ postgres-operator            ClusterIP   10.96.121.246   &lt;none&gt;        844
 
 <p>Knowing this, we can construct a <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING">Postgres URI</a> that contains all of the connection info:</p>
 
-<p><code>postgres://testuser:securerandomlygeneratedpassword@hippo.jkatz.svc.cluster.local:5432/hippo</code></p>
+<p><code>postgres://testuser:securerandomlygeneratedpassword@hippo.pgo.svc.cluster.local:5432/hippo</code></p>
 
 <p>which breaks down as such:</p>
 
@@ -1500,7 +1500,7 @@ postgres-operator            ClusterIP   10.96.121.246   &lt;none&gt;        844
 <li><code>postgres</code>: the scheme, i.e. a Postgres URI</li>
 <li><code>testuser</code>: the name of the PostgreSQL user</li>
 <li><code>securerandomlygeneratedpassword</code>: the password for <code>testuser</code></li>
-<li><code>hippo.jkatz.svc.cluster.local</code>: the hostname</li>
+<li><code>hippo.pgo.svc.cluster.local</code>: the hostname</li>
 <li><code>5432</code>: the port</li>
 <li><code>hippo</code>: the database you want to connect to</li>
 </ul>
