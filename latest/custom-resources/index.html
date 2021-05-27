@@ -1746,7 +1746,7 @@ This is a file that you can download from Google.</p>
 pgo_cluster_name=hippo
 # this variable is the namespace the cluster is being deployed into
 cluster_namespace=pgo
-# the following variables are your S3 key and key secret
+# this variable is your GCS credential
 backrest_gcs_key=/path/to/your/gcs/credential.json
 
 kubectl -n &quot;${cluster_namespace}&quot; create secret generic &quot;${pgo_cluster_name}-backrest-repo-config&quot; \
