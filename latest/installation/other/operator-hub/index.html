@@ -1419,6 +1419,8 @@ that is available in OperatorHub.io.</p>
 <pre><code>kubectl -n &quot;$PGO_OPERATOR_NAMESPACE&quot; create secret generic pgo-backrest-repo-config \
   --from-literal=aws-s3-key=&quot;&lt;your-aws-s3-key&gt;&quot; \
   --from-literal=aws-s3-key-secret=&quot;&lt;your-aws-s3-key-secret&gt;&quot;
+kubectl -n &quot;$PGO_OPERATOR_NAMESPACE&quot; label secret pgo-backrest-repo-config \
+  vendor=crunchydata
 </code></pre>
 
 <h3 id="certificates-optional">Certificates (optional)</h3>
